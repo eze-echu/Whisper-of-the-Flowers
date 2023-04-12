@@ -2,14 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlowerFather : MonoBehaviour, IDragable, IFusionable
+public class FlowerFather : MonoBehaviour, IDragable, IFusionable, IGetVariables
 {
     public string message;
 
-    public int[,] values = new int[2, 2];
+    //public int[,] values = new int[2, 2];
+
+    /*
+    int Intent;
+    int Formality;
+    int MultiplierIntent;
+    int MultiplierFormality;
+    string Subject;
+    */
+
+    public int Intent { get; private set; }
+    public int Formality { get; private set; }
+    public int MultiplierIntent { get; private set; }
+    public int MultiplierFormality { get; private set; }
+    public string Subject { get; private set; }
+
+
 
 
     private Vector3 _lastposition;
+
+   
 
     virtual public void Start()
     {
@@ -26,4 +44,12 @@ public class FlowerFather : MonoBehaviour, IDragable, IFusionable
             transform.position = _lastposition;
         }
     }
+
+
+    int IGetVariables.Intent { get { return Intent; } }
+    int IGetVariables.Formality { get { return Formality; } }
+    int IGetVariables.MultiplierIntent { get { return MultiplierIntent; } }
+    int IGetVariables.MultiplierFormality { get { return MultiplierFormality; } }
+    string IGetVariables.Subject { get { return Subject; } }
+
 }

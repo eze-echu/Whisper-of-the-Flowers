@@ -233,6 +233,7 @@ GameObject:
   - component: {fileID: 324760492}
   - component: {fileID: 324760491}
   - component: {fileID: 324760490}
+  - component: {fileID: 324760495}
   m_Layer: 0
   m_Name: White_Flower
   m_TagString: drag
@@ -278,7 +279,7 @@ MeshRenderer:
   m_GameObject: {fileID: 324760489}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -334,6 +335,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &324760495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324760489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4c93d78b2ed1794685003255f14208d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: menem
 --- !u!1 &364952760
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,7 +391,7 @@ MeshRenderer:
   m_GameObject: {fileID: 364952760}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -466,7 +480,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!1 &455758313
 GameObject:
@@ -1203,6 +1217,7 @@ GameObject:
   - component: {fileID: 1002880974}
   - component: {fileID: 1002880973}
   - component: {fileID: 1002880972}
+  - component: {fileID: 1002880977}
   m_Layer: 0
   m_Name: Rose_Flower
   m_TagString: drag
@@ -1248,7 +1263,7 @@ MeshRenderer:
   m_GameObject: {fileID: 1002880971}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -1304,6 +1319,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1002880977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002880971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4c93d78b2ed1794685003255f14208d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: pim
 --- !u!1 &1390790754
 GameObject:
   m_ObjectHideFlags: 0

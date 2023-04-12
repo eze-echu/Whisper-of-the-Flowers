@@ -11,6 +11,8 @@ public class Racimo : MonoBehaviour
 
     private Vector3 _lastposition;
 
+    string subject;
+
 
     public void Start()
     {
@@ -44,6 +46,22 @@ public class Racimo : MonoBehaviour
                     {
                         childCollider.enabled = false;
                     }
+
+                    IGetVariables childVariables = collision.transform.GetComponent<IGetVariables>();
+                    if (childVariables != null)
+                    {
+                        int intent = childVariables.Intent;
+                        int formality = childVariables.Formality;
+                        int multiplierIntent = childVariables.MultiplierIntent;
+                        int multiplierFormality = childVariables.MultiplierFormality;
+
+                        if (subject == null)
+                        {
+                            subject = childVariables.Subject;
+                        }  
+
+                    }
+
                 }
 
             }
