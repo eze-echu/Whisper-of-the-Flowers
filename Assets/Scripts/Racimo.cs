@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Racimo : MonoBehaviour
 {
@@ -12,6 +13,10 @@ public class Racimo : MonoBehaviour
     private Vector3 _lastposition;
 
     string subject;
+    List<int> _intentValues;
+    List<int> _formalityValues;
+    int multiplierIntent;
+    int multiplierFormality;
 
 
     public void Start()
@@ -34,6 +39,7 @@ public class Racimo : MonoBehaviour
             // collision.transform.SetParent(_principal.transform);
             foreach (var item in _posOfFlowers)
             {
+                print(item);
                 if (item.transform.childCount == 0)
                 {
                     collision.transform.SetParent(item.transform);
@@ -50,27 +56,54 @@ public class Racimo : MonoBehaviour
                     IGetVariables childVariables = collision.transform.GetComponent<IGetVariables>();
                     if (childVariables != null)
                     {
-                        int intent = childVariables.Intent;
-                        int formality = childVariables.Formality;
-                        int multiplierIntent = childVariables.MultiplierIntent;
-                        int multiplierFormality = childVariables.MultiplierFormality;
+                        //int intent = childVariables.Intent;
+                        //int formality = childVariables.Formality;
+                        //int multiplierIntent = childVariables.MultiplierIntent;
+                        //int multiplierFormality = childVariables.MultiplierFormality;
 
-                        if (subject == null)
+                        if (item == _posOfFlowers.FirstOrDefault())
                         {
                             subject = childVariables.Subject;
-                        }  
+                            //print(subject);
+                        }
 
+
+                        
+                        if (item == _posOfFlowers.LastOrDefault())
+                        {
+                            multiplierIntent = childVariables.MultiplierIntent;
+                            multiplierFormality = childVariables.MultiplierFormality;
+
+                            print(multiplierIntent);
+                            print(multiplierFormality);
+                            /*
+                            int intent =+ childVariables.Intent;
+                            int formality =+ childVariables.Formality;
+                            //_intentValues.Add(intent);
+                            //_formalityValues.Add(childVariables.Formality);
+                            */
+                        }
+                        else
+                        {
+                            int intent = childVariables.Intent;
+                            int formality = childVariables.Formality;
+
+                            print(intent);
+                            print(formality);
+                        }
                     }
-
+                    break;
                 }
 
+         
+
             }
-
-
         }
-
-
     }
 
+    private void Formula()
+    {
+
+    }
 
 }

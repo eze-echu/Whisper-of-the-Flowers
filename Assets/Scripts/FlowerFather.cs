@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FlowerFather : MonoBehaviour, IDragable, IFusionable, IGetVariables
 {
-    public string message;
+    //public string message;
 
     //public int[,] values = new int[2, 2];
 
@@ -32,6 +32,13 @@ public class FlowerFather : MonoBehaviour, IDragable, IFusionable, IGetVariables
     virtual public void Start()
     {
         _lastposition = transform.position;
+
+        Subject = "tumami";
+
+        MultiplierFormality = 5;
+        MultiplierIntent = 4;
+        Intent = 10;
+        Formality = 9;
     }
 
     private void OnCollisionEnter(Collision collision)

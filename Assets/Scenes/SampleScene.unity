@@ -347,7 +347,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4c93d78b2ed1794685003255f14208d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: menem
 --- !u!1 &364952760
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,9 +462,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _posOfFlowers:
-  - {fileID: 1390790754}
-  - {fileID: 734484294}
   - {fileID: 468951108}
+  - {fileID: 734484294}
+  - {fileID: 1390790754}
 --- !u!54 &364952766
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -737,7 +736,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4c93d78b2ed1794685003255f14208d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: tumami
 --- !u!1 &561884373
 GameObject:
   m_ObjectHideFlags: 0
@@ -1331,7 +1329,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4c93d78b2ed1794685003255f14208d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: pim
 --- !u!1 &1390790754
 GameObject:
   m_ObjectHideFlags: 0
