@@ -12,16 +12,22 @@ public class Racimo : MonoBehaviour
 
     private Vector3 _lastposition;
 
-    string subject;
-    List<int> _intentValues;
-    List<int> _formalityValues;
-    int multiplierIntent;
-    int multiplierFormality;
+    string _subject;
+    int _intentValues;
+    int _formalityValues;
+    int _multiplierIntent;
+    int _multiplierFormality;
 
 
     public void Start()
     {
         _lastposition = transform.position;
+
+        _subject = null;
+        _intentValues = 0;
+        _formalityValues = 0;
+        _multiplierIntent = 0;
+        _multiplierFormality = 0;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -34,12 +40,14 @@ public class Racimo : MonoBehaviour
             transform.position = _lastposition;
         }
 
+        //buscar manera de reducir cantidad de ifs
         if (collision.transform.parent == null)
         {
-            // collision.transform.SetParent(_principal.transform);
+            //Esto creo que se podria separar en dos funciones "ToStickAnObject" y "GetVariableFlowers"
+            //para que quede mejor visualmente(creo que no respeta SOLID aun asi)
             foreach (var item in _posOfFlowers)
             {
-                print(item);
+                //print(item);
                 if (item.transform.childCount == 0)
                 {
                     collision.transform.SetParent(item.transform);
@@ -56,40 +64,32 @@ public class Racimo : MonoBehaviour
                     IGetVariables childVariables = collision.transform.GetComponent<IGetVariables>();
                     if (childVariables != null)
                     {
-                        //int intent = childVariables.Intent;
-                        //int formality = childVariables.Formality;
-                        //int multiplierIntent = childVariables.MultiplierIntent;
-                        //int multiplierFormality = childVariables.MultiplierFormality;
 
                         if (item == _posOfFlowers.FirstOrDefault())
                         {
-                            subject = childVariables.Subject;
+                            _subject = childVariables.Subject;
                             //print(subject);
                         }
-
 
                         
                         if (item == _posOfFlowers.LastOrDefault())
                         {
-                            multiplierIntent = childVariables.MultiplierIntent;
-                            multiplierFormality = childVariables.MultiplierFormality;
+                            _multiplierIntent = childVariables.MultiplierIntent;
+                            _multiplierFormality = childVariables.MultiplierFormality;
 
-                            print(multiplierIntent);
-                            print(multiplierFormality);
-                            /*
-                            int intent =+ childVariables.Intent;
-                            int formality =+ childVariables.Formality;
-                            //_intentValues.Add(intent);
-                            //_formalityValues.Add(childVariables.Formality);
-                            */
+                            print(_multiplierIntent);
+                            print(_multiplierFormality);
+
+                            Formula();
+                           
                         }
                         else
                         {
-                            int intent = childVariables.Intent;
-                            int formality = childVariables.Formality;
+                            _intentValues += childVariables.Intent;
+                            _formalityValues += childVariables.Formality;
 
-                            print(intent);
-                            print(formality);
+                            print(_intentValues);
+                            print(_formalityValues);
                         }
                     }
                     break;
@@ -103,6 +103,42 @@ public class Racimo : MonoBehaviour
 
     private void Formula()
     {
+        _intentValues = _intentValues * _multiplierIntent;
+        _formalityValues = _formalityValues * _multiplierFormality;
+
+        print(_intentValues);
+        print(_formalityValues);
+    }
+
+    public T GetVariable<T>(int ID)
+    {
+        switch(ID)
+        {
+            case 1:
+                return (T)(object)_subject;
+                
+
+            case 2:
+                return (T)(object)_intentValues;
+                
+
+            case 3:
+                return (T)(object)_formalityValues;
+                
+                
+            case 4:
+                return (T)(object)_multiplierIntent;
+                
+
+            case 5:
+                return (T)(object)_multiplierFormality;
+                
+
+            default:
+                print("no");
+                return default;
+                
+        }
 
     }
 
