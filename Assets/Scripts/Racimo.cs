@@ -32,7 +32,7 @@ public class Racimo : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-
+        //codigo anterior anterior de devolver objeto
         /*
         if (collision.collider.CompareTag("dontzone"))
         {
@@ -101,6 +101,9 @@ public class Racimo : MonoBehaviour
             }
         }
     }
+
+    //codigo anterior para devolver objetos
+    /*
     private void OnTriggerExit(Collider other)
     {
 
@@ -110,6 +113,7 @@ public class Racimo : MonoBehaviour
             transform.position = _lastposition;
         }
     }
+    */
 
     private void Formula()
     {

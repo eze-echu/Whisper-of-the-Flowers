@@ -41,6 +41,7 @@ public class FlowerFather : MonoBehaviour, IDragable, IFusionable, IGetVariables
         Formality = 9;
     }
 
+    //codigo anterior anterior para devolver objeto
     /*
     private void OnCollisionEnter(Collision collision)
     {
@@ -54,6 +55,8 @@ public class FlowerFather : MonoBehaviour, IDragable, IFusionable, IGetVariables
     }
     */
 
+    //Codigo anterior para devolver objeto
+    /*
     private void OnTriggerExit(Collider other)
     {
        
@@ -63,6 +66,7 @@ public class FlowerFather : MonoBehaviour, IDragable, IFusionable, IGetVariables
             transform.position = _lastposition;
         }
     }
+    */
 
     
 
