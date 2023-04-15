@@ -33,12 +33,13 @@ public class Racimo : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
 
-
+        /*
         if (collision.collider.CompareTag("dontzone"))
         {
 
             transform.position = _lastposition;
         }
+        */
 
         //buscar manera de reducir cantidad de ifs
         if (collision.transform.parent == null)
@@ -98,6 +99,15 @@ public class Racimo : MonoBehaviour
          
 
             }
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+
+        if (other.CompareTag("dontzone"))
+        {
+            print("se fue");
+            transform.position = _lastposition;
         }
     }
 

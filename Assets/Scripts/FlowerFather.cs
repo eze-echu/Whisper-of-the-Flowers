@@ -41,6 +41,7 @@ public class FlowerFather : MonoBehaviour, IDragable, IFusionable, IGetVariables
         Formality = 9;
     }
 
+    /*
     private void OnCollisionEnter(Collision collision)
     {
         
@@ -51,6 +52,20 @@ public class FlowerFather : MonoBehaviour, IDragable, IFusionable, IGetVariables
             transform.position = _lastposition;
         }
     }
+    */
+
+    private void OnTriggerExit(Collider other)
+    {
+       
+        if (other.CompareTag("dontzone"))
+        {
+            print("se fue");
+            transform.position = _lastposition;
+        }
+    }
+
+    
+
 
 
     int IGetVariables.Intent { get { return Intent; } }

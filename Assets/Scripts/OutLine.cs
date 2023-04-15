@@ -66,6 +66,14 @@ public class OutLine : MonoBehaviour
             }
         }
         
+        Input.GetMouseButtonUp(0);
+        {
+            if (selection)
+            {
+                selection.gameObject.GetComponent<Outline>().enabled = false;
+                selection = null;
+            }
+        }
     }
     
     public void OnMouseOver()
