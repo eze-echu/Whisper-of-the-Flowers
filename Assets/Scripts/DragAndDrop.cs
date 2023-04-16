@@ -97,15 +97,19 @@ public class DragAndDrop : MonoBehaviour
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(position);
             selectObject.transform.position = new Vector3(worldPosition.x, worldPosition.y, 0);
 
+            
             Vector3 screenPos = Camera.main.WorldToScreenPoint(selectObject.transform.position);
             if (screenPos.x < 0 || screenPos.x > Screen.width || screenPos.y < 0 || screenPos.y > Screen.height)
             {
                 selectObject.transform.position = lastPosition;
             }
+            
 
             selectObject = null;
             Cursor.visible = true;
         }
+
+        
 
     }
 
