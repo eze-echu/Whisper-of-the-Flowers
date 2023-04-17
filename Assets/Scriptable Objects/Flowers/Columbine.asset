@@ -17,6 +17,6 @@ MonoBehaviour:
   formality: 0
   intentMultiplier: 0
   formalityMultiplier: 0
-  renderer: {fileID: 8830532448270583253, guid: be8aeb41b6cf5544b8814b1ca347d889, type: 3}
+  renderer: {fileID: 7654297760214723867, guid: 811a7f68628b2fb4785f2b1b8fefa92a, type: 3}
   available: 1
-  model: {fileID: 8830532448270583252, guid: be8aeb41b6cf5544b8814b1ca347d889, type: 3}
+  model: {fileID: 7654297760214723866, guid: 811a7f68628b2fb4785f2b1b8fefa92a, type: 3}
