@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class BucketOfFlowers : MonoBehaviour
 {
+    public GameObject flowerFather;
     private MeshFilter[] displayFlowers;
     private MeshRenderer[] renderers;
     public Flower flower { get => flower; set => SetFlower(value); }
+
+    public void Move(Vector3 position)
+    {
+        foreach(var a in displayFlowers)
+        {
+            a.transform.position = position;
+        }
+    }
+
     private void Awake()
     {
-        displayFlowers = GetComponentsInChildren<MeshFilter>();
-        renderers = GetComponentsInChildren<MeshRenderer>();
+        displayFlowers = flowerFather.GetComponentsInChildren<MeshFilter>();
+        renderers = flowerFather.GetComponentsInChildren<MeshRenderer>();
         /*foreach (var a in displayFlowers)
         {
             if (a.gameObject != gameObject)
@@ -27,8 +37,8 @@ public class BucketOfFlowers : MonoBehaviour
         {
             if (displayFlowers[i].gameObject.name != gameObject.name)
             {
-                renderers[i].material = f.renderer.sharedMaterial;
-                displayFlowers[i].mesh = f.model.sharedMesh;
+                renderers[i].material = f.flowerModel.materials.sharedMaterial;
+                displayFlowers[i].mesh = f.flowerModel.model.sharedMesh;
             }
         }
     }

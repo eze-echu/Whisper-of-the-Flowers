@@ -6,6 +6,7 @@ public class DragAndDrop : MonoBehaviour
 {
     private GameObject selectObject;
     private Vector3 lastPosition;
+    private Transform parent;
     private bool isDragging = false;
 
 
@@ -71,10 +72,10 @@ public class DragAndDrop : MonoBehaviour
                 RaycastHit hit = CastRay();
                 if (hit.collider != null && hit.collider.CompareTag("drag"))
                 {
-                    selectObject = hit.collider.gameObject;
-                    lastPosition = selectObject.transform.position;
+                    selectObject = hit.transform.gameObject.GetComponent<IDragable>().ObjectsToBeDraged(ref lastPosition);
                     isDragging = true;
                     Cursor.visible = false;
+                    selectObject.transform.SetParent(null);
                 }
            
         }
@@ -101,10 +102,11 @@ public class DragAndDrop : MonoBehaviour
             Vector3 screenPos = Camera.main.WorldToScreenPoint(selectObject.transform.position);
             if (screenPos.x < 0 || screenPos.x > Screen.width || screenPos.y < 0 || screenPos.y > Screen.height)
             {
-                selectObject.transform.position = lastPosition;
+                StartCoroutine(ReturnToLastPosition(lastPosition, selectObject));
             }
-            
 
+            selectObject.transform.SetParent(parent);
+            parent = null;
             selectObject = null;
             Cursor.visible = true;
         }
@@ -131,6 +133,21 @@ public class DragAndDrop : MonoBehaviour
         return hit;
     }
 
-   
-    
+
+    private IEnumerator ReturnToLastPosition(Vector3 og, GameObject obj)
+    {
+        float elapsed = 0f;
+        float duration = 0.3f;
+
+        Vector3 from = obj.transform.position;
+
+        while (elapsed < duration)
+        {
+            obj.transform.position = Vector3.Lerp(from, og, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = og;
+    }
 }

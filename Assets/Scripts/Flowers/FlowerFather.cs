@@ -41,6 +41,17 @@ public class FlowerFather : MonoBehaviour, IDragable, IFusionable, IGetVariables
         Formality = 9;
     }
 
+    public GameObject ObjectsToBeDraged(ref Vector3 positions)
+    {
+        positions = transform.position;
+        return gameObject;
+    }
+
+    public void Move(Vector3 position)
+    {
+        throw new System.NotImplementedException();
+    }
+
     //codigo anterior anterior para devolver objeto
     /*
     private void OnCollisionEnter(Collision collision)
@@ -68,7 +79,7 @@ public class FlowerFather : MonoBehaviour, IDragable, IFusionable, IGetVariables
     }
     */
 
-    
+
 
 
 

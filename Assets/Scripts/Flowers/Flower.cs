@@ -6,6 +6,18 @@ using UnityEngine;
 public class Flower : ScriptableObject
 {
     public MessageType message;
+    public bool available;
+    public FlowerValues flowerValues;
+    public FlowerModel flowerModel;
+}
+[System.Serializable]
+public struct FlowerModel{
+    public MeshFilter model;
+    public MeshRenderer materials;
+}
+[System.Serializable]
+public struct FlowerValues
+{
     [Range(-5, 5)]
     public int intent;
     [Range(-5, 5)]
@@ -14,7 +26,4 @@ public class Flower : ScriptableObject
     public int intentMultiplier;
     [Range(-3, 3)]
     public int formalityMultiplier;
-    public MeshRenderer renderer;
-    public bool available;
-    public MeshFilter model;
 }
