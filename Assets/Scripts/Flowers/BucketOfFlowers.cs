@@ -9,14 +9,6 @@ public class BucketOfFlowers : MonoBehaviour
     private MeshRenderer[] renderers;
     public Flower flower { get => flower; set => SetFlower(value); }
 
-    public void Move(Vector3 position)
-    {
-        foreach(var a in displayFlowers)
-        {
-            a.transform.position = position;
-        }
-    }
-
     private void Awake()
     {
         displayFlowers = flowerFather.GetComponentsInChildren<MeshFilter>();
