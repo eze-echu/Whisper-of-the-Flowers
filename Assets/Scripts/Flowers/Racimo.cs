@@ -12,22 +12,17 @@ public class Racimo : MonoBehaviour
 
     private Vector3 _lastposition;
 
-    string _subject;
-    int _intentValues;
-    int _formalityValues;
-    int _multiplierIntent;
-    int _multiplierFormality;
+    FlowerValues values;
 
 
     public void Start()
     {
         _lastposition = transform.position;
 
-        _subject = null;
-        _intentValues = 0;
-        _formalityValues = 0;
-        _multiplierIntent = 0;
-        _multiplierFormality = 0;
+        values.intent = 0;
+        values.formality = 0;
+        values.intentMultiplier = 0;
+        values.intentMultiplier = 0;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -42,7 +37,7 @@ public class Racimo : MonoBehaviour
         */
 
         //buscar manera de reducir cantidad de ifs
-        if (collision.transform.parent == null)
+        if (collision.transform.parent == null && collision.gameObject.GetComponent<IDragable>() != null)
         {
             //Esto creo que se podria separar en dos funciones "ToStickAnObject" y "GetVariableFlowers"
             //para que quede mejor visualmente(creo que no respeta SOLID aun asi)
@@ -62,35 +57,35 @@ public class Racimo : MonoBehaviour
                         childCollider.enabled = false;
                     }
 
-                    IGetVariables childVariables = collision.transform.GetComponent<IGetVariables>();
+                    FlowerBunch childVariables = collision.transform.GetComponent<FlowerBunch>();
                     if (childVariables != null)
                     {
-
+                        childVariables.used = true;
                         if (item == _posOfFlowers.FirstOrDefault())
                         {
-                            _subject = childVariables.Subject;
+                            values.message = childVariables.type.flowerValues.message;
                             //print(subject);
                         }
 
                         
                         if (item == _posOfFlowers.LastOrDefault())
                         {
-                            _multiplierIntent = childVariables.MultiplierIntent;
-                            _multiplierFormality = childVariables.MultiplierFormality;
+                            values.intentMultiplier = childVariables.type.flowerValues.intentMultiplier;
+                            values.formalityMultiplier = childVariables.type.flowerValues.formalityMultiplier;
 
-                            print(_multiplierIntent);
-                            print(_multiplierFormality);
+                            print(values);
+                            print(values);
 
                             Formula();
                            
                         }
                         else
                         {
-                            _intentValues += childVariables.Intent;
-                            _formalityValues += childVariables.Formality;
+                            values.intent += childVariables.type.flowerValues.intent;
+                            values.formality += childVariables.type.flowerValues.formality;
 
-                            print(_intentValues);
-                            print(_formalityValues);
+                            print(values);
+                            print(values);
                         }
                     }
                     break;
@@ -117,43 +112,10 @@ public class Racimo : MonoBehaviour
 
     private void Formula()
     {
-        _intentValues = _intentValues * _multiplierIntent;
-        _formalityValues = _formalityValues * _multiplierFormality;
+        values.intent *= values.intentMultiplier;
+        values.formality *= values.formalityMultiplier;
 
-        print(_intentValues);
-        print(_formalityValues);
+        print(values.intent);
+        print(values.formality);
     }
-
-    public T GetVariable<T>(int ID)
-    {
-        switch(ID)
-        {
-            case 1:
-                return (T)(object)_subject;
-                
-
-            case 2:
-                return (T)(object)_intentValues;
-                
-
-            case 3:
-                return (T)(object)_formalityValues;
-                
-                
-            case 4:
-                return (T)(object)_multiplierIntent;
-                
-
-            case 5:
-                return (T)(object)_multiplierFormality;
-                
-
-            default:
-                print("no");
-                return default;
-                
-        }
-
-    }
-
 }

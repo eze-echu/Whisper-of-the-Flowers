@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BucketOfFlowers : MonoBehaviour
+public class BucketOfFlowers : MonoBehaviour, IResteable
 {
     public GameObject flowerFather;
     private MeshFilter[] displayFlowers;
     private MeshRenderer[] renderers;
     public Flower flower { get => flower; set => SetFlower(value); }
+
+    public void ResetToOriginalState()
+    {
+        throw new System.NotImplementedException();
+    }
 
     private void Awake()
     {
@@ -25,6 +30,7 @@ public class BucketOfFlowers : MonoBehaviour
 
     private void SetFlower(Flower f)
     {
+        flowerFather.GetComponent<FlowerBunch>().type = f;
         for (int i = 0; i < displayFlowers.Length; i++)
         {
             if (displayFlowers[i].gameObject.name != gameObject.name)

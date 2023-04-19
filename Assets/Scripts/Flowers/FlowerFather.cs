@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class FlowerFather : MonoBehaviour, IDragable, IFusionable, IGetVariables
 {
     //public string message;
@@ -48,6 +49,11 @@ public class FlowerFather : MonoBehaviour, IDragable, IFusionable, IGetVariables
     }
 
     public void Move(Vector3 position)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public bool WasUsed()
     {
         throw new System.NotImplementedException();
     }

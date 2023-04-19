@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Flower : ScriptableObject
 {
-    public MessageType message;
     public bool available;
     public FlowerValues flowerValues;
     public FlowerModel flowerModel;
@@ -18,6 +17,7 @@ public struct FlowerModel{
 [System.Serializable]
 public struct FlowerValues
 {
+    public MessageType message;
     [Range(-5, 5)]
     public int intent;
     [Range(-5, 5)]

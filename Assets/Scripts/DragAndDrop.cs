@@ -68,16 +68,16 @@ public class DragAndDrop : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-           
-                RaycastHit hit = CastRay();
-                if (hit.collider != null && hit.collider.CompareTag("drag"))
-                {
-                    selectObject = hit.transform.gameObject.GetComponent<IDragable>().ObjectsToBeDraged(ref lastPosition);
-                    isDragging = true;
-                    Cursor.visible = false;
-                    selectObject.transform.SetParent(null);
-                }
-           
+
+            RaycastHit hit = CastRay();
+            if (hit.collider != null && hit.collider.CompareTag("drag"))
+            {
+                selectObject = hit.transform.gameObject.GetComponent<IDragable>().ObjectsToBeDraged(ref lastPosition);
+                isDragging = true;
+                Cursor.visible = false;
+                selectObject.transform.SetParent(null);
+            }
+
         }
 
         if (isDragging && Input.GetMouseButton(0))
@@ -86,7 +86,7 @@ public class DragAndDrop : MonoBehaviour
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(position);
             selectObject.transform.position = new Vector3(worldPosition.x, worldPosition.y, -2);
 
-            
+
         }
 
 
@@ -98,9 +98,9 @@ public class DragAndDrop : MonoBehaviour
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(position);
             selectObject.transform.position = new Vector3(worldPosition.x, worldPosition.y, 0);
 
-            
+
             Vector3 screenPos = Camera.main.WorldToScreenPoint(selectObject.transform.position);
-            if (screenPos.x < 0 || screenPos.x > Screen.width || screenPos.y < 0 || screenPos.y > Screen.height)
+            if (screenPos.x < 0 || screenPos.x > Screen.width || screenPos.y < 0 || screenPos.y > Screen.height || !selectObject.GetComponent<IDragable>().WasUsed())
             {
                 StartCoroutine(ReturnToLastPosition(lastPosition, selectObject));
             }
