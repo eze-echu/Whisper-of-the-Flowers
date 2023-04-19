@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class DialogueController : MonoBehaviour, IDialogueController
 {
     public TMP_Text text;
-    public string[] possibleRequest;
+    public string[] additionalRequest;
 
     private int currentIndex;
 
@@ -24,21 +24,29 @@ public class DialogueController : MonoBehaviour, IDialogueController
 
     private void Start()
     {
-       ShowRandomRequest();
+       //ShowRandomRequest();
     }
 
-    public void Update()
-    {
-        
-    }
+   
 
     public void ShowRandomRequest()
     {
-        currentIndex = Random.Range(0, possibleRequest.Length);
-        string selectedText = possibleRequest[currentIndex];
-        StartCoroutine(TypeRequest(selectedText));
+
+        if (additionalRequest.Length > 0)
+        {
+            currentIndex = Random.Range(0, additionalRequest.Length);
+            string selectedText = additionalRequest[currentIndex];
+            StartCoroutine(TypeRequest(selectedText));
+
+            
+        }
+       
     }
 
+    public void ShowSpecificQuest(string text)
+    {
+        StartCoroutine(TypeRequest(text));
+    }
 
     private IEnumerator TypeRequest(string request)
     {

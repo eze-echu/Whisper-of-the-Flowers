@@ -25,6 +25,14 @@ public class Racimo : MonoBehaviour
         values.intentMultiplier = 0;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("give"))
+        {
+            SendVariableToStoryManager();
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         //codigo anterior anterior de devolver objeto
@@ -95,6 +103,20 @@ public class Racimo : MonoBehaviour
 
             }
         }
+    }
+
+    public void SendVariableToStoryManager()
+    {
+        StoryController storyController = FindObjectOfType<StoryController>();
+
+        
+        if (values.message != null && values.intent != 0 && values.formality != 0) // poner values.MultiplierFormality
+        {
+            string subject = values.message.ToString();
+            storyController.HandleStory(subject, values.intent, values.formality);
+        }
+        
+
     }
 
     //codigo anterior para devolver objetos

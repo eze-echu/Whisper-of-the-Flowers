@@ -6,6 +6,7 @@ TagManager:
   tags:
   - drag
   - dontzone
+  - give
   layers:
   - Default
   - TransparentFX
