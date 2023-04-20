@@ -8,6 +8,8 @@ public class StoryController : MonoBehaviour
     [SerializeField] List<string> _history;
 
     int _currentStory;
+    bool _goodOrBad;
+
 
     [SerializeField] DialogueController _dialogueController;
 
@@ -16,7 +18,7 @@ public class StoryController : MonoBehaviour
         _currentStory = 0;
         _dialogueController.ShowSpecificQuest(_history[_currentStory]);
         _currentStory++;
-        
+
     }
 
 
@@ -25,8 +27,29 @@ public class StoryController : MonoBehaviour
     {
         if (subject == _requieredSubject[_currentStory] && _currentStory < _history.Count && _currentStory < _requieredSubject.Count)
         {
-           _dialogueController.ShowSpecificQuest(_history[_currentStory]);
-           _currentStory++;
+
+            if (intentValues > 0 && formalityValues > 0)
+            {
+                _dialogueController.ShowSpecificQuest(_history[_currentStory]);
+                _currentStory += 2;
+            }
+            else if(intentValues <= 0 && formalityValues > 0 || intentValues > 0 && formalityValues <= 0)
+            {
+                _currentStory += 2;
+                _dialogueController.ShowSpecificQuest(_history[_currentStory]);
+                _currentStory++;
+                _goodOrBad = true;
+            }
+            else
+            {
+                _currentStory += 3;
+                _dialogueController.ShowSpecificQuest(_history[_currentStory]);
+                _goodOrBad = false;
+            }
+
+
+           //_dialogueController.ShowSpecificQuest(_history[_currentStory]);
+           //_currentStory++;
         }
         else
         {

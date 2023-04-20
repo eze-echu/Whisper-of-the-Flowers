@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0bcdab8adb72347af837b546e2d3d0, type: 3}
   m_Name: Columbine
   m_EditorClassIdentifier: 
-  message: 3
-  intent: 0
-  formality: 0
-  intentMultiplier: 0
-  formalityMultiplier: 0
-  renderer: {fileID: 7654297760214723867, guid: 811a7f68628b2fb4785f2b1b8fefa92a, type: 3}
   available: 1
-  model: {fileID: 7654297760214723866, guid: 811a7f68628b2fb4785f2b1b8fefa92a, type: 3}
+  flowerValues:
+    message: 0
+    intent: 0
+    formality: 0
+    intentMultiplier: 0
+    formalityMultiplier: 0
+  flowerModel:
+    model: {fileID: 0}
+    materials: {fileID: 0}

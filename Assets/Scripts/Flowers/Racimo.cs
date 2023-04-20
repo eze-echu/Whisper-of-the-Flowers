@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class Racimo : MonoBehaviour
+public class Racimo : MonoBehaviour, IDragable
 {
     [SerializeField] List<GameObject> _posOfFlowers;
     //[SerializeField] GameObject _principal;
@@ -14,6 +14,8 @@ public class Racimo : MonoBehaviour
 
     FlowerValues values;
 
+    bool _ready;
+
 
     public void Start()
     {
@@ -23,6 +25,8 @@ public class Racimo : MonoBehaviour
         values.formality = 0;
         values.intentMultiplier = 0;
         values.intentMultiplier = 0;
+
+        _ready = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -51,7 +55,7 @@ public class Racimo : MonoBehaviour
             //para que quede mejor visualmente(creo que no respeta SOLID aun asi)
             foreach (var item in _posOfFlowers)
             {
-                //print(item);
+              
                 if (item.transform.childCount == 0)
                 {
                     collision.transform.SetParent(item.transform);
@@ -64,15 +68,17 @@ public class Racimo : MonoBehaviour
                     {
                         childCollider.enabled = false;
                     }
-
+                   
                     FlowerBunch childVariables = collision.transform.GetComponent<FlowerBunch>();
+                    //print(childVariables);
                     if (childVariables != null)
                     {
+                        print("entra");
                         childVariables.used = true;
                         if (item == _posOfFlowers.FirstOrDefault())
                         {
                             values.message = childVariables.type.flowerValues.message;
-                            //print(subject);
+                            print(values.message);
                         }
 
                         
@@ -92,6 +98,8 @@ public class Racimo : MonoBehaviour
                             values.intent += childVariables.type.flowerValues.intent;
                             values.formality += childVariables.type.flowerValues.formality;
 
+                            _ready = true;
+                            SendVariableToStoryManager();
                             print(values);
                             print(values);
                         }
@@ -110,8 +118,9 @@ public class Racimo : MonoBehaviour
         StoryController storyController = FindObjectOfType<StoryController>();
 
         
-        if (values.message != null && values.intent != 0 && values.formality != 0) // poner values.MultiplierFormality
+        if (_ready)//values.message != null && values.intent != 0 && values.formality != 0) // poner values.MultiplierFormality
         {
+            
             string subject = values.message.ToString();
             storyController.HandleStory(subject, values.intent, values.formality);
         }
@@ -139,5 +148,16 @@ public class Racimo : MonoBehaviour
 
         print(values.intent);
         print(values.formality);
+    }
+
+    public GameObject ObjectsToBeDraged(ref Vector3 positions)
+    {
+        positions = transform.position;
+        return gameObject;
+    }
+
+    public bool WasUsed()
+    {
+        throw new System.NotImplementedException();
     }
 }

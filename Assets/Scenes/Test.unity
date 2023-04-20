@@ -1507,11 +1507,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _requieredSubject:
-  - tu mami
-  - tu mami
+  - Faith
+  - Love
+  - Faith
+  - Foolishness
   _history:
-  - 'Que onda esto funciona '
-  - parece que si
+  - Quiero un racimo que demuestre la "Fe" que tengo en la mision de mi guerrero
+  - Mi guerrero puedo superar su mision sin porblema alguno
+  - Mi Guerrero pudo cumplir su mision, pero cuando volvio, solo me miro por encima
+    del hombro
+  - Mi guerrero termino perdiendo la mision, estropeando todo, se volvio encontra
+    mia el maldito
   _dialogueController: {fileID: 1025082240}
 --- !u!4 &1139063007
 Transform:

@@ -34,7 +34,7 @@ public class FlowerFather : MonoBehaviour, IDragable, IFusionable, IGetVariables
     {
         _lastposition = transform.position;
 
-        Subject = "tumami";
+        Subject = "Faith";
 
         MultiplierFormality = 5;
         MultiplierIntent = 4;
