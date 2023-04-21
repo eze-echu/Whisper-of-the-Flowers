@@ -17,7 +17,7 @@ public class StoryController : MonoBehaviour
     public void Start()
     {
         _currentStory = 0;
-        _dialogueController.ShowSpecificQuest(_history[_currentStory]);
+        _dialogueController.ShowSpecificRequest(_history[_currentStory]);
         //_currentStory++;
 
         _giveGood = false;
@@ -53,7 +53,7 @@ public class StoryController : MonoBehaviour
                 EndMhe();
                 return;
             }
-            _dialogueController.ShowSpecificQuest(_history[_currentStory]);
+            _dialogueController.ShowSpecificRequest(_history[_currentStory]);
             _currentStory++;
             print(_giveBad);
             //IGNORAR
@@ -91,7 +91,7 @@ public class StoryController : MonoBehaviour
                 EndMhe();
                 return;
             }
-            _dialogueController.ShowSpecificQuest(_history[_currentStory]);
+            _dialogueController.ShowSpecificRequest(_history[_currentStory]);
            
 
             print(_giveGood);
@@ -104,7 +104,7 @@ public class StoryController : MonoBehaviour
     public void EndMhe()
     {
         _currentStory = 5;
-        _dialogueController.ShowSpecificQuest(_history[_currentStory]);
+        _dialogueController.ShowSpecificRequest(_history[_currentStory]);
     }
 }
 

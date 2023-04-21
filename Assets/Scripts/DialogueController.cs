@@ -14,6 +14,7 @@ public class DialogueController : MonoBehaviour, IDialogueController
     public List<Button> buttons;
 
     public float timeWrite;
+    private Coroutine currentCoroutine;
     private bool isTyping = false;
 
 
@@ -27,29 +28,49 @@ public class DialogueController : MonoBehaviour, IDialogueController
        //ShowRandomRequest();
     }
 
-   
-
-    public void ShowRandomRequest()
+    public void ShowSpecificRequest(string text)
     {
+        //StartCoroutine(TypeRequest(text));
 
+        /*
         if (additionalRequest.Length > 0)
         {
             currentIndex = Random.Range(0, additionalRequest.Length);
             string selectedText = additionalRequest[currentIndex];
             StartCoroutine(TypeRequest(selectedText));
 
-            
+
         }
-       
+        */
+
+        if (isTyping)
+        {
+            StopCoroutine(currentCoroutine);
+            isTyping = false;
+        }
+
+        currentCoroutine = StartCoroutine(TypeRequest(text));
     }
 
-    public void ShowSpecificQuest(string text)
+    public void ShowRandomRequest()
     {
-        StartCoroutine(TypeRequest(text));
+        if (additionalRequest.Length > 0)
+        {
+            if (isTyping)
+            {
+                StopCoroutine(currentCoroutine);
+                isTyping = false;
+            }
+
+            currentIndex = Random.Range(0, additionalRequest.Length);
+            string selectedText = additionalRequest[currentIndex];
+            currentCoroutine = StartCoroutine(TypeRequest(selectedText));
+        }
     }
 
     private IEnumerator TypeRequest(string request)
     {
+        /*
         isTyping = true;
         text.text = "";
         buttonController.DisableOrActive(false);
@@ -63,8 +84,21 @@ public class DialogueController : MonoBehaviour, IDialogueController
 
         buttonController.DisableOrActive(true);
         isTyping = false;
+        */
+
+        isTyping = true;
+        text.text = "";
+        buttonController.DisableOrActive(false);
+
+        foreach (char c in request)
+        {
+            text.text += c;
+            yield return new WaitForSeconds(timeWrite);
+        }
+
+        buttonController.DisableOrActive(true);
+        isTyping = false;
     }
 
    
-
 }

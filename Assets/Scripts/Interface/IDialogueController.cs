@@ -5,4 +5,5 @@ using UnityEngine;
 public interface IDialogueController 
 {
     void ShowRandomRequest();
+    void ShowSpecificRequest(string text);
 }
