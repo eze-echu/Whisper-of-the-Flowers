@@ -228,7 +228,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: gxcgsddffddfsfsdf
+  m_text: fium
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -259,7 +259,7 @@ MonoBehaviour:
   m_fontSizeBase: 0
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 20
+  m_fontSizeMin: 10
   m_fontSizeMax: 20
   m_fontStyle: 0
   m_HorizontalAlignment: 1
@@ -1506,18 +1506,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a14b446beff7d7448252842229fbe4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _requieredSubject:
-  - Faith
-  - Love
-  - Faith
-  - Foolishness
   _history:
-  - Quiero un racimo que demuestre la "Fe" que tengo en la mision de mi guerrero
-  - Mi guerrero puedo superar su mision sin porblema alguno
-  - Mi Guerrero pudo cumplir su mision, pero cuando volvio, solo me miro por encima
-    del hombro
-  - Mi guerrero termino perdiendo la mision, estropeando todo, se volvio encontra
-    mia el maldito
+  - "Greetings, I\u2019ve come to make you a request. There\u2019s a certain girl
+    I want to send some flowers to and I\u2019d like for you to prepare them. This
+    girl asked for us to meet at the palace gardens in secret and I want to let her
+    know that I\u2019ll be there. "
+  - "Hello florist. Something strange happened, I went to the palace gardens at the
+    agreed hour but she didn\u2019t show up. I don\u2019t know what could have happened
+    to her. Would you send her some flowers on my behalf? I\u2019d like to express
+    my love to her. "
+  - "Greetings florist. You did great on your last job, I thank you for that. I need
+    you to send her some flowers again to express my love to her. We\u2019re in a
+    really difficult situation but I want her to have faith in me, to believe in
+    our relationship. Could you do that for me? "
+  - "You learn that the prince has been very depressed as of late and hasn\u2019t
+    left his chambers. Nobody knows exactly why. "
+  - "Hello there Mr. Florist. I guess you wouldn\u2019t recognize me. I\u2019m the
+    girl you\u2019ve been preparing all those flowers to. It\u2019s in part because
+    of them that we can freely express our love so I just wanted to thank you for
+    all you\u2019ve done for us. "
+  - "Hi there mister. I\u2019m the girl you\u2019ve been preparing all those flowers
+    to. I just wanted to let you know that your services won\u2019t be needed anymore
+    because we\u2019ve decided to stop communicating with each other. It wouldn't
+    speak well of him to be in a relationship with a commoner girl like me. Thank
+    you for your time. "
   _dialogueController: {fileID: 1025082240}
 --- !u!4 &1139063007
 Transform:
@@ -1617,9 +1629,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2117836883}
+      - m_Target: {fileID: 1139063005}
         m_TargetAssemblyTypeName: Commands, Assembly-CSharp
-        m_MethodName: Decline
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1963,9 +1975,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2117836883}
+      - m_Target: {fileID: 1139063005}
         m_TargetAssemblyTypeName: Commands, Assembly-CSharp
-        m_MethodName: Accept
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

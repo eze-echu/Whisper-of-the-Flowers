@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class StoryController : MonoBehaviour
 {
-    [SerializeField] List<string> _requieredSubject;
+    //[SerializeField] List<string> _requieredSubject;
     [SerializeField] List<string> _history;
 
     int _currentStory;
-    bool _goodOrBad;
+    bool _giveGood;
+    bool _giveBad;
 
 
     [SerializeField] DialogueController _dialogueController;
@@ -17,7 +18,10 @@ public class StoryController : MonoBehaviour
     {
         _currentStory = 0;
         _dialogueController.ShowSpecificQuest(_history[_currentStory]);
-        _currentStory++;
+        //_currentStory++;
+
+        _giveGood = false;
+        _giveBad = false;
 
     }
 
@@ -25,9 +29,13 @@ public class StoryController : MonoBehaviour
 
     public void HandleStory(string subject, int intentValues, int formalityValues)
     {
-        if (subject == _requieredSubject[_currentStory] && _currentStory < _history.Count && _currentStory < _requieredSubject.Count)
+        if (subject == "Decrease_Of_Love" && _giveGood)//_requieredSubject[_currentStory] && _currentStory < _history.Count && _currentStory < _requieredSubject.Count)
         {
-
+            _currentStory ++;
+            _dialogueController.ShowSpecificQuest(_history[_currentStory]);
+            _giveBad = true;
+            //IGNORAR
+            /*
             if (intentValues > 0 && formalityValues > 0)
             {
                 _dialogueController.ShowSpecificQuest(_history[_currentStory]);
@@ -46,14 +54,25 @@ public class StoryController : MonoBehaviour
                 _dialogueController.ShowSpecificQuest(_history[_currentStory]);
                 _goodOrBad = false;
             }
+            */
 
 
-           //_dialogueController.ShowSpecificQuest(_history[_currentStory]);
-           //_currentStory++;
+            //_dialogueController.ShowSpecificQuest(_history[_currentStory]);
+            //_currentStory++;
+        }
+        else if(_giveBad)
+        {
+            _currentStory += 2;
+            _dialogueController.ShowSpecificQuest(_history[_currentStory]);
+            _giveGood = true;
+
+            
+            Debug.Log("Mal");
         }
         else
         {
-            Debug.Log("Mal");
+            _currentStory = 6;
+            _dialogueController.ShowSpecificQuest(_history[_currentStory]);
         }
       
 
