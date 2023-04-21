@@ -8,11 +8,23 @@ public class Flower : ScriptableObject
     public bool available;
     public FlowerValues flowerValues;
     public FlowerModel flowerModel;
+    public Flower()
+    {
+        flowerModel = new FlowerModel
+        {
+            flowerMesh = null,
+            flowerMaterial = null
+        };
+    }
 }
 [System.Serializable]
 public struct FlowerModel{
-    public MeshFilter model;
-    public MeshRenderer materials;
+    public MeshFilter flowerMesh;
+    public MeshRenderer flowerMaterial;
+    public bool IsValid()
+    {
+        return flowerMesh != null && flowerMaterial != null;
+    }
 }
 [System.Serializable]
 public struct FlowerValues
@@ -26,4 +38,12 @@ public struct FlowerValues
     public int intentMultiplier;
     [Range(-3, 3)]
     public int formalityMultiplier;
+    public void Validate()
+    {
+        intent = Mathf.Clamp(intent, -5, 5);
+        formality = Mathf.Clamp(formality, -5, 5);
+        intentMultiplier = Mathf.Clamp(intentMultiplier, -3, 3);
+        formalityMultiplier = Mathf.Clamp(formalityMultiplier, -3, 3);
+    }
 }
+

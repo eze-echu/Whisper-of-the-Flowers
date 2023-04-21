@@ -20,5 +20,5 @@ MonoBehaviour:
     intentMultiplier: 0
     formalityMultiplier: 0
   flowerModel:
-    model: {fileID: 0}
-    materials: {fileID: 0}
+    flowerMesh: {fileID: 8830532448270583252, guid: be8aeb41b6cf5544b8814b1ca347d889, type: 3}
+    flowerMaterial: {fileID: 8830532448270583253, guid: be8aeb41b6cf5544b8814b1ca347d889, type: 3}

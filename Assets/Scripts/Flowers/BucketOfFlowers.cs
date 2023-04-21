@@ -35,8 +35,8 @@ public class BucketOfFlowers : MonoBehaviour, IResteable
         {
             if (displayFlowers[i].gameObject.name != gameObject.name)
             {
-                renderers[i].material = f.flowerModel.materials.sharedMaterial;
-                displayFlowers[i].mesh = f.flowerModel.model.sharedMesh;
+                renderers[i].material = f.flowerModel.flowerMaterial.sharedMaterial;
+                displayFlowers[i].mesh = f.flowerModel.flowerMesh.sharedMesh;
             }
         }
     }

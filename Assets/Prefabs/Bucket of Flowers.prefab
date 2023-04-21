@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4426253809134406786}
   - component: {fileID: 3286221248186387912}
   - component: {fileID: 3744586315271578250}
-  - component: {fileID: 8495266415337406322}
   m_Layer: 0
   m_Name: Flower
   m_TagString: Untagged
@@ -84,20 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &8495266415337406322
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 936546343773035663}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4264534580512777219
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,6 +94,8 @@ GameObject:
   - component: {fileID: 8171255382881443974}
   - component: {fileID: 5518776710581411739}
   - component: {fileID: 2709627133914458445}
+  - component: {fileID: 6506084970607681004}
+  - component: {fileID: 156312208382413725}
   m_Layer: 0
   m_Name: FlowerFather
   m_TagString: drag
@@ -160,6 +147,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dd45bac2a473364c9f0b85e9a2f4747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  used: 0
+  type: {fileID: 0}
+--- !u!114 &6506084970607681004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4264534580512777219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c95f0bace79af74498f8428ca5b6b0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &156312208382413725
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4264534580512777219}
+  serializedVersion: 2
+  m_Mass: 1000
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &4626101476917970652
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,7 +188,6 @@ GameObject:
   - component: {fileID: 46186414468282945}
   - component: {fileID: 4794181334379993582}
   - component: {fileID: 4661618986063612193}
-  - component: {fileID: 9139483728408856154}
   m_Layer: 0
   m_Name: Flower
   m_TagString: Untagged
@@ -244,20 +260,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &9139483728408856154
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4626101476917970652}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6658315055338727742
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,7 +271,6 @@ GameObject:
   - component: {fileID: 7277860929209795978}
   - component: {fileID: 8507102334964091686}
   - component: {fileID: 2537210733947598977}
-  - component: {fileID: 5270926688281449116}
   m_Layer: 0
   m_Name: Flower
   m_TagString: Untagged
@@ -342,20 +343,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &5270926688281449116
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6658315055338727742}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6922396646854288135
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,7 +450,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6922396646854288135}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1.3218914, z: 1}
@@ -479,7 +466,6 @@ GameObject:
   - component: {fileID: 3351902864467196639}
   - component: {fileID: 1907883488442354069}
   - component: {fileID: 3294285473695586500}
-  - component: {fileID: 8296936090632040634}
   m_Layer: 0
   m_Name: Flower
   m_TagString: Untagged
@@ -552,17 +538,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &8296936090632040634
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8885882445000614580}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}

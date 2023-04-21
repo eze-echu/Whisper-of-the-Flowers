@@ -49,7 +49,7 @@ public class Racimo : MonoBehaviour, IDragable
         */
 
         //buscar manera de reducir cantidad de ifs
-        if (collision.transform.parent == null && collision.gameObject.GetComponent<IDragable>() != null)
+        if (collision.gameObject.GetComponent<IDragable>() != null)
         {
             //Esto creo que se podria separar en dos funciones "ToStickAnObject" y "GetVariableFlowers"
             //para que quede mejor visualmente(creo que no respeta SOLID aun asi)

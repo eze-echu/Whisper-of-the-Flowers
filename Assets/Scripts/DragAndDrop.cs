@@ -4,12 +4,97 @@ using UnityEngine;
 
 public class DragAndDrop : MonoBehaviour
 {
-    private GameObject selectObject;
     private Vector3 lastPosition;
     private Transform parent;
     private bool isDragging = false;
+    private Rigidbody rb;
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        parent = GetComponentInParent<Transform>();
+    }
+
+    private RaycastHit CastRay()
+    {
+        Vector3 screenMousePosFar = new Vector3(
+            Input.mousePosition.x,
+            Input.mousePosition.y,
+            Camera.main.farClipPlane);
+        Vector3 screenMousePosNear = new Vector3(
+            Input.mousePosition.x,
+            Input.mousePosition.y,
+            Camera.main.nearClipPlane);
+        Vector3 worldMousePosFar = Camera.main.ScreenToWorldPoint(screenMousePosFar);
+        Vector3 worldMousePosNear = Camera.main.ScreenToWorldPoint(screenMousePosNear);
+        RaycastHit hit;
+        Physics.Raycast(worldMousePosNear, worldMousePosFar - worldMousePosNear, out hit);
+
+        print("ray");
+
+        return hit;
+    }
+
+    private void OnMouseDown()
+    {
+        print("hit");
+        //selectObject = hit.transform.gameObject.GetComponent<IDragable>().ObjectsToBeDraged(ref lastPosition);
+        isDragging = true;
+        lastPosition = transform.position;
+        Cursor.visible = false;
+        rb.transform.SetParent(null);
+    }
+
+    private void OnMouseDrag()
+    {
+        if (isDragging)
+        {
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z = lastPosition.z - 2;
+            rb.MovePosition(mousePosition);
+        }
+    }
+
+    private void OnMouseUp()
+    {
+        isDragging = false;
+
+        Collider[] hitColliders = Physics.OverlapCapsule(transform.position, new Vector3(transform.position.x, transform.position.y, transform.position.z + 4), 0.1f);
+        foreach (Collider hitCollider in hitColliders)
+        {
+            if (hitCollider.gameObject.CompareTag("DropZone"))
+            {
+                transform.position = hitCollider.gameObject.transform.position;
+                rb.transform.SetParent(hitCollider.transform);
+                break;
+            }
+            else
+            {
+                StartCoroutine(ReturnToLastPosition(lastPosition, rb.transform));
+                rb.transform.SetParent(parent);
+            }
+        }
+
+        Cursor.visible = true;
+    }
 
 
+
+    private IEnumerator ReturnToLastPosition(Vector3 og, Transform obj)
+    {
+        float elapsed = 0f;
+        float duration = 0.3f;
+
+        Vector3 from = obj.position;
+
+        while (elapsed < duration)
+        {
+            obj.transform.position = Vector3.Lerp(from, og, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = og;
+    }
     private void Update()
     {
         //CODIGO ANTERIOR
@@ -66,7 +151,7 @@ public class DragAndDrop : MonoBehaviour
 
         */
 
-        if (Input.GetMouseButtonDown(0))
+        /*if (Input.GetMouseButtonDown(0))
         {
 
             RaycastHit hit = CastRay();
@@ -109,45 +194,10 @@ public class DragAndDrop : MonoBehaviour
             parent = null;
             selectObject = null;
             Cursor.visible = true;
-        }
+        }*/
 
-        
+
 
     }
 
-    private RaycastHit CastRay()
-    {
-        Vector3 screenMousePosFar = new Vector3(
-            Input.mousePosition.x,
-            Input.mousePosition.y,
-            Camera.main.farClipPlane);
-        Vector3 screenMousePosNear = new Vector3(
-            Input.mousePosition.x,
-            Input.mousePosition.y,
-            Camera.main.nearClipPlane);
-        Vector3 worldMousePosFar = Camera.main.ScreenToWorldPoint(screenMousePosFar);
-        Vector3 worldMousePosNear = Camera.main.ScreenToWorldPoint(screenMousePosNear);
-        RaycastHit hit;
-        Physics.Raycast(worldMousePosNear, worldMousePosFar - worldMousePosNear, out hit);
-
-        return hit;
-    }
-
-
-    private IEnumerator ReturnToLastPosition(Vector3 og, GameObject obj)
-    {
-        float elapsed = 0f;
-        float duration = 0.3f;
-
-        Vector3 from = obj.transform.position;
-
-        while (elapsed < duration)
-        {
-            obj.transform.position = Vector3.Lerp(from, og, elapsed / duration);
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-
-        transform.position = og;
-    }
 }
