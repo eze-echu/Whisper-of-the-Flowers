@@ -8,6 +8,7 @@ TagManager:
   - dontzone
   - DropZone
   - Occupied
+  - give
   layers:
   - Default
   - TransparentFX
