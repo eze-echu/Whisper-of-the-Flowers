@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class Racimo : MonoBehaviour, IDragable
+public class Racimo : MonoBehaviour, IDragable, IDropZone, IOccupied
 {
     [SerializeField] List<GameObject> _posOfFlowers;
     //[SerializeField] GameObject _principal;
@@ -16,6 +16,7 @@ public class Racimo : MonoBehaviour, IDragable
 
     bool _ready;
 
+    public bool canBeDragged { get => canBeDragged; set => canBeDragged = value; }
 
     public void Start()
     {
@@ -25,6 +26,7 @@ public class Racimo : MonoBehaviour, IDragable
         values.formality = 0;
         values.intentMultiplier = 0;
         values.intentMultiplier = 0;
+        values.message = MessageType.Null;
 
         _ready = false;
     }
@@ -37,7 +39,7 @@ public class Racimo : MonoBehaviour, IDragable
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collision collision)
     {
         //codigo anterior anterior de devolver objeto
         /*
@@ -51,6 +53,7 @@ public class Racimo : MonoBehaviour, IDragable
         //buscar manera de reducir cantidad de ifs
         if (collision.gameObject.GetComponent<IDragable>() != null)
         {
+            print("Detectado");
             //Esto creo que se podria separar en dos funciones "ToStickAnObject" y "GetVariableFlowers"
             //para que quede mejor visualmente(creo que no respeta SOLID aun asi)
             foreach (var item in _posOfFlowers)
@@ -63,17 +66,17 @@ public class Racimo : MonoBehaviour, IDragable
                     Transform transformCollider = collision.transform.GetComponent<Transform>();
                     transformCollider.position = item.transform.position;
 
-                    Collider childCollider = collision.transform.GetComponent<Collider>();
+                    /*Collider childCollider = collision.transform.GetComponent<Collider>();
                     if (childCollider != null)
                     {
                         childCollider.enabled = false;
-                    }
+                    }*/
                    
                     FlowerBunch childVariables = collision.transform.GetComponent<FlowerBunch>();
                     //print(childVariables);
                     if (childVariables != null)
                     {
-                        print("entra");
+                        print("es flowerbunch");
                         childVariables.used = true;
                         if (item == _posOfFlowers.FirstOrDefault())
                         {
@@ -110,6 +113,56 @@ public class Racimo : MonoBehaviour, IDragable
          
 
             }
+        }
+    }
+
+    public void FlowerAdded()
+    {
+        print("Added Flower");
+        bool areFilled = true;
+        for (int i = 0; i < _posOfFlowers.Count; i++)
+        {
+            FlowerBunch a = _posOfFlowers[i].GetComponentInChildren<FlowerBunch>();
+            if (!a)
+            {
+                areFilled = false;
+            }
+            switch (i)
+            {
+                case 0:
+                    values.message = a?.type.flowerValues.message ?? MessageType.Null;
+                    //print($"{a.type.flowerValues.message}");
+                    break;
+                case 1:
+                    values.intent = a?.type.flowerValues.intent ?? 0;
+                    values.formality = a?.type.flowerValues.formality ?? 0;
+                    break;
+                case 2:
+                    values.intentMultiplier = a?.type.flowerValues.intentMultiplier ?? 0;
+                    values.formalityMultiplier = a?.type.flowerValues.formalityMultiplier ?? 0;
+                    break;
+                default:
+                    print("Not within the scope of the Switch");
+                    break;
+            }
+        }
+        if (values.message != MessageType.Null && areFilled)
+        {
+            _ready = true;
+            foreach (var item in _posOfFlowers)
+            {
+                item.GetComponent<BoxCollider>().enabled = false;
+            }
+            GetComponent<BoxCollider>().enabled = true;
+        }
+        else
+        {
+            foreach (var item in _posOfFlowers)
+            {
+                item.GetComponent<BoxCollider>().enabled = true;
+            }
+            _ready = false;
+            GetComponent<BoxCollider>().enabled = false;
         }
     }
 
@@ -159,5 +212,16 @@ public class Racimo : MonoBehaviour, IDragable
     public bool WasUsed()
     {
         throw new System.NotImplementedException();
+    }
+
+    public bool DropAction(GameObject a = null)
+    {
+        FlowerAdded();
+        return true;
+    }
+
+    public void RemoveAction()
+    {
+        FlowerAdded();
     }
 }

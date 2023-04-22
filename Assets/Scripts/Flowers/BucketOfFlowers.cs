@@ -2,22 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BucketOfFlowers : MonoBehaviour, IResteable
+public class BucketOfFlowers : MonoBehaviour, IResteable, IDropZone, IOccupied
 {
     public GameObject flowerFather;
+    private FlowerBunch flowerBunch;
+    public Vector3 OGflowerPosition;
     private MeshFilter[] displayFlowers;
     private MeshRenderer[] renderers;
     public Flower flower { get => flower; set => SetFlower(value); }
 
     public void ResetToOriginalState()
     {
-        throw new System.NotImplementedException();
+        flowerBunch.ResetToOriginalState();
     }
 
     private void Awake()
     {
         displayFlowers = flowerFather.GetComponentsInChildren<MeshFilter>();
         renderers = flowerFather.GetComponentsInChildren<MeshRenderer>();
+        flowerBunch = GetComponentInChildren<FlowerBunch>();
+        OGflowerPosition = flowerBunch.transform.position;
         /*foreach (var a in displayFlowers)
         {
             if (a.gameObject != gameObject)
@@ -35,9 +39,19 @@ public class BucketOfFlowers : MonoBehaviour, IResteable
         {
             if (displayFlowers[i].gameObject.name != gameObject.name)
             {
-                renderers[i].material = f.flowerModel.flowerMaterial.sharedMaterial;
+                renderers[i].materials = f.flowerModel.flowerMaterial.sharedMaterials;
                 displayFlowers[i].mesh = f.flowerModel.flowerMesh.sharedMesh;
             }
         }
+    }
+
+    public void RemoveAction()
+    {
+        print("out of Bucket");
+    }
+
+    public bool DropAction(GameObject a = null)
+    {
+        return flowerBunch == a.GetComponent<FlowerBunch>();
     }
 }

@@ -95,4 +95,5 @@ public class FlowerFather : MonoBehaviour, IDragable, IFusionable, IGetVariables
     int IGetVariables.MultiplierFormality { get { return MultiplierFormality; } }
     string IGetVariables.Subject { get { return Subject; } }
 
+    public bool canBeDragged { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 }

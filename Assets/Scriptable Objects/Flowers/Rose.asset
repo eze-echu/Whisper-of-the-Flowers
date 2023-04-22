@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee0bcdab8adb72347af837b546e2d3d0, type: 3}
-  m_Name: Columbine
+  m_Name: Rose
   m_EditorClassIdentifier: 
   available: 1
   flowerValues:
-    message: 0
+    message: 2
     intent: 0
     formality: 0
     intentMultiplier: 0
     formalityMultiplier: 0
   flowerModel:
-    flowerMesh: {fileID: 7356894440247480055, guid: c5f9df571a0010142a04edc432a611e0, type: 3}
-    flowerMaterial: {fileID: 8969221159707544633, guid: c5f9df571a0010142a04edc432a611e0, type: 3}
+    flowerMesh: {fileID: 8830532448270583252, guid: be8aeb41b6cf5544b8814b1ca347d889, type: 3}
+    flowerMaterial: {fileID: 8830532448270583253, guid: be8aeb41b6cf5544b8814b1ca347d889, type: 3}

@@ -15,6 +15,8 @@ public class Flower : ScriptableObject
             flowerMesh = null,
             flowerMaterial = null
         };
+
+        flowerValues.Validate();
     }
 }
 [System.Serializable]
