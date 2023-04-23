@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8f7aa3bc0949bf242a51eba490c832bf
+guid: 5ad684217f1f78940abca75832c9acff
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,13 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: RoseFlower
-    second: {fileID: 2100000, guid: 7d30ad17e1eee4141a10bf894f64468b, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Stem_Petals
-    second: {fileID: 2100000, guid: b545a500ca038e94eb5ae142a5afdafc, type: 2}
+      name: Iris1
+    second: {fileID: 2100000, guid: e3cca0956837e304d8b66a08782ba2c0, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
