@@ -45,7 +45,7 @@ public class StoryController : MonoBehaviour
       
 
 
-        if (subject == "Decrease_Of_Love")//_requieredSubject[_currentStory] && _currentStory < _history.Count && _currentStory < _requieredSubject.Count)
+        if (subject == "Decrease_of_Love")//_requieredSubject[_currentStory] && _currentStory < _history.Count && _currentStory < _requieredSubject.Count)
         {
             _currentStory++;
             _giveBad = true;
