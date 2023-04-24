@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee0bcdab8adb72347af837b546e2d3d0, type: 3}
+  m_Name: Iris
+  m_EditorClassIdentifier: 
+  available: 1
+  flowerValues:
+    message: 0
+    intent: 0
+    formality: 0
+    intentMultiplier: 0
+    formalityMultiplier: 0
+  flowerModel:
+    flowerMesh: {fileID: 7801824345669351540, guid: 0a1b585692a847b47a32deb8a0878440, type: 3}
+    flowerMaterial: {fileID: 7463889345579050972, guid: 0a1b585692a847b47a32deb8a0878440, type: 3}

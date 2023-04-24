@@ -41,4 +41,9 @@ public class GameManager : MonoBehaviour
         if (_events.ContainsKey(eventType))
             _events[eventType]();
     }
+
+    public static void Quit()
+    {
+        Application.Quit();
+    }
 }

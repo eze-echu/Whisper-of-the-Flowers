@@ -10,7 +10,7 @@ public class DialogueController : MonoBehaviour, IDialogueController
     public string[] additionalRequest;
 
     private int currentIndex;
-
+    private bool skiped = false;
     public List<Button> buttons;
 
     public float timeWrite;
@@ -19,6 +19,8 @@ public class DialogueController : MonoBehaviour, IDialogueController
 
 
     public ButtonsController buttonController;
+
+    public HandInZone handInZone;
 
     
 
@@ -87,18 +89,32 @@ public class DialogueController : MonoBehaviour, IDialogueController
         */
 
         isTyping = true;
+        handInZone.tag = "Occupied";
         text.text = "";
         buttonController.DisableOrActive(false);
 
         foreach (char c in request)
         {
+            if (skiped)
+            {
+                skiped = false;
+                text.text = request;
+                break;
+            }
             text.text += c;
             yield return new WaitForSeconds(timeWrite);
         }
 
         buttonController.DisableOrActive(true);
+        handInZone.tag = "DropZone";
         isTyping = false;
     }
 
-   
+    public void skip()
+    {
+        if (isTyping)
+        {
+            skiped = true;
+        }
+    }
 }

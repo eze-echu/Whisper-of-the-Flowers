@@ -20,7 +20,7 @@ public class Flower : ScriptableObject
     }
 }
 [System.Serializable]
-public struct FlowerModel{
+public struct FlowerModel {
     public MeshFilter flowerMesh;
     public MeshRenderer flowerMaterial;
     public bool IsValid()
