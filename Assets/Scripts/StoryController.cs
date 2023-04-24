@@ -24,7 +24,7 @@ public class StoryController : MonoBehaviour
         _giveBad = false;
 
     }
-
+#if UNITY_EDITOR
     public void Update()
     {
         if (Input.GetKeyUp(KeyCode.W))
@@ -37,6 +37,7 @@ public class StoryController : MonoBehaviour
             HandleStory("Love", 1, 1);
         }
     }
+#endif
 
 
     public void HandleStory(string subject, int intentValues, int formalityValues)

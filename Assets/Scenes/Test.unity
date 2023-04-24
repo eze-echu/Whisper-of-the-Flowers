@@ -318,7 +318,7 @@ GameObject:
   - component: {fileID: 364952762}
   - component: {fileID: 364952761}
   - component: {fileID: 364952765}
-  - component: {fileID: 364952766}
+  - component: {fileID: 364952767}
   m_Layer: 0
   m_Name: Racimo
   m_TagString: drag
@@ -423,22 +423,18 @@ MonoBehaviour:
   - {fileID: 468951108}
   - {fileID: 734484294}
   - {fileID: 1390790754}
---- !u!54 &364952766
-Rigidbody:
+--- !u!114 &364952767
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 364952760}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 10
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c95f0bace79af74498f8428ca5b6b0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &371224516
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,9 +548,10 @@ GameObject:
   - component: {fileID: 418003369}
   - component: {fileID: 418003368}
   - component: {fileID: 418003367}
+  - component: {fileID: 418003371}
   m_Layer: 0
   m_Name: GiveZone
-  m_TagString: Untagged
+  m_TagString: DropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -630,13 +627,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 418003366}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.41, y: -1.33, z: 1}
+  m_LocalPosition: {x: 5.41, y: -1.33, z: 0}
   m_LocalScale: {x: 4.4625, y: 4.6375, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &418003371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418003366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 277475f58f52a0f44af75a00b2d3d294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &468951108
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,7 +655,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 468951109}
-  - component: {fileID: 468951110}
   - component: {fileID: 468951111}
   m_Layer: 0
   m_Name: Principal
@@ -670,22 +678,6 @@ Transform:
   m_Father: {fileID: 364952764}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &468951110
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 468951108}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!65 &468951111
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1107,7 +1099,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 734484295}
-  - component: {fileID: 734484296}
   - component: {fileID: 734484297}
   m_Layer: 0
   m_Name: Secundario
@@ -1131,22 +1122,6 @@ Transform:
   m_Father: {fileID: 364952764}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &734484296
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 734484294}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!65 &734484297
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2034,7 +2009,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1390790755}
-  - component: {fileID: 1390790756}
   - component: {fileID: 1390790757}
   m_Layer: 0
   m_Name: Tercero
@@ -2058,22 +2032,6 @@ Transform:
   m_Father: {fileID: 364952764}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &1390790756
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1390790754}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!65 &1390790757
 BoxCollider:
   m_ObjectHideFlags: 0

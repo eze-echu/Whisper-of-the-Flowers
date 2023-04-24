@@ -29,6 +29,8 @@ public class FlowerBunch : MonoBehaviour, IDragable, IResteable
     public void ResetToOriginalState()
     {
         used = true;
+        transform.position = father.OGflowerPosition;
+        GetComponent<BoxCollider>().enabled = true;
         transform.SetParent(father.transform);
     }
 }

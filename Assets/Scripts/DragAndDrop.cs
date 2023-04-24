@@ -7,11 +7,8 @@ public class DragAndDrop : MonoBehaviour
     private Vector3 lastPosition;
     private Transform parent;
     private bool isDragging = false;
-    private Rigidbody rb;
-    public BoxCollider DropDetection;
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
         parent = transform.parent;
     }
 
@@ -39,11 +36,11 @@ public class DragAndDrop : MonoBehaviour
     {
         print("hit");
         //selectObject = hit.transform.gameObject.GetComponent<IDragable>().ObjectsToBeDraged(ref lastPosition);
-        parent = transform.parent;
+        parent = transform.parent ?? null;
         isDragging = true;
         lastPosition = transform.position;
         Cursor.visible = false;
-        rb.transform.SetParent(null);
+        transform.SetParent(null);
     }
 
     private void OnMouseDrag()
@@ -52,7 +49,7 @@ public class DragAndDrop : MonoBehaviour
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = lastPosition.z - 1f;
-            rb.MovePosition(mousePosition);
+            transform.position = (mousePosition);
         }
     }
 
@@ -66,23 +63,26 @@ public class DragAndDrop : MonoBehaviour
             print(hitCollider.tag);
             if (hitCollider.gameObject.CompareTag("DropZone"))
             {
-                hitCollider.GetComponent<IDropZone>()?.DropAction(this.gameObject);
+                print(this.name);
                 //transform.position = hitCollider.gameObject.transform.position;
                 transform.position = hitCollider.GetComponent<BucketOfFlowers>()?.OGflowerPosition ?? hitCollider.gameObject.transform.position;
-                parent.GetComponent<IOccupied>().RemoveAction();
-                parent.gameObject.tag = "DropZone";
+                if (parent)
+                {
+                    parent?.GetComponent<IOccupied>()?.RemoveAction();
+                    parent.gameObject.tag = "DropZone";
+                }
                 parent = hitCollider.gameObject.transform;
-                rb.transform.SetParent(hitCollider.transform);
-                hitCollider.transform.parent.GetComponent<IDropZone>()?.DropAction();
+                transform.SetParent(hitCollider.transform);
                 hitCollider.tag = "Occupied";
+                _ = hitCollider.transform.parent?.GetComponent<IDropZone>()?.DropAction(this.gameObject) ?? hitCollider?.GetComponent<IDropZone>()?.DropAction(this.gameObject);
                 dropped = true;
                 break;
             }
         }
         if (!dropped)
         {
-            rb.transform.SetParent(parent);
-            StartCoroutine(ReturnToLastPosition(lastPosition, rb.transform));
+            transform.SetParent(parent);
+            StartCoroutine(ReturnToLastPosition(lastPosition, transform));
         }
 
         Cursor.visible = true;

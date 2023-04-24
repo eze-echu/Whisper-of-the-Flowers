@@ -13,6 +13,7 @@ public class BucketOfFlowers : MonoBehaviour, IResteable, IDropZone, IOccupied
 
     public void ResetToOriginalState()
     {
+        tag = "Occupied";
         flowerBunch.ResetToOriginalState();
     }
 
