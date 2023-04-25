@@ -96,7 +96,7 @@ public class DialogueController : MonoBehaviour, IDialogueController
         if (end)
         {
             FindObjectOfType<FlowerHandler>().DisableAllFlowers();
-            endDisplay.blocksRaycasts = true;
+            //endDisplay.blocksRaycasts = true;
         }
 
         foreach (char c in request)

@@ -144,6 +144,7 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
     public void ResetToOriginalState()
     {
         transform.position = _lastposition;
+        transform.SetParent(null);
         foreach (var item in _posOfFlowers)
         {
             item.tag = "DropZone";

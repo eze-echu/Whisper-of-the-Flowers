@@ -28,7 +28,7 @@ public class SceneLoader : MonoBehaviour
         if (!sceneLoader || sceneLoader == this)
         {
             Instance();
-            //DontDestroyOnLoad(this);
+            DontDestroyOnLoad(this);
         }
         else
         {

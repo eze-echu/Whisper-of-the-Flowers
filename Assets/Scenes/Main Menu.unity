@@ -233,9 +233,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 561888146586968522, guid: 931679a13c7ab854885940c6965d74e4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4401421991847725566, guid: 931679a13c7ab854885940c6965d74e4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4698329141678011584, guid: 931679a13c7ab854885940c6965d74e4, type: 3}
       propertyPath: m_Name
       value: AsyncLoader
+      objectReference: {fileID: 0}
+    - target: {fileID: 4698329141678011584, guid: 931679a13c7ab854885940c6965d74e4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4698329141678011586, guid: 931679a13c7ab854885940c6965d74e4, type: 3}
       propertyPath: m_RootOrder
@@ -281,19 +293,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4698329141815784579, guid: 931679a13c7ab854885940c6965d74e4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4698329142485439910, guid: 931679a13c7ab854885940c6965d74e4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4698329142999976965, guid: 931679a13c7ab854885940c6965d74e4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 931679a13c7ab854885940c6965d74e4, type: 3}
---- !u!114 &238123997 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4698329141678011585, guid: 931679a13c7ab854885940c6965d74e4, type: 3}
-  m_PrefabInstance: {fileID: 238123996}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fb09dcb26a19fc4eb4eb006d74cadba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1153030282
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -517,6 +530,7 @@ GameObject:
   - component: {fileID: 1228493997}
   - component: {fileID: 1228493996}
   - component: {fileID: 1228493999}
+  - component: {fileID: 1228494000}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -586,6 +600,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99455c64d39d46f41bd989b682e96a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1228494000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228493995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4312ad5e0775a743925387f1362fa83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneLoader: {fileID: 0}
 --- !u!1 &1241779314
 GameObject:
   m_ObjectHideFlags: 0
@@ -895,9 +922,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 238123997}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: AsyncLoadScene
+      - m_Target: {fileID: 1228494000}
+        m_TargetAssemblyTypeName: EventSystems, Assembly-CSharp
+        m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

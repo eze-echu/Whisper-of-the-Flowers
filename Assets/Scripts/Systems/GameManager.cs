@@ -14,8 +14,6 @@ public class GameManager : MonoBehaviour
     {
         if (instance == null) instance = this;
         else Destroy(gameObject);
-
-
     }
     public static void Subscribe(string eventType, EventReceiver listener)
     {
@@ -44,6 +42,7 @@ public class GameManager : MonoBehaviour
 
     public static void Quit()
     {
+        print("Quitted");
         Application.Quit();
     }
 }
