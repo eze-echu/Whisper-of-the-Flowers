@@ -20,6 +20,8 @@ public class DialogueController : MonoBehaviour, IDialogueController
 
     public ButtonsController buttonController;
 
+    public CanvasGroup endDisplay;
+
     public HandInZone handInZone;
 
     
@@ -30,7 +32,7 @@ public class DialogueController : MonoBehaviour, IDialogueController
        //ShowRandomRequest();
     }
 
-    public void ShowSpecificRequest(string text)
+    public void ShowSpecificRequest(string text, bool end = false)
     {
         //StartCoroutine(TypeRequest(text));
 
@@ -44,14 +46,13 @@ public class DialogueController : MonoBehaviour, IDialogueController
 
         }
         */
-
         if (isTyping)
         {
             StopCoroutine(currentCoroutine);
             isTyping = false;
         }
 
-        currentCoroutine = StartCoroutine(TypeRequest(text));
+        currentCoroutine = StartCoroutine(TypeRequest(text, end));
     }
 
     public void ShowRandomRequest()
@@ -70,7 +71,7 @@ public class DialogueController : MonoBehaviour, IDialogueController
         }
     }
 
-    private IEnumerator TypeRequest(string request)
+    private IEnumerator TypeRequest(string request, bool end = false)
     {
         /*
         isTyping = true;
@@ -92,6 +93,11 @@ public class DialogueController : MonoBehaviour, IDialogueController
         handInZone.tag = "Occupied";
         text.text = "";
         buttonController.DisableOrActive(false);
+        if (end)
+        {
+            FindObjectOfType<FlowerHandler>().DisableAllFlowers();
+            endDisplay.blocksRaycasts = true;
+        }
 
         foreach (char c in request)
         {
@@ -104,7 +110,10 @@ public class DialogueController : MonoBehaviour, IDialogueController
             text.text += c;
             yield return new WaitForSeconds(timeWrite);
         }
-
+        if (end)
+        {
+            StartCoroutine(End());
+        }
         buttonController.DisableOrActive(true);
         handInZone.tag = "DropZone";
         isTyping = false;
@@ -116,5 +125,20 @@ public class DialogueController : MonoBehaviour, IDialogueController
         {
             skiped = true;
         }
+    }
+
+    private IEnumerator End()
+    {
+        int time = 3;
+        float elapsedTime = 0;
+
+        while(elapsedTime < time)
+        {
+            elapsedTime += Time.deltaTime;
+            endDisplay.alpha = Mathf.Lerp(0, 1, elapsedTime / time);
+            yield return null;
+        }
+        endDisplay.blocksRaycasts = true;
+        endDisplay.interactable = true;
     }
 }

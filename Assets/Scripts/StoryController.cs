@@ -54,7 +54,14 @@ public class StoryController : MonoBehaviour
                 EndMhe();
                 return;
             }
-            _dialogueController.ShowSpecificRequest(_history[_currentStory]);
+            if(_currentStory < 3)
+            {
+                _dialogueController.ShowSpecificRequest(_history[_currentStory]);
+            }
+            else
+            {
+                _dialogueController.ShowSpecificRequest(_history[_currentStory], true);
+            }
             _currentStory++;
             print(_giveBad);
             //IGNORAR
@@ -92,8 +99,15 @@ public class StoryController : MonoBehaviour
                 EndMhe();
                 return;
             }
-            _dialogueController.ShowSpecificRequest(_history[_currentStory]);
-           
+            if (_currentStory < 3)
+            {
+                _dialogueController.ShowSpecificRequest(_history[_currentStory]);
+            }
+            else
+            {
+                _dialogueController.ShowSpecificRequest(_history[_currentStory], true);
+            }
+
 
             print(_giveGood);
         }
@@ -105,7 +119,7 @@ public class StoryController : MonoBehaviour
     public void EndMhe()
     {
         _currentStory = 5;
-        _dialogueController.ShowSpecificRequest(_history[_currentStory]);
+        _dialogueController.ShowSpecificRequest(_history[_currentStory], true);
     }
 }
 

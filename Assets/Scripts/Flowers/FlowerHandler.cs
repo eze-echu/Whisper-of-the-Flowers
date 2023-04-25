@@ -47,4 +47,20 @@ public class FlowerHandler : MonoBehaviour
             a.ResetToOriginalState();
         }
     }
+
+    public void DisableAllFlowers()
+    {
+        foreach (var item in bucketsOfFlowers)
+        {
+            print("Disable FlowerCollider");
+            item.flowerFather.gameObject.SetActive(false);
+        }
+    }
+    public void EnableAllFlowers()
+    {
+        foreach (var item in bucketsOfFlowers)
+        {
+            item.flowerFather.gameObject.SetActive(true);
+        }
+    }
 }
