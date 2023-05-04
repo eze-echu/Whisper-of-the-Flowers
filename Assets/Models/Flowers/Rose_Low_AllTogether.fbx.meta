@@ -1,19 +1,9 @@
 fileFormatVersion: 2
-guid: 743cf0faa3621c7459b9c5b1e5fb2113
+guid: ae6582b1dbd832b40abf4eb698fcc49e
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: RoseFlower
-    second: {fileID: 2100000, guid: 7d30ad17e1eee4141a10bf894f64468b, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Stem_Petals
-    second: {fileID: 2100000, guid: b545a500ca038e94eb5ae142a5afdafc, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

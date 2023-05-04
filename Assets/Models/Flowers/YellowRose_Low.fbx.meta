@@ -3,17 +3,7 @@ guid: 5782e7f621c275e41ba90d7e40f90702
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Stem_Petals
-    second: {fileID: 2100000, guid: b545a500ca038e94eb5ae142a5afdafc, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: YellowRose
-    second: {fileID: 2100000, guid: d5aa44a7cf92ec2468d88054e587408b, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

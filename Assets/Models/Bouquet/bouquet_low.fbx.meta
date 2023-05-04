@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 77b472d96f5576f4c8a64aca7ec99022
+guid: 130ab08bcd5fae1488339ea930a50a38
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,13 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: RoseFlower
-    second: {fileID: 2100000, guid: 5272fef15b445194ea414213dddab422, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Stem_Petals
-    second: {fileID: 2100000, guid: b545a500ca038e94eb5ae142a5afdafc, type: 2}
+      name: bouquet
+    second: {fileID: 2100000, guid: 2daa0d5a662de5b4e93646d177caa627, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -98,7 +93,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.29999998
+    globalScale: 30
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
