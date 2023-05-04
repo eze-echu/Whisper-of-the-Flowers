@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5782e7f621c275e41ba90d7e40f90702
+guid: fba230adc97449c4babc878bbc72815d
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: YellowRose
-    second: {fileID: 2100000, guid: d5aa44a7cf92ec2468d88054e587408b, type: 2}
+      name: ColumbineMat
+    second: {fileID: 2100000, guid: 3a170327aa043ea45a1922fcbf1bb0b8, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
