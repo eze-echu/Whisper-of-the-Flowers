@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: bouquet
-    second: {fileID: 2100000, guid: 2daa0d5a662de5b4e93646d177caa627, type: 2}
+    second: {fileID: 2100000, guid: aa09a2b07fdf194478326ee5bfe74eda, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
