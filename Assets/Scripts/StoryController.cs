@@ -19,7 +19,7 @@ public class StoryController : MonoBehaviour
     {
         _currentStory = 0;
         _dialogueController.ShowSpecificRequest(_history[_currentStory]);
-        //NextClient();
+        NextClient();
         //_currentStory++;
 
         _giveGood = false;
@@ -58,12 +58,12 @@ public class StoryController : MonoBehaviour
             }
             if(_currentStory < 3)
             {
-                //NextClient();
+                NextClient();
                 _dialogueController.ShowSpecificRequest(_history[_currentStory]);
             }
             else
             {
-                //NextClient();
+                NextClient();
                 _dialogueController.ShowSpecificRequest(_history[_currentStory], true);
             }
             _currentStory++;
@@ -105,12 +105,12 @@ public class StoryController : MonoBehaviour
             }
             if (_currentStory < 3)
             {
-                //NextClient();
+                NextClient();
                 _dialogueController.ShowSpecificRequest(_history[_currentStory]);
             }
             else
             {
-                //NextClient();
+                NextClient();
                 _dialogueController.ShowSpecificRequest(_history[_currentStory], true);
             }
 
@@ -125,7 +125,7 @@ public class StoryController : MonoBehaviour
     public void EndMhe()
     {
         _currentStory = 5;
-        //NextClient();
+        NextClient();
         _dialogueController.ShowSpecificRequest(_history[_currentStory], true);
 
     }
