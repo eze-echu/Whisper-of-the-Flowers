@@ -13,11 +13,13 @@ public class StoryController : MonoBehaviour
 
 
     [SerializeField] DialogueController _dialogueController;
+    [SerializeField] ClientController _clientController;
 
     public void Start()
     {
         _currentStory = 0;
         _dialogueController.ShowSpecificRequest(_history[_currentStory]);
+        //NextClient();
         //_currentStory++;
 
         _giveGood = false;
@@ -56,10 +58,12 @@ public class StoryController : MonoBehaviour
             }
             if(_currentStory < 3)
             {
+                //NextClient();
                 _dialogueController.ShowSpecificRequest(_history[_currentStory]);
             }
             else
             {
+                //NextClient();
                 _dialogueController.ShowSpecificRequest(_history[_currentStory], true);
             }
             _currentStory++;
@@ -101,10 +105,12 @@ public class StoryController : MonoBehaviour
             }
             if (_currentStory < 3)
             {
+                //NextClient();
                 _dialogueController.ShowSpecificRequest(_history[_currentStory]);
             }
             else
             {
+                //NextClient();
                 _dialogueController.ShowSpecificRequest(_history[_currentStory], true);
             }
 
@@ -119,7 +125,14 @@ public class StoryController : MonoBehaviour
     public void EndMhe()
     {
         _currentStory = 5;
+        //NextClient();
         _dialogueController.ShowSpecificRequest(_history[_currentStory], true);
+
+    }
+
+    public void NextClient()
+    {
+        _clientController.ChangeClient(_currentStory);
     }
 }
 
