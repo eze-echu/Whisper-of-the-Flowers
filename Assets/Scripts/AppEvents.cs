@@ -8,9 +8,19 @@ public static class AppEvents
 {
     public static UnityEvent CloseBookEvent = new UnityEvent();
 
+    //ACA
+    public static UnityEvent OpenBookEvent = new UnityEvent();
+
+
     public static void InvokeCloseBookEvent()
     {
         CloseBookEvent.Invoke();
+    }
+
+    //ACA
+    public static void InvokeOpenBookEvent()
+    {
+        OpenBookEvent.Invoke();
     }
 
     /*

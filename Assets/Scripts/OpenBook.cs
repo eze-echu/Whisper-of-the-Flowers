@@ -29,7 +29,7 @@ public class OpenBook : MonoBehaviour
         }
 
         AppEvents.CloseBookEvent.AddListener(closeBook_Click);
-       
+        AppEvents.OpenBookEvent.AddListener(OpenBookEventInvoked);
     }
 
     public void Update()
@@ -47,6 +47,9 @@ public class OpenBook : MonoBehaviour
                     gameObject.SetActive(false);
                     insideBackCover.SetActive(false);
                     openedBook.SetActive(true);
+
+                    //ACA
+                    AppEvents.OpenBookEvent.Invoke();
                 }
             }
             if (isCloseClicked)
@@ -80,5 +83,10 @@ public class OpenBook : MonoBehaviour
         rotationVector = new Vector3(0, -180, 0);
         print("close book clicked in Openbook");
     }
-    
+
+    private void OpenBookEventInvoked()
+    {
+        //ACA - Handle OpenBookEvent
+        //print("open book clicked in OpenBook");
+    }
 }

@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 144527573}
   - component: {fileID: 144527572}
   m_Layer: 0
-  m_Name: HeaderTextL
+  m_Name: HeaderText1_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -459,7 +459,7 @@ GameObject:
   - component: {fileID: 200724231}
   - component: {fileID: 200724230}
   m_Layer: 0
-  m_Name: HeaderTextR
+  m_Name: HeaderText2_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -812,7 +812,7 @@ Transform:
   - {fileID: 1880692405}
   - {fileID: 814724982}
   m_Father: {fileID: 2053474977}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &418003366
 GameObject:
@@ -936,7 +936,7 @@ GameObject:
   - component: {fileID: 431199700}
   - component: {fileID: 431199699}
   m_Layer: 0
-  m_Name: HeaderTextR
+  m_Name: HeaderText2-2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1444,7 +1444,7 @@ GameObject:
   - component: {fileID: 595529817}
   - component: {fileID: 595529816}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: RightCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1816,7 +1816,7 @@ GameObject:
   - component: {fileID: 634107080}
   - component: {fileID: 634107079}
   m_Layer: 0
-  m_Name: bodyTextL
+  m_Name: bodyText1_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1898,8 +1898,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -2081,7 +2081,7 @@ GameObject:
   - component: {fileID: 671651878}
   - component: {fileID: 671651877}
   m_Layer: 0
-  m_Name: footerTextR
+  m_Name: footerText1_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2506,7 +2506,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 765991201}
-  - component: {fileID: 765991203}
   - component: {fileID: 765991202}
   m_Layer: 0
   m_Name: FlipPages
@@ -2530,7 +2529,7 @@ Transform:
   - {fileID: 1367224122}
   - {fileID: 498399301}
   m_Father: {fileID: 2053474977}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &765991202
 MonoBehaviour:
@@ -2547,21 +2546,18 @@ MonoBehaviour:
   nextBtn: {fileID: 1459552019}
   prevBtn: {fileID: 1126112182}
   closeBtn: {fileID: 1589836388}
---- !u!114 &765991203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 765991200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17116fba419015f48b9f249a3f0c8d8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextBtn: {fileID: 0}
-  prevBtn: {fileID: 0}
-  closeBtn: {fileID: 0}
+  headerText1_1: {fileID: 144527572}
+  headerText1_2: {fileID: 200724230}
+  headerText2_1: {fileID: 1949613651}
+  headerText2_2: {fileID: 431199699}
+  bodyText1_1: {fileID: 634107079}
+  bodyText1_2: {fileID: 983790044}
+  bodyText2_1: {fileID: 2105368988}
+  bodyText2_2: {fileID: 1547363700}
+  footerText1_1: {fileID: 1576439356}
+  footerText1_2: {fileID: 843180538}
+  footerText2_1: {fileID: 671651877}
+  footerText2_2: {fileID: 1092708948}
 --- !u!1 &781611964
 GameObject:
   m_ObjectHideFlags: 0
@@ -2597,7 +2593,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.016, y: 0.009622506}
   m_AnchorMax: {x: 0.11000001, y: 0.16100001}
-  m_AnchoredPosition: {x: 54.70117, y: -15}
+  m_AnchoredPosition: {x: 54.70166, y: -15}
   m_SizeDelta: {x: 113, y: -28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &781611966
@@ -2813,7 +2809,7 @@ GameObject:
   - component: {fileID: 843180539}
   - component: {fileID: 843180538}
   m_Layer: 0
-  m_Name: footerTextR
+  m_Name: footerText2_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2951,7 +2947,7 @@ GameObject:
   - component: {fileID: 902267569}
   - component: {fileID: 902267568}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: LeftCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3316,7 +3312,7 @@ GameObject:
   - component: {fileID: 983790045}
   - component: {fileID: 983790044}
   m_Layer: 0
-  m_Name: bodyTextR
+  m_Name: bodyText2_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3398,8 +3394,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -3588,7 +3584,7 @@ GameObject:
   - component: {fileID: 1092708949}
   - component: {fileID: 1092708948}
   m_Layer: 0
-  m_Name: footerTextR
+  m_Name: footerText2_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5339,7 +5335,7 @@ GameObject:
   - component: {fileID: 1547363701}
   - component: {fileID: 1547363700}
   m_Layer: 0
-  m_Name: bodyTextR
+  m_Name: bodyText2_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5421,8 +5417,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -5476,7 +5472,7 @@ GameObject:
   - component: {fileID: 1576439357}
   - component: {fileID: 1576439356}
   m_Layer: 0
-  m_Name: footerTextL
+  m_Name: footerText1_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6205,7 +6201,7 @@ GameObject:
   - component: {fileID: 1949613652}
   - component: {fileID: 1949613651}
   m_Layer: 0
-  m_Name: HeaderTextR
+  m_Name: HeaderText1_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6492,8 +6488,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 765991201}
   - {fileID: 369841692}
+  - {fileID: 765991201}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6509,7 +6505,7 @@ GameObject:
   - component: {fileID: 2105368989}
   - component: {fileID: 2105368988}
   m_Layer: 0
-  m_Name: bodyTextR
+  m_Name: bodyText1_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6591,8 +6587,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
