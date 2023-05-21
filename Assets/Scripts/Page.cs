@@ -56,25 +56,25 @@ public class Page
                 _pageList.Add(new Page
                 {   //1
                     Title = "Acts 17:11",
-                    Text = "aaaaa"
+                    Text = "Primera Pagina"
                 });
 
                 _pageList.Add(new Page
                 {   //2
                     Title = "Acts 17:11",
-                    Text = "aaaaa"
+                    Text = "Segunda Pagina"
                 });
 
                 _pageList.Add(new Page
                 {   //3
                     Title = "Acts 17:11",
-                    Text = "aaaaa"
+                    Text = "tercera pagina"
                 });
 
                 _pageList.Add(new Page
                 {   //4
                     Title = "Acts 17:11",
-                    Text = "aaaaa"
+                    Text = "cuarta pagina"
                 });
 
                 _pageList.Add(new Page
