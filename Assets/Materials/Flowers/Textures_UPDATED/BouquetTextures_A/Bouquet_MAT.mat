@@ -59,7 +59,7 @@ Material:
     - _OutlineNormalStrenght: 1
     - _OutlineNormalThreshold: 8
     - _OutlineNormalTightening: 128
-    - _OutlineThickness: 0.0005
+    - _OutlineThickness: 0.001
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ShadingShadowStep: 0.3
