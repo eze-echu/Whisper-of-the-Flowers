@@ -5,86 +5,111 @@ using System.Linq;
 
 public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteable
 {
-    [SerializeField] List<GameObject> _posOfFlowers;
+    //[SerializeField] List<GameObject> _posOfFlowers;
     //[SerializeField] GameObject _principal;
     //[SerializeField] GameObject _secondary;
     //[SerializeField] GameObject _terceary;
 
+    [SerializeField]
+    List<BouquetFlowers> flowers;
+
+    private int occupied = 0;
+
     private Vector3 _lastposition;
 
     FlowerValues values;
-
+    private BoxCollider boxCollider;
     bool _ready;
-
-    public bool canBeDragged { get => canBeDragged; set => canBeDragged = value; }
+    public bool canBeDragged { get => _canBeDragged; set => _canBeDragged = value; }
+    bool _canBeDragged;
 
     public void Start()
     {
         _lastposition = transform.position;
+        boxCollider = GetComponent<BoxCollider>();
 
         values.intent = 0;
         values.formality = 0;
         values.intentMultiplier = 0;
         values.intentMultiplier = 0;
         values.message = MessageType.Null;
+        canBeDragged = false;
 
         _ready = false;
     }
 
-    public void FlowerAdded()
+    public void FlowerAdded(FlowerBunch flowerBunch)
     {
         print("Added Flower");
         bool areFilled = true;
-        for (int i = 0; i < _posOfFlowers.Count; i++)
-        {
-            FlowerBunch a = _posOfFlowers[i].GetComponentInChildren<FlowerBunch>();
-            if (!a)
+        if (flowerBunch) {
+            BouquetFlowers a = flowers[occupied];
+            if (!a.flower)
             {
                 areFilled = false;
             }
-            switch (i)
+            flowers[occupied].flower = flowerBunch.type;
+            flowerBunch.transform.SetParent(flowers[occupied].transform);
+            flowerBunch.GetComponentInChildren<MeshRenderer>().enabled = false;
+            flowerBunch.GetComponent<BoxCollider>().enabled = false;
+            switch (occupied)
             {
                 case 0:
-                    values.message = a?.type.flowerValues.message ?? MessageType.Null;
+                    values.message = a?.flower.flowerValues.message ?? MessageType.Null;
+                    occupied++;
                     //print($"{a.type.flowerValues.message}");
                     break;
                 case 1:
-                    values.intent = a?.type.flowerValues.intent ?? 0;
-                    values.formality = a?.type.flowerValues.formality ?? 0;
+                    values.intent = a?.flower.flowerValues.intent ?? 0;
+                    values.formality = a?.flower.flowerValues.formality ?? 0;
+                    occupied++;
                     break;
                 case 2:
-                    values.intentMultiplier = a?.type.flowerValues.intentMultiplier ?? 0;
-                    values.formalityMultiplier = a?.type.flowerValues.formalityMultiplier ?? 0;
+                    values.intentMultiplier = a?.flower.flowerValues.intentMultiplier ?? 0;
+                    values.formalityMultiplier = a?.flower.flowerValues.formalityMultiplier ?? 0;
+                    occupied++;
                     break;
                 default:
                     print("Not within the scope of the Switch");
                     break;
             }
-        }
-        if (values.message != MessageType.Null && areFilled)
-        {
-            _ready = true;
-            foreach (var item in _posOfFlowers)
+            if(occupied == flowers.Count)
             {
-                item.GetComponent<BoxCollider>().enabled = false;
-                print(item.transform.childCount);
-                if(item.transform.childCount == 1)
-                {
-                    item.transform.GetChild(0).GetComponentInChildren<BoxCollider>().enabled = false;
-                }
-                print("Ready");
+                areFilled = true;
             }
-            GetComponent<BoxCollider>().enabled = true;
+            if (values.message != MessageType.Null && areFilled)
+            {
+                _ready = true;
+                /*foreach (var item in flowers)
+                {
+                    item.GetComponent<BoxCollider>().enabled = false;
+                    print(item.transform.childCount);
+                    *//*if (item.transform.childCount == 1)
+                    {
+                        item.transform.GetChild(0).GetComponentInChildren<BoxCollider>().enabled = false;
+                    }*//*
+                    print("Ready");
+                }*/
+                canBeDragged = true;
+                gameObject.tag = "Occupied";
+                boxCollider.enabled = true;
+            }
+            else
+            {
+                gameObject.tag = "DropZone";
+            }
         }
         else
         {
-            foreach (var item in _posOfFlowers)
+            foreach (var item in flowers)
             {
-                item.GetComponent<BoxCollider>().enabled = true;
+                item.SetFlower(null);
                 print("Not Ready");
             }
+            gameObject.tag = "DropZone";
             _ready = false;
-            GetComponent<BoxCollider>().enabled = false;
+            canBeDragged = false;
+            occupied = 0;
         }
     }
 
@@ -95,7 +120,7 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
         
         if (_ready)//values.message != null && values.intent != 0 && values.formality != 0) // poner values.MultiplierFormality
         {
-            
+            canBeDragged = false;
             string subject = values.message.ToString();
             storyController.HandleStory(subject, values.intent, values.formality);
         }
@@ -125,9 +150,9 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
 
     public bool DropAction(GameObject a = null)
     {
-        if (!_ready)
+        if (!_ready && a.GetComponent<FlowerBunch>())
         {
-            FlowerAdded();
+            FlowerAdded(a.GetComponent<FlowerBunch>());
         }
         else
         {
@@ -138,20 +163,18 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
 
     public void RemoveAction()
     {
-        FlowerAdded();
+        //FlowerAdded();
     }
 
     public void ResetToOriginalState()
     {
         transform.position = _lastposition;
         transform.SetParent(null);
-        foreach (var item in _posOfFlowers)
-        {
-            item.tag = "DropZone";
-        }
-        FlowerAdded();
+        GetComponent<BoxCollider>().enabled = true;
+        FlowerAdded(null);
     }
 }
+
 
 /*private void OnTriggerEnter(Collider other)
 {

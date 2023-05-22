@@ -7,9 +7,11 @@ public class DragAndDrop : MonoBehaviour
     private Vector3 lastPosition;
     private Transform parent;
     private bool isDragging = false;
+    private IDragable dragable;
     private void Start()
     {
         parent = transform.parent;
+        dragable = GetComponent<IDragable>();
     }
 
     private RaycastHit CastRay()
@@ -36,11 +38,15 @@ public class DragAndDrop : MonoBehaviour
     {
         print("hit");
         //selectObject = hit.transform.gameObject.GetComponent<IDragable>().ObjectsToBeDraged(ref lastPosition);
-        parent = transform.parent ?? null;
-        isDragging = true;
-        lastPosition = transform.position;
-        Cursor.visible = false;
-        transform.SetParent(null);
+        if (dragable.canBeDragged)
+        {
+            parent = transform.parent ?? null;
+            isDragging = true;
+            lastPosition = transform.position;
+            Cursor.visible = false;
+            transform.SetParent(null);
+            //GetComponent<IDragable>().canBeDragged = false;
+        }
     }
 
     private void OnMouseDrag()
@@ -55,37 +61,41 @@ public class DragAndDrop : MonoBehaviour
 
     private void OnMouseUp()
     {
-        isDragging = false;
-        bool dropped = false;
-        Collider[] hitColliders = Physics.OverlapSphere(new Vector3(transform.position.x, transform.position.y, transform.position.z), 0.75f);
-        foreach (Collider hitCollider in hitColliders)
+        if (isDragging)
         {
-            print(hitCollider.tag);
-            if (hitCollider.gameObject.CompareTag("DropZone"))
+            isDragging = false;
+            bool dropped = false;
+            Collider[] hitColliders = Physics.OverlapSphere(new Vector3(transform.position.x, transform.position.y, transform.position.z), 0.75f);
+            foreach (Collider hitCollider in hitColliders)
             {
-                print(this.name);
-                //transform.position = hitCollider.gameObject.transform.position;
-                transform.position = hitCollider.GetComponent<BucketOfFlowers>()?.OGflowerPosition ?? hitCollider.gameObject.transform.position;
-                if (parent)
+                print(hitCollider.tag);
+                if (hitCollider.gameObject.CompareTag("DropZone"))
                 {
-                    parent?.GetComponent<IOccupied>()?.RemoveAction();
-                    parent.gameObject.tag = "DropZone";
-                }
-                parent = hitCollider.gameObject.transform;
-                transform.SetParent(hitCollider.transform);
-                hitCollider.tag = "Occupied";
-                _ = hitCollider.transform.parent?.GetComponent<IDropZone>()?.DropAction(this.gameObject) ?? hitCollider?.GetComponent<IDropZone>()?.DropAction(this.gameObject);
-                dropped = true;
-                break;
-            }
-        }
-        if (!dropped)
-        {
-            transform.SetParent(parent);
-            StartCoroutine(ReturnToLastPosition(lastPosition, transform));
-        }
+                    print(this.name);
 
-        Cursor.visible = true;
+                    //transform.position = hitCollider.gameObject.transform.position;
+                    //transform.position = hitCollider.GetComponent<BucketOfFlowers>()?.OGflowerPosition ?? hitCollider.gameObject.transform.position;
+                    if (parent)
+                    {
+                        parent?.GetComponent<IOccupied>()?.RemoveAction();
+                        parent.gameObject.tag = "DropZone";
+                    }
+                    parent = hitCollider.gameObject.transform;
+                    //transform.SetParent(hitCollider.transform);
+                    hitCollider.tag = "Occupied";
+                    _ = hitCollider.transform.parent?.GetComponent<IDropZone>()?.DropAction(this.gameObject) ?? hitCollider?.GetComponent<IDropZone>()?.DropAction(this.gameObject);
+                    dropped = true;
+                    break;
+                }
+            }
+            if (!dropped)
+            {
+                transform.SetParent(parent);
+                StartCoroutine(ReturnToLastPosition(lastPosition, transform));
+            }
+
+            Cursor.visible = true;
+        }
     }
 
 

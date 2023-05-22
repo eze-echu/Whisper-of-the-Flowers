@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   available: 1
   flowerValues:
-    message: 0
+    message: 3
     intent: 0
     formality: 0
     intentMultiplier: 0
     formalityMultiplier: 0
   flowerModel:
-    flowerMesh: {fileID: 7801824345669351540, guid: 0a1b585692a847b47a32deb8a0878440, type: 3}
-    flowerMaterial: {fileID: 7463889345579050972, guid: 0a1b585692a847b47a32deb8a0878440, type: 3}
+    flowerMesh: {fileID: 6473976097103947999, guid: dbb1ed1b999ed2b499c5e21d1dedc152, type: 3}
+    flowerMaterial: {fileID: 8019103585891608733, guid: dbb1ed1b999ed2b499c5e21d1dedc152, type: 3}

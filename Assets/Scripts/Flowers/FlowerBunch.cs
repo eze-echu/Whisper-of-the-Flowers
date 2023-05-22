@@ -8,10 +8,12 @@ public class FlowerBunch : MonoBehaviour, IDragable, IResteable
     public bool used = false;
     public Flower type;
 
-    public bool canBeDragged { get => canBeDragged; set => canBeDragged = value; }
+    bool _canBeDragged;
+    public bool canBeDragged { get => _canBeDragged; set => _canBeDragged = value; }
 
     private void Start()
     {
+        canBeDragged = true;
         father = GetComponentInParent<BucketOfFlowers>();
     }
 
@@ -31,6 +33,7 @@ public class FlowerBunch : MonoBehaviour, IDragable, IResteable
         used = true;
         transform.position = father.OGflowerPosition;
         GetComponent<BoxCollider>().enabled = true;
+        GetComponentInChildren<MeshRenderer>().enabled = true;
         transform.SetParent(father.transform);
     }
 }

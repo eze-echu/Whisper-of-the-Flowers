@@ -132,6 +132,8 @@ public class DialogueController : MonoBehaviour, IDialogueController
         int time = 3;
         float elapsedTime = 0;
 
+        yield return new WaitForSeconds(5);
+
         while(elapsedTime < time)
         {
             elapsedTime += Time.deltaTime;
