@@ -168,6 +168,7 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
 
     public void ResetToOriginalState()
     {
+        canBeDragged = false;
         transform.position = _lastposition;
         transform.SetParent(null);
         GetComponent<BoxCollider>().enabled = true;

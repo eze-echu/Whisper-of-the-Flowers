@@ -13,6 +13,7 @@ public class HandInZone : MonoBehaviour, IDropZone
         gameObject.tag = "DropZone";
         handInBefore = delegate
         {
+            a.GetComponent<Bouquet>().canBeDragged = false;
         };
         handInAfter = delegate
         {

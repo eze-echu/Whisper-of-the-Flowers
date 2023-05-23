@@ -106,14 +106,14 @@ public class DragAndDrop : MonoBehaviour
         float duration = 0.3f;
 
         Vector3 from = obj.position;
-
+        dragable.canBeDragged = false;
         while (elapsed < duration)
         {
             obj.transform.position = Vector3.Lerp(from, og, elapsed / duration);
             elapsed += Time.deltaTime;
             yield return null;
         }
-
+        dragable.canBeDragged = true;
         transform.position = og;
     }
     private void Update()
