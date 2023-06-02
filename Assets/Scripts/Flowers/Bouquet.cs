@@ -174,6 +174,11 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
         GetComponent<BoxCollider>().enabled = true;
         FlowerAdded(null);
     }
+
+    public FlowerValues GetValues()
+    {
+        return values;
+    }
 }
 
 

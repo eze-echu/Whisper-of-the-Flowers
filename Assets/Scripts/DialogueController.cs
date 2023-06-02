@@ -24,13 +24,7 @@ public class DialogueController : MonoBehaviour, IDialogueController
 
     public HandInZone handInZone;
 
-    
-
-
-    private void Start()
-    {
-       //ShowRandomRequest();
-    }
+  
 
     public void ShowSpecificRequest(string text, bool end = false)
     {

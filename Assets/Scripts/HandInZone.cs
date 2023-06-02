@@ -7,6 +7,14 @@ public class HandInZone : MonoBehaviour, IDropZone
     private delegate void handInActions();
     private handInActions handInAfter;
     private handInActions handInBefore;
+
+    private PartycleController partycleController;
+
+    public void Start()
+    {
+        partycleController = FindObjectOfType<PartycleController>();
+    }
+
     public bool DropAction(GameObject a = null)
     {
         print("HandIN");
@@ -14,9 +22,14 @@ public class HandInZone : MonoBehaviour, IDropZone
         handInBefore = delegate
         {
             a.GetComponent<Bouquet>().canBeDragged = false;
+
+            partycleController.PlayParticle(a.GetComponent<Bouquet>().GetValues().message.ToString() == "Decrease_of_Love" ? 0 : 1);
+            
         };
         handInAfter = delegate
         {
+            partycleController.StopAllParticles();
+
             a?.transform.GetComponent<Bouquet>()?.SendVariableToStoryManager();
             FindObjectOfType<FlowerHandler>()?.ResetWorkspace();
              a?.GetComponent<Bouquet>()?.ResetToOriginalState();

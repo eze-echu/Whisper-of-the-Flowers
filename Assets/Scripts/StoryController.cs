@@ -14,6 +14,7 @@ public class StoryController : MonoBehaviour
 
     [SerializeField] DialogueController _dialogueController;
     [SerializeField] ClientController _clientController;
+   
 
     public void Start()
     {
@@ -51,6 +52,7 @@ public class StoryController : MonoBehaviour
         {
             _currentStory++;
             _giveBad = true;
+            //_partCycleController.PlayParticle(0);
             if (_giveGood && _giveBad)
             {
                 EndMhe();
@@ -98,6 +100,7 @@ public class StoryController : MonoBehaviour
         {
             _currentStory += 2;
             _giveGood = true;
+            //_partCycleController.PlayParticle(1);
             if (_giveGood && _giveBad)
             {
                 EndMhe();
