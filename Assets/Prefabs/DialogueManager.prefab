@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Content: {fileID: 2197705511035749826}
-  m_Horizontal: 1
+  m_Horizontal: 0
   m_Vertical: 1
   m_MovementType: 1
   m_Elasticity: 0.1
@@ -321,7 +321,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2197705511917253021}
   m_HandleRect: {fileID: 2197705511917253020}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 1.0000006
   m_Size: 0.6666667
   m_NumberOfSteps: 0
   m_OnValueChanged:
