@@ -7,15 +7,35 @@ using TMPro;
 public class DialogueManager : MonoBehaviour
 {
     public GameObject textObjectPrefab;
-    public Transform contentTransform;
+    public RectTransform contentTransform;
+    [SerializeField] RectTransform _scrollView;
     public float maxTextWidth = 600f;
+
+    public RectTransform desrieX;
+
+    private static DialogueManager instance;
 
     public void Start()
     {
-        ShowRequest("pipopipo");
+
+        ShowRequest("Inserte Texto");
+
     }
 
+    private DialogueManager(RectTransform contentTransform, GameObject textObjectPrefab)
+    {
+        this.contentTransform = contentTransform;
+        this.textObjectPrefab = textObjectPrefab;
+    }
 
+    public static DialogueManager GetInstance(RectTransform contentTransform, GameObject textObjectPrefab)
+    {
+        if (instance == null)
+        {
+            instance = new DialogueManager(contentTransform, textObjectPrefab);
+        }
+        return instance;
+    }
     public void ShowRequest<T>(T value)
     {
         if (value is string stringvalue)
@@ -81,25 +101,58 @@ public class DialogueManager : MonoBehaviour
         textMesh.text = text;
 
         AdjustObjectPosition(newTextObject);
-        AdjustBackgroundWidth(newTextObject, textMesh);
+        AdjustObjectBackgroundWidth(newTextObject);
+        //AdjustObjectPosition(newTextObject);
         //AdjustContentSize();
         //ScrollToBottom();
 
 
     }
 
-    private void AdjustBackgroundWidth(GameObject newTextObject, TextMeshProUGUI textMesh)
+    private void AdjustObjectBackgroundWidth(GameObject newTextObject)
     {
-        RectTransform backgroundRect = newTextObject.GetComponentInChildren<Image>().rectTransform;
+
+        /*
+        RectTransform newTextRect = newTextObject.GetComponent<RectTransform>();
+        TextMeshProUGUI textMesh = newTextObject.GetComponentInChildren<TextMeshProUGUI>();
+
+        // Obtener el ancho preferido del texto
         float textWidth = textMesh.preferredWidth;
-        float backgroundWidth = Mathf.Min(textWidth, maxTextWidth);
-        Vector2 backgroundSize = backgroundRect.sizeDelta;
-        backgroundSize.x = backgroundWidth;
-        backgroundRect.sizeDelta = backgroundSize;
+
+        // Obtener el ancho máximo permitido para el objeto instanciado
+        float maxObjectWidth = _scrollView.GetComponent<RectTransform>().rect.width;
+
+        // Calcular el nuevo valor del borde izquierdo (left) del objeto
+        float newLeft = Mathf.Clamp(textWidth, 0f, maxObjectWidth) * 0.5f; // La mitad del ancho del texto
+
+        // Establecer el nuevo valor del borde izquierdo (left) del objeto
+        Vector2 offsetMin = newTextRect.offsetMin;
+        offsetMin.x = -newLeft;
+        newTextRect.offsetMin = offsetMin;
+        */
+
+        RectTransform backgroundRect = newTextObject.GetComponentInChildren<Image>().rectTransform;
+        TextMeshProUGUI textMesh = newTextObject.GetComponentInChildren<TextMeshProUGUI>();
+
+        // Obtener el ancho preferido del texto
+        float textWidth = textMesh.preferredWidth;
+
+        // Obtener el ancho máximo permitido para el objeto instanciado
+        float maxObjectWidth = _scrollView.GetComponent<RectTransform>().rect.width;
+
+        // Calcular el nuevo valor del borde izquierdo (left) del objeto
+        float newLeft = Mathf.Clamp(textWidth, 0f, maxObjectWidth) * 0.5f; // La mitad del ancho del texto
+
+        // Establecer el nuevo valor del borde izquierdo (left) del objeto
+        Vector2 offsetMin = backgroundRect.offsetMin;
+        offsetMin.x = -newLeft;
+        backgroundRect.offsetMin = offsetMin;
+
     }
 
     private void AdjustObjectPosition(GameObject newTextObject)
     {
+        
         RectTransform newTextRect = newTextObject.GetComponent<RectTransform>();
         RectTransform contentRect = contentTransform.GetComponent<RectTransform>();
 
@@ -108,13 +161,15 @@ public class DialogueManager : MonoBehaviour
 
         // Establecer la posición del newTextObject en el borde derecho del contentTransform
         Vector2 anchoredPosition = newTextRect.anchoredPosition;
-        float newX = (contentRect.rect.width * 0.5f) + (newTextRect.rect.width ); // Calcular la posición X
+        float newX = desrieX.anchoredPosition.x ;
         float newY = (contentRect.rect.height * 0.5f) - (newTextRect.rect.height * 0.5f); // Calcular la posición Y
         anchoredPosition.x = newX;
         anchoredPosition.y = newY;
         newTextRect.anchoredPosition = anchoredPosition;
 
        
+
+
     }
 
     private void AdjustContentSize()
