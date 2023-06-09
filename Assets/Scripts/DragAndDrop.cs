@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DragAndDrop : MonoBehaviour
 {
@@ -8,12 +9,23 @@ public class DragAndDrop : MonoBehaviour
     private Transform parent;
     private bool isDragging = false;
     private IDragable dragable;
+    private Canvas canvas;
 
     
     private void Start()
     {
         parent = transform.parent;
         dragable = GetComponent<IDragable>();
+        Canvas[] temp;
+        temp = FindObjectsOfType<Canvas>();
+        foreach(var a in temp)
+        {
+            if (a.gameObject.gameObject.tag == "UI")
+            {
+                canvas = a;
+            }
+        }
+
     }
 
     private RaycastHit CastRay()
@@ -58,11 +70,22 @@ public class DragAndDrop : MonoBehaviour
     {
         if (isDragging)
         {
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-          
+            Vector3 mousePosition = GameManager.instance.DragCamera.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = lastPosition.z - 1f;
             transform.position = (mousePosition);
         }
+    }
+    Vector2 UnscalePosition(Vector2 vec)
+    {
+        Vector2 referenceResolution = canvas.GetComponent<CanvasScaler>().referenceResolution;
+        Vector2 currentResolution = new Vector2(Screen.width, Screen.height);
+
+        float widthRatio = currentResolution.x / referenceResolution.x;
+        float heightRatio = currentResolution.y / referenceResolution.y;
+
+        float ratio = Mathf.Lerp(heightRatio, widthRatio, canvas.GetComponent<CanvasScaler>().matchWidthOrHeight);
+
+        return vec / ratio;
     }
 
     private void OnMouseUp()

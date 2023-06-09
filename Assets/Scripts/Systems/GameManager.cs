@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public delegate void EventReceiver();
+    public Camera DragCamera;
 
     static Dictionary<string, EventReceiver> _events = new Dictionary<string, EventReceiver>();
 
