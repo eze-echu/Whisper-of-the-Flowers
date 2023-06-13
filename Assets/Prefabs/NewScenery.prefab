@@ -145,6 +145,7 @@ Transform:
   - {fileID: 7516561107822242479}
   - {fileID: 7516561107409659060}
   - {fileID: 7516561108392353997}
+  - {fileID: 957368642804511665}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -246,6 +247,68 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &775737099516679258
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8059906206840694521}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 5b9bbf05098aa49419baf1b91be6436b, type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5b9bbf05098aa49419baf1b91be6436b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5b9bbf05098aa49419baf1b91be6436b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.703
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5b9bbf05098aa49419baf1b91be6436b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.071
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5b9bbf05098aa49419baf1b91be6436b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5b9bbf05098aa49419baf1b91be6436b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5b9bbf05098aa49419baf1b91be6436b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5b9bbf05098aa49419baf1b91be6436b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5b9bbf05098aa49419baf1b91be6436b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5b9bbf05098aa49419baf1b91be6436b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5b9bbf05098aa49419baf1b91be6436b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5b9bbf05098aa49419baf1b91be6436b, type: 3}
+      propertyPath: m_Name
+      value: pedestal&book
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5b9bbf05098aa49419baf1b91be6436b, type: 3}
+--- !u!4 &957368642804511665 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5b9bbf05098aa49419baf1b91be6436b, type: 3}
+  m_PrefabInstance: {fileID: 775737099516679258}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8059906205140194041
 PrefabInstance:
   m_ObjectHideFlags: 0
