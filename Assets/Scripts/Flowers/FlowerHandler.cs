@@ -27,6 +27,7 @@ public class FlowerHandler : MonoBehaviour
             print("a");
             if (flower.available)
             {
+                print("a");
                 /*var b = Instantiate(buckets.gameObject, scrollViewPort.transform);
                 b.transform.SetParent(scrollViewPort.transform, true);*/
                 GameObject b = Instantiate(bucketPrefab.gameObject, grid.CellToWorld(new Vector3Int(i, 0, 0)), Quaternion.identity);
