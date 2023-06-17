@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee0bcdab8adb72347af837b546e2d3d0, type: 3}
+  m_Name: Rose_Yellow
+  m_EditorClassIdentifier: 
+  available: 1
+  flowerValues:
+    message: 2
+    intent: 0
+    formality: 0
+    intentMultiplier: 0
+    formalityMultiplier: 0
+  flowerModel:
+    flowerMesh: {fileID: 5187497405620314081, guid: f6d2fac8741997a4e85c09568c559a2e, type: 3}
+    flowerMaterial: {fileID: 8456771670226428982, guid: f6d2fac8741997a4e85c09568c559a2e, type: 3}

@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee0bcdab8adb72347af837b546e2d3d0, type: 3}
-  m_Name: Orange_Lily
+  m_Name: Rose_Crimson
   m_EditorClassIdentifier: 
   available: 1
   flowerValues:
-    message: 2
+    message: 3
     intent: 0
     formality: 0
     intentMultiplier: 0
     formalityMultiplier: 0
   flowerModel:
-    flowerMesh: {fileID: 3321989493707607172, guid: 6265cd746c96f674fb85be2af932858e, type: 3}
-    flowerMaterial: {fileID: 8876668967785482756, guid: 6265cd746c96f674fb85be2af932858e, type: 3}
+    flowerMesh: {fileID: 3605576749610229825, guid: 01edc92d8c8e8334cbf89379c7c91d3e, type: 3}
+    flowerMaterial: {fileID: 922767746494069722, guid: 01edc92d8c8e8334cbf89379c7c91d3e, type: 3}
