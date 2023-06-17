@@ -16,12 +16,15 @@ public class FlowerHandler : MonoBehaviour
     public Flower[] flowers;
     public BucketOfFlowers bucketPrefab;
     public Grid grid;
+    [Range(1, 5)]
+    public int GridWidth;
     private List<BucketOfFlowers> bucketsOfFlowers = new List<BucketOfFlowers>();
     public GameObject scrollViewPort;
 
     private void Start()
     {
-        int i = 0;
+        int i = 0; //Acts as X axis on the flower grid
+        int j = 0; //Acts as Y Acis on the flower grid
         foreach(var flower in flowers)
         {
             print("a");
@@ -30,7 +33,12 @@ public class FlowerHandler : MonoBehaviour
                 print("a");
                 /*var b = Instantiate(buckets.gameObject, scrollViewPort.transform);
                 b.transform.SetParent(scrollViewPort.transform, true);*/
-                GameObject b = Instantiate(bucketPrefab.gameObject, grid.CellToWorld(new Vector3Int(i, 0, 0)), Quaternion.identity);
+                if (i > 0 && i % GridWidth == 0)
+                {
+                    j++;
+                    i = 0;
+                }
+                GameObject b = Instantiate(bucketPrefab.gameObject, grid.CellToWorld(new Vector3Int(i, 0, j)), Quaternion.identity);
                 i++;
                 b.transform.SetParent(grid.transform);
                 var c = b.GetComponent<BucketOfFlowers>();
