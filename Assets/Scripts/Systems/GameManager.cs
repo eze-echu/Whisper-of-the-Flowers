@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
     public delegate void EventReceiver();
     public Camera DragCamera;
 
+    [Range(-100, 100)]
+    public float distanceFromCamera;
+
     static Dictionary<string, EventReceiver> _events = new Dictionary<string, EventReceiver>();
 
     public static GameManager instance;

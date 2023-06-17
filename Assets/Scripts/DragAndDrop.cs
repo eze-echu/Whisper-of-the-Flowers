@@ -11,6 +11,7 @@ public class DragAndDrop : MonoBehaviour
     private IDragable dragable;
     private Canvas canvas;
 
+
     
     private void Start()
     {
@@ -71,7 +72,7 @@ public class DragAndDrop : MonoBehaviour
         if (isDragging)
         {
             Vector3 mousePosition = GameManager.instance.DragCamera.ScreenToWorldPoint(Input.mousePosition);
-            mousePosition.z = lastPosition.z - 1f;
+            mousePosition.z = GameManager.instance.distanceFromCamera;
             transform.position = (mousePosition);
         }
     }
