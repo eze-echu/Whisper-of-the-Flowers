@@ -9,7 +9,11 @@ public enum MessageType
     Decrease_of_Love,
     Love,
     Faith,
-    Foolishness
+    Foolishness,
+    Justice,
+    Hatred,
+    Jealousy,
+    Mourning
 }
 public class FlowerHandler : MonoBehaviour
 {

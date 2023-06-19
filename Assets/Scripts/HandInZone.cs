@@ -23,8 +23,8 @@ public class HandInZone : MonoBehaviour, IDropZone
             handInBefore = delegate
             {
                 a.GetComponent<Bouquet>().canBeDragged = false;
-
-                partycleController.PlayParticle(a.GetComponent<Bouquet>().GetValues().message.ToString() == "Decrease_of_Love" ? 0 : 1);
+                string intent = a.GetComponent<Bouquet>().GetValues().message.ToString();
+                partycleController.PlayParticle(intent == "Decrease_of_Love" || intent == "Jealousy" || intent == "Mourning" || intent == "Hatred" ? 0 : 1);
                 
             };
             handInAfter = delegate

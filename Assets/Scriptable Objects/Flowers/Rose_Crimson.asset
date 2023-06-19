@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   available: 1
   flowerValues:
-    message: 3
+    message: 8
     intent: 0
     formality: 0
     intentMultiplier: 0
