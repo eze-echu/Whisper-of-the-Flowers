@@ -154,9 +154,8 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
         {
             FlowerAdded(a.GetComponent<FlowerBunch>());
         }
-        else
-        {
-            SendVariableToStoryManager();
+        else if (_ready){
+            gameObject.tag = "Occupied";
         }
         return true;
     }

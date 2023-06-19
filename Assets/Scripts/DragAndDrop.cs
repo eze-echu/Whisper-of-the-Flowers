@@ -11,6 +11,9 @@ public class DragAndDrop : MonoBehaviour
     private IDragable dragable;
     private Canvas canvas;
 
+    private delegate void Drops();
+    private Drops onDrop; // the event handler for the drop event.
+
 
     
     private void Start()
@@ -26,7 +29,6 @@ public class DragAndDrop : MonoBehaviour
                 canvas = a;
             }
         }
-
     }
 
     private RaycastHit CastRay()
@@ -95,16 +97,10 @@ public class DragAndDrop : MonoBehaviour
         {
             isDragging = false;
             bool dropped = false;
-            Collider[] hitColliders = Physics.OverlapSphere(new Vector3(transform.position.x, transform.position.y, transform.position.z), 0.75f);
+            Collider[] hitColliders = Physics.OverlapSphere(new Vector3(transform.position.x, transform.position.y, transform.position.z), 1f);
             foreach (Collider hitCollider in hitColliders)
             {
-                print(hitCollider.tag);
-                if (hitCollider.gameObject.CompareTag("DropZone"))
-                {
-                    print(this.name);
-
-                    //transform.position = hitCollider.gameObject.transform.position;
-                    //transform.position = hitCollider.GetComponent<BucketOfFlowers>()?.OGflowerPosition ?? hitCollider.gameObject.transform.position;
+                onDrop = delegate{
                     if (parent)
                     {
                         parent?.GetComponent<IOccupied>()?.RemoveAction();
@@ -112,10 +108,22 @@ public class DragAndDrop : MonoBehaviour
                     }
                     parent = hitCollider.gameObject.transform;
                     //transform.SetParent(hitCollider.transform);
-                    hitCollider.tag = "Occupied";
-                    _ = hitCollider.transform.parent?.GetComponent<IDropZone>()?.DropAction(this.gameObject) ?? hitCollider?.GetComponent<IDropZone>()?.DropAction(this.gameObject);
                     dropped = true;
-                    break;
+                };
+                print(hitCollider.tag);
+                if (hitCollider.gameObject.CompareTag("DropZone"))
+                {
+                    bool a = hitCollider.transform.parent?.GetComponent<IDropZone>()?.DropAction(this.gameObject) ?? false;
+                    bool b = hitCollider.GetComponent<IDropZone>()?.DropAction(this.gameObject) ?? false;
+                    if(a || b){
+                        onDrop();
+                        break;
+                    }
+                    print(this.name);
+
+                    //transform.position = hitCollider.gameObject.transform.position;
+                    //transform.position = hitCollider.GetComponent<BucketOfFlowers>()?.OGflowerPosition ?? hitCollider.gameObject.transform.position;
+                    
                 }
             }
             if (!dropped)
