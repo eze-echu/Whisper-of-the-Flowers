@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class StoryController : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class StoryController : MonoBehaviour
     int _currentStory;
     bool _giveGood;
     bool _giveBad;
-
+    public TextMeshProUGUI Result;
 
     [SerializeField] DialogueController _dialogueController;
     [SerializeField] ClientController _clientController;
@@ -66,6 +67,7 @@ public class StoryController : MonoBehaviour
             else
             {
                 NextClient();
+                Result.text = "Resultado Malo";
                 _dialogueController.ShowSpecificRequest(_history[_currentStory], true);
             }
             _currentStory++;
@@ -114,6 +116,7 @@ public class StoryController : MonoBehaviour
             else
             {
                 NextClient();
+                Result.text = "Resultado Bueno";
                 _dialogueController.ShowSpecificRequest(_history[_currentStory], true);
             }
 
@@ -129,6 +132,7 @@ public class StoryController : MonoBehaviour
     {
         _currentStory = 5;
         NextClient();
+        Result.text = "Resultado Neutro";
         _dialogueController.ShowSpecificRequest(_history[_currentStory], true);
 
     }
