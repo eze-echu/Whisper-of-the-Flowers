@@ -111,6 +111,7 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
             canBeDragged = false;
             occupied = 0;
         }
+        flowerBunch.ResetToOriginalState();
     }
 
     public void SendVariableToStoryManager()
