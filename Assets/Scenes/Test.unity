@@ -698,8 +698,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.6653197, y: 2.9486573, z: 3.048232}
-  m_Center: {x: 0.030686524, y: 0.4543651, z: -0.613336}
+  m_Size: {x: 1.6653197, y: 2.7665431, z: 3.048232}
+  m_Center: {x: 0.030686524, y: 0.36331207, z: -0.613336}
 --- !u!23 &364952762
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4624,11 +4624,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2519015748257210628, guid: 89213603af9d6f24ba6d0e963b6aeac5, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.25092638
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2519015748257210628, guid: 89213603af9d6f24ba6d0e963b6aeac5, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.6545696
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2519015748257210628, guid: 89213603af9d6f24ba6d0e963b6aeac5, type: 3}
       propertyPath: m_SizeDelta.x
@@ -4648,11 +4648,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2519015748257385928, guid: 89213603af9d6f24ba6d0e963b6aeac5, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.6545696
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2519015748257385928, guid: 89213603af9d6f24ba6d0e963b6aeac5, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.74543357
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2519015748257385928, guid: 89213603af9d6f24ba6d0e963b6aeac5, type: 3}
       propertyPath: m_SizeDelta.x

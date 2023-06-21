@@ -48,10 +48,11 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
             {
                 areFilled = false;
             }
+            flowerBunch.ResetToOriginalState();
             flowers[occupied].flower = flowerBunch.type;
-            flowerBunch.transform.SetParent(flowers[occupied].transform);
+            /*flowerBunch.transform.SetParent(flowers[occupied].transform);
             flowerBunch.GetComponentInChildren<MeshRenderer>().enabled = false;
-            flowerBunch.GetComponent<BoxCollider>().enabled = false;
+            flowerBunch.GetComponent<BoxCollider>().enabled = false;*/
             switch (occupied)
             {
                 case 0:
@@ -111,7 +112,6 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
             canBeDragged = false;
             occupied = 0;
         }
-        flowerBunch.ResetToOriginalState();
     }
 
     public void SendVariableToStoryManager()
