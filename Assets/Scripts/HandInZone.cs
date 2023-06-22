@@ -24,7 +24,18 @@ public class HandInZone : MonoBehaviour, IDropZone
             {
                 a.GetComponent<Bouquet>().canBeDragged = false;
                 string intent = a.GetComponent<Bouquet>().GetValues().message.ToString();
-                partycleController.PlayParticle(intent == "Decrease_of_Love" || intent == "Jealousy" || intent == "Mourning" || intent == "Hatred" ? 0 : 1);
+                if (a.GetComponent<Bouquet>().GetValues().intent == 5)
+                {
+                    partycleController.PlayParticle(3);
+                }
+                else if (a.GetComponent<Bouquet>().GetValues().intent == -5)
+                {
+                    partycleController.PlayParticle(2);
+                }
+                else
+                {
+                    partycleController.PlayParticle(intent == "Decrease_of_Love" || intent == "Jealousy" || intent == "Mourning" || intent == "Hatred" ? 0 : 1);
+                }
                 
             };
             handInAfter = delegate
