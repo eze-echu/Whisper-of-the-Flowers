@@ -24,11 +24,11 @@ public class HandInZone : MonoBehaviour, IDropZone
             {
                 a.GetComponent<Bouquet>().canBeDragged = false;
                 string intent = a.GetComponent<Bouquet>().GetValues().message.ToString();
-                if (a.GetComponent<Bouquet>().GetValues().intent == 5)
+                if (a.GetComponent<Bouquet>().GetValues().intent == 5 && intent == "Love")
                 {
                     partycleController.PlayParticle(3);
                 }
-                else if (a.GetComponent<Bouquet>().GetValues().intent == -5)
+                else if (a.GetComponent<Bouquet>().GetValues().intent == -5 && intent == "Hatred")
                 {
                     partycleController.PlayParticle(2);
                 }

@@ -15,10 +15,10 @@ MonoBehaviour:
   available: 1
   flowerValues:
     message: 5
-    intent: 5
-    formality: 5
-    intentMultiplier: 3
-    formalityMultiplier: 3
+    intent: 0
+    formality: 0
+    intentMultiplier: 0
+    formalityMultiplier: 0
   flowerModel:
     flowerMesh: {fileID: 2145828775205341209, guid: ddc85ae3d87f57f4a8cb4e0d6e585e0e, type: 3}
     flowerMaterial: {fileID: 7294602089732399916, guid: ddc85ae3d87f57f4a8cb4e0d6e585e0e, type: 3}
