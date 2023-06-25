@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18371555, g: 0.22812967, b: 0.29895526, a: 1}
+  m_IndirectSpecularColor: {r: 0.18371603, g: 0.22812979, b: 0.29895526, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2808,29 +2808,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _history:
-  - "Greetings, I\u2019ve come to make you a request. There\u2019s a certain girl
-    I want to send some flowers to and I\u2019d like for you to prepare them. This
-    girl asked for us to meet at the palace gardens in secret and I want to let her
-    know that I\u2019ll be there. "
-  - "Hello florist. Something strange happened, I went to the palace gardens at the
-    agreed hour but she didn\u2019t show up. I don\u2019t know what could have happened
-    to her. Would you send her some flowers on my behalf? I\u2019d like to express
-    my love to her. "
-  - "Greetings florist. You did great on your last job, I thank you for that. I need
-    you to send her some flowers again to express my love to her. We\u2019re in a
-    really difficult situation but I want her to have faith in me, to believe in
-    our relationship. Could you do that for me? "
-  - "You learn that the prince has been very depressed as of late and hasn\u2019t
-    left his chambers. Nobody knows exactly why. "
-  - "Thank you for all you\u2019ve done for us. wouldn\u2019t recognize me. I\u2019m
-    the girl you\u2019ve been preparing all those flowers to. It\u2019s in part because
-    of them that we can freely express our love so I just wanted to thank you for
-    all you\u2019ve done for us. "
-  - "Hi there mister. I\u2019m the girl you\u2019ve been preparing all those flowers
-    to. I just wanted to let you know that your services won\u2019t be needed anymore
-    because we\u2019ve decided to stop communicating with each other. It wouldn't
-    speak well of him to be in a relationship with a commoner girl like me. Thank
-    you for your time. "
+  - "Buenos d\xEDas. Hay una chica a la que me gustar\xEDa enviarle flores y me gustar\xEDa
+    que vos las prepares."
+  - "Algo raro pas\xF3 con el pedido anterior, se ve que no le gustaron. Podr\xEDas
+    enviarle un nuevo ramo?"
+  - "Hiciste un buen trabajo la \xFAltima vez, gracias. Me gustar\xEDa que lo repitas
+    \xBFser\xE1 posible?"
+  - "Te enter\xE1s que el pr\xEDncipe est\xE1 deprimido \xFAltimamente. Decidis enviarle
+    un ramo por tu cuenta."
+  - "Buenas, soy la chica a la que le ven\xEDs enviando las flores. Esta vez me gustar\xEDa
+    que prepares unas para el pr\xEDncipe para expresarle mi amor."
+  - "Buenas, soy la chica a la que le ven\xEDs enviando las flores. Esta vez me gustar\xEDa
+    que prepares unas para el pr\xEDncipe para terminar nuestra relaci\xF3n. "
+  - "El pr\xEDncipe se encerr\xF3 en su habitaci\xF3n."
+  - "Te quer\xEDa agradecer por todas los ramos que armaste."
+  - "El pr\xEDncipe y la chica decidieron terminar su relaci\xF3n."
   Result: {fileID: 427280505}
   _dialogueController: {fileID: 919524888}
   _clientController: {fileID: 688543384}

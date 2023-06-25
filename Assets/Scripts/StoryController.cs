@@ -51,15 +51,30 @@ public class StoryController : MonoBehaviour
 
         if (subject == "Decrease_of_Love" || subject == "Mourning" || subject == "Jealousy" || subject == "Hatred")//_requieredSubject[_currentStory] && _currentStory < _history.Count && _currentStory < _requieredSubject.Count)
         {
+            if(_currentStory == 1 && !_giveGood)
+            {
+                _currentStory++;
+            }
+            else if (_currentStory == 3 && !_giveGood)
+            {
+                _currentStory++;
+                _currentStory++;
+            }
             _currentStory++;
             _giveBad = true;
             //_partCycleController.PlayParticle(0);
-            if (_giveGood && _giveBad)
+            if (_giveGood && _giveBad && _currentStory >= 5)
             {
                 EndMhe();
                 return;
             }
-            if(_currentStory < 3)
+            else if(_giveGood && _giveBad)
+            {
+                _currentStory++;
+                _currentStory++;
+                _dialogueController.ShowSpecificRequest(_history[_currentStory]);
+            }
+            else if(_currentStory < 5)
             {
                 NextClient();
                 _dialogueController.ShowSpecificRequest(_history[_currentStory]);
@@ -68,9 +83,8 @@ public class StoryController : MonoBehaviour
             {
                 NextClient();
                 Result.text = "Resultado Malo";
-                _dialogueController.ShowSpecificRequest(_history[_currentStory], true);
+                _dialogueController.ShowSpecificRequest(_history[6], true);
             }
-            _currentStory++;
             print(_giveBad);
             //IGNORAR
             /*
@@ -100,16 +114,28 @@ public class StoryController : MonoBehaviour
         }
         else 
         {
-            _currentStory += 2;
+            if(_currentStory == 3 && _giveBad)
+            {
+                _currentStory++;
+            }
+            _currentStory ++;
             _giveGood = true;
             //_partCycleController.PlayParticle(1);
-            if (_giveGood && _giveBad)
+            if (_giveGood && _giveBad && _currentStory >= 5)
             {
                 EndMhe();
                 return;
             }
-            if (_currentStory < 3)
+            else if (_giveGood && _giveBad)
             {
+                _currentStory++;
+                _currentStory++;
+                _currentStory++;
+                _dialogueController.ShowSpecificRequest(_history[_currentStory]);
+            }
+            else if (_currentStory < 5)
+            {
+                _currentStory++;
                 NextClient();
                 _dialogueController.ShowSpecificRequest(_history[_currentStory]);
             }
@@ -117,7 +143,7 @@ public class StoryController : MonoBehaviour
             {
                 NextClient();
                 Result.text = "Resultado Bueno";
-                _dialogueController.ShowSpecificRequest(_history[_currentStory], true);
+                _dialogueController.ShowSpecificRequest(_history[7], true);
             }
 
 
@@ -130,7 +156,7 @@ public class StoryController : MonoBehaviour
 
     public void EndMhe()
     {
-        _currentStory = 5;
+        _currentStory = 8;
         NextClient();
         Result.text = "Resultado Neutro";
         _dialogueController.ShowSpecificRequest(_history[_currentStory], true);

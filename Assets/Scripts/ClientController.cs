@@ -10,6 +10,7 @@ public class ClientController : MonoBehaviour
    
     public void ChangeClient(int currentClient)
     {
+        if(currentClient < _clients.Count)
         _imagePosition.sprite = _clients[currentClient];
     }
     
