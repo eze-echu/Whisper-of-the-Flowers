@@ -2778,7 +2778,7 @@ ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 50485338133748499, guid: bc7ea1dc95c0a94419d1f9f963268b09, type: 3}
   m_PrefabInstance: {fileID: 259654060}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1042880119
+--- !u!1001 &1051992748
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -2875,10 +2875,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c51b0cbec8f1d74e89a16f3cba4671e, type: 3}
---- !u!224 &1042880120 stripped
+--- !u!224 &1051992749 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6884444256427140860, guid: 4c51b0cbec8f1d74e89a16f3cba4671e, type: 3}
-  m_PrefabInstance: {fileID: 1042880119}
+  m_PrefabInstance: {fileID: 1051992748}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1139063005
 GameObject:
@@ -2910,21 +2910,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _history:
-  - "Buenos d\xEDas. Hay una chica a la que me gustar\xEDa enviarle flores y me gustar\xEDa
-    que vos las prepares."
-  - "Algo raro pas\xF3 con el pedido anterior, se ve que no le gustaron. Podr\xEDas
-    enviarle un nuevo ramo?"
-  - "Hiciste un buen trabajo la \xFAltima vez, gracias. Me gustar\xEDa que lo repitas
-    \xBFser\xE1 posible?"
-  - "Te enter\xE1s que el pr\xEDncipe est\xE1 deprimido \xFAltimamente. Decidis enviarle
-    un ramo por tu cuenta."
-  - "Buenas, soy la chica a la que le ven\xEDs enviando las flores. Esta vez me gustar\xEDa
-    que prepares unas para el pr\xEDncipe para expresarle mi amor."
-  - "Buenas, soy la chica a la que le ven\xEDs enviando las flores. Esta vez me gustar\xEDa
-    que prepares unas para el pr\xEDncipe para terminar nuestra relaci\xF3n. "
-  - "El pr\xEDncipe se encerr\xF3 en su habitaci\xF3n."
-  - "Te quer\xEDa agradecer por todas los ramos que armaste."
-  - "El pr\xEDncipe y la chica decidieron terminar su relaci\xF3n."
+  - "Buenas tardes, te quer\xEDa pedir si me podr\xEDas armar un ramito de flores
+    para conmemorar el casamiento del pr\xEDncipe"
+  - "No vi al pr\xEDncipe muy contento con el ramo que le regal\xE9. \xBFMe podr\xEDas
+    armar uno nuevamente?"
+  - "Hiciste un buen laburo. Me gustar\xEDa que lo repitieras."
+  - "Te enter\xE1s que el pr\xEDncipe est\xE1 enojado con su amigo. Decidis enviarle
+    otro ramo por tu cuenta."
+  - "Buenos d\xEDas, me gustar\xEDa darle unas flores a mi amigo en agradecimiento.
+    Preparalas por favor."
+  - "No estoy seguro que al pr\xEDncipe le haya gustado el ramo. Podr\xEDas armar
+    uno por \xFAltima vez?"
+  - "El pr\xEDncipe y su amigo se encuentran peleados. "
+  - "Poco despu\xE9s te enter\xE1s que el casamiento fue todo un \xE9xito."
+  - "El casamiento fue un \xE9xito pero la relaci\xF3n entre el pr\xEDncipe y su
+    amigo se encuentra algo da\xF1ada."
   Result: {fileID: 427280505}
   _dialogueController: {fileID: 919524888}
   _clientController: {fileID: 688543384}
@@ -3257,7 +3257,7 @@ RectTransform:
   - {fileID: 1464524780}
   - {fileID: 227820489}
   - {fileID: 1698425139}
-  - {fileID: 1042880120}
+  - {fileID: 1051992749}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
