@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18371603, g: 0.22812979, b: 0.29895526, a: 1}
+  m_IndirectSpecularColor: {r: 0.18371555, g: 0.22812967, b: 0.29895526, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2873,6 +2873,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6884444256427140861, guid: 4c51b0cbec8f1d74e89a16f3cba4671e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 664181836}
+    - target: {fileID: 6884444256427140861, guid: 4c51b0cbec8f1d74e89a16f3cba4671e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 364952765}
+    - target: {fileID: 6884444256427140861, guid: 4c51b0cbec8f1d74e89a16f3cba4671e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetWorkspace
+      objectReference: {fileID: 0}
+    - target: {fileID: 6884444256427140861, guid: 4c51b0cbec8f1d74e89a16f3cba4671e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ResetToOriginalState
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c51b0cbec8f1d74e89a16f3cba4671e, type: 3}
 --- !u!224 &1051992749 stripped
@@ -5095,10 +5111,18 @@ PrefabInstance:
     - target: {fileID: 5480217809262975695, guid: d4c1a16dc53cc6f468021885ed8b96ca, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 664181839}
     - target: {fileID: 5480217809262975695, guid: d4c1a16dc53cc6f468021885ed8b96ca, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Quit
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 5480217809262975695, guid: d4c1a16dc53cc6f468021885ed8b96ca, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: EventSystems, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5480217809262975695, guid: d4c1a16dc53cc6f468021885ed8b96ca, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Main Menu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4c1a16dc53cc6f468021885ed8b96ca, type: 3}
