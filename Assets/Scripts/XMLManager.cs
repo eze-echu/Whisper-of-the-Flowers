@@ -15,36 +15,44 @@ public class XMLManager : MonoBehaviour
         instance = this;
     }
 
-    public ItemDataBase itemDB;
+    public SaveData SD;
 
     public void SaveItems()
     {
-        XmlSerializer serializer = new XmlSerializer(typeof(ItemDataBase));
-        //FileStream stream = new FileStream(Application.dataPath + "/StreamingFiles/XML/item_data.xml", FileMode.Create);
-        //serializer.Serialize(stream, itemDB);
-        //Stream.Close();
+        XmlSerializer serializer = new XmlSerializer(typeof(SaveData));
+        FileStream stream = new FileStream(Application.dataPath + "/StreamingFiles/XML/save_data.xml", FileMode.Create);
+        serializer.Serialize(stream, SD);
+        stream.Close();
     }
 
     public void LoadItems()
     {
-        XmlSerializer serializer = new XmlSerializer(typeof(ItemDataBase));
-        //FileStream stream = new FileStream(Application.dataPath + "/StreamingFiles/XML/item_data.xml", FileMode.Open);
-        //itemDB = serializer.Deserialize(stream) as ItemDatabase;
-        //Stream.Close();
+        if (File.Exists(Application.dataPath + "/StreamingFiles/XML/save_data.xml"))
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(SaveData));
+            FileStream stream = new FileStream(Application.dataPath + "/StreamingFiles/XML/save_data.xml", FileMode.Open);
+            SD = serializer.Deserialize(stream) as SaveData;
+            stream.Close();
+        }
+        else
+        {
+            SD = new SaveData();
+        }
     }
 }
 
 [System.Serializable]
-public class ItemEntry
+public class SaveData
 {
-    public string name;
-    public Material material;
-    public int value;
+    public int levelComplete;
+    public Dictionary<string, bool> FlowerUnloked;
+    public List<LevelStat> estadisticasNivel;
 }
 
 [System.Serializable]
-public class ItemDataBase
+public class LevelStat
 {
     [XmlArray("LevelInfo")]
-    public List<ItemEntry> List = new List<ItemEntry>();
+    public string nombreNivel;
+    public int resultado;
 }
