@@ -32,7 +32,7 @@ public class TouchInteraction : MonoBehaviour
         return false;
     }
 
-    private void ToggleObjectActivation()
+    public void ToggleObjectActivation()
     {
         if (_target != null)
         {
