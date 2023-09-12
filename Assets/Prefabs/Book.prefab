@@ -778,8 +778,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7bbbf54673a2883428f9bed511b6dce5, type: 3}
   - {fileID: 21300000, guid: 444069ae4c24e1548926f3cf0505013b, type: 3}
   - {fileID: 21300000, guid: 435a77e2af4857c41b398ec4295cd89c, type: 3}
-  - {fileID: 21300000, guid: 99af11fa4651f214a98bb1c7360c588d, type: 3}
-  - {fileID: 21300000, guid: 393d33553faa61648803d57a7f3abbba, type: 3}
+  - {fileID: 21300000, guid: 199f408905fae2c428f2f17c1b8fbe1a, type: 3}
+  - {fileID: 21300000, guid: fd88379b0a56eb74a9c069e1fc9f01b5, type: 3}
   - {fileID: 21300000, guid: 18ff629b4c158a94799a6858e3d61fd8, type: 3}
   interactable: 1
   enableShadowEffect: 1
@@ -1132,7 +1132,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 793f32780bc246649925d824d035c2b3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c3a98ef13de5d8842b2cd251935cda85, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
