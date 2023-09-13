@@ -8,6 +8,8 @@ public class TouchInteraction : MonoBehaviour
 {
     [SerializeField] GameObject _target;
 
+    [SerializeField] GameObject _Background;
+
    
 
 
@@ -37,6 +39,11 @@ public class TouchInteraction : MonoBehaviour
         if (_target != null)
         {
             _target.SetActive(!_target.activeSelf);
+        }
+
+        if (_Background != null)
+        {
+            _Background.SetActive(!_Background.activeSelf);
         }
     }
 }
