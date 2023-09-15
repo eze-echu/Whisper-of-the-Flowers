@@ -4,15 +4,34 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+[CreateAssetMenu]
 public class Dialogue : ScriptableObject
 {
-    public int absoluteID; // formateado como CH-DI-PO por ejemplo, capitulo 1, dialogo 3, posible 2 seria 01-03-02
-    int chapterID; // = int.TryParse(absoluteID.ToString().Substring(0, 2));
-    int dialogueID; // = int.TryParse(absoluteID.ToString().Substring(3, 2));
-    public int possibleDialogueID; //si es nulo o mayor a 0/1, significa que puede ser mas de uno si el dialogo lo muestra = int.TryParse(absoluteID.ToString().Substring(6, 2));
-    string[] dialogue;
+    [SerializeField]
+    private int _absoluteID;
+    public int absoluteID{ // formateado como ChDiPo por ejemplo, capitulo 1, dialogo 3, posible 2 seria 01-03-02
+        get{return _absoluteID; }
+        set{
+            _absoluteID = value;
+            string absoluteIDString = _absoluteID.ToString();
+
+            string chapterIDString = absoluteIDString.Substring(0, 2);
+            _chapterID = int.Parse(chapterIDString);
+
+            string dialogueIDString = absoluteIDString.Substring(2, 2);
+            _dialogueID = int.Parse(dialogueIDString);
+
+            string posibleDialogueIDString = absoluteIDString.Substring(4, 2);
+            _possibleDialogueID = int.Parse(posibleDialogueIDString);
+        }
+    } 
+    private int _chapterID; // = int.TryParse(absoluteID.ToString().Substring(0, 2));
+    private int _dialogueID; // = int.TryParse(absoluteID.ToString().Substring(3, 2));
+    private int _possibleDialogueID; //si es nulo o mayor a 0/1, significa que puede ser mas de uno si el dialogo lo muestra = int.TryParse(absoluteID.ToString().Substring(6, 2));
+    public string[] dialogue;
     public requirements triggers;
-    bool ending;
+    public bool ending;
+    public int portraitID;
 
     // Este codigo checkea las condiciones cumplidas de un set de dialogos que comparten chapterID y dialogueID (comparten CH y DI, pero no PO)
     // una vez chequea las posibilidades, devuelve el valor que mas checks cumplio
@@ -48,6 +67,6 @@ public struct requirements
 {
     public int intent;
     public int formality;
-    public int[] mustSeeDialogWithID;
+    public int[] mustSeeDialogWithID; //absolute IDs that must be seen, obtained from SAVE
 
 }
