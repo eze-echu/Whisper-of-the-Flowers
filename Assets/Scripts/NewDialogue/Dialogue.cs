@@ -35,9 +35,12 @@ public class Dialogue : ScriptableObject
 
     // Este codigo checkea las condiciones cumplidas de un set de dialogos que comparten chapterID y dialogueID (comparten CH y DI, pero no PO)
     // una vez chequea las posibilidades, devuelve el valor que mas checks cumplio
-    public Dialogue CheckRequirements(Dialogue[] dialoguesToCheck, int intent, int formality, int[] dialoguesSeen)
+    public static Dialogue CheckRequirements(Dialogue[] dialoguesToCheck, MessageType messageType, int intent, int formality, int[] dialoguesSeen = null)
     {
         Tuple<int, int> mostChecks = new Tuple<int, int>(0, 0);
+        if(dialoguesToCheck.Length <= 0){
+            return null;
+        }
         foreach (var dialogue in dialoguesToCheck)
         {
             int checkList = 0;
@@ -67,6 +70,7 @@ public struct requirements
 {
     public int intent;
     public int formality;
+    public MessageType message;
     public int[] mustSeeDialogWithID; //absolute IDs that must be seen, obtained from SAVE
 
 }
