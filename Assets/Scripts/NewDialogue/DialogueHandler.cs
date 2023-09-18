@@ -12,11 +12,47 @@ public class DialogueHandler : MonoBehaviour
     private Dialogue[] _dialogues;
 
     public Dialogue[] dialogues{get{ return _dialogues;} set{_dialogues=value;}}
+    public static DialogueHandler instance; 
+    public void Awake()
+    {
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
+    }
     public DialogueHandler(Dialogue[] dialoguesToUse){
         dialogues = dialoguesToUse;
     }
-    public Dialogue BringNextDialogue(int currentID, MessageType message, int intent, int formality){
-        int[] TODO = new int[1]{0}; //Queda implementar los guardados
-        return Dialogue.CheckRequirements(_dialogues.Where(id => id.absoluteID.ToString().StartsWith(currentID.ToString().Substring(0,4))).ToArray(), message, intent, formality, null);
+    public Dialogue BringNextDialogue(Dialogue[] dialoguesSeparated, MessageType message, int intent, int formality, string[] seenDialogues = null){
+        //Queda implementar los guardados
+        return Dialogue.CheckRequirements(dialoguesSeparated, message, intent, formality, seenDialogues);
+    }
+    public Dialogue BringNextDialogue(Dialogue[] dialoguesSeparated, string[] seenDialogues = null){
+        //Queda implementar los guardados
+        return Dialogue.CheckRequirements(dialoguesSeparated, seenDialogues);
+    }
+    public Dialogue[] GetDialoguePossibilities(int chapterID, int dialogID){
+        string CH = chapterID.ToString();
+        string DI = dialogID.ToString();
+        if(CH.Length < 2){
+            CH = 0 + CH;
+        }
+        if(DI.Length < 2){
+            DI = 0 + DI;
+        }
+        return _dialogues.Where(id => id.absoluteID.StartsWith(CH + DI)).ToArray();
+    }
+    public Dialogue GetSpecificDialogue(int chapterID, int dialogID, int possibleID){
+        string CH = chapterID.ToString();
+        string DI = dialogID.ToString();
+        string PO = possibleID.ToString();
+        if(CH.Length < 2){
+            CH = 0 + CH;
+        }
+        if(DI.Length < 2){
+            DI = 0 + DI;
+        }
+        if(PO.Length < 2){
+            PO = 0 + PO;
+        }
+        return _dialogues.Where(id => id.absoluteID.StartsWith(CH + DI + PO)).First();
     }
 }

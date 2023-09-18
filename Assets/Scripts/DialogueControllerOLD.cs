@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class DialogueController : MonoBehaviour, IDialogueController
+public class DialogueControllerOLD : MonoBehaviour, IDialogueController
 {
     public TMP_Text text;
     public string[] additionalRequest;

@@ -2,75 +2,125 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
+using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 
 [CreateAssetMenu]
 public class Dialogue : ScriptableObject
 {
     [SerializeField]
-    private int _absoluteID;
-    public int absoluteID{ // formateado como ChDiPo por ejemplo, capitulo 1, dialogo 3, posible 2 seria 01-03-02
+    private string _absoluteID;
+    public string absoluteID{ // formateado como ChDiPo por ejemplo, capitulo 1, dialogo 3, posible 2 seria 01-03-02
         get{return _absoluteID; }
         set{
             _absoluteID = value;
-            string absoluteIDString = _absoluteID.ToString();
 
-            string chapterIDString = absoluteIDString.Substring(0, 2);
-            _chapterID = int.Parse(chapterIDString);
+            _chapterID = _absoluteID.Substring(0, 2);
 
-            string dialogueIDString = absoluteIDString.Substring(2, 2);
-            _dialogueID = int.Parse(dialogueIDString);
+            _dialogueID = _absoluteID.Substring(2, 2);
 
-            string posibleDialogueIDString = absoluteIDString.Substring(4, 2);
-            _possibleDialogueID = int.Parse(posibleDialogueIDString);
+            possibleDialogueID = _absoluteID.Substring(4, 2);
         }
     } 
-    private int _chapterID; // = int.TryParse(absoluteID.ToString().Substring(0, 2));
-    private int _dialogueID; // = int.TryParse(absoluteID.ToString().Substring(3, 2));
-    private int _possibleDialogueID; //si es nulo o mayor a 0/1, significa que puede ser mas de uno si el dialogo lo muestra = int.TryParse(absoluteID.ToString().Substring(6, 2));
+    private string _chapterID; // = int.TryParse(absoluteID.ToString().Substring(0, 2));
+    private string _dialogueID; // = int.TryParse(absoluteID.ToString().Substring(3, 2));
+    public string possibleDialogueID; //si es nulo o mayor a 0/1, significa que puede ser mas de uno si el dialogo lo muestra = int.TryParse(absoluteID.ToString().Substring(6, 2));
     public string[] dialogue;
-    public requirements triggers;
+    [SerializeField]
+    private requirements _triggers;
     public bool ending;
     public int portraitID;
 
     // Este codigo checkea las condiciones cumplidas de un set de dialogos que comparten chapterID y dialogueID (comparten CH y DI, pero no PO)
     // una vez chequea las posibilidades, devuelve el valor que mas checks cumplio
-    public static Dialogue CheckRequirements(Dialogue[] dialoguesToCheck, MessageType messageType, int intent, int formality, int[] dialoguesSeen = null)
+    public static Dialogue CheckRequirements(Dialogue[] dialoguesToCheck, MessageType messageType = MessageType.Null, int intent = 0, int formality = 0, string[] dialoguesSeen = null)
     {
-        Tuple<int, int> mostChecks = new Tuple<int, int>(0, 0);
         if(dialoguesToCheck.Length <= 0){
             return null;
         }
+        Tuple<string, int> mostChecks = new Tuple<string, int>(dialoguesToCheck[0].absoluteID, 0);
+        //Debug.LogWarning(intent.ToString() + formality.ToString());
         foreach (var dialogue in dialoguesToCheck)
         {
             int checkList = 0;
-            if (dialogue.triggers.intent > 0 ? dialogue.triggers.intent > intent : dialogue.triggers.intent < 0 && dialogue.triggers.intent < intent)
-            {
+            // if (dialogue._triggers.intent > 0 ? dialogue._triggers.intent > intent : dialogue._triggers.intent < 0 && dialogue._triggers.intent < intent)
+            // {
+            //     checkList++;
+            // }
+            if(dialogue._triggers.intent > 0 && dialogue._triggers.intent < intent){
                 checkList++;
             }
-            if (dialogue.triggers.formality > 0 ? dialogue.triggers.formality > formality : dialogue.triggers.formality < 0 && dialogue.triggers.formality < formality)
-            {
+            else if(dialogue._triggers.intent < 0 && dialogue._triggers.intent > intent){
                 checkList++;
             }
-            foreach(var dialogID in dialogue.triggers.mustSeeDialogWithID)
-            {
-                if (dialoguesSeen.Contains(dialogID))
+            // if (dialogue._triggers.formality > 0 ? dialogue._triggers.formality > formality : dialogue._triggers.formality < 0 && dialogue._triggers.formality < formality)
+            // {
+            //     checkList++;
+            // }
+            if(dialogue._triggers.formality > 0 && dialogue._triggers.formality < formality){
+                checkList++;
+            }
+            else if(dialogue._triggers.formality < 0 && dialogue._triggers.formality > formality){
+                checkList++;
+            }
+            if(dialoguesSeen != null){
+                foreach(var dialogID in dialogue._triggers.mustSeeDialogWithID)
                 {
-                    checkList++;
+                    if (dialoguesSeen.Contains(dialogID))
+                    {
+                        checkList++;
+                    }
+                }
+            }
+            if(dialogue._triggers.messageInclude.Contains(messageType)){
+                checkList++;
+            } else
+            if(dialogue._triggers.messageExclude.Contains(messageType)){
+                checkList = 0;
+            }
+            if (checkList == mostChecks.Item2 && dialogue._triggers.messageInclude.Contains(messageType)) {
+                mostChecks = new Tuple<string, int>(dialogue.absoluteID, checkList);
+            }
+            else if(checkList > mostChecks.Item2){
+                mostChecks = new Tuple<string, int>(dialogue.absoluteID, checkList);
+            }
+        }
+        return dialoguesToCheck.Where(x => x.absoluteID == mostChecks.Item1).First();
+    }
+    public static Dialogue CheckRequirements(Dialogue[] dialoguesToCheck, string[] dialoguesSeen = null)
+    {
+        if(dialoguesToCheck.Length <= 0){
+            Debug.LogError("No dialogues reached the checkingStage");
+            return null;
+        }
+        Tuple<string, int> mostChecks = new Tuple<string, int>(dialoguesToCheck[0].absoluteID, 0);
+        foreach (var dialogue in dialoguesToCheck)
+        {
+            int checkList = 0;
+            if(dialoguesSeen != null){
+                foreach(var dialogID in dialogue._triggers.mustSeeDialogWithID)
+                {
+                    if (dialoguesSeen.Length > 0 && dialoguesSeen.Contains(dialogID))
+                    {
+                        checkList++;
+                    }
                 }
             }
             if (checkList > mostChecks.Item2) {
-                mostChecks = new Tuple<int, int>(dialogue.absoluteID, checkList);
+                mostChecks = new Tuple<string, int>(dialogue.absoluteID, checkList);
             }
         }
         return dialoguesToCheck.Where(x => x.absoluteID == mostChecks.Item1).First();
     }
 }
+[System.Serializable]
 public struct requirements
 {
     public int intent;
     public int formality;
-    public MessageType message;
-    public int[] mustSeeDialogWithID; //absolute IDs that must be seen, obtained from SAVE
+    public MessageType[] messageInclude;
+    public MessageType[] messageExclude;
+    public string[] mustSeeDialogWithID; //absolute IDs that must be seen, obtained from SAVE
 
 }

@@ -51,6 +51,9 @@ public class FlowerHandler : MonoBehaviour
                 print("b");
             }
         }
+        GameManager.Subscribe("DisableAllFlowers", DisableAllFlowers);
+        GameManager.Subscribe("ResetWorkspace", ResetWorkspace);
+        GameManager.Subscribe("EnableAllFlowers", EnableAllFlowers);
     }
 
     public void ResetWorkspace()

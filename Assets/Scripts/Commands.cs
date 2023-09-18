@@ -11,7 +11,7 @@ public class Commands : MonoBehaviour
 
     private void Start()
     {
-        dialogueController = FindObjectOfType<DialogueController>();
+        dialogueController = FindObjectOfType<DialogueControllerOLD>();
     }
 
     public void Accept()

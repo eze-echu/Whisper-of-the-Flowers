@@ -15,8 +15,8 @@ MonoBehaviour:
   available: 1
   flowerValues:
     message: 6
-    intent: 0
-    formality: 0
+    intent: -4
+    formality: -4
     intentMultiplier: 0
     formalityMultiplier: 0
   flowerModel:

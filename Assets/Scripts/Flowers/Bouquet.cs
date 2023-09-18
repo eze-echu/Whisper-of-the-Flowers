@@ -116,14 +116,14 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
 
     public void SendVariableToStoryManager()
     {
-        StoryController storyController = FindObjectOfType<StoryController>();
+        StoryController storyController = StoryController.instance;
 
         
         if (_ready)//values.message != null && values.intent != 0 && values.formality != 0) // poner values.MultiplierFormality
         {
             canBeDragged = false;
-            string subject = values.message.ToString();
-            storyController.HandleStory(subject, values.intent, values.formality);
+            //string subject = values.message.ToString();
+            storyController.ProgressStory(values.message, values.intent, values.formality);
         }
         
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class StoryController : MonoBehaviour
+public class StoryControllerOLD : MonoBehaviour
 {
     //[SerializeField] List<string> _requieredSubject;
     [SerializeField] List<string> _history;
@@ -13,7 +13,7 @@ public class StoryController : MonoBehaviour
     bool _giveBad;
     public TextMeshProUGUI Result;
 
-    [SerializeField] DialogueController _dialogueController;
+    [SerializeField] DialogueControllerOLD _dialogueController;
     [SerializeField] ClientController _clientController;
    
 

@@ -10,9 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb492245d6586eb45958e1acff7904c5, type: 3}
-  m_Name: 1
+  m_Name: 000100
   m_EditorClassIdentifier: 
-  _absoluteID: 123456
-  dialogue: []
+  _absoluteID: 000100
+  possibleDialogueID: 00
+  dialogue:
+  - Negative
+  _triggers:
+    intent: -1
+    formality: -1
+    messageInclude: 
+    messageExclude: 020000000300000005000000
+    mustSeeDialogWithID: []
   ending: 0
   portraitID: 0
