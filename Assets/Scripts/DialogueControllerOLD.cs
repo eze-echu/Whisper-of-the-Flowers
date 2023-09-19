@@ -86,7 +86,7 @@ public class DialogueControllerOLD : MonoBehaviour, IDialogueController
         isTyping = true;
         handInZone.tag = "Occupied";
         text.text = "";
-        buttonController.DisableOrActive(false);
+        GameManager.Trigger("DisableOrActiveButtons");
         if (end)
         {
             FindObjectOfType<FlowerHandler>().DisableAllFlowers();
@@ -108,7 +108,7 @@ public class DialogueControllerOLD : MonoBehaviour, IDialogueController
         {
             StartCoroutine(End());
         }
-        buttonController.DisableOrActive(true);
+        GameManager.Trigger("DisableOrActiveButtons");
         handInZone.tag = "DropZone";
         isTyping = false;
     }

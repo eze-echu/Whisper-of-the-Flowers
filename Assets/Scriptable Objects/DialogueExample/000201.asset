@@ -22,6 +22,7 @@ MonoBehaviour:
     formality: 0
     messageInclude: 
     messageExclude: 
-    mustSeeDialogWithID: []
+    mustSeeDialogWithID:
+    - 000100
   ending: 1
   portraitID: 0

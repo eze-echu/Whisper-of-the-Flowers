@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class GameStateManager : MonoBehaviour
 {
@@ -20,17 +21,22 @@ public class GameStateManager : MonoBehaviour
         GameManager.Subscribe("DisableWorkspace", DisableWorkspace);
         GameManager.Subscribe("EnableWorkspace", EnableWorkspace);
         GameManager.Subscribe("EndChapter", EndChapter);
-        GameManager.Trigger("ToggleDragAndDrop");
+        //GameManager.Trigger("ToggleDragAndDrop");
+    }
+    private void OnDestroy(){
+        GameManager.Unsuscribe("DisableWorkspace", DisableWorkspace);
+        GameManager.Unsuscribe("EnableWorkspace", EnableWorkspace);
+        GameManager.Unsuscribe("EndChapter", EndChapter);
     }
 
     private void DisableWorkspace(){
-        buttonController.DisableOrActive(false);
+        GameManager.Trigger("DisableOrActiveButtons");
         handInZone.tag = "Occupied";
         print("Workspace Disabled");
     }
 
     private void EnableWorkspace(){
-        buttonController.DisableOrActive(true);
+        GameManager.Trigger("DisableOrActiveButtons");
         handInZone.tag = "DropZone";
         print("Workspace Enabled");
     }

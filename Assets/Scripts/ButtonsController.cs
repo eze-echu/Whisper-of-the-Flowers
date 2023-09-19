@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,13 +8,18 @@ public class ButtonsController : MonoBehaviour
 {
     public List<Button> buttons;
 
-   
+    private void Start(){
+        GameManager.Subscribe("DisableOrActiveButtons", DisableOrActiveButtons);
+        GameManager.Trigger("DisableOrActiveButtons");
+    }
 
-    public void DisableOrActive(bool f)
+    public void DisableOrActiveButtons()
     {
         foreach (Button button in buttons)
         {
-            button.interactable = f;
+            if(button != null){
+                button.interactable = !button.interactable;
+            }
         }
     }
 }
