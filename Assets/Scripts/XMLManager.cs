@@ -14,7 +14,7 @@ public class XMLManager : MonoBehaviour
     {
         instance = this;
     }
-
+    // la variable esta se encarga de guardar datos en archivos xml
     public SaveData SD;
 
     public void SaveItems()
@@ -41,7 +41,7 @@ public class XMLManager : MonoBehaviour
     }
 }
 
-[System.Serializable]
+[System.Serializable] //Aca se representan los datos que se van a guardar en el xml
 public class SaveData
 {
     public int levelComplete;
@@ -49,7 +49,7 @@ public class SaveData
     public List<LevelStat> estadisticasNivel;
 }
 
-[System.Serializable]
+[System.Serializable] //esto es para guardar informacion del nivel actual
 public class LevelStat
 {
     [XmlArray("LevelInfo")]
