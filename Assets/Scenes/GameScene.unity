@@ -1611,7 +1611,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Main Menu
+  m_text: Next Chapter
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1863,6 +1863,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4312ad5e0775a743925387f1362fa83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SceneDictionary:
+    keys: 0000000004000000
+    values: bcffffff00000000
   sceneLoader: {fileID: 0}
 --- !u!114 &664181840
 MonoBehaviour:
@@ -3029,16 +3032,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 341869568ecbce84ebb38f32122ea91f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogues:
-  - {fileID: 11400000, guid: efc030c5e7d75c646828ac8e858f473b, type: 2}
-  - {fileID: 11400000, guid: 29d45ab974ea8874c8ef4e9a1ccd1240, type: 2}
-  - {fileID: 11400000, guid: 6fa57c1ae756e2c44af87149c08d0f39, type: 2}
-  - {fileID: 11400000, guid: b11edde67f11d9a43baa0e341ae34c81, type: 2}
-  - {fileID: 11400000, guid: 815aaa7208d3a6f42a4a8febb58ae96f, type: 2}
-  - {fileID: 11400000, guid: d3e135f31ac6b5d4f94d59c5446340a2, type: 2}
-  currentChapter: 0
-  currentDialogue: 0
-  currentPossible: 0
+  dialoguePerChapters:
+  - dialogues:
+    - {fileID: 11400000, guid: efc030c5e7d75c646828ac8e858f473b, type: 2}
+    - {fileID: 11400000, guid: 29d45ab974ea8874c8ef4e9a1ccd1240, type: 2}
+    - {fileID: 11400000, guid: 6fa57c1ae756e2c44af87149c08d0f39, type: 2}
+    - {fileID: 11400000, guid: b11edde67f11d9a43baa0e341ae34c81, type: 2}
+    - {fileID: 11400000, guid: 815aaa7208d3a6f42a4a8febb58ae96f, type: 2}
+    - {fileID: 11400000, guid: d3e135f31ac6b5d4f94d59c5446340a2, type: 2}
+  - dialogues:
+    - {fileID: 11400000, guid: d5562ce2a5cd38c4ebc996027df17ec0, type: 2}
+    - {fileID: 11400000, guid: a3654005a8344a2488eda3d25547c5fa, type: 2}
 --- !u!1001 &1148477360
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3132,7 +3136,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.21300001, y: 0}
   m_AnchorMax: {x: 0.298, y: 0.15170914}
-  m_AnchoredPosition: {x: -1.081543, y: -0.4000244}
+  m_AnchoredPosition: {x: -1.0814972, y: -0.4000244}
   m_SizeDelta: {x: 17.834717, y: 14.777164}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1165521805
@@ -4173,7 +4177,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 640774191}
-  _Background: {fileID: 0}
 --- !u!65 &1515020006
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4963,10 +4966,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 664181839}
-        m_TargetAssemblyTypeName: EventSystems, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 1240502521}
+        m_TargetAssemblyTypeName: GameStateManager, Assembly-CSharp
+        m_MethodName: StartNewChapter
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

@@ -52,7 +52,6 @@ public class DialogueController : MonoBehaviour
     {
 
         isTyping = true;
-        GameManager.Trigger("DisableWorkspace");
         setPortraitImage(characterID);
         dialogueDisplay.text = "";
 
@@ -67,7 +66,6 @@ public class DialogueController : MonoBehaviour
             dialogueDisplay.text += c;
             yield return new WaitForSeconds(timeWrite);
         }
-        GameManager.Trigger("EnableWorkspace");
         GameManager.Trigger("CheckChapterEnd");
         isTyping = false;
     }

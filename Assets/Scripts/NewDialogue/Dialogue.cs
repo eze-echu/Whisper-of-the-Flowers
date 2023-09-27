@@ -9,7 +9,6 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Dialogue : ScriptableObject
 {
-    [SerializeField]
     private string _absoluteID;
     public string absoluteID{ // formateado como ChDiPo por ejemplo, capitulo 1, dialogo 3, posible 2 seria 01-03-02
         get{return _absoluteID; }

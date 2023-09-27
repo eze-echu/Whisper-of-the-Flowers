@@ -506,7 +506,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 220.00305, y: 338.43835}
+  m_AnchoredPosition: {x: 658, y: 1174}
   m_SizeDelta: {x: 393, y: 134.9768}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &518178253
@@ -796,7 +796,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Dialogue TEST
+  m_text: 'Start
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1644,7 +1646,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1723.3, y: 500}
+  m_AnchoredPosition: {x: 220, y: 159.03}
   m_SizeDelta: {x: 393, y: 134.9768}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1289492526
@@ -1700,9 +1702,9 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: NEWDialogueTest
+          m_StringArgument: GameScene
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
 --- !u!114 &1289492527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1778,7 +1780,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 220.00305, y: 172.33844}
+  m_AnchoredPosition: {x: 1100.9, y: 1192}
   m_SizeDelta: {x: 393, y: 134.9768}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1316502470
@@ -1993,7 +1995,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 220.00305, y: 500}
+  m_AnchoredPosition: {x: 265, y: 1152}
   m_SizeDelta: {x: 393, y: 134.9768}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1796593656

@@ -8,24 +8,23 @@ using Unity.VisualScripting;
 
 public class DialogueHandler : MonoBehaviour
 {
-    private Dialogue[] _dialogues;
+    private List<Dialogue> _dialogues;
 
-    public Dialogue[] dialogues{get{ return _dialogues;} set{_dialogues=value;}}
+    public List<Dialogue> dialogues{get{ return _dialogues;} set{_dialogues=value;}}
     public static DialogueHandler instance; 
     public void Awake()
     {
-        if (instance == null) instance = this;
+        if (instance == null){ instance = this; _dialogues = new List<Dialogue>();}
         else Destroy(gameObject);
     }
-    public DialogueHandler(Dialogue[] dialoguesToUse){
-        dialogues = dialoguesToUse;
+    public DialogueHandler(Dialogue dialoguesToUse){
+        dialogues.Add(dialoguesToUse);
     }
     public Dialogue BringNextDialogue(Dialogue[] dialoguesSeparated, MessageType message, int intent, int formality, string[] seenDialogues = null){
         //Queda implementar los guardados
         return Dialogue.CheckRequirements(dialoguesSeparated, message, intent, formality, seenDialogues);
     }
     public Dialogue BringNextDialogue(Dialogue[] dialoguesSeparated, string[] seenDialogues = null){
-        //Queda implementar los guardados
         return Dialogue.CheckRequirements(dialoguesSeparated, seenDialogues);
     }
     public Dialogue[] GetDialoguePossibilities(int chapterID, int dialogID){
@@ -52,6 +51,6 @@ public class DialogueHandler : MonoBehaviour
         if(PO.Length < 2){
             PO = 0 + PO;
         }
-        return _dialogues.Where(id => id.absoluteID.StartsWith(CH + DI + PO)).First();
+        return _dialogues.Where(id => id.absoluteID.StartsWith(CH + DI + PO))?.First() ? _dialogues.Where(id => id.absoluteID.StartsWith(CH + DI + PO)).First() : null;
     }
 }

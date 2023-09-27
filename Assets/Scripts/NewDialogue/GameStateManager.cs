@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 
 public class GameStateManager : MonoBehaviour
 {
@@ -32,18 +33,30 @@ public class GameStateManager : MonoBehaviour
     private void DisableWorkspace(){
         GameManager.Trigger("DisableOrActiveButtons");
         handInZone.tag = "Occupied";
+        GameManager.Trigger("DisableAllFlowers");
         print("Workspace Disabled");
     }
 
     private void EnableWorkspace(){
         GameManager.Trigger("DisableOrActiveButtons");
         handInZone.tag = "DropZone";
+        GameManager.Trigger("EnableAllFlowers");
         print("Workspace Enabled");
     }
     private void EndChapter(){
         print("Ending Chapter");
-        DisableWorkspace();
+        GameManager.Trigger("DisableWorkspace");
         StartCoroutine(End());
+    }
+    public void StartNewChapter(){
+        if(StoryController.BringCurrentDialogue()){
+            print("Starting New Chapter");
+            StartCoroutine(NewChapter());
+            GameManager.Trigger("StartStory");
+        }
+        else{
+            EventSystems.instance.LoadScene("MainMenu");
+        }
     }
     private IEnumerator End(){
         int time = 3;
@@ -62,5 +75,24 @@ public class GameStateManager : MonoBehaviour
             yield return null;
         }
         endDisplay.interactable = true;
+    }
+    private IEnumerator NewChapter(){
+        int time = 1;
+        float elapsedTime = 0;
+        endDisplay.interactable = false;
+        // foreach(var a in FindObjectsOfType<DragAndDrop>()){
+        //     a.dragable
+        // }
+
+        yield return new WaitForSeconds(5);
+
+        while(elapsedTime < time)
+        {
+            elapsedTime += Time.deltaTime;
+            endDisplay.alpha = Mathf.Lerp(1, 0, elapsedTime / time);
+            yield return null;
+        }
+        endDisplay.blocksRaycasts = false;
+        GameManager.Trigger("EnableWorkspace");
     }
 }

@@ -6,6 +6,13 @@ using UnityEngine.SceneManagement;
 public class EventSystems : MonoBehaviour
 {
     public SceneLoader sceneLoader;
+    public static EventSystems instance;
+    
+    public void Awake()
+    {
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
+    }
     // Start is called before the first frame update
     void Start()
     {

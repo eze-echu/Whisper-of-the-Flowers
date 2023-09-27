@@ -22,6 +22,7 @@ public class HandInZone : MonoBehaviour, IDropZone
             gameObject.tag = "DropZone";
             handInBefore = delegate
             {
+                GameManager.Trigger("DisableWorkspace");
                 a.GetComponent<Bouquet>().canBeDragged = false;
                 string intent = a.GetComponent<Bouquet>().GetValues().message.ToString();
                 if (a.GetComponent<Bouquet>().GetValues().intent == 5 && intent == "Love")

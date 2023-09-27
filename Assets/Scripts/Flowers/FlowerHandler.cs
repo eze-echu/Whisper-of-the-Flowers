@@ -55,6 +55,11 @@ public class FlowerHandler : MonoBehaviour
         GameManager.Subscribe("ResetWorkspace", ResetWorkspace);
         GameManager.Subscribe("EnableAllFlowers", EnableAllFlowers);
     }
+    private void OnDestroy(){
+        GameManager.Unsuscribe("DisableAllFlowers", DisableAllFlowers);
+        GameManager.Unsuscribe("ResetWorkspace", ResetWorkspace);
+        GameManager.Unsuscribe("EnableAllFlowers", EnableAllFlowers);
+    }
 
     public void ResetWorkspace()
     {
@@ -69,14 +74,17 @@ public class FlowerHandler : MonoBehaviour
         foreach (var item in bucketsOfFlowers)
         {
             print("Disable FlowerCollider");
-            item.flowerFather.gameObject.SetActive(false);
+            item.flowerFather.gameObject.GetComponent<BoxCollider>().enabled = false;
+            item.flowerFather.gameObject.tag = "Untagged";
         }
     }
     public void EnableAllFlowers()
     {
         foreach (var item in bucketsOfFlowers)
         {
-            item.flowerFather.gameObject.SetActive(true);
+            //item.flowerFather.gameObject.SetActive(true);
+            item.flowerFather.gameObject.GetComponent<BoxCollider>().enabled = true;
+            item.flowerFather.gameObject.tag = "drag";
         }
     }
 }
