@@ -20,7 +20,7 @@ public class DialogueHandler : MonoBehaviour
     public DialogueHandler(Dialogue dialoguesToUse){
         dialogues.Add(dialoguesToUse);
     }
-    public Dialogue BringNextDialogue(Dialogue[] dialoguesSeparated, MessageType message, int intent, int formality, string[] seenDialogues = null){
+    public Dialogue BringNextDialogue(Dialogue[] dialoguesSeparated, FlowerMessageType message, int intent, int formality, string[] seenDialogues = null){
         //Queda implementar los guardados
         return Dialogue.CheckRequirements(dialoguesSeparated, message, intent, formality, seenDialogues);
     }

@@ -45,7 +45,7 @@ public class StoryController : MonoBehaviour
         GameManager.Unsuscribe("StartStory", StartStory);
     }
 
-    public void ProgressStory(MessageType messageType, int intent, int formality){
+    public void ProgressStory(FlowerMessageType messageType, int intent, int formality){
         currentDialogue++;
         //print(dialogueHandler.GetDialoguePossibilities(currentChapter, currentDialogue).Length);
         Dialogue nextDialogue = dialogueHandler.BringNextDialogue(dialogueHandler.GetDialoguePossibilities(currentChapter, currentDialogue), messageType, intent, formality);

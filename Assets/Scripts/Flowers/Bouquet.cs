@@ -32,7 +32,7 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
         values.formality = 0;
         values.intentMultiplier = 0;
         values.intentMultiplier = 0;
-        values.message = MessageType.Null;
+        values.message = FlowerMessageType.Null;
         canBeDragged = false;
 
         _ready = false;
@@ -56,7 +56,7 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
             switch (occupied)
             {
                 case 0:
-                    values.message = a?.flower.flowerValues.message ?? MessageType.Null;
+                    values.message = a?.flower.flowerValues.message ?? FlowerMessageType.Null;
                     occupied++;
                     //print($"{a.type.flowerValues.message}");
                     break;
@@ -78,7 +78,7 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
             {
                 areFilled = true;
             }
-            if (values.message != MessageType.Null && areFilled)
+            if (values.message != FlowerMessageType.Null && areFilled)
             {
                 _ready = true;
                 /*foreach (var item in flowers)
