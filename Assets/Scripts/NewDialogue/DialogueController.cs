@@ -50,13 +50,13 @@ public class DialogueController : MonoBehaviour
 
     private IEnumerator TypeRequest(string dialogue, int characterID)
     {
-
         isTyping = true;
         setPortraitImage(characterID);
         dialogueDisplay.text = "";
 
         foreach (char c in dialogue)
         {
+            GameManager.Trigger("DisableAllFlowers");
             if (skiped)
             {
                 skiped = false;

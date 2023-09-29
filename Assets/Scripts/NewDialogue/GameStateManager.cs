@@ -45,13 +45,14 @@ public class GameStateManager : MonoBehaviour
     }
     private void EndChapter(){
         print("Ending Chapter");
-        GameManager.Trigger("DisableWorkspace");
+        //GameManager.Trigger("DisableWorkspace");
         StartCoroutine(End());
     }
     public void StartNewChapter(){
         if(StoryController.BringCurrentDialogue()){
             print("Starting New Chapter");
             StartCoroutine(NewChapter());
+            GameManager.Trigger("DisableOrActiveButtons");
             GameManager.Trigger("StartStory");
         }
         else{

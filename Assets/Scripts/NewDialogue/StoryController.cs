@@ -72,7 +72,6 @@ public class StoryController : MonoBehaviour
     }
     private void CheckChapterEnd(){
         if(dialogueHandler.GetSpecificDialogue(currentChapter,currentDialogue,currentPossible).ending){
-            GameManager.Trigger("DisableAllFlowers");
             ChapterEnd();
         }
         else{

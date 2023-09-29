@@ -51,6 +51,6 @@ public class DialogueHandler : MonoBehaviour
         if(PO.Length < 2){
             PO = 0 + PO;
         }
-        return _dialogues.Where(id => id.absoluteID.StartsWith(CH + DI + PO))?.First() ? _dialogues.Where(id => id.absoluteID.StartsWith(CH + DI + PO)).First() : null;
+        return _dialogues.Exists(id => id.absoluteID.StartsWith(CH + DI + PO)) ? _dialogues.Where(id => id.absoluteID.StartsWith(CH + DI + PO)).First() : null;
     }
 }
