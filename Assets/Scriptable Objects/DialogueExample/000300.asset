@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb492245d6586eb45958e1acff7904c5, type: 3}
-  m_Name: 000201
+  m_Name: 000300
   m_EditorClassIdentifier: 
-  possibleDialogueID: 01
+  _absoluteID: 000200
+  possibleDialogueID: 00
   dialogue:
-  - negative x2
+  - Neutral Ending
+  - Here goes the chapter end message (neu)
   _triggers:
     intent: 0
     formality: 0
     messageInclude: 
-    messageExclude: 020000000300000005000000
-    mustSeeDialogWithID:
-    - 000100
-  ending: 0
+    messageExclude: 
+    mustSeeDialogWithID: []
+  ending: 1
   portraitID: 0

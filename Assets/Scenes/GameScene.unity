@@ -1863,9 +1863,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4312ad5e0775a743925387f1362fa83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneDictionary:
-    keys: 0000000004000000
-    values: bcffffff00000000
   sceneLoader: {fileID: 0}
 --- !u!114 &664181840
 MonoBehaviour:
@@ -3040,6 +3037,9 @@ MonoBehaviour:
     - {fileID: 11400000, guid: b11edde67f11d9a43baa0e341ae34c81, type: 2}
     - {fileID: 11400000, guid: 815aaa7208d3a6f42a4a8febb58ae96f, type: 2}
     - {fileID: 11400000, guid: d3e135f31ac6b5d4f94d59c5446340a2, type: 2}
+    - {fileID: 11400000, guid: e4a35e330fcaa9d46a913158bd6ef217, type: 2}
+    - {fileID: 11400000, guid: a34a8445d594b6e46a85a6575ac1fcb4, type: 2}
+    - {fileID: 11400000, guid: 0f482ffcaea35ce48be0d16c1353cdfc, type: 2}
   - dialogues:
     - {fileID: 11400000, guid: d5562ce2a5cd38c4ebc996027df17ec0, type: 2}
     - {fileID: 11400000, guid: a3654005a8344a2488eda3d25547c5fa, type: 2}
@@ -3136,7 +3136,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.21300001, y: 0}
   m_AnchorMax: {x: 0.298, y: 0.15170914}
-  m_AnchoredPosition: {x: -1.0814972, y: -0.4000244}
+  m_AnchoredPosition: {x: -1.0815125, y: -0.4000244}
   m_SizeDelta: {x: 17.834717, y: 14.777164}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1165521805
