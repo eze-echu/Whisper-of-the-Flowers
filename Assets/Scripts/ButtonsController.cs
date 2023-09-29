@@ -12,6 +12,9 @@ public class ButtonsController : MonoBehaviour
         GameManager.Subscribe("DisableOrActiveButtons", DisableOrActiveButtons);
         GameManager.Trigger("DisableOrActiveButtons");
     }
+    private void OnDestroy(){
+        GameManager.Unsuscribe("DisableOrActiveButtons", DisableOrActiveButtons);
+    }
 
     public void DisableOrActiveButtons()
     {
