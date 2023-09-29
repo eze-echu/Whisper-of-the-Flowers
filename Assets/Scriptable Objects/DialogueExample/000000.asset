@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb492245d6586eb45958e1acff7904c5, type: 3}
   m_Name: 000000
   m_EditorClassIdentifier: 
-  _absoluteID: 000000
   possibleDialogueID: 00
   dialogue:
-  - This is the beginning dialogue
+  - "Buenos d\xEDas. Hay una chica a la que me gustar\xEDa enviarle flores y me gustar\xEDa
+    que vos las prepares."
   _triggers:
     intent: 0
     formality: 0
-    message: 0
+    messageInclude: 
+    messageExclude: 
     mustSeeDialogWithID: []
   ending: 0
   portraitID: 0

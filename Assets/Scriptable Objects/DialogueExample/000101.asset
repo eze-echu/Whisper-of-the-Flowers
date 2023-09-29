@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb492245d6586eb45958e1acff7904c5, type: 3}
   m_Name: 000101
   m_EditorClassIdentifier: 
-  _absoluteID: 000101
   possibleDialogueID: 01
   dialogue:
-  - Positive
+  - "Hiciste un buen trabajo la \xFAltima vez, gracias. Me gustar\xEDa que lo repitas
+    \xBFser\xE1 posible?"
   _triggers:
     intent: 1
     formality: 1

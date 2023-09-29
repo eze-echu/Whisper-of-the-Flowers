@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   possibleDialogueID: 00
   dialogue:
-  - Negative
+  - "Algo raro pas\xF3 con el pedido anterior, se ve que no le gustaron. Podr\xEDas
+    enviarle un nuevo ramo?"
   _triggers:
     intent: -1
     formality: -1

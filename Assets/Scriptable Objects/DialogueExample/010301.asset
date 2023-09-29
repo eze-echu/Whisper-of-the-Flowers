@@ -10,17 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb492245d6586eb45958e1acff7904c5, type: 3}
-  m_Name: 010000
+  m_Name: 010301
   m_EditorClassIdentifier: 
-  possibleDialogueID: 00
+  possibleDialogueID: 01
   dialogue:
-  - "Buenos d\xEDas, nos gustar\xEDa enviarle un ramo a \u201CZ\u201D para terminar
-    con esta disputa."
+  - "La guerra se vuelve m\xE1s dura que nunca"
+  - Negativo (La rompiste pero mal)
   _triggers:
     intent: 0
     formality: 0
     messageInclude: 
-    messageExclude: 
-    mustSeeDialogWithID: []
-  ending: 0
+    messageExclude: 020000000300000005000000
+    mustSeeDialogWithID:
+    - 000100
+    - 000201
+  ending: 1
   portraitID: 0

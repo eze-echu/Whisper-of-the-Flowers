@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb492245d6586eb45958e1acff7904c5, type: 3}
   m_Name: 000300
   m_EditorClassIdentifier: 
-  _absoluteID: 000200
   possibleDialogueID: 00
   dialogue:
-  - Neutral Ending
-  - Here goes the chapter end message (neu)
+  - "El pr\xEDncipe y la chica decidieron terminar su relaci\xF3n. "
+  - Neutral (No la rompiste)
   _triggers:
     intent: 0
     formality: 0

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   possibleDialogueID: 02
   dialogue:
-  - Positive Ending
-  - Here goes the chapter end message (pos)
+  - "Te quer\xEDa agradecer por todas los ramos que armaste."
+  - Positivo (La rompiste toda)
   _triggers:
     intent: 1
     formality: 1

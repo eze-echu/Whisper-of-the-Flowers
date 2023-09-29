@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   possibleDialogueID: 01
   dialogue:
-  - Negative Ending
-  - Here goes the chapter end message (neg)
+  - "El pr\xEDncipe se encerr\xF3 en su habitaci\xF3n."
+  - Negativo (La rompiste pero mal)
   _triggers:
     intent: 0
     formality: 0

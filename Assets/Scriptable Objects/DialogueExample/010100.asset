@@ -12,16 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb492245d6586eb45958e1acff7904c5, type: 3}
   m_Name: 010100
   m_EditorClassIdentifier: 
-  _absoluteID: 010100
   possibleDialogueID: 00
   dialogue:
-  - This WAS a new chapter
-  - You've seen the new chapter modus
+  - "No recibimos respuesta de \u201CZ\u201D. Enviales un nuevo ramo por favor."
   _triggers:
-    intent: 0
-    formality: 0
+    intent: -1
+    formality: -1
     messageInclude: 
-    messageExclude: 
+    messageExclude: 020000000300000005000000
     mustSeeDialogWithID: []
-  ending: 1
-  portraitID: 1
+  ending: 0
+  portraitID: 0

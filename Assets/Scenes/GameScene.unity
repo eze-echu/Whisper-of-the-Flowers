@@ -3041,8 +3041,15 @@ MonoBehaviour:
     - {fileID: 11400000, guid: a34a8445d594b6e46a85a6575ac1fcb4, type: 2}
     - {fileID: 11400000, guid: 0f482ffcaea35ce48be0d16c1353cdfc, type: 2}
   - dialogues:
-    - {fileID: 11400000, guid: d5562ce2a5cd38c4ebc996027df17ec0, type: 2}
-    - {fileID: 11400000, guid: a3654005a8344a2488eda3d25547c5fa, type: 2}
+    - {fileID: 11400000, guid: a06b087e9dba3be4da7f9ececc0cd595, type: 2}
+    - {fileID: 11400000, guid: cf8a305cef442654493fbdba18c42a12, type: 2}
+    - {fileID: 11400000, guid: aa8cdfc9248e1be4ba79e3921df621a6, type: 2}
+    - {fileID: 11400000, guid: d9636886f9790464eb45d48fa3f4a542, type: 2}
+    - {fileID: 11400000, guid: 72cfe12b12ec1d54da7d85f766c02b8b, type: 2}
+    - {fileID: 11400000, guid: 5f4559b88e59819459edcda8a4619e56, type: 2}
+    - {fileID: 11400000, guid: f7b690a12ed0e0943ad3f5686d04cfdb, type: 2}
+    - {fileID: 11400000, guid: c551d35f323cdd54681675dff5b3b474, type: 2}
+    - {fileID: 11400000, guid: c7145bdd200f3774b8e25f55c2649d5b, type: 2}
 --- !u!1001 &1148477360
 PrefabInstance:
   m_ObjectHideFlags: 0

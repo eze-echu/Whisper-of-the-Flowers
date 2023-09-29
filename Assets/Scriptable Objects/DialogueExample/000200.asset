@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   possibleDialogueID: 00
   dialogue:
-  - 2 neutral
+  - "Te enter\xE1s que el pr\xEDncipe est\xE1 deprimido \xFAltimamente. Decidis enviarle
+    un ramo por tu cuenta."
   _triggers:
     intent: 0
     formality: 0

@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   possibleDialogueID: 02
   dialogue:
-  - positive x2
+  - "Buenas, soy la chica a la que le ven\xEDs enviando las flores. Esta vez me gustar\xEDa
+    que prepares unas para el pr\xEDncipe para expresarle mi amor."
   _triggers:
     intent: 1
     formality: 1
