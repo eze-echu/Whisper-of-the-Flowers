@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
-using UnityEditor.PackageManager;
 
 public class GameStateManager : MonoBehaviour
 {
@@ -49,13 +48,14 @@ public class GameStateManager : MonoBehaviour
         StartCoroutine(End());
     }
     public void StartNewChapter(){
-        if(StoryController.BringCurrentDialogue()){
+        if(StoryController.instance.BringCurrentDialogue()){
             print("Starting New Chapter");
             StartCoroutine(NewChapter());
             GameManager.Trigger("DisableOrActiveButtons");
             GameManager.Trigger("StartStory");
         }
         else{
+            //StoryController.instance.currentChapter = 0;
             EventSystems.instance.LoadScene("MainMenu");
         }
     }

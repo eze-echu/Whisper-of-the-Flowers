@@ -1087,7 +1087,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5480217809262975694, guid: d4c1a16dc53cc6f468021885ed8b96ca, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -26.339455
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5480217809262975694, guid: d4c1a16dc53cc6f468021885ed8b96ca, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1704,7 +1704,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: GameScene
           m_BoolArgument: 0
-        m_CallState: 0
+        m_CallState: 2
 --- !u!114 &1289492527
 MonoBehaviour:
   m_ObjectHideFlags: 0

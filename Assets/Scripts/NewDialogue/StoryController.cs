@@ -11,9 +11,9 @@ public class StoryController : MonoBehaviour
 {
     private DialogueHandler dialogueHandler;
     public dialoguePerChapter[] dialoguePerChapters;
-    public static int currentChapter;
-    public static int currentDialogue;
-    public static int currentPossible;
+    public int currentChapter;
+    public int currentDialogue;
+    public int currentPossible;
     public static StoryController instance; 
     private List<string> testSeen = new List<string>();
     public void Awake()
@@ -88,7 +88,7 @@ public class StoryController : MonoBehaviour
         //TODO: Save Current Chapter
 
     }
-    public static Dialogue BringCurrentDialogue(){
+    public Dialogue BringCurrentDialogue(){
         if(DialogueHandler.instance.GetSpecificDialogue(currentChapter, currentDialogue, currentPossible)){
             return DialogueHandler.instance.GetSpecificDialogue(currentChapter, currentDialogue, currentPossible);
         }
