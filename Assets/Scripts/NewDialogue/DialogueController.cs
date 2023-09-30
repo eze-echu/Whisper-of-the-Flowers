@@ -53,6 +53,8 @@ public class DialogueController : MonoBehaviour
         isTyping = true;
         setPortraitImage(characterID);
         dialogueDisplay.text = "";
+        CameraController.instance.lockedCamera = true;
+        GameManager.Trigger("SwitchToMessage");
 
         foreach (char c in dialogue)
         {
@@ -66,6 +68,7 @@ public class DialogueController : MonoBehaviour
             dialogueDisplay.text += c;
             yield return new WaitForSeconds(timeWrite);
         }
+        CameraController.instance.lockedCamera = false;
         GameManager.Trigger("CheckChapterEnd");
         isTyping = false;
     }

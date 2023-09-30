@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,7 +37,15 @@ public class TouchInteraction : MonoBehaviour
     {
         if (_target != null)
         {
-            _target.SetActive(!_target.activeSelf);
+            if(_target.GetComponent<CanvasGroup>()){
+                var a = _target.GetComponent<CanvasGroup>();
+                a.alpha = Convert.ToInt64(!Convert.ToBoolean(a.alpha));
+                a.interactable = !a.interactable;
+                a.blocksRaycasts = !a.blocksRaycasts;
+            }
+            else{
+                _target.SetActive(!_target.activeSelf);
+            }
         }
 
     }

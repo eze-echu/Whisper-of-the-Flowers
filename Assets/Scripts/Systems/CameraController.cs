@@ -2,44 +2,62 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using Unity.VisualScripting;
 
 public class CameraController : MonoBehaviour
 {
     public List<CinemachineVirtualCamera> virtualCameras;
-    private int currentCameraIndex = 0;
+    public int currentCameraIndex = 1;
+    public bool lockedCamera = false;
+    public static CameraController instance;
+    public void Awake()
+    {
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
+    }
 
     private void Start()
     {
-        // Asegúrate de que al menos una cámara esté habilitada al inicio
+        // Asegï¿½rate de que al menos una cï¿½mara estï¿½ habilitada al inicio
         EnableCurrentCamera();
+        GameManager.Subscribe("SwitchToMessage", SwitchToNextCamera);
+        GameManager.Subscribe("SwitchToWorkspace", SwitchToPreviousCamera);
+    }
+    private void OnDestroy(){
+        GameManager.Unsuscribe("SwitchToMessage", SwitchToNextCamera);
+        GameManager.Unsuscribe("SwitchToWorkspace", SwitchToPreviousCamera);
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            // Cambia a la cámara anterior en la lista
+            // Cambia a la cï¿½mara anterior en la lista
             SwitchToPreviousCamera();
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
-            // Cambia a la cámara siguiente en la lista
+            // Cambia a la cï¿½mara siguiente en la lista
             SwitchToNextCamera();
         }
     }
 
     private void SwitchToNextCamera()
     {
-        DisableCurrentCamera();
-        currentCameraIndex = (currentCameraIndex + 1) % virtualCameras.Count;
-        EnableCurrentCamera();
+        if(!lockedCamera){
+            DisableCurrentCamera();
+            currentCameraIndex = (currentCameraIndex + 1) % virtualCameras.Count;
+            EnableCurrentCamera();
+        }
     }
 
     private void SwitchToPreviousCamera()
     {
-        DisableCurrentCamera();
-        currentCameraIndex = (currentCameraIndex - 1 + virtualCameras.Count) % virtualCameras.Count;
-        EnableCurrentCamera();
+        if(!lockedCamera){
+            DisableCurrentCamera();
+            currentCameraIndex = (currentCameraIndex - 1 + virtualCameras.Count) % virtualCameras.Count;
+            EnableCurrentCamera();
+        }
     }
 
     private void EnableCurrentCamera()
