@@ -23,4 +23,4 @@ MonoBehaviour:
     messageExclude: 0100000004000000060000000700000008000000
     mustSeeDialogWithID: []
   ending: 0
-  portraitID: 2
+  portraitID: 0

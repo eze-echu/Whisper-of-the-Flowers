@@ -15,7 +15,7 @@ MonoBehaviour:
   possibleDialogueID: 00
   dialogue:
   - "Buenos d\xEDas. Hay una chica a la que me gustar\xEDa enviarle flores y me gustar\xEDa
-    que vos las prepares."
+    que vos las prepares. <br><br>(utiliza A y D para cambiar de estacion)"
   _triggers:
     intent: 0
     formality: 0

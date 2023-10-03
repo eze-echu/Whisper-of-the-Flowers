@@ -24,4 +24,4 @@ MonoBehaviour:
     mustSeeDialogWithID:
     - 000101
   ending: 0
-  portraitID: 0
+  portraitID: 1
