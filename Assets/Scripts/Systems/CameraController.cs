@@ -20,12 +20,8 @@ public class CameraController : MonoBehaviour
     {
         // Aseg�rate de que al menos una c�mara est� habilitada al inicio
         EnableCurrentCamera();
-        GameManager.Subscribe("SwitchToMessage", SwitchToNextCamera);
-        GameManager.Subscribe("SwitchToWorkspace", SwitchToPreviousCamera);
     }
     private void OnDestroy(){
-        GameManager.Unsuscribe("SwitchToMessage", SwitchToNextCamera);
-        GameManager.Unsuscribe("SwitchToWorkspace", SwitchToPreviousCamera);
     }
 
     private void Update()
@@ -33,11 +29,13 @@ public class CameraController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             // Cambia a la c�mara anterior en la lista
+            GameManager.Trigger("OnCameraChange");
             SwitchToPreviousCamera();
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
             // Cambia a la c�mara siguiente en la lista
+            GameManager.Trigger("OnCameraChange");
             SwitchToNextCamera();
         }
     }
@@ -73,6 +71,28 @@ public class CameraController : MonoBehaviour
         if (virtualCameras.Count > 0)
         {
             virtualCameras[currentCameraIndex].gameObject.SetActive(false);
+        }
+    }
+
+    public bool SwitchToSpecificCamera(int id){
+        if(id >= virtualCameras.Count){
+            Debug.LogWarning("Specific camera not found, switching to next camera");
+            SwitchToNextCamera();
+            return false;
+        }
+        else if(currentCameraIndex != id && !lockedCamera){
+            GameManager.Trigger("OnCameraChange");
+            DisableCurrentCamera();
+            currentCameraIndex = id;
+            EnableCurrentCamera();
+            return false;
+        }
+        else if (currentCameraIndex == id){
+            return true;
+        }
+        else{
+            Debug.LogError("HUUHHHHH?????????");
+            return false;
         }
     }
 }

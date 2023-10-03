@@ -53,8 +53,11 @@ public class DialogueController : MonoBehaviour
         isTyping = true;
         setPortraitImage(characterID);
         dialogueDisplay.text = "";
+        if(!CameraController.instance.SwitchToSpecificCamera(1)){
+            yield return new WaitForSeconds(2);
+            CameraController.instance.lockedCamera = true;
+        }
         CameraController.instance.lockedCamera = true;
-        GameManager.Trigger("SwitchToMessage");
 
         foreach (char c in dialogue)
         {

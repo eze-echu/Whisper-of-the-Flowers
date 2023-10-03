@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 public class TouchInteraction : MonoBehaviour
 {
-    [SerializeField] GameObject _target;
+    [SerializeField] public GameObject _target;
 
    
 
@@ -33,19 +33,11 @@ public class TouchInteraction : MonoBehaviour
         return false;
     }
 
-    public void ToggleObjectActivation()
+    public virtual void ToggleObjectActivation()
     {
         if (_target != null)
         {
-            if(_target.GetComponent<CanvasGroup>()){
-                var a = _target.GetComponent<CanvasGroup>();
-                a.alpha = Convert.ToInt64(!Convert.ToBoolean(a.alpha));
-                a.interactable = !a.interactable;
-                a.blocksRaycasts = !a.blocksRaycasts;
-            }
-            else{
-                _target.SetActive(!_target.activeSelf);
-            }
+            _target.SetActive(!_target.activeSelf);
         }
 
     }
