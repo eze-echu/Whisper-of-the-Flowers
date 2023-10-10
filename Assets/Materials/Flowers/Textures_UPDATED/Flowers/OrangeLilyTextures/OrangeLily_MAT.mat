@@ -35,12 +35,14 @@ Material:
   - _MK_RECEIVE_SHADOWS
   - _MK_SPECULAR_ISOTROPIC
   - _MK_VERTEX_ANIMATION_NOISE
+  - _MK_VERTEX_ANIMATION_STUTTER
   m_InvalidKeywords:
   - _FRESNELHIGHLIGHTS_ON
   - _MK_DIFFUSE_MODE_OREN_NAYAR
   - _MK_OUTLINE_BAKED
   - _MK_SPECULAR_MODE_ISOTROPIC
   - _RECEIVESHADOWS_ON
+  - _VERTEXANIMATIONSTUTTER_ON
   m_LightmapFlags: 6
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -263,7 +265,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _GoochRampIntensity: 0.5
-    - _HatchingMapScale: 1
+    - _HatchingMapScale: 0.5
     - _HeightMapScale: 0.5
     - _IndirectFade: 1
     - _Initialized: 1
@@ -338,7 +340,7 @@ Material:
     - _ThresholdMapScale: 1
     - _VertexAnimation: 3
     - _VertexAnimationIntensity: 0.002
-    - _VertexAnimationStutter: 0
+    - _VertexAnimationStutter: 1
     - _Workflow: 0
     - _WorkflowMode: 1
     - _WrappedLighting: 0
