@@ -17,17 +17,19 @@ Material:
   - _MK_DETAIL_BLEND_MIX
   - _MK_FRESNEL_HIGHLIGHTS
   - _MK_LIGHT_CEL
-  - _MK_OUTLINE_HULL_ORIGIN
-  - _MK_OUTLINE_NOISE
+  - _MK_OUTLINE_DATA_UV7
+  - _MK_OUTLINE_HULL_CLIP
   - _MK_RECEIVE_SHADOWS
   - _MK_SPECULAR_ISOTROPIC
   - _MK_VERTEX_ANIMATION_NOISE
+  - _MK_VERTEX_ANIMATION_STUTTER
   m_InvalidKeywords:
   - _FRESNELHIGHLIGHTS_ON
   - _MK_DIFFUSE_MODE_OREN_NAYAR
   - _MK_OUTLINE_BAKED
   - _MK_SPECULAR_MODE_ISOTROPIC
   - _RECEIVESHADOWS_ON
+  - _VERTEXANIMATIONSTUTTER_ON
   m_LightmapFlags: 6
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -250,7 +252,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _GoochRampIntensity: 0.5
-    - _HatchingMapScale: 0.25
+    - _HatchingMapScale: 0.2
     - _HeightMapScale: 0.5
     - _IndirectFade: 1
     - _Initialized: 1
@@ -278,13 +280,13 @@ Material:
     - _OcclusionMapScale: 1
     - _OcclusionStrength: 1
     - _OptionsTab: 0
-    - _Outline: 2
-    - _OutlineData: 0
+    - _Outline: 3
+    - _OutlineData: 1
     - _OutlineFadeMax: 2
     - _OutlineFadeMin: 0.25
     - _OutlineMode: 1
-    - _OutlineNoise: 0.23
-    - _OutlineSize: 20
+    - _OutlineNoise: 0
+    - _OutlineSize: 3.5
     - _OutlineTab: 1
     - _Parallax: 0.05
     - _QueueOffset: 0
@@ -301,7 +303,7 @@ Material:
     - _SSSSmoothness: 0
     - _Saturation: 1
     - _SketchMapScale: 1
-    - _Smoothness: 0.25
+    - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _Specular: 1
     - _SpecularHighlights: 1
@@ -324,8 +326,8 @@ Material:
     - _SurfaceType: 0
     - _ThresholdMapScale: 1
     - _VertexAnimation: 3
-    - _VertexAnimationIntensity: 0.014
-    - _VertexAnimationStutter: 0
+    - _VertexAnimationIntensity: 0.002
+    - _VertexAnimationStutter: 1
     - _Workflow: 0
     - _WorkflowMode: 1
     - _WrappedLighting: 0
@@ -340,12 +342,12 @@ Material:
     - _DissolveColor: {r: 1, g: 1, b: 1, a: 0.5}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GoochBrightColor: {r: 1, g: 1, b: 1, a: 1}
-    - _GoochDarkColor: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 1}
+    - _GoochDarkColor: {r: 0.2264151, g: 0.2264151, b: 0.2264151, a: 1}
     - _IridescenceColor: {r: 1, g: 1, b: 1, a: 0.5}
     - _LightTransmissionColor: {r: 1, g: 0.65, b: 0, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimBrightColor: {r: 1, g: 1, b: 1, a: 1}
-    - _RimColor: {r: 1, g: 1, b: 1, a: 0}
+    - _RimColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimColorBright: {r: 1, g: 1, b: 1, a: 1}
     - _RimColorDark: {r: 0, g: 0, b: 0, a: 1}
     - _RimDarkColor: {r: 0, g: 0, b: 0, a: 1}

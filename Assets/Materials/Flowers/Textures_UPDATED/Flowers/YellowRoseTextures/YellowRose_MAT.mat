@@ -264,7 +264,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _GoochRampIntensity: 0.5
-    - _HatchingMapScale: 0.25
+    - _HatchingMapScale: 0.5
     - _HeightMapScale: 0.5
     - _IndirectFade: 1
     - _Initialized: 1
@@ -315,7 +315,7 @@ Material:
     - _SSSSmoothness: 0
     - _Saturation: 1
     - _SketchMapScale: 1
-    - _Smoothness: 0
+    - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _Specular: 1
     - _SpecularHighlights: 1
