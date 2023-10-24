@@ -302,7 +302,7 @@ Material:
     - _SSSSmoothness: 0
     - _Saturation: 1
     - _SketchMapScale: 1
-    - _Smoothness: 0.5
+    - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _Specular: 1
     - _SpecularHighlights: 1
@@ -333,9 +333,9 @@ Material:
     - _ZTest: 4
     - _ZWrite: 1
     m_Colors:
-    - _AlbedoColor: {r: 0.4049166, g: 0.5372549, b: 0.3254902, a: 1}
+    - _AlbedoColor: {r: 0.31483623, g: 0.4245283, b: 0.2503115, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.40491658, g: 0.5372549, b: 0.32549015, a: 1}
+    - _Color: {r: 0.3148362, g: 0.42452827, b: 0.25031146, a: 1}
     - _DetailColor: {r: 1, g: 1, b: 1, a: 1}
     - _DissolveBorderColor: {r: 1, g: 1, b: 1, a: 0.5}
     - _DissolveColor: {r: 1, g: 1, b: 1, a: 0.5}
