@@ -298,7 +298,7 @@ Material:
     - _OutlineFadeMin: 0.25
     - _OutlineMode: 1
     - _OutlineNoise: 0
-    - _OutlineSize: 3.5
+    - _OutlineSize: 0
     - _OutlineTab: 1
     - _Parallax: 0.05
     - _QueueOffset: 0
