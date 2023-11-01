@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1166562216798094549}
   - component: {fileID: 8365966989560686886}
   - component: {fileID: 8362387939587130962}
-  - component: {fileID: 4632666722482712176}
+  - component: {fileID: 8520411598090141396}
   m_Layer: 0
   m_Name: Letter
   m_TagString: drag
@@ -117,7 +117,7 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &4632666722482712176
+--- !u!114 &8520411598090141396
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2879962208920459945}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5c8aa80ec4dc3044b7e58dd3dc6394e, type: 3}
+  m_Script: {fileID: 11500000, guid: 58a5e8d230b92564591e3feb00dd507d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 0}

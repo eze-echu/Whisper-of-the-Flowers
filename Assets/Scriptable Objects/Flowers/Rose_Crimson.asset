@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0bcdab8adb72347af837b546e2d3d0, type: 3}
   m_Name: Rose_Crimson
   m_EditorClassIdentifier: 
-  available: 1
+  available: 0
   flowerValues:
     message: 8
     intent: -3

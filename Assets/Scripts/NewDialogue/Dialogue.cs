@@ -21,7 +21,8 @@ public class Dialogue : ScriptableObject
 
             possibleDialogueID = _absoluteID.Substring(4, 2);
         }
-    } 
+    }
+    public string Comment; //Only exists to make it easier to identify dialogues and duplicates
     private string _chapterID; // = int.TryParse(absoluteID.ToString().Substring(0, 2));
     private string _dialogueID; // = int.TryParse(absoluteID.ToString().Substring(3, 2));
     public string possibleDialogueID; //si es nulo o mayor a 0/1, significa que puede ser mas de uno si el dialogo lo muestra = int.TryParse(absoluteID.ToString().Substring(6, 2));
@@ -30,6 +31,7 @@ public class Dialogue : ScriptableObject
     private requirements _triggers;
     public bool ending;
     public int portraitID;
+    public Flower flower;
 
     // Este codigo checkea las condiciones cumplidas de un set de dialogos que comparten chapterID y dialogueID (comparten CH y DI, pero no PO)
     // una vez chequea las posibilidades, devuelve el valor que mas checks cumplio

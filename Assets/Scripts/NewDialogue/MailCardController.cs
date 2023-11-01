@@ -43,6 +43,7 @@ public class MailCardController : TouchInteraction
         a.blocksRaycasts = true;
     }
     private void OnCameraChange(){
+        //Debug.LogError("camera changed");
         if(CameraController.instance.currentCameraIndex == 1){
             DisableObject();
         }

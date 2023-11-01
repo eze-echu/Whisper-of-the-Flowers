@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public enum FlowerMessageType
 {
@@ -27,30 +28,7 @@ public class FlowerHandler : MonoBehaviour
 
     private void Start()
     {
-        int i = 0; //Acts as X axis on the flower grid
-        int j = 0; //Acts as Y Acis on the flower grid
-        foreach(var flower in flowers)
-        {
-            print("a");
-            if (flower.available)
-            {
-                print("a");
-                /*var b = Instantiate(buckets.gameObject, scrollViewPort.transform);
-                b.transform.SetParent(scrollViewPort.transform, true);*/
-                if (i > 0 && i % GridWidth == 0)
-                {
-                    j++;
-                    i = 0;
-                }
-                GameObject b = Instantiate(bucketPrefab.gameObject, grid.CellToWorld(new Vector3Int(i, 0, j)), Quaternion.identity);
-                i++;
-                b.transform.SetParent(grid.transform);
-                var c = b.GetComponent<BucketOfFlowers>();
-                c.flower = flower;
-                bucketsOfFlowers.Add(c);
-                print("b");
-            }
-        }
+        RefreshFlowers();
         GameManager.Subscribe("DisableAllFlowers", DisableAllFlowers);
         GameManager.Subscribe("ResetWorkspace", ResetWorkspace);
         GameManager.Subscribe("EnableAllFlowers", EnableAllFlowers);
@@ -85,6 +63,37 @@ public class FlowerHandler : MonoBehaviour
             //item.flowerFather.gameObject.SetActive(true);
             item.flowerFather.gameObject.GetComponent<BoxCollider>().enabled = true;
             item.flowerFather.gameObject.tag = "drag";
+        }
+    }
+    private void RefreshFlowers(){
+        int i = 0; //Acts as X axis on the flower grid
+        int j = 0; //Acts as Y Acis on the flower grid
+        foreach(var flower in flowers)
+        {
+            print("a");
+            if (flower.available)
+            {
+                print("a");
+                /*var b = Instantiate(buckets.gameObject, scrollViewPort.transform);
+                b.transform.SetParent(scrollViewPort.transform, true);*/
+                if (i > 0 && i % GridWidth == 0)
+                {
+                    j++;
+                    i = 0;
+                }
+                GameObject b = Instantiate(bucketPrefab.gameObject, grid.CellToWorld(new Vector3Int(i, 0, j)), Quaternion.identity);
+                i++;
+                b.transform.SetParent(grid.transform);
+                var c = b.GetComponent<BucketOfFlowers>();
+                c.flower = flower;
+                bucketsOfFlowers.Add(c);
+                print("b");
+            }
+        }
+    }
+    public void EnableNewFlower(Flower flowerToEnable){
+        if(flowers.Contains(flowerToEnable)){
+            flowers.Where(x=> x == flowerToEnable).First().available = true;
         }
     }
 }

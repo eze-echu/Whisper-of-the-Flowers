@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18371555, g: 0.22812967, b: 0.29895526, a: 1}
+  m_IndirectSpecularColor: {r: 0.18371512, g: 0.22812912, b: 0.29895452, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9196,6 +9196,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1227947086240860304, guid: 367cfde016b92cf4ebe3160f20e05f77, type: 3}
+      propertyPath: _target
+      value: 
+      objectReference: {fileID: 1376479017}
     - target: {fileID: 2845878849164662836, guid: 367cfde016b92cf4ebe3160f20e05f77, type: 3}
       propertyPath: _target
       value: 
@@ -19628,25 +19632,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialoguePerChapters:
   - dialogues:
-    - {fileID: 11400000, guid: efc030c5e7d75c646828ac8e858f473b, type: 2}
-    - {fileID: 11400000, guid: 29d45ab974ea8874c8ef4e9a1ccd1240, type: 2}
-    - {fileID: 11400000, guid: 6fa57c1ae756e2c44af87149c08d0f39, type: 2}
-    - {fileID: 11400000, guid: b11edde67f11d9a43baa0e341ae34c81, type: 2}
-    - {fileID: 11400000, guid: 815aaa7208d3a6f42a4a8febb58ae96f, type: 2}
-    - {fileID: 11400000, guid: d3e135f31ac6b5d4f94d59c5446340a2, type: 2}
-    - {fileID: 11400000, guid: e4a35e330fcaa9d46a913158bd6ef217, type: 2}
-    - {fileID: 11400000, guid: a34a8445d594b6e46a85a6575ac1fcb4, type: 2}
-    - {fileID: 11400000, guid: 0f482ffcaea35ce48be0d16c1353cdfc, type: 2}
-  - dialogues:
-    - {fileID: 11400000, guid: a06b087e9dba3be4da7f9ececc0cd595, type: 2}
-    - {fileID: 11400000, guid: cf8a305cef442654493fbdba18c42a12, type: 2}
-    - {fileID: 11400000, guid: aa8cdfc9248e1be4ba79e3921df621a6, type: 2}
-    - {fileID: 11400000, guid: d9636886f9790464eb45d48fa3f4a542, type: 2}
-    - {fileID: 11400000, guid: 72cfe12b12ec1d54da7d85f766c02b8b, type: 2}
-    - {fileID: 11400000, guid: 5f4559b88e59819459edcda8a4619e56, type: 2}
-    - {fileID: 11400000, guid: f7b690a12ed0e0943ad3f5686d04cfdb, type: 2}
-    - {fileID: 11400000, guid: c551d35f323cdd54681675dff5b3b474, type: 2}
-    - {fileID: 11400000, guid: c7145bdd200f3774b8e25f55c2649d5b, type: 2}
+    - {fileID: 11400000, guid: b7024d9554b8e6640bb56a9521b0aaa5, type: 2}
+    - {fileID: 11400000, guid: 1b126643e8917d048988a7a49f69516d, type: 2}
+    - {fileID: 11400000, guid: 9cc40d3a5109839429b5eaaa873a1914, type: 2}
+    - {fileID: 11400000, guid: 7c8e1c4c80c2cf748b96ec7814fb5ee7, type: 2}
+    - {fileID: 11400000, guid: e4e5da636de4c1a479fb4d8738785c96, type: 2}
+    - {fileID: 11400000, guid: 40175f58a40445d4096c80066f78c7c8, type: 2}
+    - {fileID: 11400000, guid: 07d1fcc7fc9905548b49bf2189fe4a5e, type: 2}
+    - {fileID: 11400000, guid: 6d803454bcef4fd46b5b2ded2e3b1c3a, type: 2}
+    - {fileID: 11400000, guid: bb6267e0c45507a488a0219970363415, type: 2}
+    - {fileID: 11400000, guid: b2919716110f6b140aed9fd5296664e6, type: 2}
+    - {fileID: 11400000, guid: a36d8bb3afff2384c94412a109068ac6, type: 2}
+    - {fileID: 11400000, guid: c0d23812beb4d3742ab84a6f6fbce9f0, type: 2}
+    - {fileID: 11400000, guid: c0b96deb315f81249a8852a3ed3f06d5, type: 2}
   currentChapter: 0
   currentDialogue: 0
   currentPossible: 0
