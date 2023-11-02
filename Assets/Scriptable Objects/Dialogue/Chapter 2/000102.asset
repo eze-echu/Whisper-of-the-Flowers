@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb492245d6586eb45958e1acff7904c5, type: 3}
+  m_Name: 000102
+  m_EditorClassIdentifier: 
+  Comment: Dialogue 4
+  possibleDialogueID: 01
+  dialogue:
+  - "Buenos d\xEDas, represento a Alambria. Si creen que pueden con nosotros est\xE1n
+    equivocados. Haceselo saber."
+  _triggers:
+    intent: -1
+    formality: -1
+    messageInclude: 0100000004000000
+    messageExclude: 
+    mustSeeDialogWithID: []
+  ending: 0
+  portraitID: 2
+  flower: {fileID: 0}
