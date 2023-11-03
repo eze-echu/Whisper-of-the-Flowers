@@ -10,9 +10,9 @@ using UnityEngine;
 public class Dialogue : ScriptableObject
 {
     private string _absoluteID;
-    public string absoluteID{ // formateado como ChDiPo por ejemplo, capitulo 1, dialogo 3, posible 2 seria 01-03-02
-        get{return _absoluteID; }
-        set{
+    public string absoluteID { // formateado como ChDiPo por ejemplo, capitulo 1, dialogo 3, posible 2 seria 01-03-02
+        get { return _absoluteID; }
+        set {
             _absoluteID = value;
 
             _chapterID = _absoluteID.Substring(0, 2);
@@ -31,7 +31,7 @@ public class Dialogue : ScriptableObject
     private requirements _triggers;
     public bool ending;
     public int portraitID;
-    public Flower flower;
+    public Flower[] flower;
 
     // Este codigo checkea las condiciones cumplidas de un set de dialogos que comparten chapterID y dialogueID (comparten CH y DI, pero no PO)
     // una vez chequea las posibilidades, devuelve el valor que mas checks cumplio

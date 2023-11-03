@@ -25,18 +25,26 @@ public class FlowerHandler : MonoBehaviour
     public int GridWidth;
     private List<BucketOfFlowers> bucketsOfFlowers = new List<BucketOfFlowers>();
     public GameObject scrollViewPort;
+    public static FlowerHandler instance;
 
+    public void Awake()
+    {
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
+    }
     private void Start()
     {
         RefreshFlowers();
         GameManager.Subscribe("DisableAllFlowers", DisableAllFlowers);
         GameManager.Subscribe("ResetWorkspace", ResetWorkspace);
         GameManager.Subscribe("EnableAllFlowers", EnableAllFlowers);
+        GameManager.Subscribe("RefreshFlowers", RefreshFlowers);
     }
     private void OnDestroy(){
         GameManager.Unsuscribe("DisableAllFlowers", DisableAllFlowers);
         GameManager.Unsuscribe("ResetWorkspace", ResetWorkspace);
         GameManager.Unsuscribe("EnableAllFlowers", EnableAllFlowers);
+        GameManager.Unsuscribe("RefreshFlowers", RefreshFlowers);
     }
 
     public void ResetWorkspace()
@@ -68,6 +76,13 @@ public class FlowerHandler : MonoBehaviour
     private void RefreshFlowers(){
         int i = 0; //Acts as X axis on the flower grid
         int j = 0; //Acts as Y Acis on the flower grid
+        //Limpieza previo al crear el set
+        List<GameObject> children = new List<GameObject>();
+        foreach (Transform child in grid.transform)
+        {
+            children.Add(child.gameObject);
+        }
+        children.ForEach(x => Destroy(x));
         foreach(var flower in flowers)
         {
             print("a");

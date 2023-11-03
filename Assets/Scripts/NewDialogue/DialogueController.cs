@@ -45,10 +45,10 @@ public class DialogueController : MonoBehaviour
             isTyping = false;
         }
 
-        currentCoroutine = StartCoroutine(TypeRequest(dialogue.dialogue[0], dialogue.portraitID));
+        currentCoroutine = StartCoroutine(TypeRequest(dialogue, dialogue.portraitID));
     }
 
-    private IEnumerator TypeRequest(string dialogue, int characterID)
+    private IEnumerator TypeRequest(Dialogue dialogue, int characterID)
     {
         isTyping = true;
         setPortraitImage(characterID);
@@ -59,19 +59,27 @@ public class DialogueController : MonoBehaviour
         }
         CameraController.instance.lockedCamera = true;
 
-        foreach (char c in dialogue)
-        {
             GameManager.Trigger("DisableAllFlowers");
+        foreach (char c in dialogue.dialogue[0])
+        {
             if (skiped)
             {
                 skiped = false;
-                dialogueDisplay.text = dialogue;
+                dialogueDisplay.text = dialogue.dialogue[0];
                 break;
             }
             dialogueDisplay.text += c;
             yield return new WaitForSeconds(timeWrite);
         }
         CameraController.instance.lockedCamera = false;
+        if (dialogue.flower.Length > 0)
+        {
+            for (int i = 0; i < dialogue.flower.Length; i++)
+            {
+                FlowerHandler.instance.EnableNewFlower(dialogue.flower[i]);
+            }
+            GameManager.Trigger("RefreshFlowers");
+        }
         GameManager.Trigger("CheckChapterEnd");
         isTyping = false;
     }
