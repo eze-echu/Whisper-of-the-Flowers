@@ -10,20 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb492245d6586eb45958e1acff7904c5, type: 3}
-  m_Name: 000208
+  m_Name: 010202
   m_EditorClassIdentifier: 
   Comment: 
   possibleDialogueID: 02
   dialogue:
-  - "Nos lleg\xF3 una respuesta negativa, esto debe ser un malentendido."
+  - "Buenos d\xEDas, represent\xF3 a Alambria. Si creen que somos tontos ya van a
+    ver."
   - Bad Ending
   _triggers:
     intent: -1
     formality: -1
-    messageInclude: 0400000001000000
+    messageInclude: 04000000
     messageExclude: 
     mustSeeDialogWithID:
-    - 000102
+    - 000100
   ending: 1
-  portraitID: 0
+  portraitID: 2
   flower: {fileID: 0}

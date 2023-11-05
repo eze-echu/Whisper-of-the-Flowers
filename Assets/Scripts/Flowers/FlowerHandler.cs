@@ -26,6 +26,7 @@ public class FlowerHandler : MonoBehaviour
     private List<BucketOfFlowers> bucketsOfFlowers = new List<BucketOfFlowers>();
     public GameObject scrollViewPort;
     public static FlowerHandler instance;
+    private int x, y;
 
     public void Awake()
     {
@@ -34,17 +35,22 @@ public class FlowerHandler : MonoBehaviour
     }
     private void Start()
     {
-        RefreshFlowers();
+        RevertFlowersToUnavailable();
+        //RefreshFlowers();
         GameManager.Subscribe("DisableAllFlowers", DisableAllFlowers);
         GameManager.Subscribe("ResetWorkspace", ResetWorkspace);
         GameManager.Subscribe("EnableAllFlowers", EnableAllFlowers);
         GameManager.Subscribe("RefreshFlowers", RefreshFlowers);
+        GameManager.Subscribe("CleanFlowers", CleanFlowers);
+        GameManager.Subscribe("RevertFlowersToUnavailable", RevertFlowersToUnavailable);
     }
     private void OnDestroy(){
         GameManager.Unsuscribe("DisableAllFlowers", DisableAllFlowers);
         GameManager.Unsuscribe("ResetWorkspace", ResetWorkspace);
         GameManager.Unsuscribe("EnableAllFlowers", EnableAllFlowers);
         GameManager.Unsuscribe("RefreshFlowers", RefreshFlowers);
+        GameManager.Unsuscribe("CleanFlowers", CleanFlowers);
+        GameManager.Unsuscribe("RevertFlowersToUnavailable", RevertFlowersToUnavailable);
     }
 
     public void ResetWorkspace()
@@ -74,15 +80,9 @@ public class FlowerHandler : MonoBehaviour
         }
     }
     private void RefreshFlowers(){
-        int i = 0; //Acts as X axis on the flower grid
-        int j = 0; //Acts as Y Acis on the flower grid
+        x = 0; //Acts as X axis on the flower grid
+        y = 0; //Acts as Y Acis on the flower grid
         //Limpieza previo al crear el set
-        List<GameObject> children = new List<GameObject>();
-        foreach (Transform child in grid.transform)
-        {
-            children.Add(child.gameObject);
-        }
-        children.ForEach(x => Destroy(x));
         foreach(var flower in flowers)
         {
             print("a");
@@ -91,13 +91,13 @@ public class FlowerHandler : MonoBehaviour
                 print("a");
                 /*var b = Instantiate(buckets.gameObject, scrollViewPort.transform);
                 b.transform.SetParent(scrollViewPort.transform, true);*/
-                if (i > 0 && i % GridWidth == 0)
+                if (x > 0 && x % GridWidth == 0)
                 {
-                    j++;
-                    i = 0;
+                    y++;
+                    x = 0;
                 }
-                GameObject b = Instantiate(bucketPrefab.gameObject, grid.CellToWorld(new Vector3Int(i, 0, j)), Quaternion.identity);
-                i++;
+                GameObject b = Instantiate(bucketPrefab.gameObject, grid.CellToWorld(new Vector3Int(x, 0, y)), Quaternion.identity);
+                x++;
                 b.transform.SetParent(grid.transform);
                 var c = b.GetComponent<BucketOfFlowers>();
                 c.flower = flower;
@@ -109,6 +109,36 @@ public class FlowerHandler : MonoBehaviour
     public void EnableNewFlower(Flower flowerToEnable){
         if(flowers.Contains(flowerToEnable)){
             flowers.Where(x=> x == flowerToEnable).First().available = true;
+            if (x > 0 && x % GridWidth == 0)
+            {
+                y++;
+                x = 0;
+            }
+            GameObject b = Instantiate(bucketPrefab.gameObject, grid.CellToWorld(new Vector3Int(x, 0, y)), Quaternion.identity);
+            x++;
+            b.transform.SetParent(grid.transform);
+            var c = b.GetComponent<BucketOfFlowers>();
+            c.flower = flowerToEnable;
+            bucketsOfFlowers.Add(c);
+            print("b");
+        }
+    }
+    private void CleanFlowers(){
+        List<GameObject> children = new List<GameObject>();
+        foreach (Transform child in grid.transform)
+        {
+            children.Add(child.gameObject);
+        }
+        foreach (BucketOfFlowers child in bucketsOfFlowers)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
+    private void RevertFlowersToUnavailable(){
+        foreach(var flower in flowers)
+        {
+            flower.available = false;
         }
     }
 }

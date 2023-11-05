@@ -68,6 +68,14 @@ public class StoryController : MonoBehaviour
             print(nextDialogue.possibleDialogueID);
             currentPossible = int.Parse(nextDialogue.possibleDialogueID);
             testSeen.Add(nextDialogue.absoluteID);
+            // if (nextDialogue.flower.Length > 0)
+            // {
+            //     for (int i = 0; i < nextDialogue.flower.Length; i++)
+            //     {
+            //         FlowerHandler.instance.EnableNewFlower(nextDialogue.flower[i]);
+            //     }
+            // }
+            //GameManager.Trigger("RefreshFlowers");
         }
     }
     private void CheckChapterEnd(){
@@ -85,6 +93,8 @@ public class StoryController : MonoBehaviour
         currentDialogue = 0;
         currentPossible = 0;
         bool nextChapterHasDialogue = dialogueHandler.GetDialoguePossibilities(currentChapter, currentDialogue).Length > 0 ? true : false;
+        GameManager.Trigger("CleanFlowers");
+        GameManager.Trigger("RefreshFlowers");
         //TODO: Save Current Chapter
 
     }

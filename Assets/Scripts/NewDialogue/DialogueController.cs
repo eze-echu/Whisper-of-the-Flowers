@@ -58,8 +58,15 @@ public class DialogueController : MonoBehaviour
             CameraController.instance.lockedCamera = true;
         }
         CameraController.instance.lockedCamera = true;
+        if (dialogue.flower.Length > 0)
+        {
+            for (int i = 0; i < dialogue.flower.Length; i++)
+            {
+                FlowerHandler.instance.EnableNewFlower(dialogue.flower[i]);
+            }
+        }
 
-            GameManager.Trigger("DisableAllFlowers");
+        GameManager.Trigger("DisableAllFlowers");
         foreach (char c in dialogue.dialogue[0])
         {
             if (skiped)
@@ -72,14 +79,6 @@ public class DialogueController : MonoBehaviour
             yield return new WaitForSeconds(timeWrite);
         }
         CameraController.instance.lockedCamera = false;
-        if (dialogue.flower.Length > 0)
-        {
-            for (int i = 0; i < dialogue.flower.Length; i++)
-            {
-                FlowerHandler.instance.EnableNewFlower(dialogue.flower[i]);
-            }
-            GameManager.Trigger("RefreshFlowers");
-        }
         GameManager.Trigger("CheckChapterEnd");
         isTyping = false;
     }

@@ -10,21 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb492245d6586eb45958e1acff7904c5, type: 3}
-  m_Name: 000201
+  m_Name: 010100
   m_EditorClassIdentifier: 
-  Comment: 
-  possibleDialogueID: 01
+  Comment: Dialogue 2
+  possibleDialogueID: 00
   dialogue:
-  - "Buenos d\xEDas, soy un representante de Alambria. Si Eria cree que puede enviarnos
-    este tipo de mensajes ya lo ver\xE1n."
-  - Bad Ending
+  - "Buenos d\xEDas, tenemos intenciones de negociar con Eria,  podr\xEDas enviarles
+    un ramo para expresarlo?"
   _triggers:
-    intent: -1
-    formality: -1
-    messageInclude: 0600000001000000
+    intent: 1
+    formality: 1
+    messageInclude: 05000000
     messageExclude: 
-    mustSeeDialogWithID:
-    - 000100
-  ending: 1
+    mustSeeDialogWithID: []
+  ending: 0
   portraitID: 2
   flower: {fileID: 0}

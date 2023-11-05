@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb492245d6586eb45958e1acff7904c5, type: 3}
-  m_Name: 000204
+  m_Name: 010205
   m_EditorClassIdentifier: 
   Comment: 
-  possibleDialogueID: 01
+  possibleDialogueID: 02
   dialogue:
-  - "Tu elecci\xF3n de flores ha sido una ofensa hacia nosotros. Como castigo, vas
-    a ser arrestado y enviado a prisi\xF3n"
+  - Nos informaron que incumpliste con nuestras peticiones repetidas veces. Quedas
+    arrestado.
   - Bad Ending
   _triggers:
     intent: -1
     formality: -1
-    messageInclude: 06000000
+    messageInclude: 0400000001000000
     messageExclude: 
     mustSeeDialogWithID:
     - 000101
