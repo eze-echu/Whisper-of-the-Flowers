@@ -25,4 +25,5 @@ MonoBehaviour:
     mustSeeDialogWithID: []
   ending: 0
   portraitID: 1
-  flower: {fileID: 0}
+  flower:
+  - {fileID: 11400000, guid: 48f8a8a22ab4ee84fbf3f2643ecdc1a2, type: 2}
