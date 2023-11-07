@@ -70,7 +70,7 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 044ff83125a397944a661f200545c8dd, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &2519015748268470066
@@ -772,6 +772,7 @@ MonoBehaviour:
   BookPanel: {fileID: 2519015748257447608}
   background: {fileID: 21300000, guid: 18ff629b4c158a94799a6858e3d61fd8, type: 3}
   bookPages:
+  - {fileID: 21300000, guid: b3105bae9757b4b4bb89206aa623cb9d, type: 3}
   - {fileID: 21300000, guid: c3a98ef13de5d8842b2cd251935cda85, type: 3}
   - {fileID: 21300000, guid: 22cb86ed0e95ae74db670eb031c20150, type: 3}
   - {fileID: 21300000, guid: 8e4cd963da9cddd4b878b3f1894d83a8, type: 3}
@@ -1287,8 +1288,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 9e3bf080ad64e9f4f90ebcb781e742ed, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
