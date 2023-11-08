@@ -18536,7 +18536,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 15
+  field of view: 25
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -18561,15 +18561,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.21752055, y: -0.39153734, z: 0.09580853, w: 0.88893425}
-  m_LocalPosition: {x: 2.1900005, y: 17.7, z: -7.9399996}
+  m_LocalRotation: {x: 0.111529924, y: -0.40008548, z: 0.049124293, w: 0.9083389}
+  m_LocalPosition: {x: -7.610051, y: 7.148763, z: 1.0560489}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1435679030}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 27.5, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 27.5, y: -47.8, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22200,6 +22200,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Position Cameras
       objectReference: {fileID: 0}
+    - target: {fileID: 5271508609459476098, guid: 5e9d21db207fd4c41a864913444ffbd0, type: 3}
+      propertyPath: currentCameraIndex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5271508609459476099, guid: 5e9d21db207fd4c41a864913444ffbd0, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -22244,9 +22248,81 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5271508610473003844, guid: 5e9d21db207fd4c41a864913444ffbd0, type: 3}
+      propertyPath: m_Lens.FieldOfView
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 5271508610473003845, guid: 5e9d21db207fd4c41a864913444ffbd0, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271508610473003847, guid: 5e9d21db207fd4c41a864913444ffbd0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271508610473003847, guid: 5e9d21db207fd4c41a864913444ffbd0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271508610473003847, guid: 5e9d21db207fd4c41a864913444ffbd0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271508610473003847, guid: 5e9d21db207fd4c41a864913444ffbd0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9925462
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271508610473003847, guid: 5e9d21db207fd4c41a864913444ffbd0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.12186928
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271508610473003847, guid: 5e9d21db207fd4c41a864913444ffbd0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271508610473003847, guid: 5e9d21db207fd4c41a864913444ffbd0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271508610473003847, guid: 5e9d21db207fd4c41a864913444ffbd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271508611013882432, guid: 5e9d21db207fd4c41a864913444ffbd0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271508611013882432, guid: 5e9d21db207fd4c41a864913444ffbd0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271508611013882432, guid: 5e9d21db207fd4c41a864913444ffbd0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271508611013882432, guid: 5e9d21db207fd4c41a864913444ffbd0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9083389
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271508611013882432, guid: 5e9d21db207fd4c41a864913444ffbd0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.111529924
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271508611013882432, guid: 5e9d21db207fd4c41a864913444ffbd0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.40008548
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271508611013882432, guid: 5e9d21db207fd4c41a864913444ffbd0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.049124293
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271508611013882432, guid: 5e9d21db207fd4c41a864913444ffbd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271508611013882433, guid: 5e9d21db207fd4c41a864913444ffbd0, type: 3}
+      propertyPath: m_Lens.FieldOfView
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5271508611013882438, guid: 5e9d21db207fd4c41a864913444ffbd0, type: 3}
       propertyPath: m_IsActive
@@ -28617,11 +28693,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: -17.5
+  near clip plane: -15.04
   far clip plane: 58.05
   field of view: 60
   orthographic: 1
-  orthographic size: 5.29
+  orthographic size: 5.4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -28678,14 +28754,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1435679026}
-  m_LocalRotation: {x: -0.2376859, y: 0, z: 0, w: 0.97134215}
-  m_LocalPosition: {x: 0, y: -10.39, z: 20.47}
+  m_LocalRotation: {x: -0.12446736, y: 0, z: 0, w: 0.9922237}
+  m_LocalPosition: {x: -0, y: -1, z: 18.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 963194228}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -27.5, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -14.3, y: 0, z: 0}
 --- !u!1 &1437240134
 GameObject:
   m_ObjectHideFlags: 0
