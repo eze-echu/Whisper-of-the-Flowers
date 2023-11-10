@@ -82,7 +82,7 @@ public class SceneLoader : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
-        Debug.Log("Tardó " + frames + " frames");
+        Debug.Log("Tardï¿½ " + frames + " frames");
         /*while (frames < 50)
         {
             frames += 1;
@@ -93,9 +93,10 @@ public class SceneLoader : MonoBehaviour
         async.allowSceneActivation = true;
         _asyncOperation = null;*/
         loadBar.gameObject.SetActive(false);
-        button.gameObject.SetActive(true);
-        loadScreen.interactable = true;
-        loadScreen.blocksRaycasts = true;
+        // button.gameObject.SetActive(true);
+        // loadScreen.interactable = true;
+        // loadScreen.blocksRaycasts = true;
+        GoNext();
         print("fuck");
     }
     
