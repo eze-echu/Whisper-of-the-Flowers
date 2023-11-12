@@ -10,19 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb492245d6586eb45958e1acff7904c5, type: 3}
-  m_Name: 000101
+  m_Name: 010207
   m_EditorClassIdentifier: 
-  Comment: Dialogue 3
+  Comment: Dialogue 12
   possibleDialogueID: 01
   dialogue:
-  - "No recibimos respuesta, de hecho se han intensificado las hostilidades. Podr\xEDas
-    enviar uno nuevamente?"
+  - Intentamos negociar con ellos pero si lo que quieren es una guerra eso les daremos.
+  - Bad Ending
   _triggers:
     intent: -1
     formality: -1
     messageInclude: 06000000
     messageExclude: 
-    mustSeeDialogWithID: []
-  ending: 0
-  portraitID: 2
+    mustSeeDialogWithID:
+    - 000102
+  ending: 1
+  portraitID: 0
   flower: {fileID: 0}

@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb492245d6586eb45958e1acff7904c5, type: 3}
+  m_Name: 020201
+  m_EditorClassIdentifier: 
+  Comment: 
+  possibleDialogueID: 01
+  dialogue:
+  - Tuve que entregarles casi todo mi dinero pero la vida de mi hijo no tiene precio.
+    Muchas gracias por los servicios prestados.
+  - "Prisionero es devuelto a su familia tras pagar el precio acordado, \xBFDar\xE1
+    esto pie a futuras negociaciones? (Final bueno)"
+  _triggers:
+    intent: 1
+    formality: 1
+    messageInclude: 020000000300000005000000
+    messageExclude: 
+    mustSeeDialogWithID:
+    - 010201
+    - 010202
+    - 010203
+    - 010204
+    - 010205
+    - 010206
+    - 010207
+    - 010208
+    - 020000
+    - 020100
+    - 020101
+    - 020102
+  ending: 1
+  portraitID: 0
+  flower: {fileID: 0}

@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb492245d6586eb45958e1acff7904c5, type: 3}
-  m_Name: 000201
+  m_Name: 010204
   m_EditorClassIdentifier: 
-  Comment: 
+  Comment: Dialogue 9
   possibleDialogueID: 01
   dialogue:
-  - "Buenos d\xEDas, soy un representante de Alambria. Si Eria cree que puede enviarnos
-    este tipo de mensajes ya lo ver\xE1n."
+  - "Tu elecci\xF3n de flores ha sido una ofensa hacia nosotros. Como castigo, vas
+    a ser arrestado y enviado a prisi\xF3n"
   - Bad Ending
   _triggers:
     intent: -1
     formality: -1
-    messageInclude: 0600000001000000
+    messageInclude: 06000000
     messageExclude: 
     mustSeeDialogWithID:
-    - 000100
+    - 000101
   ending: 1
   portraitID: 2
   flower: {fileID: 0}

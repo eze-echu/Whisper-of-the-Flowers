@@ -10,21 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb492245d6586eb45958e1acff7904c5, type: 3}
-  m_Name: 000204
+  m_Name: 020103
   m_EditorClassIdentifier: 
   Comment: 
-  possibleDialogueID: 01
+  possibleDialogueID: 03
   dialogue:
-  - "Tu elecci\xF3n de flores ha sido una ofensa hacia nosotros. Como castigo, vas
-    a ser arrestado y enviado a prisi\xF3n"
-  - Bad Ending
+  - "Recibimos una solicitud de liberaci\xF3n con un tono bastante arrogante. A\xFAn
+    as\xED seguimos dispuestos a negociar por el prisionero pero le saldr\xE1 muy
+    caro."
   _triggers:
     intent: -1
     formality: -1
-    messageInclude: 06000000
+    messageInclude: 0100000007000000060000000800000004000000
     messageExclude: 
     mustSeeDialogWithID:
-    - 000101
-  ending: 1
-  portraitID: 2
+    - 010201
+    - 010202
+    - 010203
+    - 010204
+    - 010205
+    - 010206
+    - 010207
+    - 010208
+    - 020000
+  ending: 0
+  portraitID: 0
   flower: {fileID: 0}

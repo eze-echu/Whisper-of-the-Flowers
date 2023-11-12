@@ -10,19 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb492245d6586eb45958e1acff7904c5, type: 3}
-  m_Name: 000102
+  m_Name: 020101
   m_EditorClassIdentifier: 
-  Comment: Dialogue 4
+  Comment: 
   possibleDialogueID: 01
   dialogue:
-  - "Buenos d\xEDas, represento a Alambria. Si creen que pueden con nosotros est\xE1n
-    equivocados. Haceselo saber."
+  - "Recibimos un pedido de liberaci\xF3n por uno de nuestros prisioneros. Nos gustar\xEDa
+    avisar al emisor que estamos dispuestos a negociar un precio apropiado para \xE9l."
   _triggers:
-    intent: -1
-    formality: -1
-    messageInclude: 0100000004000000
+    intent: 1
+    formality: 1
+    messageInclude: 0300000005000000
     messageExclude: 
-    mustSeeDialogWithID: []
+    mustSeeDialogWithID:
+    - 010201
+    - 010202
+    - 010203
+    - 010204
+    - 010205
+    - 010206
+    - 010207
+    - 010208
+    - 020000
   ending: 0
-  portraitID: 2
+  portraitID: 0
   flower: {fileID: 0}

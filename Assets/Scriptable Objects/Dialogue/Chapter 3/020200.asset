@@ -10,21 +10,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb492245d6586eb45958e1acff7904c5, type: 3}
-  m_Name: 000200
+  m_Name: 020200
   m_EditorClassIdentifier: 
   Comment: 
   possibleDialogueID: 00
   dialogue:
-  - Gracias por enviar el ramo que expresa las intenciones de Alambria. Podremos
-    comenzar a entablar conversaciones por la paz.
-  - Good Ending
+  - "Tras algunas semanas de espera por fin me pude reunir con mi hijo, much\xEDsimas
+    gracias, no se si alg\xFAn d\xEDa podr\xE9 devolverte este favor."
+  - "Prisionero es devuelto a su familia sin costo alguno, \xBFEs este quiz\xE1s
+    el inicio del final de la guerra? (Final ultra bueno)"
   _triggers:
     intent: 1
     formality: 1
-    messageInclude: 05000000
+    messageInclude: 00000000
     messageExclude: 
     mustSeeDialogWithID:
-    - 000100
+    - 010201
+    - 010202
+    - 010203
+    - 010204
+    - 010205
+    - 010206
+    - 010207
+    - 010208
+    - 020000
+    - 020100
   ending: 1
   portraitID: 0
   flower: {fileID: 0}

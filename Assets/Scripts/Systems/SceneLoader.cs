@@ -83,12 +83,12 @@ public class SceneLoader : MonoBehaviour
         }
 
         Debug.Log("Tard� " + frames + " frames");
-        /*while (frames < 50)
+        while (frames < 200)
         {
             frames += 1;
             loadBar.fillAmount = async.progress;
             yield return new WaitForEndOfFrame();
-        }*/
+        }
         /*loadScreen.alpha = 0;
         async.allowSceneActivation = true;
         _asyncOperation = null;*/

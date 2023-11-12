@@ -10,20 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb492245d6586eb45958e1acff7904c5, type: 3}
-  m_Name: 000208
+  m_Name: 010000
   m_EditorClassIdentifier: 
   Comment: 
-  possibleDialogueID: 02
+  possibleDialogueID: 00
   dialogue:
-  - "Nos lleg\xF3 una respuesta negativa, esto debe ser un malentendido."
-  - Bad Ending
+  - "Buenos d\xEDas, soy un emisario de Eria. Nos gustar\xEDa enviar un ramo a Alambria
+    para poner fin a esta disputa"
   _triggers:
-    intent: -1
-    formality: -1
-    messageInclude: 0400000001000000
+    intent: 0
+    formality: 0
+    messageInclude: 
     messageExclude: 
-    mustSeeDialogWithID:
-    - 000102
-  ending: 1
+    mustSeeDialogWithID: []
+  ending: 0
   portraitID: 0
   flower: {fileID: 0}
