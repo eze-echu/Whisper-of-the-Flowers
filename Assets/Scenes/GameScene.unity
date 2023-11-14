@@ -12987,6 +12987,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DragCamera: {fileID: 1435679027}
   distanceFromCamera: 17
+  Fc: {fileID: 0}
 --- !u!1 &666764651
 GameObject:
   m_ObjectHideFlags: 0
@@ -39889,6 +39890,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2913be648f7705f4096075ebc579bd37, type: 3}
+--- !u!1 &2662201573815216140 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2762599008320400770, guid: 2913be648f7705f4096075ebc579bd37, type: 3}
+  m_PrefabInstance: {fileID: 2662201573815216139}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2662201573815216141
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2662201573815216140}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1064.3065, y: 2018.6039, z: 314.52682}
+  m_Center: {x: -2.5958536, y: 35.216858, z: -0.00000009430008}
+--- !u!114 &2662201573815216142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2662201573815216140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 103b0852038607f4f89c7b4b287bf021, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 2662201573815216140}
+  levelToGo: MainMenu
 --- !u!1001 &5480217808437069090
 PrefabInstance:
   m_ObjectHideFlags: 0

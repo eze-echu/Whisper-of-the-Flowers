@@ -7,10 +7,10 @@ public class FadeController : MonoBehaviour
     public Animator animator;
     private string SceneName;
 
-    // Update is called once per frame
-    void Update()
+    public void Start()
     {
-        
+        if (GameManager.instance.Fc == null) GameManager.instance.Fc = this;
+        else Destroy(gameObject);
     }
 
     public void FadeToLevel(string Scene)

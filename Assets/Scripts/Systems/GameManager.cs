@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     static Dictionary<string, EventReceiver> _events = new Dictionary<string, EventReceiver>();
 
     public static GameManager instance;
+    public FadeController Fc;
+
     public void Awake()
     {
         if (instance == null) instance = this;
