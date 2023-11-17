@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb492245d6586eb45958e1acff7904c5, type: 3}
+  m_Name: 020205
+  m_EditorClassIdentifier: 
+  Comment: 
+  possibleDialogueID: 05
+  dialogue:
+  - "Gracias por transmitirme la preocupaci\xF3n que siente mi madre por la situaci\xF3n
+    en el frente. Intentar\xE9 hacer lo posible para aliviar su carga."
+  - "Soldado deserta del frente. Sigue su b\xFAsqueda. (Ac\xE1 estar\xEDa bueno poner
+    en un futuro quiz\xE1s en el diario un cartel de se busca, me lo anoto pero no
+    para este cuatri) (Final malo)"
+  _triggers:
+    intent: -1
+    formality: -1
+    messageInclude: 0700000001000000080000000600000004000000
+    messageExclude: 
+    mustSeeDialogWithID:
+    - 010200
+    - 020001
+    - 020108
+    - 020109
+    - 020110
+  ending: 1
+  portraitID: 0
+  flower: {fileID: 0}

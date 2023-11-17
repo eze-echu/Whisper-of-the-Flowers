@@ -26604,6 +26604,17 @@ MonoBehaviour:
     - {fileID: 11400000, guid: c900cc9c086d4b04e8da130a724500f3, type: 2}
     - {fileID: 11400000, guid: 36093e9f4f953c84ea94d663388a598d, type: 2}
     - {fileID: 11400000, guid: e6928c6a87f331f4e91744ab54871b20, type: 2}
+  - dialogues:
+    - {fileID: 11400000, guid: e2e77e4d6bf23e54b9d01156fba6918a, type: 2}
+    - {fileID: 11400000, guid: 59d399070428a4d47bc0546a84eaf46b, type: 2}
+    - {fileID: 11400000, guid: d8f95d1317a1db140aface35554435c2, type: 2}
+    - {fileID: 11400000, guid: c399606da09a75f44b3bdcbe52fd59ff, type: 2}
+    - {fileID: 11400000, guid: ef7161ffdbf890542897ea84618b839c, type: 2}
+    - {fileID: 11400000, guid: a2b4faaa55efd1b459d2effcd723daba, type: 2}
+    - {fileID: 11400000, guid: 855dfa513e2caac4490c0c562d58d484, type: 2}
+    - {fileID: 11400000, guid: b4a72a37e01fa3244aa99b22b1c6ab7e, type: 2}
+    - {fileID: 11400000, guid: 629e78f7fd803dc44affb4b3e2fd178e, type: 2}
+    - {fileID: 11400000, guid: b7e11783e8484f44089943a726eaf2f5, type: 2}
   currentChapter: 0
   currentDialogue: 0
   currentPossible: 0

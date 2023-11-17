@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb492245d6586eb45958e1acff7904c5, type: 3}
+  m_Name: 020204
+  m_EditorClassIdentifier: 
+  Comment: 
+  possibleDialogueID: 04
+  dialogue:
+  - Me reconforta saber que mi madre se encuentra bien, espero que pronto pueda visitarla.
+  - "En los pr\xF3ximos meses se estima que se autorizar\xE1 la vuelta de las fuerzas
+    estacionadas en las fronteras (Final bueno)"
+  _triggers:
+    intent: 1
+    formality: 1
+    messageInclude: 020000000300000005000000
+    messageExclude: 
+    mustSeeDialogWithID:
+    - 010200
+    - 020001
+    - 020105
+    - 020106
+    - 020107
+  ending: 1
+  portraitID: 0
+  flower: {fileID: 0}
