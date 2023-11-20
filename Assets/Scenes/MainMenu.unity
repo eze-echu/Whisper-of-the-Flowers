@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18375291, g: 0.22825286, b: 0.2994221, a: 1}
+  m_IndirectSpecularColor: {r: 0.18375313, g: 0.22825325, b: 0.29942283, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -21156,6 +21156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DragCamera: {fileID: 0}
   distanceFromCamera: 0
+  Fc: {fileID: 0}
 --- !u!114 &1228494000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22194,7 +22195,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 220, y: 159.03}
-  m_SizeDelta: {x: 393, y: 134.9768}
+  m_SizeDelta: {x: 320, y: 120}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1289492526
 MonoBehaviour:
@@ -22272,7 +22273,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9e3bf080ad64e9f4f90ebcb781e742ed, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ee1140dae26ecc748bd4b31e11fb5a69, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -24037,11 +24038,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3956854075633540962, guid: a05373a0061118a43b880d19a7331d33, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 393
+      value: 320
       objectReference: {fileID: 0}
     - target: {fileID: 3956854075633540962, guid: a05373a0061118a43b880d19a7331d33, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 134.9768
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 3956854075633540962, guid: a05373a0061118a43b880d19a7331d33, type: 3}
       propertyPath: m_LocalPosition.x
@@ -24094,22 +24095,6 @@ PrefabInstance:
     - target: {fileID: 3956854075633540965, guid: a05373a0061118a43b880d19a7331d33, type: 3}
       propertyPath: m_Name
       value: QuitOnMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 3956854076071476493, guid: a05373a0061118a43b880d19a7331d33, type: 3}
-      propertyPath: m_fontColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3956854076071476493, guid: a05373a0061118a43b880d19a7331d33, type: 3}
-      propertyPath: m_fontColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3956854076071476493, guid: a05373a0061118a43b880d19a7331d33, type: 3}
-      propertyPath: m_fontColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3956854076071476493, guid: a05373a0061118a43b880d19a7331d33, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a05373a0061118a43b880d19a7331d33, type: 3}
