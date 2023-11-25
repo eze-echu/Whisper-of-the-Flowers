@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UIElements;
+using Unity.Mathematics;
 
 public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteable
 {
@@ -16,6 +18,7 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
     private int occupied = 0;
 
     private Vector3 _lastposition;
+    private quaternion _lastRotation;
 
     FlowerValues values;
     private BoxCollider boxCollider;
@@ -26,6 +29,7 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
     public void Start()
     {
         _lastposition = transform.position;
+        _lastRotation = transform.rotation;
         boxCollider = GetComponent<BoxCollider>();
 
         values.intent = 0;
@@ -141,6 +145,8 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
     public GameObject ObjectsToBeDraged(ref Vector3 positions)
     {
         positions = transform.position;
+        CameraController.instance.SwitchToSpecificCamera(1);
+        transform.Rotate(new Vector3(0, -45, 0));
         return gameObject;
     }
 
@@ -171,6 +177,7 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
         canBeDragged = false;
         transform.position = _lastposition;
         transform.SetParent(null);
+        transform.rotation = _lastRotation;
         GetComponent<BoxCollider>().enabled = true;
         FlowerAdded(null);
     }

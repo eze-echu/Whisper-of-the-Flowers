@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DragAndDrop : MonoBehaviour
 {
     private Vector3 lastPosition;
+    private quaternion lastRotation;
     private Transform parent;
     private bool isDragging = false;
     private IDragable dragable;
@@ -64,8 +66,10 @@ public class DragAndDrop : MonoBehaviour
             parent = transform.parent ?? null;
             isDragging = true;
             lastPosition = transform.position;
+            lastRotation = transform.rotation;
             Cursor.visible = false;
             transform.SetParent(null);
+            dragable.ObjectsToBeDraged(ref lastPosition);
             //GetComponent<IDragable>().canBeDragged = false;
         }
     }
@@ -130,7 +134,7 @@ public class DragAndDrop : MonoBehaviour
             if (!dropped)
             {
                 transform.SetParent(parent);
-                StartCoroutine(ReturnToLastPosition(lastPosition, transform));
+                StartCoroutine(ReturnToLastPosition(lastPosition, transform, lastRotation));
             }
 
             Cursor.visible = true;
@@ -139,7 +143,7 @@ public class DragAndDrop : MonoBehaviour
 
 
 
-    private IEnumerator ReturnToLastPosition(Vector3 og, Transform obj)
+    private IEnumerator ReturnToLastPosition(Vector3 og, Transform obj, quaternion rot)
     {
         float elapsed = 0f;
         float duration = 0.3f;
@@ -149,6 +153,7 @@ public class DragAndDrop : MonoBehaviour
         while (elapsed < duration)
         {
             obj.transform.position = Vector3.Lerp(from, og, elapsed / duration);
+            obj.transform.rotation = rot;
             elapsed += Time.deltaTime;
             yield return null;
         }
