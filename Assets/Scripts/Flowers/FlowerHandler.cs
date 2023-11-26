@@ -26,8 +26,29 @@ public class FlowerHandler : MonoBehaviour
     private List<BucketOfFlowers> bucketsOfFlowers = new List<BucketOfFlowers>();
     public GameObject scrollViewPort;
 
+    public Transform trash;
+
     private void Start()
     {
+        int i = 0; //Acts as X axis on the flower grid
+        int j = 0; //Acts as Y Acis on the flower grid
+        foreach(var flower in flowers)
+        {
+            /*var b = Instantiate(buckets.gameObject, scrollViewPort.transform);
+            b.transform.SetParent(scrollViewPort.transform, true);*/
+            if (i > 0 && i % GridWidth == 0)
+            {
+                j++;
+                i = 0;
+            }
+            GameObject b = Instantiate(bucketPrefab.gameObject, grid.CellToWorld(new Vector3Int(i, 0, j)), Quaternion.identity);
+            i++;
+            b.transform.SetParent(grid.transform);
+            var c = b.GetComponent<BucketOfFlowers>();
+            c.flower = flower;
+            bucketsOfFlowers.Add(c);
+            print("b");
+        }
         RefreshFlowers();
         GameManager.Subscribe("DisableAllFlowers", DisableAllFlowers);
         GameManager.Subscribe("ResetWorkspace", ResetWorkspace);
@@ -68,12 +89,12 @@ public class FlowerHandler : MonoBehaviour
     private void RefreshFlowers(){
         int i = 0; //Acts as X axis on the flower grid
         int j = 0; //Acts as Y Acis on the flower grid
-        foreach(var flower in flowers)
+        foreach(var bucket in bucketsOfFlowers)
         {
             print("a");
-            if (flower.available)
+            if (bucket.flower.available)
             {
-                print("a");
+                print("b");
                 /*var b = Instantiate(buckets.gameObject, scrollViewPort.transform);
                 b.transform.SetParent(scrollViewPort.transform, true);*/
                 if (i > 0 && i % GridWidth == 0)
@@ -81,13 +102,15 @@ public class FlowerHandler : MonoBehaviour
                     j++;
                     i = 0;
                 }
-                GameObject b = Instantiate(bucketPrefab.gameObject, grid.CellToWorld(new Vector3Int(i, 0, j)), Quaternion.identity);
+                //GameObject b = Instantiate(bucketPrefab.gameObject, grid.CellToWorld(new Vector3Int(i, 0, j)), Quaternion.identity);
+                bucket.transform.position = grid.CellToWorld(new Vector3Int(i, 0, j));
                 i++;
-                b.transform.SetParent(grid.transform);
-                var c = b.GetComponent<BucketOfFlowers>();
-                c.flower = flower;
-                bucketsOfFlowers.Add(c);
+                bucket.transform.SetParent(grid.transform);
                 print("b");
+            }
+            else
+            {
+                bucket.transform.position = trash.position;
             }
         }
     }

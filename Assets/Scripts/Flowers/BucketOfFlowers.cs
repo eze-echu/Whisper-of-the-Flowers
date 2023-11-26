@@ -9,7 +9,8 @@ public class BucketOfFlowers : MonoBehaviour, IResteable, IDropZone, IOccupied
     public Vector3 OGflowerPosition;
     private MeshFilter[] displayFlowers;
     private MeshRenderer[] renderers;
-    public Flower flower { get => flower; set => SetFlower(value); }
+    public Flower flower { get => _flower; set => SetFlower(value); }
+    private Flower _flower;
 
     public void ResetToOriginalState()
     {
@@ -35,6 +36,7 @@ public class BucketOfFlowers : MonoBehaviour, IResteable, IDropZone, IOccupied
 
     private void SetFlower(Flower f)
     {
+        _flower = f;
         flowerFather.GetComponent<FlowerBunch>().type = f;
         for (int i = 0; i < displayFlowers.Length; i++)
         {
