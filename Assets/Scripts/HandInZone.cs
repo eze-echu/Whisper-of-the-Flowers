@@ -22,6 +22,7 @@ public class HandInZone : MonoBehaviour, IDropZone
             gameObject.tag = "DropZone";
             handInBefore = delegate
             {
+                //GameManager.instance.Fc.FadeInAndOutCoroutine("Un Tiempo Despues...");
                 GameManager.Trigger("DisableWorkspace");
                 a.GetComponent<Bouquet>().canBeDragged = false;
                 string intent = a.GetComponent<Bouquet>().GetValues().message.ToString();
@@ -37,12 +38,13 @@ public class HandInZone : MonoBehaviour, IDropZone
                 {
                     partycleController.PlayParticle(intent == "Decrease_of_Love" || intent == "Jealousy" || intent == "Mourning" || intent == "Hatred" ? 0 : 1);
                 }
-                
+                StartCoroutine(GameManager.instance.Fc.FadeInAndOutCoroutine("Un Tiempo Despues..."));
+
             };
             handInAfter = delegate
             {
                 partycleController.StopAllParticles();
-
+                //StartCoroutine(GameManager.instance.Fc.FadeInAndOutCoroutine("Un Tiempo Despues..."));
                 a?.transform.GetComponent<Bouquet>()?.SendVariableToStoryManager();
                 FindObjectOfType<FlowerHandler>()?.ResetWorkspace();
                 a?.GetComponent<Bouquet>()?.ResetToOriginalState();
