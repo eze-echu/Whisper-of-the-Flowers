@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using Unity.VisualScripting;
 
 public enum FlowerMessageType
 {
@@ -24,9 +25,16 @@ public class FlowerHandler : MonoBehaviour
     [Range(1, 5)]
     public int GridWidth;
     private List<BucketOfFlowers> bucketsOfFlowers = new List<BucketOfFlowers>();
-    public GameObject scrollViewPort;
+    //public GameObject scrollViewPort;
 
     public Transform trash;
+
+    public static FlowerHandler instance;
+    public void Awake()
+    {
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
+    }
 
     private void Start()
     {
@@ -95,22 +103,25 @@ public class FlowerHandler : MonoBehaviour
             if (bucket.flower.available)
             {
                 print("b");
-                /*var b = Instantiate(buckets.gameObject, scrollViewPort.transform);
-                b.transform.SetParent(scrollViewPort.transform, true);*/
+                //bucket.transform.SetParent(scrollViewPort.transform, true);
                 if (i > 0 && i % GridWidth == 0)
                 {
                     j++;
                     i = 0;
                 }
                 //GameObject b = Instantiate(bucketPrefab.gameObject, grid.CellToWorld(new Vector3Int(i, 0, j)), Quaternion.identity);
-                bucket.transform.position = grid.CellToWorld(new Vector3Int(i, 0, j));
+                Vector3 WorldPos = grid.CellToWorld(new Vector3Int(i, 0, j));
+                bucket.OGflowerPosition = new Vector3(WorldPos.x, bucket.OGflowerPosition.y, WorldPos.z);
+                bucket.transform.position = WorldPos;
                 i++;
                 bucket.transform.SetParent(grid.transform);
                 print("b");
             }
             else
             {
-                bucket.transform.position = trash.position;
+                bucket.OGflowerPosition = new Vector3(trash.transform.position.x, bucket.OGflowerPosition.y, trash.transform.position.z);
+                bucket.transform.position = trash.transform.position;
+                bucket.transform.SetParent(trash.transform.transform);
             }
         }
     }

@@ -20,7 +20,7 @@ public class TouchInteraction : MonoBehaviour
         }
     }
 
-    private bool CheckClickedObject()
+    public virtual bool CheckClickedObject()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;

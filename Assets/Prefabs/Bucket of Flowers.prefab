@@ -593,6 +593,7 @@ GameObject:
   - component: {fileID: 5518776710581411739}
   - component: {fileID: 2709627133914458445}
   - component: {fileID: 6506084970607681004}
+  - component: {fileID: 1698686681202666762}
   m_Layer: 0
   m_Name: FlowerFather
   m_TagString: drag
@@ -672,6 +673,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c95f0bace79af74498f8428ca5b6b0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1698686681202666762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4264534580512777219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 0.91372555, g: 0.83921576, b: 0.18431373, a: 1}
+  outlineWidth: 1
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &4626101476917970652
 GameObject:
   m_ObjectHideFlags: 0

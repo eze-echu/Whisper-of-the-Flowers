@@ -25,6 +25,13 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
     bool _ready;
     public bool canBeDragged { get => _canBeDragged; set => _canBeDragged = value; }
     bool _canBeDragged;
+    public static Bouquet instance;
+    
+    public void Awake()
+    {
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
+    }
 
     public void Start()
     {
