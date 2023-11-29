@@ -108,4 +108,7 @@ public class SceneLoader : MonoBehaviour
         loadScreen.interactable = false;
         loadScreen.blocksRaycasts = false;
     }
+    public void Quit(){
+        Application.Quit();
+    }
 }
