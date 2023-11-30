@@ -24,21 +24,21 @@ public class CameraController : MonoBehaviour
     private void OnDestroy(){
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            // Cambia a la c�mara anterior en la lista
-            GameManager.Trigger("OnCameraChange");
-            SwitchToPreviousCamera();
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            // Cambia a la c�mara siguiente en la lista
-            GameManager.Trigger("OnCameraChange");
-            SwitchToNextCamera();
-        }
-    }
+    // private void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.A))
+    //     {
+    //         // Cambia a la c�mara anterior en la lista
+    //         GameManager.Trigger("OnCameraChange");
+    //         SwitchToPreviousCamera();
+    //     }
+    //     else if (Input.GetKeyDown(KeyCode.D))
+    //     {
+    //         // Cambia a la c�mara siguiente en la lista
+    //         GameManager.Trigger("OnCameraChange");
+    //         SwitchToNextCamera();
+    //     }
+    // }
 
     private void SwitchToNextCamera()
     {
