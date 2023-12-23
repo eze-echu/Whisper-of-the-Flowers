@@ -10,6 +10,9 @@ TagManager:
   - Occupied
   - give
   - UI
+  - Ambiente
+  - Efectos
+  - Musica
   layers:
   - Default
   - TransparentFX

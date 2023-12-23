@@ -7,11 +7,12 @@ using TMPro;
 public class PopupConfirmation : MonoBehaviour
 {
     public TextMeshProUGUI confirmationText;
+    public GameObject Background;
     public string levelToGo;
 
     public void ShowPopup(string message)
     {
-        gameObject.SetActive(true);
+        Background.SetActive(true);
         confirmationText.text = message;
     }
 
@@ -26,6 +27,6 @@ public class PopupConfirmation : MonoBehaviour
     public void CancelAction()
     {
         // Lógica a ejecutar cuando se cancela la acción.
-        gameObject.SetActive(false);
+        Background.SetActive(false);
     }
 }

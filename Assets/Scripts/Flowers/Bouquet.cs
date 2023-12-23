@@ -26,6 +26,8 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
     public bool canBeDragged { get => _canBeDragged; set => _canBeDragged = value; }
     bool _canBeDragged;
     public static Bouquet instance;
+
+    public AudioSource EffecSound;
     
     public void Awake()
     {
@@ -69,17 +71,20 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
                 case 0:
                     values.message = a?.flower.flowerValues.message ?? FlowerMessageType.Null;
                     occupied++;
+                    PlaySound();
                     //print($"{a.type.flowerValues.message}");
                     break;
                 case 1:
                     values.intent = a?.flower.flowerValues.intent ?? 0;
                     values.formality = a?.flower.flowerValues.formality ?? 0;
                     occupied++;
+                    PlaySound();
                     break;
                 case 2:
                     values.intentMultiplier = a?.flower.flowerValues.intentMultiplier ?? 0;
                     values.formalityMultiplier = a?.flower.flowerValues.formalityMultiplier ?? 0;
                     occupied++;
+                    PlaySound();
                     break;
                 default:
                     print("Not within the scope of the Switch");
@@ -192,6 +197,11 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
     public FlowerValues GetValues()
     {
         return values;
+    }
+
+    private void PlaySound()
+    {
+        GameManager.instance.AM.PlayEffect(EffecSound);
     }
 }
 

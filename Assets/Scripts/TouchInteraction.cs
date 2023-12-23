@@ -9,7 +9,7 @@ public class TouchInteraction : MonoBehaviour
 {
     [SerializeField] public GameObject _target;
 
-   
+    public AudioSource EffectSound;
 
 
     private void OnMouseDown()

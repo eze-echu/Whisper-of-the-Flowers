@@ -9,6 +9,8 @@ public class FlowerBunch : MonoBehaviour, IDragable, IResteable
     public Flower type;
 
     bool _canBeDragged;
+
+    public AudioSource EffecSound;
     public bool canBeDragged { get => _canBeDragged; set => _canBeDragged = value; }
 
     private void Start()
@@ -19,6 +21,7 @@ public class FlowerBunch : MonoBehaviour, IDragable, IResteable
 
     public GameObject ObjectsToBeDraged(ref Vector3 positions)
     {
+        GameManager.instance.AM.PlayEffect(EffecSound);
         positions = transform.position;
         return gameObject;
     }

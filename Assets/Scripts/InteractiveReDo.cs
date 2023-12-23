@@ -23,6 +23,7 @@ public class InteractiveReDo : TouchInteraction
 
         if (Physics.Raycast(ray, out hit))
         {
+            GameManager.instance.AM.PlayEffect(EffectSound);
             return (hit.collider.gameObject == gameObject);
         }
 

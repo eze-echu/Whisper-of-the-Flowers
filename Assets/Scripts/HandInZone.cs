@@ -9,6 +9,7 @@ public class HandInZone : MonoBehaviour, IDropZone
     private handInActions handInBefore;
 
     private PartycleController partycleController;
+    public AudioSource EffectSound;
 
     public void Start()
     {
@@ -23,6 +24,7 @@ public class HandInZone : MonoBehaviour, IDropZone
             handInBefore = delegate
             {
                 //GameManager.instance.Fc.FadeInAndOutCoroutine("Un Tiempo Despues...");
+                GameManager.instance.AM.PlayEffect(EffectSound);
                 GameManager.Trigger("DisableWorkspace");
                 a.GetComponent<Bouquet>().canBeDragged = false;
                 string intent = a.GetComponent<Bouquet>().GetValues().message.ToString();
