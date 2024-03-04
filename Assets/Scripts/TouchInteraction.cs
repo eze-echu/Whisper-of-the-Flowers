@@ -37,8 +37,12 @@ public class TouchInteraction : MonoBehaviour
     {
         if (_target != null)
         {
+            if (EffectSound != null) EffectSound.Play();
+  
             _target.SetActive(!_target.activeSelf);
         }
 
     }
+
+    
 }

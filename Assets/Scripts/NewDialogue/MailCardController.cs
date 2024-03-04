@@ -22,6 +22,7 @@ public class MailCardController : TouchInteraction
     public override void ToggleObjectActivation(){
         if (_target != null)
         {
+            EffectSound.Play();
             if(_target.GetComponent<CanvasGroup>()){
                 var a = _target.GetComponent<CanvasGroup>();
                 a.alpha = Convert.ToInt64(!Convert.ToBoolean(a.alpha));

@@ -33,6 +33,7 @@ public class InteractiveCameraSwitch : TouchInteraction
     public override void ToggleObjectActivation(){
         if (_target != null)
         {
+            EffectSound.Play();
             GameManager.Trigger("OnCameraChange");
             CameraController.instance.SwitchToSpecificCamera(cameraToSwitch);
         }
