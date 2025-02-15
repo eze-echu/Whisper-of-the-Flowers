@@ -130,21 +130,6 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
         }
     }
 
-    public void SendVariableToStoryManager()
-    {
-        StoryController storyController = StoryController.instance;
-
-        
-        if (_ready)//values.message != null && values.intent != 0 && values.formality != 0) // poner values.MultiplierFormality
-        {
-            canBeDragged = false;
-            //string subject = values.message.ToString();
-            storyController.ProgressStory(values.message, values.intent, values.formality);
-        }
-        
-
-    }
-
     private void Formula()
     {
         values.intent *= values.intentMultiplier;

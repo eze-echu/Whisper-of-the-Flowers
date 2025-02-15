@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Systems;
 using UnityEngine;
 using TMPro;
 
 public class FadeController : MonoBehaviour
 {
+    private static readonly int FadeInAndOut = Animator.StringToHash("FadeInAndOut");
+    private static readonly int FadeOut = Animator.StringToHash("FadeOut");
     public Animator animator;
-    private string SceneName;
+    private string _sceneName;
     public TextMeshProUGUI texto;
 
 
@@ -16,11 +19,11 @@ public class FadeController : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    public void FadeToLevel(string Scene)
+    public void FadeToLevel(string scene)
     {
         texto.text = "";
-        SceneName = Scene;
-        animator.SetTrigger("FadeOut");
+        _sceneName = scene;
+        animator.SetTrigger(FadeOut);
     }
 
     /*
@@ -34,24 +37,25 @@ public class FadeController : MonoBehaviour
     public void OnFadeCompleteLevel()
     {
         texto.text = "";
-        EventSystems.instance.LoadScene(SceneName);
+        EventSystems.instance.LoadScene(_sceneName);
     }
 
     public IEnumerator FadeInAndOutCoroutine(string message)
     {
         // Setea el mensaje
         texto.text = message;
+        GameState.PauseGame();
         print("entro");
-        // Inicia la animación
+        // Inicia la animaciï¿½n
         animator.Play(animator.GetCurrentAnimatorStateInfo(0).fullPathHash, -1, 0f);
         animator.Update(0f);
 
 
-        animator.SetTrigger("FadeInAndOut");
+        animator.SetTrigger(FadeInAndOut);
 
-        // Espera a que termine la animación
+        // Espera a que termine la animaciï¿½n
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-
+        GameState.ResumeGame();
         // Limpia el mensaje y carga la siguiente escena
         //texto.text = "";
         

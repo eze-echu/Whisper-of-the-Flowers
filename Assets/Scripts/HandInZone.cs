@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Systems;
 using UnityEngine;
 
 public class HandInZone : MonoBehaviour, IDropZone
@@ -18,7 +19,7 @@ public class HandInZone : MonoBehaviour, IDropZone
 
     public bool DropAction(GameObject a = null)
     {
-        if(a.name == "Racimo"){
+        if(a != null && a.name == "Racimo"){
             print("HandIN");
             gameObject.tag = "DropZone";
             handInBefore = delegate
@@ -27,7 +28,7 @@ public class HandInZone : MonoBehaviour, IDropZone
                 GameManager.instance.AM.PlayEffect(EffectSound);
                 GameManager.Trigger("DisableWorkspace");
                 a.GetComponent<Bouquet>().canBeDragged = false;
-                string intent = a.GetComponent<Bouquet>().GetValues().message.ToString();
+                var intent = a.GetComponent<Bouquet>().GetValues().message.ToString();
                 if (a.GetComponent<Bouquet>().GetValues().intent == 5 && intent == "Love")
                 {
                     partycleController.PlayParticle(3);
@@ -40,16 +41,18 @@ public class HandInZone : MonoBehaviour, IDropZone
                 {
                     partycleController.PlayParticle(intent == "Decrease_of_Love" || intent == "Jealousy" || intent == "Mourning" || intent == "Hatred" ? 0 : 1);
                 }
-                StartCoroutine(GameManager.instance.Fc.FadeInAndOutCoroutine("Un Tiempo Despues..."));
+                GameState.PauseGame();
+                // StartCoroutine(GameManager.instance.Fc.FadeInAndOutCoroutine("Un Tiempo Despues..."));
 
             };
             handInAfter = delegate
             {
                 partycleController.StopAllParticles();
                 //StartCoroutine(GameManager.instance.Fc.FadeInAndOutCoroutine("Un Tiempo Despues..."));
-                a?.transform.GetComponent<Bouquet>()?.SendVariableToStoryManager();
+                // a?.transform.GetComponent<Bouquet>()?.SendVariableToStoryManager();
                 FindObjectOfType<FlowerHandler>()?.ResetWorkspace();
-                a?.GetComponent<Bouquet>()?.ResetToOriginalState();
+                a.GetComponent<Bouquet>()?.ResetToOriginalState();
+                GameState.ResumeGame();
             };
             StartCoroutine(waitFewSeconds(3));
             return true;
