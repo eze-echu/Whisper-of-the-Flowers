@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Flowers;
 using Systems;
 using UnityEngine;
 
@@ -22,24 +23,31 @@ public class HandInZone : MonoBehaviour, IDropZone
         if(a != null && a.name == "Racimo"){
             print("HandIN");
             gameObject.tag = "DropZone";
+            if (a.GetComponent<Bouquet>() is not { } b)
+            {
+                throw new System.Exception("Bouquet component not found in Object 'Racimo', make sure has the script bouquet");
+            }
             handInBefore = delegate
             {
                 //GameManager.instance.Fc.FadeInAndOutCoroutine("Un Tiempo Despues...");
                 GameManager.instance.AM.PlayEffect(EffectSound);
                 GameManager.Trigger("DisableWorkspace");
-                a.GetComponent<Bouquet>().canBeDragged = false;
-                var intent = a.GetComponent<Bouquet>().GetValues().message.ToString();
-                if (a.GetComponent<Bouquet>().GetValues().intent == 5 && intent == "Love")
+                b.canBeDragged = false;
+                var message = b.GetValues().message.ToString();
+                var intent = b.GetValues().intent;
+                var grade = GameState.Instance.orderSystem.GradeBouquet(b);
+                print("Grade: " + grade);
+                if (intent == 5 && message == "Love")
                 {
                     partycleController.PlayParticle(3);
                 }
-                else if (a.GetComponent<Bouquet>().GetValues().intent == -5 && intent == "Hatred")
+                else if (intent == -5 && message == "Hatred")
                 {
                     partycleController.PlayParticle(2);
                 }
                 else
                 {
-                    partycleController.PlayParticle(intent == "Decrease_of_Love" || intent == "Jealousy" || intent == "Mourning" || intent == "Hatred" ? 0 : 1);
+                    partycleController.PlayParticle(message == "Decrease_of_Love" || message == "Jealousy" || message == "Mourning" || message == "Hatred" ? 0 : 1);
                 }
                 GameState.PauseGame();
                 // StartCoroutine(GameManager.instance.Fc.FadeInAndOutCoroutine("Un Tiempo Despues..."));
@@ -50,11 +58,11 @@ public class HandInZone : MonoBehaviour, IDropZone
                 partycleController.StopAllParticles();
                 //StartCoroutine(GameManager.instance.Fc.FadeInAndOutCoroutine("Un Tiempo Despues..."));
                 // a?.transform.GetComponent<Bouquet>()?.SendVariableToStoryManager();
-                FindObjectOfType<FlowerHandler>()?.ResetWorkspace();
-                a.GetComponent<Bouquet>()?.ResetToOriginalState();
+                FlowerHandler.instance.ResetWorkspace();
+                b.ResetToOriginalState();
                 GameState.ResumeGame();
             };
-            StartCoroutine(waitFewSeconds(3));
+            StartCoroutine(WaitFewSeconds(3));
             return true;
         }
         else{
@@ -62,7 +70,7 @@ public class HandInZone : MonoBehaviour, IDropZone
         }
     }
 
-    private IEnumerator waitFewSeconds(float time)
+    private IEnumerator WaitFewSeconds(float time)
     {
         handInBefore();
         yield return new WaitForSeconds(time);

@@ -1,4 +1,5 @@
 using System;
+using Flowers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -7,8 +8,6 @@ namespace Systems
 {
     public class GameState : MonoBehaviour
     {
-        private readonly string[] _a = { "Love", "Decrease_of_Love", "Jealousy", "Mourning", "Hatred" };
-
         public static GameState Instance;
         private static bool _isGamePaused;
         [SerializeField] public static int secondsPerGameDay = 120;
@@ -16,6 +15,8 @@ namespace Systems
         public int currentDay = 1;
         public float timeLeft = secondsPerGameDay;
         public float coinMultiplier = 1.00f;
+        
+        public OrderSystem orderSystem;
 
         public TMP_Text timeText;
         public TMP_Text requestText;
@@ -66,8 +67,11 @@ namespace Systems
 
         public void NewRequest()
         {
+            orderSystem = new OrderSystem();
+            orderSystem.GenerateOrder();
+            // Values are added in the FlowerHandler.cs
             requestText.text =
-                $"{_a[UnityEngine.Random.Range(0, _a.Length)]}\n{_a[UnityEngine.Random.Range(0, _a.Length)]}\n{_a[UnityEngine.Random.Range(0, _a.Length)]}";
+                $"{orderSystem.get_order_message(0)}\n{orderSystem.get_order_message(1)}\n{orderSystem.get_order_message(2)}";
         }
     }
 }
