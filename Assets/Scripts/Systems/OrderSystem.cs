@@ -18,6 +18,11 @@ namespace Systems
             return _currentOrder.Messages[orderNumber];
         }
 
+        public OrderSystem()
+        {
+            GenerateOrder();
+        }
+
         private Order _currentOrder;
 
         public float
@@ -43,6 +48,11 @@ namespace Systems
 
             _currentOrder.Vase = "Vase";
             _currentOrder.Reward = 100;
+        }
+
+        public float GetOrderReward()
+        {
+            return _currentOrder.Reward;
         }
     }
 }

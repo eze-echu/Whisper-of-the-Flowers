@@ -10,13 +10,13 @@ namespace Systems
     {
         public static GameState Instance;
         private static bool _isGamePaused;
-        [SerializeField] public static int secondsPerGameDay = 120;
-        public int coinsAccumulated = 0;
+        public static int secondsPerGameDay = 120;
+        public uint coinsAccumulated;
         public int currentDay = 1;
         public float timeLeft = secondsPerGameDay;
         public float coinMultiplier = 1.00f;
-        
-        public OrderSystem orderSystem;
+
+        public OrderSystem OrderSystem;
 
         public TMP_Text timeText;
         public TMP_Text requestText;
@@ -34,16 +34,17 @@ namespace Systems
         {
             if (!_isGamePaused)
             {
-                timeLeft -= Time.deltaTime;
-                timeText.text = "Day " + currentDay + " - " + Mathf.Floor(timeLeft / 60) + ":" +
-                                Mathf.Floor(timeLeft % 60);
-                if (timeLeft <= 0)
+                if (timeLeft > 0) timeLeft -= Time.deltaTime;
+                timeText.text =
+                    $"Day {currentDay} - {(uint)Mathf.Floor(timeLeft / 60)}:{(uint)Mathf.Floor(timeLeft % 60):D2}";
+                if (timeLeft <= 0.5f) // Es .5 pq si no se pasa de largo y va a negativo (o underflow a max int value)
                 {
                     timeLeft = secondsPerGameDay;
                     StartCoroutine(
                         GameManager.instance.Fc.FadeInAndOutCoroutine(
-                            "Fue un buen dia, pero ya es hora de cerrar la tienda"));
+                            $"Fue un buen dia, pero ya es hora de cerrar la tienda\nMoney: {coinsAccumulated}"));
                     // TODO: Implement end of day logic (1st calculate earnings, save it, then reset the day, if 7th and below required, fail the game)
+                    NewRequest();
                     currentDay++;
                 }
             }
@@ -67,11 +68,16 @@ namespace Systems
 
         public void NewRequest()
         {
-            orderSystem = new OrderSystem();
-            orderSystem.GenerateOrder();
+            OrderSystem = new OrderSystem();
+            OrderSystem.GenerateOrder();
             // Values are added in the FlowerHandler.cs
             requestText.text =
-                $"{orderSystem.get_order_message(0)}\n{orderSystem.get_order_message(1)}\n{orderSystem.get_order_message(2)}";
+                $"{OrderSystem.get_order_message(0)}\n{OrderSystem.get_order_message(1)}\n{OrderSystem.get_order_message(2)}";
+        }
+
+        public void AddRequestReward(float grade)
+        {
+            coinsAccumulated += (uint)(OrderSystem.GetOrderReward() * grade * coinMultiplier);
         }
     }
 }
