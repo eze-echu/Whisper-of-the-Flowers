@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Flowers;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu]
 public class Flower : ScriptableObject
@@ -32,7 +33,7 @@ public struct FlowerModel {
 [System.Serializable]
 public struct FlowerValues
 {
-    public FlowerMessageType message;
+    [FormerlySerializedAs("messages")] public FlowerMessageType message;
     [Range(-5, 5)]
     public int intent;
     [Range(-5, 5)]

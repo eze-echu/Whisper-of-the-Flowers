@@ -143,8 +143,9 @@ namespace Flowers
                 flowers.Where(x => x == flowerToEnable).First().available = true;
             }
         }
-        public static FlowerMessageType[] GetFlowerMessages()
+        public FlowerMessageType[] GetFlowerMessages()
         {
+            return (from f in flowers where f.available select f.flowerValues.message).ToArray();
             return System.Enum.GetValues(typeof(FlowerMessageType)).Cast<FlowerMessageType>().ToArray();
         }
     }

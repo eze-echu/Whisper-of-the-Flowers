@@ -35,7 +35,7 @@ public class HandInZone : MonoBehaviour, IDropZone
                 b.canBeDragged = false;
                 var message = b.GetValues().message.ToString();
                 var intent = b.GetValues().intent;
-                var grade = GameState.Instance.OrderSystem.GradeBouquet(b);
+                var grade = GameState.Instance.OrderSystem.CompleteOrder(b);
                 print("Grade: " + grade);
                 if (grade == 0)
                 {

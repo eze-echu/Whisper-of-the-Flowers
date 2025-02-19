@@ -1,6 +1,8 @@
 using System;
+using System.Linq;
 using Flowers;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Systems
 {
@@ -20,31 +22,46 @@ namespace Systems
 
         public OrderSystem()
         {
-            GenerateOrder();
+            GenerateRandomOrder();
         }
 
         private Order _currentOrder;
 
         public float
-            GradeBouquet(Bouquet bouquet) // returns a float between 0 and 1 representing the grade of the bouquet
+            CompleteOrder(Bouquet bouquet) // returns a float between 0 and 1 representing the grade of the bouquet
         {
+            float grade = 0;
             //TODO: add depth to bouquet grading
-            return bouquet.GetValues().message == get_order_message(1) ? 1 : 0;
+            for(int i = 0; i < _currentOrder.Messages.Length; i++)
+            {
+                if (bouquet.GetMessages().Contains(_currentOrder.Messages[i]))
+                {
+                    grade += 0.5f;
+                    if (bouquet.GetMessages()[i] == _currentOrder.Messages[i])
+                    {
+                        grade += 0.5f;
+                    }
+                }
+
+            }
+            return grade / (_currentOrder.Messages.Length);
         }
 
-        public void GenerateOrder()
+        public void GenerateRandomOrder()
         {
+            Debug.Log(String.Join(",\n", FlowerHandler.instance.GetFlowerMessages()));
             _currentOrder.Messages = new FlowerMessageType[3];
             for (uint iterator = 0; iterator < _currentOrder.Messages.Length; iterator++)
             {
-                var a = (FlowerMessageType)UnityEngine.Random.Range(0, FlowerHandler.GetFlowerMessages().Length - 1);
+                var a = FlowerHandler.instance.GetFlowerMessages()[Random.Range(0, FlowerHandler.instance.GetFlowerMessages().Length)];
                 while (Array.Exists(_currentOrder.Messages, element => element == a) || a == FlowerMessageType.Null)
                 {
-                    a = (FlowerMessageType)UnityEngine.Random.Range(1, FlowerHandler.GetFlowerMessages().Length);
+                    a = FlowerHandler.instance.GetFlowerMessages()[Random.Range(0, FlowerHandler.instance.GetFlowerMessages().Length)];
                 }
 
                 _currentOrder.Messages[iterator] = a;
             }
+            Debug.Log(String.Join(";\n", _currentOrder.Messages));
 
             _currentOrder.Vase = "Vase";
             _currentOrder.Reward = 100;

@@ -23,6 +23,7 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
 
     FlowerValues values;
     private BoxCollider boxCollider;
+    private FlowerMessageType[] messages;
     bool _ready;
     public bool canBeDragged { get => _canBeDragged; set => _canBeDragged = value; }
     bool _canBeDragged;
@@ -47,6 +48,7 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
         values.intentMultiplier = 0;
         values.intentMultiplier = 0;
         values.message = FlowerMessageType.Null;
+        messages = new FlowerMessageType[3];
         canBeDragged = false;
 
         _ready = false;
@@ -67,23 +69,27 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
             /*flowerBunch.transform.SetParent(flowers[occupied].transform);
             flowerBunch.GetComponentInChildren<MeshRenderer>().enabled = false;
             flowerBunch.GetComponent<BoxCollider>().enabled = false;*/
+            if (a.flower is not { } b ) return;
             switch (occupied)
             {
                 case 0:
-                    values.message = a?.flower.flowerValues.message ?? FlowerMessageType.Null;
+                    values.message = b.flowerValues.message;
+                    messages[0] = values.message;
                     occupied++;
                     PlaySound();
                     //print($"{a.type.flowerValues.message}");
                     break;
                 case 1:
-                    values.intent = a?.flower.flowerValues.intent ?? 0;
-                    values.formality = a?.flower.flowerValues.formality ?? 0;
+                    messages[1] = b.flowerValues.message;
+                    values.intent = b.flowerValues.intent;
+                    values.formality = b.flowerValues.formality;
                     occupied++;
                     PlaySound();
                     break;
                 case 2:
-                    values.intentMultiplier = a?.flower.flowerValues.intentMultiplier ?? 0;
-                    values.formalityMultiplier = a?.flower.flowerValues.formalityMultiplier ?? 0;
+                    messages[2] = b.flowerValues.message;
+                    values.intentMultiplier = b.flowerValues.intentMultiplier;
+                    values.formalityMultiplier = b.flowerValues.formalityMultiplier;
                     occupied++;
                     PlaySound();
                     break;
@@ -152,7 +158,10 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
     {
         throw new System.NotImplementedException();
     }
-
+    public FlowerMessageType[] GetMessages()
+    {
+        return messages;
+    }
     public bool DropAction(GameObject a = null)
     {
         if (!_ready && a.GetComponent<FlowerBunch>())
