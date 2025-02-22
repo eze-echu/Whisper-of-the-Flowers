@@ -7,6 +7,7 @@ using TMPro;
 public class FadeController : MonoBehaviour
 {
     private static readonly int FadeInAndOut = Animator.StringToHash("FadeInAndOut");
+    private static readonly int FadeIn = Animator.StringToHash("FadeIn");
     private static readonly int FadeOut = Animator.StringToHash("FadeOut");
     public Animator animator;
     private string _sceneName;
@@ -34,12 +35,6 @@ public class FadeController : MonoBehaviour
     }
     */
 
-    public void OnFadeCompleteLevel()
-    {
-        texto.text = "";
-        EventSystems.instance.LoadScene(_sceneName);
-    }
-
     public IEnumerator FadeInAndOutCoroutine(string message)
     {
         // Setea el mensaje
@@ -61,6 +56,25 @@ public class FadeController : MonoBehaviour
         
 
 
+    }
+
+    public IEnumerator StartFadeIn(string message)
+    {
+        texto.text = message;
+        animator.Play(animator.GetCurrentAnimatorStateInfo(0).fullPathHash, layer: -1, normalizedTime: 0f);
+        animator.Update(Time.deltaTime);
+        GameState.PauseGame();
+        
+        animator.SetBool(FadeOut, true);
+        
+        yield return new WaitForSeconds(5);
+        
+        animator.SetBool(FadeOut, false);
+        animator.SetBool(FadeIn, true);
+        
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        
+        GameState.ResumeGame();
     }
 
 }

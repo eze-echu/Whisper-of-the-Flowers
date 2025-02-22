@@ -10,10 +10,10 @@ namespace Systems
     {
         public static GameState Instance;
         private static bool _isGamePaused;
-        public static int secondsPerGameDay = 120;
+        public static uint secondsPerGameDay = 12000;
         public uint coinsAccumulated;
         public int currentDay = 1;
-        public float timeLeft = secondsPerGameDay;
+        public uint timeLeft = (uint)secondsPerGameDay;
         public float coinMultiplier = 1.00f;
 
         public OrderSystem OrderSystem;
@@ -34,15 +34,16 @@ namespace Systems
         {
             if (!_isGamePaused)
             {
-                if (timeLeft > 0) timeLeft -= Time.deltaTime;
+                if (timeLeft > 0) timeLeft = (uint)((float)timeLeft - Time.deltaTime*100);
                 timeText.text =
-                    $"Day {currentDay} - {(uint)Mathf.Floor(timeLeft / 60)}:{(uint)Mathf.Floor(timeLeft % 60):D2}";
+                    $"Day {currentDay} - {(uint)Mathf.Floor(timeLeft / 6000)}:{(uint)Mathf.Floor((timeLeft/100) % 60):D2}";
                 if (timeLeft <= 0.5f) // Es .5 pq si no se pasa de largo y va a negativo (o underflow a max int value)
                 {
                     timeLeft = secondsPerGameDay;
-                    StartCoroutine(
-                        GameManager.instance.Fc.FadeInAndOutCoroutine(
-                            $"Fue un buen dia, pero ya es hora de cerrar la tienda\nMoney: {coinsAccumulated}"));
+                    // StartCoroutine(
+                    //     GameManager.instance.Fc.FadeInAndOutCoroutine(
+                    //         $"Fue un buen dia, pero ya es hora de cerrar la tienda\nMoney: {coinsAccumulated}"));
+                    StartCoroutine(GameManager.instance.Fc.StartFadeIn($"Fue un buen dia, pero ya es hora de cerrar la tienda\nMoney: {coinsAccumulated}"));
                     // TODO: Implement end of day logic (1st calculate earnings, save it, then reset the day, if 7th and below required, fail the game)
                     NewRequest();
                     currentDay++;

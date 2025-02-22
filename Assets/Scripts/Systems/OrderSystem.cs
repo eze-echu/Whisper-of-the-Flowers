@@ -49,7 +49,7 @@ namespace Systems
 
         public void GenerateRandomOrder()
         {
-            Debug.Log(String.Join(",\n", FlowerHandler.instance.GetFlowerMessages()));
+            //Debug.Log(String.Join(",\n", FlowerHandler.instance.GetFlowerMessages()));
             _currentOrder.Messages = new FlowerMessageType[3];
             for (uint iterator = 0; iterator < _currentOrder.Messages.Length; iterator++)
             {
@@ -61,7 +61,7 @@ namespace Systems
 
                 _currentOrder.Messages[iterator] = a;
             }
-            Debug.Log(String.Join(";\n", _currentOrder.Messages));
+            //Debug.Log(String.Join(";\n", _currentOrder.Messages));
 
             _currentOrder.Vase = "Vase";
             _currentOrder.Reward = 100;
