@@ -23,6 +23,12 @@ public class DefeatConditions : MonoBehaviour
                 AlreadyLoose = true;
                 CheckDefeat("Menem");
             }
+
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                GameState.Instance.coinsAccumulated = 0;
+                Debug.Log($"Monedas reducidas. Ahora tienes: {GameState.Instance.coinsAccumulated}");
+            }
         }
         #endif
 
@@ -32,18 +38,15 @@ public class DefeatConditions : MonoBehaviour
             else Destroy(gameObject);
         }
 
-        public static void AddConditions(IDefeatCondition condition)
-        {
-            _defeatConditions.Add(condition);
-        }
-        /*
-        public void Initialize(GameState gameState, uint requiredCoins)
-        {
-            // Se agrega la condición de monedas. Pueden agregarse más condiciones según se necesite.
-            _defeatConditions.Add(new CoinDefeatCondition(gameState, requiredCoins));
-        }
-        */
-        
+    public void Start()
+    {
+        AddConditions(new CoinDefeatCondition(GameState.Instance, 1));
+    }
+
+    public static void AddConditions(IDefeatCondition condition)
+    {
+        _defeatConditions.Add(condition);
+    }  
         public void CheckDefeat(string info)
         {
             if (AlreadyLoose)

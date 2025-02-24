@@ -865,6 +865,7 @@ MonoBehaviour:
   - {fileID: 468951114}
   - {fileID: 1373264850}
   - {fileID: 734734206}
+  EffecSound: {fileID: 0}
 --- !u!114 &364952767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -987,6 +988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 277475f58f52a0f44af75a00b2d3d294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EffectSound: {fileID: 0}
 --- !u!1 &427280503
 GameObject:
   m_ObjectHideFlags: 0
@@ -1829,7 +1831,7 @@ MonoBehaviour:
   bucketPrefab: {fileID: 4710108670442706332, guid: 000002bc41e06284ea4c65a1c780206b, type: 3}
   grid: {fileID: 514811963}
   GridWidth: 3
-  scrollViewPort: {fileID: 0}
+  trash: {fileID: 0}
 --- !u!114 &664181837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1869,6 +1871,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DragCamera: {fileID: 1435679027}
   distanceFromCamera: 17
+  Fc: {fileID: 0}
+  AM: {fileID: 0}
 --- !u!1 &688543383
 GameObject:
   m_ObjectHideFlags: 0

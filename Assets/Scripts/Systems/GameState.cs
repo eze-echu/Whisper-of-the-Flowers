@@ -22,6 +22,7 @@ namespace Systems
         public TMP_Text requestText;
 
         // Start is called before the first frame update
+        public event Action OnDayChanged; 
         void Start()
         {
             if (Instance == null) Instance = this;
@@ -47,6 +48,7 @@ namespace Systems
                     // TODO: Implement end of day logic (1st calculate earnings, save it, then reset the day, if 7th and below required, fail the game)
                     NewRequest();
                     currentDay++;
+                    OnDayChanged?.Invoke();
                 }
             }
         }

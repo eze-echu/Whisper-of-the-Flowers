@@ -19,18 +19,23 @@ namespace System
             _gameState = gameState;
             _requiredCoins = requiredCoins;
             //_infoDefeat = infoDefeat;
-
-            DefeatConditions.AddConditions(this);
+            _gameState.OnDayChanged += CheckOnDayChange;
         }
 
-        public bool CheckCondition()
+        private void CheckOnDayChange()
         {
-            // cada una semana verifica las cant de monedas
-            if (_gameState.currentDay % 7 == 0 && _gameState.coinsAccumulated < _requiredCoins)
+            var _currentDay = _gameState.currentDay;
+            var _coinsAccumulated = _gameState.coinsAccumulated;
+            
+            Debug.Log("Se cambio el dia");
+            if (_currentDay % 7 == 0 && _coinsAccumulated < _requiredCoins)
             {
                 DefeatConditions.Instance.CheckDefeat(_infoDefeat);
-                return true;
             }
+        }
+        public bool CheckCondition()
+        {
+         
             return false;
         }
     }
