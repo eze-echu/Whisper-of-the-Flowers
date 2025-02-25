@@ -23,7 +23,7 @@ public class AudioManager1 : MonoBehaviour
         AudioSource[] allAudioSources = FindObjectsOfType<AudioSource>();
         foreach (AudioSource audioSource in allAudioSources)
         {
-            // Asigna cada AudioSource al diccionario correspondiente según su tag
+            // Asigna cada AudioSource al diccionario correspondiente segï¿½n su tag
             switch (audioSource.gameObject.tag)
             {
                 case "Musica":
@@ -38,7 +38,7 @@ public class AudioManager1 : MonoBehaviour
                     effectsSources.Add(audioSource.gameObject.name, audioSource);
                     break;
 
-                    // Agrega más casos según tus necesidades
+                    // Agrega mï¿½s casos segï¿½n tus necesidades
             }
         }
     }
@@ -60,13 +60,13 @@ public class AudioManager1 : MonoBehaviour
 
     private void Play(AudioSource audioSource)
     {
-        if (audioSource != null)
+        if (audioSource)
         {
             audioSource.Play();
         }
         else
         {
-            Debug.LogError("Se proporcionó un AudioSource nulo");
+            //Debug.LogError("Se proporcionï¿½ un AudioSource nulo");
         }
     }
 
@@ -74,8 +74,8 @@ public class AudioManager1 : MonoBehaviour
     private AudioSource GetAudioSourceWithTag(string tag)
     {
         AudioSource[] audioSourcesWithTag = GameObject.FindGameObjectsWithTag(tag)[0].GetComponents<AudioSource>();
-        // Este ejemplo asume que hay solo un objeto con el tag y varios AudioSources en él.
-        // Puedes ajustarlo según tu estructura.
+        // Este ejemplo asume que hay solo un objeto con el tag y varios AudioSources en ï¿½l.
+        // Puedes ajustarlo segï¿½n tu estructura.
         return audioSourcesWithTag[0];
     }
 
@@ -88,7 +88,7 @@ public class AudioManager1 : MonoBehaviour
         }
         else
         {
-            Debug.LogError($"No se encontró un AudioSource para el nombre {audioName}");
+            Debug.LogError($"No se encontrï¿½ un AudioSource para el nombre {audioName}");
         }
     }
     

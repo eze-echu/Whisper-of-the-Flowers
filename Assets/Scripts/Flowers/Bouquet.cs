@@ -3,34 +3,48 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using Flowers;
+using Systems;
 using UnityEngine.UIElements;
 using Unity.Mathematics;
+using UnityEngine.Serialization;
 
-public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteable
+public class Bouquet : MonoBehaviour, IDropZone, IOccupied, IResteable
 {
+    public enum Workstations
+    {
+        VaseStation,
+        FlowerStation,
+        DeliveryStation
+    }
+
     //[SerializeField] List<GameObject> _posOfFlowers;
     //[SerializeField] GameObject _principal;
     //[SerializeField] GameObject _secondary;
     //[SerializeField] GameObject _terceary;
+    private delegate void handInActions();
 
-    [SerializeField]
-    List<BouquetFlowers> flowers;
+    private handInActions handInAfter;
+    private handInActions handInBefore;
+
+    [SerializeField] private PartycleController partycleController;
+    public AudioSource ParticleEffectSound;
+    [SerializeField] List<BouquetFlowers> flowers;
 
     private int occupied = 0;
 
-    private Vector3 _lastposition;
-    private quaternion _lastRotation;
-
     FlowerValues values;
-    private BoxCollider boxCollider;
     private FlowerMessageType[] messages;
     bool _ready;
-    public bool canBeDragged { get => _canBeDragged; set => _canBeDragged = value; }
     bool _canBeDragged;
     public static Bouquet instance;
 
     public AudioSource EffecSound;
-    
+
+    private Workstations _currentWorkstations;
+
+    [SerializeField] private Transform[] _flowerPositions;
+    private BoxCollider _boxCollider;
+
     public void Awake()
     {
         if (instance == null) instance = this;
@@ -39,9 +53,8 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
 
     public void Start()
     {
-        _lastposition = transform.position;
-        _lastRotation = transform.rotation;
-        boxCollider = GetComponent<BoxCollider>();
+        _boxCollider = GetComponent<BoxCollider>();
+        SwitchWorkstation(Workstations.VaseStation);
 
         values.intent = 0;
         values.formality = 0;
@@ -49,27 +62,42 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
         values.intentMultiplier = 0;
         values.message = FlowerMessageType.Null;
         messages = new FlowerMessageType[3];
-        canBeDragged = false;
+
 
         _ready = false;
     }
+
+    private void SwitchWorkstation(Workstations workstation)
+    {
+        _currentWorkstations = workstation;
+        MoveBouquet((uint)workstation);
+    }
+
+    private void MoveBouquet(uint table)
+    {
+        transform.position = _flowerPositions[table].position;
+        transform.rotation = _flowerPositions[table].rotation;
+    }
+
 
     public void FlowerAdded(FlowerBunch flowerBunch)
     {
         print("Added Flower");
         bool areFilled = true;
-        if (flowerBunch) {
+        if (flowerBunch)
+        {
             BouquetFlowers a = flowers[occupied];
             if (!a.flower)
             {
                 areFilled = false;
             }
+
             flowerBunch.ResetToOriginalState();
             flowers[occupied].flower = flowerBunch.type;
             /*flowerBunch.transform.SetParent(flowers[occupied].transform);
             flowerBunch.GetComponentInChildren<MeshRenderer>().enabled = false;
             flowerBunch.GetComponent<BoxCollider>().enabled = false;*/
-            if (a.flower is not { } b ) return;
+            if (a.flower is not { } b) return;
             switch (occupied)
             {
                 case 0:
@@ -97,10 +125,12 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
                     print("Not within the scope of the Switch");
                     break;
             }
-            if(occupied == flowers.Count)
+
+            if (occupied == flowers.Count)
             {
                 areFilled = true;
             }
+
             if (values.message != FlowerMessageType.Null && areFilled)
             {
                 _ready = true;
@@ -108,15 +138,14 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
                 {
                     item.GetComponent<BoxCollider>().enabled = false;
                     print(item.transform.childCount);
-                    *//*if (item.transform.childCount == 1)
+                    */ /*if (item.transform.childCount == 1)
                     {
                         item.transform.GetChild(0).GetComponentInChildren<BoxCollider>().enabled = false;
-                    }*//*
+                    }*/ /*
                     print("Ready");
                 }*/
-                canBeDragged = true;
                 gameObject.tag = "Occupied";
-                boxCollider.enabled = true;
+                // boxCollider.enabled = true;
             }
             else
             {
@@ -130,47 +159,42 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
                 item.SetFlower(null);
                 print("Not Ready");
             }
+
             gameObject.tag = "DropZone";
             _ready = false;
-            canBeDragged = false;
             occupied = 0;
         }
     }
 
-    private void Formula()
-    {
-        values.intent *= values.intentMultiplier;
-        values.formality *= values.formalityMultiplier;
-
-        print(values.intent);
-        print(values.formality);
-    }
-
-    public GameObject ObjectsToBeDraged(ref Vector3 positions)
-    {
-        positions = transform.position;
-        CameraController.instance.SwitchToSpecificCamera(1);
-        transform.Rotate(new Vector3(0, -45, 0));
-        return gameObject;
-    }
+    // public GameObject ObjectsToBeDraged(ref Vector3 positions)
+    // {
+    //     positions = transform.position;
+    //     CameraController.instance.SwitchToSpecificCamera(1);
+    //     transform.Rotate(new Vector3(0, -45, 0));
+    //     return gameObject;
+    // }
 
     public bool WasUsed()
     {
         throw new System.NotImplementedException();
     }
+
     public FlowerMessageType[] GetMessages()
     {
         return messages;
     }
+
     public bool DropAction(GameObject a = null)
     {
-        if (!_ready && a.GetComponent<FlowerBunch>())
+        if (!_ready && a && a.GetComponent<FlowerBunch>() is { } b)
         {
-            FlowerAdded(a.GetComponent<FlowerBunch>());
+            FlowerAdded(b);
         }
-        else if (_ready){
+        else if (_ready)
+        {
             gameObject.tag = "Occupied";
         }
+
         return true;
     }
 
@@ -181,11 +205,10 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
 
     public void ResetToOriginalState()
     {
-        canBeDragged = false;
-        transform.position = _lastposition;
+        _currentWorkstations = Workstations.VaseStation;
+        MoveBouquet((uint)_currentWorkstations);
         transform.SetParent(null);
-        transform.rotation = _lastRotation;
-        GetComponent<BoxCollider>().enabled = true;
+        _boxCollider.enabled = true;
         FlowerAdded(null);
     }
 
@@ -197,6 +220,90 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
     private void PlaySound()
     {
         GameManager.instance.AM.PlayEffect(EffecSound);
+    }
+
+    public void ProceedToNextStation()
+    {
+        switch (_currentWorkstations)
+        {
+            case Workstations.DeliveryStation:
+                HandIn();
+                break;
+            case Workstations.VaseStation:
+                SwitchWorkstation(Workstations.FlowerStation);
+                _currentWorkstations = Workstations.FlowerStation;
+                break;
+            case Workstations.FlowerStation:
+                if (_ready)
+                {
+                    SwitchWorkstation(Workstations.DeliveryStation);
+                    _currentWorkstations = Workstations.DeliveryStation;
+                }
+                break;
+            default:
+                SwitchWorkstation(0);
+                break;
+        }
+    }
+
+    private void HandIn()
+    {
+        print("HandIN");
+        gameObject.tag = "DropZone";
+        handInBefore = delegate
+        {
+            //GameManager.instance.Fc.FadeInAndOutCoroutine("Un Tiempo Despues...");
+            GameManager.instance.AM.PlayEffect(ParticleEffectSound);
+            GameManager.Trigger("DisableWorkspace");
+            var grade = GameState.Instance.OrderSystem.CompleteOrder(this);
+            print("Grade: " + grade);
+            if (grade == 0)
+            {
+                partycleController.PlayParticle(2);
+            }
+            else if (Mathf.Approximately(grade, 1f))
+            {
+                partycleController.PlayParticle(3);
+            }
+            else
+            {
+                partycleController.PlayParticle(0);
+            }
+
+            GameState.Instance.AddRequestReward(Mathf.Clamp(grade, 0.3f, 1f));
+            // if (intent == 5 && message == "Love")
+            // {
+            //     partycleController.PlayParticle(3);
+            // }
+            // else if (intent == -5 && message == "Hatred")
+            // {
+            //     partycleController.PlayParticle(2);
+            // }
+            // else
+            // {
+            //     partycleController.PlayParticle(message == "Decrease_of_Love" || message == "Jealousy" || message == "Mourning" || message == "Hatred" ? 0 : 1);
+            // }
+            GameState.PauseGame();
+            // StartCoroutine(GameManager.instance.Fc.FadeInAndOutCoroutine("Un Tiempo Despues..."));
+        };
+        handInAfter = delegate
+        {
+            partycleController.StopAllParticles();
+            //StartCoroutine(GameManager.instance.Fc.FadeInAndOutCoroutine("Un Tiempo Despues..."));
+            // a?.transform.GetComponent<Bouquet>()?.SendVariableToStoryManager();
+            FlowerHandler.instance.ResetWorkspace();
+            ResetToOriginalState();
+            GameState.Instance.NewRequest();
+            GameState.ResumeGame();
+        };
+        StartCoroutine(WaitFewSeconds(3));
+    }
+
+    private IEnumerator WaitFewSeconds(float time)
+    {
+        handInBefore();
+        yield return new WaitForSeconds(time);
+        handInAfter();
     }
 }
 
@@ -212,13 +319,13 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
 /*private void OnTriggerEnter(Collision collision)
 {
     //codigo anterior anterior de devolver objeto
-    *//*
+    */ /*
     if (collision.collider.CompareTag("dontzone"))
     {
 
         transform.position = _lastposition;
     }
-    *//*
+    */ /*
 
     //buscar manera de reducir cantidad de ifs
     if (collision.gameObject.GetComponent<IDragable>() != null)
@@ -236,11 +343,11 @@ public class Bouquet : MonoBehaviour, IDragable, IDropZone, IOccupied, IResteabl
                 Transform transformCollider = collision.transform.GetComponent<Transform>();
                 transformCollider.position = item.transform.position;
 
-                *//*Collider childCollider = collision.transform.GetComponent<Collider>();
+                */ /*Collider childCollider = collision.transform.GetComponent<Collider>();
                 if (childCollider != null)
                 {
                     childCollider.enabled = false;
-                }*//*
+                }*/ /*
 
                 FlowerBunch childVariables = collision.transform.GetComponent<FlowerBunch>();
                 //print(childVariables);

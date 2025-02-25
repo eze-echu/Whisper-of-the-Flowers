@@ -11,10 +11,14 @@ public class FlowerBunch : MonoBehaviour, IDragable, IResteable
     bool _canBeDragged;
 
     public AudioSource EffecSound;
+    private BoxCollider _boxCollider;
+    private MeshRenderer _meshRenderer;
     public bool canBeDragged { get => _canBeDragged; set => _canBeDragged = value; }
 
     private void Start()
     {
+        _meshRenderer = GetComponentInChildren<MeshRenderer>();
+        _boxCollider = GetComponent<BoxCollider>();
         canBeDragged = true;
         father = GetComponentInParent<BucketOfFlowers>();
     }
@@ -35,8 +39,8 @@ public class FlowerBunch : MonoBehaviour, IDragable, IResteable
     {
         used = true;
         transform.position = father.OGflowerPosition;
-        GetComponent<BoxCollider>().enabled = true;
-        GetComponentInChildren<MeshRenderer>().enabled = true;
+        _boxCollider.enabled = true;
+        _meshRenderer.enabled = true;
         transform.SetParent(father.transform);
     }
 }
