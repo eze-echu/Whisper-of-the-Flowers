@@ -10,10 +10,10 @@ namespace Systems
     {
         public static GameState Instance;
         private static bool _isGamePaused;
-        public static uint secondsPerGameDay = 12000;
+        public static float secondsPerGameDay = 120;
         public uint coinsAccumulated;
         public int currentDay = 1;
-        public uint timeLeft = (uint)secondsPerGameDay;
+        public float timeLeft = secondsPerGameDay;
         public float coinMultiplier = 1.00f;
 
         public OrderSystem OrderSystem;
@@ -35,9 +35,9 @@ namespace Systems
         {
             if (!_isGamePaused)
             {
-                if (timeLeft > 0) timeLeft = (uint)((float)timeLeft - Time.deltaTime*100);
+                if (timeLeft > 0) timeLeft -= Time.deltaTime;
                 timeText.text =
-                    $"Day {currentDay} - {(uint)Mathf.Floor(timeLeft / 6000)}:{(uint)Mathf.Floor((timeLeft/100) % 60):D2}";
+                    $"Day {currentDay} - {(int)Mathf.Floor(timeLeft / 60)}:{(int)Mathf.Floor(timeLeft % 60):D2}";
                 if (timeLeft <= 0.5f) // Es .5 pq si no se pasa de largo y va a negativo (o underflow a max int value)
                 {
                     timeLeft = secondsPerGameDay;

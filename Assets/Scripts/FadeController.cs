@@ -77,4 +77,9 @@ public class FadeController : MonoBehaviour
         GameState.ResumeGame();
     }
 
+    public IEnumerator StartFadeOut()
+    {
+        yield return null;
+    }
+
 }

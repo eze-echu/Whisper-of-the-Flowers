@@ -26883,7 +26883,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2192064475371932680, guid: 912ca56bcfa7fed42b764e60cc3bdc7c, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2192064475371932680, guid: 912ca56bcfa7fed42b764e60cc3bdc7c, type: 3}
       propertyPath: m_AnchorMax.x
@@ -26963,7 +26963,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2192064475371932694, guid: 912ca56bcfa7fed42b764e60cc3bdc7c, type: 3}
       propertyPath: m_RaycastTarget
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4042865850966857789, guid: 912ca56bcfa7fed42b764e60cc3bdc7c, type: 3}
       propertyPath: m_text
@@ -29878,11 +29878,11 @@ RectTransform:
   - {fileID: 1051992749}
   - {fileID: 1464524780}
   - {fileID: 636181631}
+  - {fileID: 1486793023}
+  - {fileID: 2140135882}
   - {fileID: 227820489}
   - {fileID: 427041325}
   - {fileID: 1096430288}
-  - {fileID: 1486793023}
-  - {fileID: 2140135882}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -30520,7 +30520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinsAccumulated: 0
   currentDay: 1
-  timeLeft: 12000
+  timeLeft: 120
   coinMultiplier: 1
   timeText: {fileID: 1679712746}
   requestText: {fileID: 636181632}
@@ -35698,7 +35698,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1571097497535391920, guid: 7d8fad65f80f03248a706f8edfb27f27, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1571097497535391920, guid: 7d8fad65f80f03248a706f8edfb27f27, type: 3}
       propertyPath: m_AnchorMax.x
@@ -50487,7 +50487,7 @@ RectTransform:
   m_Children:
   - {fileID: 825345486}
   m_Father: {fileID: 1221898172}
-  m_RootOrder: 10
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -51131,7 +51131,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2519015748257447608, guid: 89213603af9d6f24ba6d0e963b6aeac5, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2519015748257447608, guid: 89213603af9d6f24ba6d0e963b6aeac5, type: 3}
       propertyPath: m_AnchorMax.x
@@ -51487,7 +51487,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8483174055670615664, guid: 8b08a5b8d5fd853419eee09d5eb188b6, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8483174055670615664, guid: 8b08a5b8d5fd853419eee09d5eb188b6, type: 3}
       propertyPath: m_AnchorMax.x
