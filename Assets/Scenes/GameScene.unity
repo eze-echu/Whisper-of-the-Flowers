@@ -28679,6 +28679,10 @@ PrefabInstance:
       value: Position Cameras
       objectReference: {fileID: 0}
     - target: {fileID: 5271508609459476098, guid: 5e9d21db207fd4c41a864913444ffbd0, type: 3}
+      propertyPath: cameras.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271508609459476098, guid: 5e9d21db207fd4c41a864913444ffbd0, type: 3}
       propertyPath: workstationUI.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -28694,6 +28698,26 @@ PrefabInstance:
       propertyPath: workstationUI.Array.data[0].ui
       value: 
       objectReference: {fileID: 659374310}
+    - target: {fileID: 5271508609459476098, guid: 5e9d21db207fd4c41a864913444ffbd0, type: 3}
+      propertyPath: cameras.Array.data[1].workstations
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271508609459476098, guid: 5e9d21db207fd4c41a864913444ffbd0, type: 3}
+      propertyPath: cameras.Array.data[2].workstations
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271508609459476098, guid: 5e9d21db207fd4c41a864913444ffbd0, type: 3}
+      propertyPath: cameras.Array.data[0].virtualCamera
+      value: 
+      objectReference: {fileID: 1978842076}
+    - target: {fileID: 5271508609459476098, guid: 5e9d21db207fd4c41a864913444ffbd0, type: 3}
+      propertyPath: cameras.Array.data[1].virtualCamera
+      value: 
+      objectReference: {fileID: 1951762760}
+    - target: {fileID: 5271508609459476098, guid: 5e9d21db207fd4c41a864913444ffbd0, type: 3}
+      propertyPath: cameras.Array.data[2].virtualCamera
+      value: 
+      objectReference: {fileID: 1481054491}
     - target: {fileID: 5271508609459476099, guid: 5e9d21db207fd4c41a864913444ffbd0, type: 3}
       propertyPath: m_RootOrder
       value: 19
@@ -48832,6 +48856,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1942711654}
   m_Mesh: {fileID: -422083264571398913, guid: 4eca35cbb672f5e4f99fd27f6089bdce, type: 3}
+--- !u!114 &1951762760 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5271508610473003844, guid: 5e9d21db207fd4c41a864913444ffbd0, type: 3}
+  m_PrefabInstance: {fileID: 1148477360}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1954037878
 GameObject:
   m_ObjectHideFlags: 0
@@ -48998,6 +49033,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1959349637}
   m_Mesh: {fileID: -5292657489878626374, guid: 4eca35cbb672f5e4f99fd27f6089bdce, type: 3}
+--- !u!114 &1978842076 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5271508611013882433, guid: 5e9d21db207fd4c41a864913444ffbd0, type: 3}
+  m_PrefabInstance: {fileID: 1148477360}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1980664593
 GameObject:
   m_ObjectHideFlags: 0
