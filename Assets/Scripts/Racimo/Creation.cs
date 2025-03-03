@@ -11,39 +11,39 @@ namespace Racimo
             var areFilled = true;
             if (flowerBunch)
             {
-                var a = flowers[occupied];
+                var a = flowers[_occupied];
                 if (!a.flower)
                 {
                     areFilled = false;
                 }
 
                 flowerBunch.ResetToOriginalState();
-                flowers[occupied].flower = flowerBunch.type;
+                flowers[_occupied].flower = flowerBunch.type;
                 /*flowerBunch.transform.SetParent(flowers[occupied].transform);
             flowerBunch.GetComponentInChildren<MeshRenderer>().enabled = false;
             flowerBunch.GetComponent<BoxCollider>().enabled = false;*/
                 if (a.flower is not { } b) return;
-                switch (occupied)
+                switch (_occupied)
                 {
                     case 0:
-                        values.message = b.flowerValues.message;
-                        messages[0] = values.message;
-                        occupied++;
+                        _values.message = b.flowerValues.message;
+                        _messages[0] = _values.message;
+                        _occupied++;
                         PlaySound();
                         //print($"{a.type.flowerValues.message}");
                         break;
                     case 1:
-                        messages[1] = b.flowerValues.message;
-                        values.intent = b.flowerValues.intent;
-                        values.formality = b.flowerValues.formality;
-                        occupied++;
+                        _messages[1] = b.flowerValues.message;
+                        _values.intent = b.flowerValues.intent;
+                        _values.formality = b.flowerValues.formality;
+                        _occupied++;
                         PlaySound();
                         break;
                     case 2:
-                        messages[2] = b.flowerValues.message;
-                        values.intentMultiplier = b.flowerValues.intentMultiplier;
-                        values.formalityMultiplier = b.flowerValues.formalityMultiplier;
-                        occupied++;
+                        _messages[2] = b.flowerValues.message;
+                        _values.intentMultiplier = b.flowerValues.intentMultiplier;
+                        _values.formalityMultiplier = b.flowerValues.formalityMultiplier;
+                        _occupied++;
                         PlaySound();
                         break;
                     default:
@@ -51,12 +51,12 @@ namespace Racimo
                         break;
                 }
 
-                if (occupied == flowers.Count)
+                if (_occupied == flowers.Count)
                 {
                     areFilled = true;
                 }
 
-                if (values.message != FlowerMessageType.Null && areFilled)
+                if (_values.message != FlowerMessageType.Null && areFilled)
                 {
                     _ready = true;
                     /*foreach (var item in flowers)
@@ -87,7 +87,7 @@ namespace Racimo
 
                 gameObject.tag = "DropZone";
                 _ready = false;
-                occupied = 0;
+                _occupied = 0;
             }
         }
     }

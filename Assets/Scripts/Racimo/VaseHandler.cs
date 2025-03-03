@@ -22,6 +22,11 @@ namespace Racimo
                 .Select(v => v.GetVaseType())
                 .ToArray();
         }
+
+        public VaseObject[] GetAvailableVaseObjects()
+        {
+            return vaseScriptableObjects.Where(v => v.available).ToArray();
+        }
     }
 
     public enum VaseType

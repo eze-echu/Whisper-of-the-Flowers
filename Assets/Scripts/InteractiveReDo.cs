@@ -35,7 +35,7 @@ public class InteractiveReDo : TouchInteraction
     public override void ToggleObjectActivation(){
         if (_target != null)
         {
-            Bouquet.instance.ResetToOriginalState();
+            Bouquet.Instance.ResetToOriginalState();
             FlowerHandler.instance.ResetWorkspace();
         }
     }

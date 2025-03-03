@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793d22e0165d44e1b489284b0936fc6d, type: 3}
   m_Name: Paper
   m_EditorClassIdentifier: 
-  available: 0
+  available: 1
   vaseModel:
     meshFilter: {fileID: -5754084199372789682, guid: b949f558710c099438784de97f26fac2, type: 3}
     meshRenderer: {fileID: -7511558181221131132, guid: b949f558710c099438784de97f26fac2, type: 3}

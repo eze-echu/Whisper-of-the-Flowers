@@ -6,6 +6,12 @@ namespace Racimo
 {
     public partial class Bouquet
     {
+        private delegate void handInActions();
+
+        private handInActions handInAfter;
+        private handInActions handInBefore;
+        [SerializeField] private PartycleController partycleController;
+        public AudioSource ParticleEffectSound;
 
         private void HandIn()
         {

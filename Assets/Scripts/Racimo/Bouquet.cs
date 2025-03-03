@@ -1,18 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Flowers;
+using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Serialization;
+using Debug = System.Diagnostics.Debug;
 
 namespace Racimo
 {
     public partial class Bouquet : MonoBehaviour, IDropZone, IOccupied, IResteable
     {
+        [Serializable]
         public enum Workstations
         {
             VaseStation,
             FlowerStation,
             DeliveryStation
         }
+
+
 
         //[SerializeField] List<GameObject> _posOfFlowers;
         //[SerializeField] GameObject _principal;
@@ -21,36 +29,31 @@ namespace Racimo
 
         [SerializeField] public Vase vase;
 
-        private List<MeshFilter> models;
-        private List<MeshRenderer> materials;
 
-        private delegate void handInActions();
+        [SerializeField] List<Flowers> flowers;
 
-        private handInActions handInAfter;
-        private handInActions handInBefore;
+        private int _occupied;
 
-        [SerializeField] private PartycleController partycleController;
-        public AudioSource ParticleEffectSound;
-        [SerializeField] List<global::Racimo.Flowers> flowers;
-
-        private int occupied = 0;
-
-        FlowerValues values;
-        private FlowerMessageType[] messages;
+        private FlowerValues _values;
+        private FlowerMessageType[] _messages;
         bool _ready;
         bool _canBeDragged;
-        public static Bouquet instance;
+        public static Bouquet Instance;
 
-        public AudioSource EffecSound;
+        [FormerlySerializedAs("effecSound")] [FormerlySerializedAs("EffecSound")]
+        public AudioSource effectSound;
 
         private Workstations _currentWorkstations;
 
-        [SerializeField] private Transform[] _flowerPositions;
+
+        [FormerlySerializedAs("_flowerPositions")] [SerializeField]
+        private Transform[] flowerPositions;
+
         private BoxCollider _boxCollider;
 
         public void Awake()
         {
-            if (instance == null) instance = this;
+            if (Instance == null) Instance = this;
             else Destroy(gameObject);
         }
 
@@ -60,17 +63,17 @@ namespace Racimo
                 vaseFilter: new List<MeshFilter>(GetComponents<MeshFilter>()),
                 vaseModel: new List<MeshRenderer>(GetComponents<MeshRenderer>()),
                 vase.GetVase() == null ? VaseHandler.Instance.vaseScriptableObjects[0] : vase.GetVase()
-                );
+            );
 
             _boxCollider = GetComponent<BoxCollider>();
             SwitchWorkstation(Workstations.VaseStation);
 
-            values.intent = 0;
-            values.formality = 0;
-            values.intentMultiplier = 0;
-            values.intentMultiplier = 0;
-            values.message = FlowerMessageType.Null;
-            messages = new FlowerMessageType[3];
+            _values.intent = 0;
+            _values.formality = 0;
+            _values.intentMultiplier = 0;
+            _values.intentMultiplier = 0;
+            _values.message = FlowerMessageType.Null;
+            _messages = new FlowerMessageType[3];
 
 
             _ready = false;
@@ -84,27 +87,14 @@ namespace Racimo
 
         private void MoveBouquet(uint table)
         {
-            transform.position = _flowerPositions[table].position;
-            transform.rotation = _flowerPositions[table].rotation;
+            transform.position = flowerPositions[table].position;
+            transform.rotation = flowerPositions[table].rotation;
         }
 
-
-        // public GameObject ObjectsToBeDraged(ref Vector3 positions)
-        // {
-        //     positions = transform.position;
-        //     CameraController.instance.SwitchToSpecificCamera(1);
-        //     transform.Rotate(new Vector3(0, -45, 0));
-        //     return gameObject;
-        // }
-
-        public bool WasUsed()
-        {
-            throw new System.NotImplementedException();
-        }
 
         public FlowerMessageType[] GetMessages()
         {
-            return messages;
+            return _messages;
         }
 
         public bool DropAction(GameObject a = null)
@@ -135,14 +125,9 @@ namespace Racimo
             FlowerAdded(null);
         }
 
-        public FlowerValues GetValues()
-        {
-            return values;
-        }
-
         private void PlaySound()
         {
-            GameManager.instance.AM.PlayEffect(EffecSound);
+            GameManager.instance.AM.PlayEffect(effectSound);
         }
 
         public void ProceedToNextStation()
@@ -176,6 +161,11 @@ namespace Racimo
             handInBefore();
             yield return new WaitForSeconds(time);
             handInAfter();
+        }
+
+        public Workstations Workstation()
+        {
+            return _currentWorkstations;
         }
     }
 }
