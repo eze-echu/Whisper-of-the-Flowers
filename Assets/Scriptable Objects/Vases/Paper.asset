@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 793d22e0165d44e1b489284b0936fc6d, type: 3}
+  m_Name: Paper
+  m_EditorClassIdentifier: 
+  available: 0
+  vaseModel:
+    meshFilter: {fileID: -5754084199372789682, guid: b949f558710c099438784de97f26fac2, type: 3}
+    meshRenderer: {fileID: -7511558181221131132, guid: b949f558710c099438784de97f26fac2, type: 3}
+  vaseType: 0

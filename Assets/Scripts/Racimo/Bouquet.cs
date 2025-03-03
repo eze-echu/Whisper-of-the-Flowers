@@ -18,6 +18,12 @@ namespace Racimo
         //[SerializeField] GameObject _principal;
         //[SerializeField] GameObject _secondary;
         //[SerializeField] GameObject _terceary;
+
+        [SerializeField] public Vase vase;
+
+        private List<MeshFilter> models;
+        private List<MeshRenderer> materials;
+
         private delegate void handInActions();
 
         private handInActions handInAfter;
@@ -50,6 +56,12 @@ namespace Racimo
 
         public void Start()
         {
+            vase = new Vase(
+                vaseFilter: new List<MeshFilter>(GetComponents<MeshFilter>()),
+                vaseModel: new List<MeshRenderer>(GetComponents<MeshRenderer>()),
+                vase.GetVase() == null ? VaseHandler.Instance.vaseScriptableObjects[0] : vase.GetVase()
+                );
+
             _boxCollider = GetComponent<BoxCollider>();
             SwitchWorkstation(Workstations.VaseStation);
 
@@ -75,8 +87,6 @@ namespace Racimo
             transform.position = _flowerPositions[table].position;
             transform.rotation = _flowerPositions[table].rotation;
         }
-
-
 
 
         // public GameObject ObjectsToBeDraged(ref Vector3 positions)
@@ -152,13 +162,13 @@ namespace Racimo
                         SwitchWorkstation(Workstations.DeliveryStation);
                         _currentWorkstations = Workstations.DeliveryStation;
                     }
+
                     break;
                 default:
                     SwitchWorkstation(0);
                     break;
             }
         }
-
 
 
         private IEnumerator WaitFewSeconds(float time)
