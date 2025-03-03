@@ -8543,6 +8543,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 222299754}
   m_Mesh: {fileID: 2981717987078054649, guid: 4eca35cbb672f5e4f99fd27f6089bdce, type: 3}
+--- !u!224 &225168415 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7676228972733023816, guid: 332eb9a13955fde47b7f1722029717a8, type: 3}
+  m_PrefabInstance: {fileID: 7676228972547115607}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &227820489 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2519015748257447608, guid: 89213603af9d6f24ba6d0e963b6aeac5, type: 3}
@@ -30509,6 +30514,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1222197995}
   m_Mesh: {fileID: 8564185969854854457, guid: 4eca35cbb672f5e4f99fd27f6089bdce, type: 3}
+--- !u!224 &1224243953 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7676228973764014246, guid: 332eb9a13955fde47b7f1722029717a8, type: 3}
+  m_PrefabInstance: {fileID: 7676228972547115607}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1227460582
 GameObject:
   m_ObjectHideFlags: 0
@@ -45941,6 +45951,11 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!224 &1751478046 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7676228974294263113, guid: 332eb9a13955fde47b7f1722029717a8, type: 3}
+  m_PrefabInstance: {fileID: 7676228972547115607}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1753253520
 GameObject:
   m_ObjectHideFlags: 0
@@ -52442,6 +52457,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1221898172}
     m_Modifications:
+    - target: {fileID: 4418024105695205952, guid: 332eb9a13955fde47b7f1722029717a8, type: 3}
+      propertyPath: vasesPanel
+      value: 
+      objectReference: {fileID: 225168415}
+    - target: {fileID: 4418024105695205952, guid: 332eb9a13955fde47b7f1722029717a8, type: 3}
+      propertyPath: othersPanel
+      value: 
+      objectReference: {fileID: 1751478046}
+    - target: {fileID: 4418024105695205952, guid: 332eb9a13955fde47b7f1722029717a8, type: 3}
+      propertyPath: flowersPanel
+      value: 
+      objectReference: {fileID: 1224243953}
     - target: {fileID: 7676228972643875962, guid: 332eb9a13955fde47b7f1722029717a8, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
