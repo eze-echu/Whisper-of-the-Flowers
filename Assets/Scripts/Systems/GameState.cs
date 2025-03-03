@@ -22,11 +22,15 @@ namespace Systems
         public TMP_Text requestText;
 
         // Start is called before the first frame update
-        public event Action OnDayChanged; 
-        void Start()
+        public event Action OnDayChanged;
+
+        void Awake()
         {
             if (Instance == null) Instance = this;
             else Destroy(gameObject);
+        }
+        void Start()
+        {
             NewRequest();
         }
 

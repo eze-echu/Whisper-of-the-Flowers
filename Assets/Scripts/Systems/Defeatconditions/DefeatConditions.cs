@@ -8,7 +8,7 @@ using TMPro;
 public class DefeatConditions : MonoBehaviour
 {
         public bool AlreadyLoose { get; private set; } = false;
-         public static DefeatConditions Instance { get; private set; }
+        public static DefeatConditions Instance;
         [SerializeField] private GameObject gameOverPanel;
         [SerializeField] private TMP_Text defeatReasonText;
 
@@ -47,6 +47,11 @@ public class DefeatConditions : MonoBehaviour
     {
         _defeatConditions.Add(condition);
     }  
+
+    public void BoolDefeat(bool defeat)
+    {
+        AlreadyLoose = defeat;
+    }
         public void CheckDefeat(string info)
         {
             if (AlreadyLoose)
