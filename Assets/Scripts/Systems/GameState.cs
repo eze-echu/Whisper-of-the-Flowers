@@ -79,7 +79,7 @@ namespace Systems
             OrderSystem.GenerateRandomOrder();
             // Values are added in the FlowerHandler.cs
             requestText.text =
-                $"{OrderSystem.get_order_message(0)}\n{OrderSystem.get_order_message(1)}\n{OrderSystem.get_order_message(2)}";
+                $"{OrderSystem.get_order_message(0)}\n{OrderSystem.get_order_message(1)}\n{OrderSystem.get_order_message(2)}\n\n{OrderSystem.GetOrderVase()}";
         }
 
         public void AddRequestReward(float grade)

@@ -22057,7 +22057,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Next (Temp)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -27388,7 +27388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2192064475371932680, guid: 912ca56bcfa7fed42b764e60cc3bdc7c, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 2192064475371932680, guid: 912ca56bcfa7fed42b764e60cc3bdc7c, type: 3}
       propertyPath: m_AnchorMax.x
@@ -30421,8 +30421,8 @@ RectTransform:
   - {fileID: 1562676415}
   - {fileID: 1567456872}
   - {fileID: 427041325}
-  - {fileID: 1096430288}
   - {fileID: 1486793023}
+  - {fileID: 1096430288}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -36378,7 +36378,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1571097497535391920, guid: 7d8fad65f80f03248a706f8edfb27f27, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1571097497535391920, guid: 7d8fad65f80f03248a706f8edfb27f27, type: 3}
       propertyPath: m_AnchorMax.x
@@ -51455,7 +51455,7 @@ GameObject:
   - component: {fileID: 2140135884}
   - component: {fileID: 2140135883}
   m_Layer: 5
-  m_Name: MoveToNext
+  m_Name: MoveToNext (Temp)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

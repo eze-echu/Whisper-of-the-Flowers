@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using Flowers;
+using Racimo;
 using UnityEngine;
 using Bouquet = Racimo.Bouquet;
 using Random = UnityEngine.Random;
@@ -12,7 +13,7 @@ namespace Systems
         private struct Order
         {
             internal FlowerMessageType[] Messages;
-            internal string Vase;
+            internal VaseType Vase;
             internal uint Reward;
         }
 
@@ -32,6 +33,7 @@ namespace Systems
             CompleteOrder(Bouquet bouquet) // returns a float between 0 and 1 representing the grade of the bouquet
         {
             float grade = 0;
+            float extraGrade = 0;
             //TODO: add depth to bouquet grading
             for(int i = 0; i < _currentOrder.Messages.Length; i++)
             {
@@ -45,7 +47,11 @@ namespace Systems
                 }
 
             }
-            return grade / (_currentOrder.Messages.Length);
+            if (bouquet.GetVaseType() == _currentOrder.Vase)
+            {
+                extraGrade += 0.5f;
+            }
+            return grade / _currentOrder.Messages.Length + extraGrade;
         }
 
         public void GenerateRandomOrder()
@@ -55,22 +61,28 @@ namespace Systems
             for (uint iterator = 0; iterator < _currentOrder.Messages.Length; iterator++)
             {
                 var a = FlowerHandler.instance.GetFlowerMessages()[Random.Range(0, FlowerHandler.instance.GetFlowerMessages().Length)];
-                while (Array.Exists(_currentOrder.Messages, element => element == a) || a == FlowerMessageType.Null)
-                {
-                    a = FlowerHandler.instance.GetFlowerMessages()[Random.Range(0, FlowerHandler.instance.GetFlowerMessages().Length)];
-                }
+                // Make Unique flowers on the request
+                // while (Array.Exists(_currentOrder.Messages, element => element == a) || a == FlowerMessageType.Null)
+                // {
+                //     a = FlowerHandler.instance.GetFlowerMessages()[Random.Range(0, FlowerHandler.instance.GetFlowerMessages().Length)];
+                // }
 
                 _currentOrder.Messages[iterator] = a;
             }
             //Debug.Log(String.Join(";\n", _currentOrder.Messages));
 
-            _currentOrder.Vase = "Vase";
+            _currentOrder.Vase = VaseHandler.Instance.GetAvailableVaseTypes()[Random.Range(0, VaseHandler.Instance.GetAvailableVaseTypes().Length)];
             _currentOrder.Reward = 100;
         }
 
         public float GetOrderReward()
         {
             return _currentOrder.Reward;
+        }
+
+        public string GetOrderVase()
+        {
+            return _currentOrder.Vase.ToString();
         }
     }
 }

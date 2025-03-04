@@ -26,15 +26,15 @@ namespace Racimo
                 MonoBehaviour.print("Grade: " + grade);
                 if (grade == 0)
                 {
-                    partycleController.PlayParticle(2);
+                    partycleController.PlayParticle(2); // Broken Hearts
                 }
-                else if (Mathf.Approximately(grade, 1f))
+                else if ( grade >= 0.75f)
                 {
-                    partycleController.PlayParticle(3);
+                    partycleController.PlayParticle(3); // Plus Hearts
                 }
                 else
                 {
-                    partycleController.PlayParticle(0);
+                    partycleController.PlayParticle(0); // Tears/Sweat drops
                 }
 
                 GameState.Instance.AddRequestReward(Mathf.Clamp(grade, 0.3f, 1f));
