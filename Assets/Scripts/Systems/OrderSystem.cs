@@ -42,14 +42,14 @@ namespace Systems
                     grade += 0.5f;
                     if (bouquet.GetMessages()[i] == _currentOrder.Messages[i])
                     {
-                        grade += 0.5f;
+                        grade += 0.25f;
                     }
                 }
 
             }
             if (bouquet.GetVaseType() == _currentOrder.Vase)
             {
-                extraGrade += 0.5f;
+                extraGrade += 0.25f;
             }
             return grade / _currentOrder.Messages.Length + extraGrade;
         }

@@ -59,10 +59,11 @@ namespace Racimo
 
         public void Start()
         {
+            var a = VaseHandler.Instance.GetAvailableVaseObjects();
             vase = new Vase(
                 vaseFilter: new List<MeshFilter>(GetComponents<MeshFilter>()),
                 vaseModel: new List<MeshRenderer>(GetComponents<MeshRenderer>()),
-                vase.GetVase() == null ? VaseHandler.Instance.vaseScriptableObjects[0] : vase.GetVase()
+                vase.GetVase() is null ? a[0] : vase.GetVase()
             );
 
             _boxCollider = GetComponent<BoxCollider>();

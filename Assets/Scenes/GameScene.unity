@@ -11627,7 +11627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vase:
-    currentVaseObject: {fileID: 11400000, guid: 6fd21b662ab438f4294eaca6237d0272, type: 2}
+    currentVaseObject: {fileID: 0}
   flowers:
   - {fileID: 468951114}
   - {fileID: 1373264850}
