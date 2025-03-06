@@ -31,7 +31,7 @@ MonoBehaviour:
   debugShaders:
     debugReplacementPS: {fileID: 4800000, guid: cf852408f2e174538bcd9b7fda1c5ae7, type: 3}
   m_RendererFeatures:
-  - {fileID: 3538414844687376867}
+  - {fileID: 0}
   - {fileID: -6961440470612975140}
   m_RendererFeatureMap: e3618fcd8df91a31dce11578c6fe639f
   m_UseNativeRenderPass: 0

@@ -3,56 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.IO;
+using System.Linq;
+using Newtonsoft.Json;
+using UnityEngine.Serialization;
 
 
-//Basado en el codigo de Bronson Zgeb https://github.com/UnityTechnologies/UniteNow20-Persistent-Data
 [Serializable]
 public class Save
 {
-    public int gems;
-    public int level;
-    public string user;
-    public bool seenTutorial;
-    public float volume;
-    public bool bonusReward;
-    public bool increaseGemChance;
+    private static string _fullPath = Path.Combine(Application.persistentDataPath, "save.json");
 
-    /*public void UpdateProgress(int newCoins, int newLevel)
+    public static Dictionary<string, object> LoadDirectly()
     {
-        guardado.coins = newCoins;
-        guardado.level = newLevel;
-    }*/
+        Debug.Log(_fullPath);
+        if (!File.Exists(_fullPath))
+        {
+            Debug.LogError("File not found");
+            return new Dictionary<string, object>();
+        }
+        return JsonConvert.DeserializeObject<Dictionary<string, object>>(File.ReadAllText(_fullPath));
+    }
+    
+    public static void SaveData(Dictionary<string, object> newData)
+    {
+        var data = LoadDirectly();
+        if (newData == null)
+        {
+            Debug.LogError("Data is null");
+            return;
+        }
 
-    /*public void UpdateUserName(string newUser)
-    {
-        guardado.user = newUser;
-    }*/
-
-    public string SaveData()
-    {
-        return SaveJSON(this);
+        foreach (var kvp in newData)
+        {
+            data[kvp.Key] = kvp.Value;
+        }
+        File.WriteAllText(_fullPath, JsonConvert.SerializeObject(data));
     }
-    private string SaveJSON(Save save)
-    {
-        string json = JsonUtility.ToJson(this);
-        return json;
-    }
-
-    public void LoadData(string newJson)
-    {
-        LoadFromJSON(newJson);
-    }
-    private void LoadFromJSON(string newJason)
-    {
-        JsonUtility.FromJsonOverwrite(newJason, this);
-    }
-}
-public interface ISaveable<T>{
-    void PopulateSaveData(Save a_Save);
-    bool SaveFile(T save);
-}
-public interface ILoadable<T>
-{
-    bool LoadFile(T save);
-    void LoadFromSaveData(Save a_Save);
 }

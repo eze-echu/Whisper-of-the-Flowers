@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Flowers;
 using TMPro;
 using UnityEngine;
@@ -32,6 +33,15 @@ namespace Systems
         void Start()
         {
             NewRequest();
+            var saveData = Save.LoadDirectly();
+            if ( saveData.ContainsKey("coins") && uint.TryParse(saveData["coins"].ToString(), out var coins))
+            {
+                coinsAccumulated = coins;
+            }
+            if ( saveData.ContainsKey("daysPlayed") && int.TryParse(saveData["daysPlayed"].ToString(), out var day))
+            {
+                currentDay = day;
+            }
         }
 
         // Update is called once per frame
@@ -51,6 +61,7 @@ namespace Systems
                     StartCoroutine(GameManager.instance.Fc.StartFadeIn($"Fue un buen dia, pero ya es hora de cerrar la tienda\nMoney: {coinsAccumulated}"));
                     // TODO: Implement end of day logic (1st calculate earnings, save it, then reset the day, if 7th and below required, fail the game)
                     NewRequest();
+                    Save.SaveData(new Dictionary<string, object>{ {"coins", coinsAccumulated}, {"daysPlayed", currentDay} });
                     currentDay++;
                     OnDayChanged?.Invoke();
                 }
