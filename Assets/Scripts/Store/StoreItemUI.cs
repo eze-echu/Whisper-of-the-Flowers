@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class StoreItemUI : MonoBehaviour
 {
    public List<StoreItem> flowers = new List<StoreItem>();
     public List<StoreItem> vases = new List<StoreItem>();
-    public List<StoreItem> others = new List<StoreItem>(); // Nombre temporal
+    public List<StoreItem> others = new List<StoreItem>(); 
 
-    public Transform flowersPanel; // Panel del ScrollView para flores
-    public Transform vasesPanel;   // Panel del ScrollView para jarrones
-    public Transform othersPanel;  // Panel del ScrollView para otros ítems
+    public Transform flowersPanel; 
+    public Transform vasesPanel;   
+    public Transform othersPanel;  
 
     public GameObject storeItemPrefab; // Prefab del botón/item de la tienda
+    private int itemIndex = 1;
+
 
     void Start()
     {
@@ -27,19 +31,31 @@ public class StoreItemUI : MonoBehaviour
         {
             if (item.isVisible)
             {
+                string itemName = $"ItemStore{itemIndex++}"; // Genera un nombre único
+                bool alreadyBought = LoadPurchaseStatus(itemName);
+                
                 Debug.Log($"Agregando item a la tienda: {item.itemName}");
 
                 GameObject newItem = Instantiate(storeItemPrefab, targetPanel);
-                Store itemUI = newItem.GetComponent<Store>();
+                //Store itemUI = newItem.GetComponent<Store>();
+                Button itemButton = newItem.GetComponent<Button>();
 
-                if (itemUI == null)
+                if (itemButton  == null)
                 {
-                    Debug.LogError("El prefab instanciado no tiene Store. Revisa que el prefab esté bien configurado.");
+                    Debug.LogError("El prefab instanciado no tiene un componente Button.");
                     continue;
                 }
 
-                itemUI.Setup(item);
+                StoreItemClickHandler clickHandler = newItem.AddComponent<StoreItemClickHandler>();
+                clickHandler.Setup(itemButton, itemName, alreadyBought);
+                //itemUI.Setup(item);
             }
         }
+    }
+
+    bool LoadPurchaseStatus(string itemName)
+    {
+        var savedData = Save.LoadDirectly();
+        return savedData.ContainsKey(itemName) && (bool)savedData[itemName];
     }
 }
