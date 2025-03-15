@@ -1,8 +1,7 @@
 ﻿using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Racimo
+namespace Racimo.Vase
 {
     public class VaseHandler: MonoBehaviour
     {

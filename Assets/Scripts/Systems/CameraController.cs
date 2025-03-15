@@ -7,6 +7,7 @@ using Cinemachine;
 using JetBrains.Annotations;
 using Racimo;
 using Unity.VisualScripting;
+using Bouquet = Racimo.Bouquet;
 
 public class CameraController : MonoBehaviour
 {

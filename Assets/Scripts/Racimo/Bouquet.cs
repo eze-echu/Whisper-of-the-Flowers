@@ -7,6 +7,7 @@ using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Debug = System.Diagnostics.Debug;
+using Racimo.Vase;
 
 namespace Racimo
 {
@@ -27,7 +28,7 @@ namespace Racimo
         //[SerializeField] GameObject _secondary;
         //[SerializeField] GameObject _terceary;
 
-        [SerializeField] public Vase vase;
+        [SerializeField] public Vase.Vase vase;
 
 
         [SerializeField] List<Flowers> flowers;
@@ -60,7 +61,7 @@ namespace Racimo
         public void Start()
         {
             var a = VaseHandler.Instance.GetAvailableVaseObjects();
-            vase = new Vase(
+            vase = new Vase.Vase(
                 vaseFilter: new List<MeshFilter>(GetComponents<MeshFilter>()),
                 vaseModel: new List<MeshRenderer>(GetComponents<MeshRenderer>()),
                 vase.GetVase() is null ? a[0] : vase.GetVase()
