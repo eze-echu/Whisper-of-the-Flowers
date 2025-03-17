@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Systems;
 using UnityEngine;
 using UnityEngine.UI;
-
+/// <summary>
+/// Maneja los clics en los ítems, permitiendo la compra con doble clic.
+/// </summary>
 public class StoreItemClickHandler : MonoBehaviour
 {
+    
     private Button itemButton;
     private string itemName;
     private float lastClickTime = 0f;
@@ -40,10 +44,11 @@ public class StoreItemClickHandler : MonoBehaviour
 
     void Buying()
     {
-        Debug.Log($"Compraste: {itemName}");
+        //Debug.Log($"Compraste: {itemName}");
+        //GameState.Instance.coinsAccumulated -= 10;
         alreadyBought = true;
         itemButton.interactable = false;
-
+        
         // Guardar la compra
         Dictionary<string, object> data = new Dictionary<string, object>
         {
@@ -51,4 +56,6 @@ public class StoreItemClickHandler : MonoBehaviour
         };
         Save.SaveData(data);
     }
+
+    
 }

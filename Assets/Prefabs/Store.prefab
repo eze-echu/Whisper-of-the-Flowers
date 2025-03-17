@@ -1018,7 +1018,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 20, y: 10}
+  m_CellSize: {x: 35, y: 30}
   m_Spacing: {x: 5, y: 5}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -1272,7 +1272,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 7676228973235046407}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.99999994
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1548,7 +1548,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7676228974039441574}
   m_HandleRect: {fileID: 7676228974039441575}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1970,7 +1970,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 25, y: 10}
+  m_CellSize: {x: 35, y: 30}
   m_Spacing: {x: 5, y: 5}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -2515,8 +2515,14 @@ MonoBehaviour:
     price: 50
     isVisible: 1
     itemPrefab: {fileID: 4023771259835775733, guid: db248c8b8f8b5e64b968f31a1a5270aa, type: 3}
+    effect: {fileID: 0}
   vases: []
-  others: []
+  others:
+  - itemName: Buff Money
+    price: 100
+    isVisible: 1
+    itemPrefab: {fileID: 4023771259835775733, guid: db248c8b8f8b5e64b968f31a1a5270aa, type: 3}
+    effect: {fileID: 11400000, guid: 6dee45c8c68d6024196c9f255f84d26e, type: 2}
   flowersPanel: {fileID: 7676228973764014246}
   vasesPanel: {fileID: 7676228972733023816}
   othersPanel: {fileID: 7676228974294263113}
@@ -2852,7 +2858,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 20, y: 10}
+  m_CellSize: {x: 35, y: 30}
   m_Spacing: {x: 5, y: 5}
   m_Constraint: 0
   m_ConstraintCount: 2

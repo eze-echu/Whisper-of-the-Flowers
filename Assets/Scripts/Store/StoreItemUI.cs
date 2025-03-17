@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+/// <summary>
+/// carga los ítems en la tienda y ubicarlos en sus respectivas secciones
+/// </summary>
 public class StoreItemUI : MonoBehaviour
 {
    public List<StoreItem> flowers = new List<StoreItem>();
@@ -55,7 +57,8 @@ public class StoreItemUI : MonoBehaviour
 
     bool LoadPurchaseStatus(string itemName)
     {
-        var savedData = Save.LoadDirectly();
-        return savedData.ContainsKey(itemName) && (bool)savedData[itemName];
+        //var savedData = Save.LoadDirectly();
+        //return savedData.ContainsKey(itemName) && (bool)savedData[itemName];
+        return false;
     }
 }
