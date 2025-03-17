@@ -13,12 +13,15 @@ public class StoreItemClickHandler : MonoBehaviour
     private string itemName;
     private float lastClickTime = 0f;
     private const float doubleClickThreshold = 0.3f;
+    private StoreItem itemData;  
     private bool alreadyBought = false;
 
-    public void Setup(Button button, string itemName, bool alreadyBought)
+
+   public void Setup(Button button, StoreItem item, bool alreadyBought)
     {
         this.itemButton = button;
-        this.itemName = itemName;
+        this.itemData = item;  // Guardamos el StoreItem completo
+        this.itemName = item.itemName;
         this.alreadyBought = alreadyBought;
 
         if (alreadyBought)
@@ -44,8 +47,10 @@ public class StoreItemClickHandler : MonoBehaviour
 
     void Buying()
     {
-        //Debug.Log($"Compraste: {itemName}");
-        //GameState.Instance.coinsAccumulated -= 10;
+        Debug.Log($"Compraste: {itemName}");
+
+        // Realiza la compra (restar monedas, etc.)
+        GameState.Instance.coinsAccumulated -= 10;
         alreadyBought = true;
         itemButton.interactable = false;
         
@@ -55,6 +60,12 @@ public class StoreItemClickHandler : MonoBehaviour
             { itemName, true }
         };
         Save.SaveData(data);
+
+        // Aplicar el efecto
+        if (itemData.effect != null)
+        {
+            itemData.effect.Apply();  // Aquí llamamos al efecto del ítem
+        }
     }
 
     
