@@ -21584,7 +21584,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 364952765}
         m_TargetAssemblyTypeName: Racimo.Bouquet, Assembly-CSharp
-        m_MethodName: PreviousVase
+        m_MethodName: PreviousDecoration
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -48598,7 +48598,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 364952765}
         m_TargetAssemblyTypeName: Racimo.Bouquet, Assembly-CSharp
-        m_MethodName: NextVase
+        m_MethodName: NextDecoration
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

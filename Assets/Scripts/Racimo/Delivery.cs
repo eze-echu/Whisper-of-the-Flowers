@@ -1,4 +1,5 @@
 ﻿using Flowers;
+using Racimo.Decoration;
 using Systems;
 using UnityEngine;
 
@@ -28,7 +29,7 @@ namespace Racimo
                 {
                     partycleController.PlayParticle(2); // Broken Hearts
                 }
-                else if ( grade >= 0.75f)
+                else if (grade >= 0.75f)
                 {
                     partycleController.PlayParticle(3); // Plus Hearts
                 }
@@ -65,6 +66,75 @@ namespace Racimo
                 GameState.ResumeGame();
             };
             StartCoroutine(WaitFewSeconds(3));
+        }
+
+        public DecorationType GetDecorationType()
+        {
+            return decoration.GetDecoration().GetDecorationType();
+        }
+
+        public void NextDecoration()
+        {
+            if (_currentWorkstations != Racimo.Bouquet.Workstations.DeliveryStation)
+            {
+                Debug.LogWarning("Not in decoration station");
+                return;
+            }
+
+            var availableDecorationObjects = DecorationHandler.Instance.GetAvailableDecorationObjects();
+
+            if (availableDecorationObjects.Length == 0)
+            {
+                Debug.LogError("No available decorations, Check DecorationHandler");
+                return;
+            }
+
+            var currentDecorationIndex = System.Array.IndexOf<DecorationObject>(availableDecorationObjects, decoration.GetDecoration());
+
+            if (currentDecorationIndex == -1)
+            {
+                Debug.LogError("Current decoration not found in available decorations");
+                return;
+            }
+
+            var nextDecorationIndex = (currentDecorationIndex + 1) % availableDecorationObjects.Length;
+
+            decoration.SetDecoration(availableDecorationObjects[nextDecorationIndex]);
+        }
+
+        public void PreviousDecoration()
+        {
+            if (_currentWorkstations != Racimo.Bouquet.Workstations.DeliveryStation)
+            {
+                Debug.LogWarning("Not in decoration station");
+                return;
+            }
+
+            var availableDecorationObjects = DecorationHandler.Instance.GetAvailableDecorationObjects();
+
+            if (availableDecorationObjects.Length == 0)
+            {
+                Debug.LogError("No available decorations, Check DecorationHandler");
+                return;
+            }
+
+            var currentDecorationIndex = System.Array.IndexOf<DecorationObject>(availableDecorationObjects, decoration.GetDecoration());
+
+            if (currentDecorationIndex == -1)
+            {
+                Debug.LogError("Current decoration not found in available decorations");
+                return;
+            }
+
+            var desired = currentDecorationIndex - 1;
+            if (desired < 0)
+            {
+                desired = availableDecorationObjects.Length - 1;
+            }
+
+            var nextDecorationIndex = (desired) % availableDecorationObjects.Length;
+
+            decoration.SetDecoration(availableDecorationObjects[nextDecorationIndex]);
         }
     }
 }
