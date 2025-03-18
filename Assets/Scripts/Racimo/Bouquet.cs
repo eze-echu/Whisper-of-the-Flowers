@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Flowers;
 using JetBrains.Annotations;
+using Racimo.Decoration;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Debug = System.Diagnostics.Debug;
@@ -29,6 +30,9 @@ namespace Racimo
         //[SerializeField] GameObject _terceary;
 
         [SerializeField] public Vase.Vase vase;
+        [SerializeField] public Decoration.Decoration decoration;
+
+        [SerializeField] private GameObject decorationObject;
 
 
         [SerializeField] List<Flowers> flowers;
@@ -66,6 +70,13 @@ namespace Racimo
                 vaseModel: new List<MeshRenderer>(GetComponents<MeshRenderer>()),
                 vase.GetVase() is null ? a[0] : vase.GetVase()
             );
+            var b = DecorationHandler.Instance.GetAvailableDecorationObjects();
+            decoration = new Decoration.Decoration(
+                decorationFilter: new List<MeshFilter>(decorationObject.GetComponents<MeshFilter>()),
+                decorationModel: new List<MeshRenderer>(decorationObject.GetComponents<MeshRenderer>()),
+                decoration.GetDecoration() is null ? b[0] : decoration.GetDecoration()
+            );
+            decorationObject.SetActive(false);
 
             _boxCollider = GetComponent<BoxCollider>();
             SwitchWorkstation(Workstations.VaseStation);
@@ -147,6 +158,7 @@ namespace Racimo
                 case Workstations.FlowerStation:
                     if (_ready)
                     {
+                        decorationObject.SetActive(true);
                         SwitchWorkstation(Workstations.DeliveryStation);
                         _currentWorkstations = Workstations.DeliveryStation;
                     }

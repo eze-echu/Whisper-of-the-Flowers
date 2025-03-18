@@ -56,6 +56,7 @@ namespace Racimo
             handInAfter = delegate
             {
                 partycleController.StopAllParticles();
+                decorationObject.SetActive(false);
                 //StartCoroutine(GameManager.instance.Fc.FadeInAndOutCoroutine("Un Tiempo Despues..."));
                 // a?.transform.GetComponent<Bouquet>()?.SendVariableToStoryManager();
                 FlowerHandler.instance.ResetWorkspace();
