@@ -27832,25 +27832,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlackFade
       objectReference: {fileID: 0}
-    - target: {fileID: 2192064475371932694, guid: 912ca56bcfa7fed42b764e60cc3bdc7c, type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4042865850966857789, guid: 912ca56bcfa7fed42b764e60cc3bdc7c, type: 3}
-      propertyPath: m_text
-      value: hbhbhb
-      objectReference: {fileID: 0}
-    - target: {fileID: 4042865850966857789, guid: 912ca56bcfa7fed42b764e60cc3bdc7c, type: 3}
-      propertyPath: m_fontSize
-      value: 44.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 4042865850966857789, guid: 912ca56bcfa7fed42b764e60cc3bdc7c, type: 3}
-      propertyPath: m_fontColor.a
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4042865850966857789, guid: 912ca56bcfa7fed42b764e60cc3bdc7c, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 16777215
+      objectReference: {fileID: 0}
+    - target: {fileID: 6001141719294878839, guid: 912ca56bcfa7fed42b764e60cc3bdc7c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1240502524}
+    - target: {fileID: 7662864397331352747, guid: 912ca56bcfa7fed42b764e60cc3bdc7c, type: 3}
+      propertyPath: m_text
+      value: Next Day
+      objectReference: {fileID: 0}
+    - target: {fileID: 7662864397331352747, guid: 912ca56bcfa7fed42b764e60cc3bdc7c, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 3289650
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 912ca56bcfa7fed42b764e60cc3bdc7c, type: 3}
@@ -31521,9 +31517,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 542eff7abfa298d4db477930733af7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  secondsPerGameDay: 30
   coinsAccumulated: 0
   currentDay: 1
-  timeLeft: 120
   coinMultiplier: 1
   timeText: {fileID: 1679712746}
   requestText: {fileID: 636181632}

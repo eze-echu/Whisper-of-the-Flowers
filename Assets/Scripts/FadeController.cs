@@ -53,9 +53,6 @@ public class FadeController : MonoBehaviour
         GameState.ResumeGame();
         // Limpia el mensaje y carga la siguiente escena
         //texto.text = "";
-        
-
-
     }
 
     public IEnumerator StartFadeIn(string message)
@@ -64,22 +61,19 @@ public class FadeController : MonoBehaviour
         animator.Play(animator.GetCurrentAnimatorStateInfo(0).fullPathHash, layer: -1, normalizedTime: 0f);
         animator.Update(Time.deltaTime);
         GameState.PauseGame();
-        
+
         animator.SetBool(FadeOut, true);
-        
+
         yield return new WaitForSeconds(5);
-        
-        animator.SetBool(FadeOut, false);
-        animator.SetBool(FadeIn, true);
-        
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-        
-        GameState.ResumeGame();
     }
 
     public IEnumerator StartFadeOut()
     {
-        yield return null;
-    }
+        animator.SetBool(FadeOut, false);
+        animator.SetBool(FadeIn, true);
 
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+
+        GameState.ResumeGame();
+    }
 }
