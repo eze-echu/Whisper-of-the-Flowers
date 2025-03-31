@@ -63,12 +63,33 @@ namespace Systems
                     $"Day {currentDay} - {(int)Mathf.Floor(_timeLeft / 60)}:{(int)Mathf.Floor(_timeLeft % 60):D2}";
                 if (_timeLeft <= 0.5f) // Es .5 pq si no se pasa de largo y va a negativo (o underflow a max int value)
                 {
-                    _timeLeft = secondsPerGameDay;
-                    // StartCoroutine(
-                    //     GameManager.instance.Fc.FadeInAndOutCoroutine(
-                    //         $"Fue un buen dia, pero ya es hora de cerrar la tienda\nMoney: {coinsAccumulated}"));
-                    StartCoroutine(GameManager.instance.Fc.StartFadeIn(
-                        $"Fue un buen dia, pero ya es hora de cerrar la tienda\nMoney: {coinsAccumulated}\n\n{EndOfDayMessage[UnityEngine.Random.Range(0, EndOfDayMessage.Length)]}"));
+                    if (currentDay == 7)
+                    {
+                        var endOfDayMessage = "Fue una buena semana, esperamos que la hayas disfrutado";
+                        StartCoroutine(GameManager.instance.Fc.StartFadeIn(endOfDayMessage));
+                    }
+                    else
+                    {
+                        _timeLeft = secondsPerGameDay;
+                        // StartCoroutine(
+                        //     GameManager.instance.Fc.FadeInAndOutCoroutine(
+                        //         $"Fue un buen dia, pero ya es hora de cerrar la tienda\nMoney: {coinsAccumulated}"));}
+                        var endOfDayMessage = "Fue un buen dia, pero ya es hora de cerrar la tienda\nMoney: " +
+                                              coinsAccumulated;
+                        endOfDayMessage += "\n\n" +
+                                           EndOfDayMessage[UnityEngine.Random.Range(0, EndOfDayMessage.Length)];
+                        coinsAccumulated -= 200;
+                        endOfDayMessage += "\n\n" +
+                                           "-100 coins to pay the bills\n" +
+                                           "Coins after tax: " + coinsAccumulated;
+
+                        if (coinsAccumulated == 0)
+                        {
+                            // TODO: Add failure check
+                        }
+
+                        StartCoroutine(GameManager.instance.Fc.StartFadeIn(endOfDayMessage));
+                    }
                     // TODO: Implement end of day logic (1st calculate earnings, save it, then reset the day, if 7th and below required, fail the game)
                 }
             }
