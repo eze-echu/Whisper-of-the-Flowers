@@ -11,14 +11,14 @@ namespace Systems
     {
         private readonly string[] EndOfDayMessage = new[]
         {
-            "Mondongo",
-            "Mandinga",
-            "Sorondongo",
+            "Tuviste un accidente -500 monedas",
+            "Tuviste MUCHA suerte +500 monedas",
+            "Tenias antojo de algo dulce -200 monedas",
         };
         public static GameState Instance;
         private static bool _isGamePaused;
         public float secondsPerGameDay;
-        public uint coinsAccumulated;
+        public int coinsAccumulated;
         public int currentDay = 1;
         private float _timeLeft;
         public float coinMultiplier = 1.00f;
@@ -42,7 +42,7 @@ namespace Systems
         {
             NewRequest();
             var saveData = Save.LoadDirectly();
-            if (saveData.ContainsKey("coins") && uint.TryParse(saveData["coins"].ToString(), out var coins))
+            if (saveData.ContainsKey("coins") && int.TryParse(saveData["coins"].ToString(), out var coins))
             {
                 coinsAccumulated = coins;
             }
@@ -76,8 +76,9 @@ namespace Systems
                         //         $"Fue un buen dia, pero ya es hora de cerrar la tienda\nMoney: {coinsAccumulated}"));}
                         var endOfDayMessage = "Fue un buen dia, pero ya es hora de cerrar la tienda\nMoney: " +
                                               coinsAccumulated;
-                        endOfDayMessage += "\n\n" +
-                                           EndOfDayMessage[UnityEngine.Random.Range(0, EndOfDayMessage.Length)];
+                        // endOfDayMessage += "\n\n" +
+                        //                    EndOfDayMessage[UnityEngine.Random.Range(0, EndOfDayMessage.Length)];
+                        (endOfDayMessage, coinsAccumulated) = RandomEndOfDayEvent(endOfDayMessage, coinsAccumulated);
                         coinsAccumulated -= 200;
                         endOfDayMessage += "\n\n" +
                                            "-100 coins to pay the bills\n" +
@@ -131,9 +132,32 @@ namespace Systems
                 $"{OrderSystem.get_order_message(0)}\n{OrderSystem.get_order_message(1)}\n{OrderSystem.get_order_message(2)}\n\n{OrderSystem.GetOrderVase()}";
         }
 
+        private (string, int) RandomEndOfDayEvent(string text, int money)
+        {
+            var i = UnityEngine.Random.Range(0, EndOfDayMessage.Length);
+            text += "\n\n" + EndOfDayMessage[i];
+            switch (i)
+            {
+                case 0:
+                    money -= 500;
+                    break;
+                case 1:
+                    money += 500;
+                    break;
+                case 2:
+                    money -= 200;
+                    break;
+
+                default:
+                    money = money;
+                    break;
+            }
+            return (text, money);
+        }
+
         public void AddRequestReward(float grade)
         {
-            coinsAccumulated += (uint)(OrderSystem.GetOrderReward() * grade * coinMultiplier);
+            coinsAccumulated += (int)(OrderSystem.GetOrderReward() * grade * coinMultiplier);
         }
     }
 }
