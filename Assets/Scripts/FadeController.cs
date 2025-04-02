@@ -25,6 +25,7 @@ public class FadeController : MonoBehaviour
         texto.text = "";
         _sceneName = scene;
         animator.SetTrigger(FadeOut);
+        SceneLoader.Instance().AsyncLoadScene(_sceneName);
     }
 
     /*

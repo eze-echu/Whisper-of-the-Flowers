@@ -31543,7 +31543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 542eff7abfa298d4db477930733af7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondsPerGameDay: 60
+  secondsPerGameDay: 20
   coinsAccumulated: 0
   currentDay: 1
   coinMultiplier: 1
