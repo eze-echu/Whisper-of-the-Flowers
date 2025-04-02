@@ -18,6 +18,7 @@ public class DefeatConditions : MonoBehaviour
         #if UNITY_EDITOR
         private void Update()
         {
+            
             if (Input.GetKeyDown(KeyCode.P) && !AlreadyLoose)
             {
                 AlreadyLoose = true;
@@ -29,6 +30,7 @@ public class DefeatConditions : MonoBehaviour
                 GameState.Instance.coinsAccumulated = 0;
                 Debug.Log($"Monedas reducidas. Ahora tienes: {GameState.Instance.coinsAccumulated}");
             }
+            
         }
         #endif
 

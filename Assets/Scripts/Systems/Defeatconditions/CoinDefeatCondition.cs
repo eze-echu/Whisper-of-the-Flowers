@@ -12,7 +12,7 @@ namespace System
     {
         private readonly GameState _gameState;
         private readonly uint _requiredCoins;
-        private readonly string _infoDefeat = "Congrats, you are poor";
+        private readonly string _infoDefeat = "Congrats, you're poor";
 
         public CoinDefeatCondition(GameState gameState, uint requiredCoins)
         {
@@ -27,17 +27,16 @@ namespace System
             var _currentDay = _gameState.currentDay;
             var _coinsAccumulated = _gameState.coinsAccumulated;
             
-            Debug.Log("Se cambio el dia");
-            if (_coinsAccumulated <= _requiredCoins)
+            //Debug.Log("SE CAMBIO DE DIA");
+            if (_coinsAccumulated <= _requiredCoins && _currentDay % 7 == 0 && _currentDay != 0)
             {
-                
+                Debug.Log("Entro en el if de CheckDefeat de CoinCondition");
                 DefeatConditions.Instance.BoolDefeat(true);
                 DefeatConditions.Instance.CheckDefeat(_infoDefeat);
             }
         }
         public bool CheckCondition()
-        {
-         
+        {         
             return false;
         }
     }
