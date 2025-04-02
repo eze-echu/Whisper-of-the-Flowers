@@ -31543,12 +31543,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 542eff7abfa298d4db477930733af7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondsPerGameDay: 30
+  secondsPerGameDay: 60
   coinsAccumulated: 0
   currentDay: 1
   coinMultiplier: 1
   timeText: {fileID: 1679712746}
   requestText: {fileID: 636181632}
+  nextDayButton: {fileID: 1701697005}
 --- !u!1 &1246778280
 GameObject:
   m_ObjectHideFlags: 0
@@ -40562,6 +40563,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1701361367}
   m_Mesh: {fileID: 7498487530203246384, guid: 4eca35cbb672f5e4f99fd27f6089bdce, type: 3}
+--- !u!114 &1701697005 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6001141719294878839, guid: 912ca56bcfa7fed42b764e60cc3bdc7c, type: 3}
+  m_PrefabInstance: {fileID: 1096430287}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1702149095
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,6 +4,7 @@ using Flowers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace Systems
 {
@@ -30,6 +31,7 @@ namespace Systems
 
         // Start is called before the first frame update
         public event Action OnDayChanged;
+        [FormerlySerializedAs("_nextDayButton")] [SerializeField] private Button nextDayButton;
 
         void Awake()
         {
@@ -66,6 +68,10 @@ namespace Systems
                     if (currentDay == 7)
                     {
                         var endOfDayMessage = "Fue una buena semana, esperamos que la hayas disfrutado";
+                        nextDayButton.GetComponentInChildren<TextMeshProUGUI>().text = "Main Menu";
+                        nextDayButton.onClick.RemoveAllListeners();
+                        nextDayButton.onClick.AddListener(() => SceneLoader.Instance().AsyncLoadScene("MainMenu"));
+                        nextDayButton.onClick.AddListener(Save.DeleteData);
                         StartCoroutine(GameManager.instance.Fc.StartFadeIn(endOfDayMessage));
                     }
                     else

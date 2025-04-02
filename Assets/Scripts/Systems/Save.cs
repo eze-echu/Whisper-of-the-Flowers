@@ -39,4 +39,15 @@ public class Save
         }
         File.WriteAllText(_fullPath, JsonConvert.SerializeObject(data));
     }
+    public static void DeleteData()
+    {
+        if (File.Exists(_fullPath))
+        {
+            File.Delete(_fullPath);
+        }
+        else
+        {
+            Debug.LogError("File not found");
+        }
+    }
 }
