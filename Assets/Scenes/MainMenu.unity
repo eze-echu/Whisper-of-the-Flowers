@@ -44016,6 +44016,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133027322}
     m_Modifications:
+    - target: {fileID: 922016866520688438, guid: 912ca56bcfa7fed42b764e60cc3bdc7c, type: 3}
+      propertyPath: m_fontColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 922016866520688438, guid: 912ca56bcfa7fed42b764e60cc3bdc7c, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 16777215
+      objectReference: {fileID: 0}
     - target: {fileID: 2192064475371932680, guid: 912ca56bcfa7fed42b764e60cc3bdc7c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
