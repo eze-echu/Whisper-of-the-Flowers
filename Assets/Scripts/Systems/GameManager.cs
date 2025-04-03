@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public FadeController Fc;
     public AudioManager1 AM;
+    public Systems.EOD EODFS;
 
     public void Awake()
     {

@@ -53,6 +53,7 @@ namespace Systems
             {
                 currentDay = day;
             }
+            _isGamePaused = false;
         }
 
         // Update is called once per frame
@@ -65,14 +66,14 @@ namespace Systems
                     $"Day {currentDay} - {(int)Mathf.Floor(_timeLeft / 60)}:{(int)Mathf.Floor(_timeLeft % 60):D2}";
                 if (_timeLeft <= 0.5f) // Es .5 pq si no se pasa de largo y va a negativo (o underflow a max int value)
                 {
-                    if (currentDay == 7)
+                    if (currentDay == 3)
                     {
                         var endOfDayMessage = "Fue una buena semana, esperamos que la hayas disfrutado";
                         nextDayButton.GetComponentInChildren<TextMeshProUGUI>().text = "Main Menu";
                         nextDayButton.onClick.RemoveAllListeners();
                         nextDayButton.onClick.AddListener(() => SceneLoader.Instance().AsyncLoadScene("MainMenu"));
                         nextDayButton.onClick.AddListener(Save.DeleteData);
-                        StartCoroutine(GameManager.instance.Fc.StartFadeIn(endOfDayMessage));
+                        StartCoroutine(GameManager.instance.EODFS.StartFadeIn(endOfDayMessage));
                     }
                     else
                     {
@@ -95,7 +96,7 @@ namespace Systems
                             // TODO: Add failure check
                         }
 
-                        StartCoroutine(GameManager.instance.Fc.StartFadeIn(endOfDayMessage));
+                        StartCoroutine(GameManager.instance.EODFS.StartFadeIn(endOfDayMessage));
                     }
                     // TODO: Implement end of day logic (1st calculate earnings, save it, then reset the day, if 7th and below required, fail the game)
                 }
@@ -121,7 +122,7 @@ namespace Systems
                 new Dictionary<string, object> { { "coins", coinsAccumulated }, { "daysPlayed", currentDay } });
             currentDay = day;
             OnDayChanged?.Invoke();
-            StartCoroutine(GameManager.instance.Fc.StartFadeOut());
+            StartCoroutine(GameManager.instance.EODFS.StartFadeOut());
         }
 
         public void NextDay()
