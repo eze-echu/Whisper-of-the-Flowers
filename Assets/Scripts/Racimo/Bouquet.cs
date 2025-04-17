@@ -95,6 +95,7 @@ namespace Racimo
         private void SwitchWorkstation(Workstations workstation)
         {
             _currentWorkstations = workstation;
+            CameraController.instance.SwitchToSpecificCamera(_currentWorkstations);
             CameraController.instance.EnableCurrentCamera();
             MoveBouquet((uint)workstation);
         }

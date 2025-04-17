@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Flowers;
+using Racimo;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -97,6 +98,7 @@ namespace Systems
                         }
 
                         StartCoroutine(GameManager.instance.EODFS.StartFadeIn(endOfDayMessage));
+                        Bouquet.Instance.ResetToOriginalState();
                     }
                     // TODO: Implement end of day logic (1st calculate earnings, save it, then reset the day, if 7th and below required, fail the game)
                 }
@@ -123,6 +125,7 @@ namespace Systems
             currentDay = day;
             OnDayChanged?.Invoke();
             StartCoroutine(GameManager.instance.EODFS.StartFadeOut());
+            CameraController.instance.SwitchToSpecificCamera(Bouquet.Workstations.VaseStation);
         }
 
         public void NextDay()

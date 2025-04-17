@@ -64,6 +64,7 @@ namespace Racimo
                 ResetToOriginalState();
                 GameState.Instance.NewRequest();
                 GameState.ResumeGame();
+                CameraController.instance.SwitchToSpecificCamera(Workstations.VaseStation);
             };
             StartCoroutine(WaitFewSeconds(3));
         }

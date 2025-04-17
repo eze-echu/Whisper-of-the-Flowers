@@ -5,7 +5,7 @@ using UnityEngine.Rendering;
 
 public class InteractiveCameraSwitch : TouchInteraction
 {
-    public int cameraToSwitch;
+    [SerializeField] public Racimo.Bouquet.Workstations workstation;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +35,7 @@ public class InteractiveCameraSwitch : TouchInteraction
         {
             EffectSound.Play();
             GameManager.Trigger("OnCameraChange");
-            CameraController.instance.SwitchToSpecificCamera(cameraToSwitch);
+            CameraController.instance.SwitchToSpecificCamera(CameraController.instance.GetIDofWorkstation(workstation));
         }
     }
 }

@@ -63,7 +63,6 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    public List<CinemachineVirtualCamera> virtualCameras;
     public int currentCameraIndex = 1;
     public bool lockedCamera = false;
     public static CameraController instance;
@@ -109,7 +108,7 @@ public class CameraController : MonoBehaviour
         if (!lockedCamera)
         {
             DisableCurrentCamera();
-            currentCameraIndex = (currentCameraIndex + 1) % virtualCameras.Count;
+            currentCameraIndex = (currentCameraIndex + 1) % cameras.Count;
             EnableCurrentCamera();
         }
     }
@@ -119,38 +118,40 @@ public class CameraController : MonoBehaviour
         if (!lockedCamera)
         {
             DisableCurrentCamera();
-            currentCameraIndex = (currentCameraIndex - 1 + virtualCameras.Count) % virtualCameras.Count;
+            currentCameraIndex = (currentCameraIndex - 1 + cameras.Count) % cameras.Count;
             EnableCurrentCamera();
         }
     }
 
     public void EnableCurrentCamera()
     {
-        if (virtualCameras.Count > 0)
+        if (cameras.Count > 0)
         {
-            virtualCameras[currentCameraIndex].gameObject.SetActive(true);
+            cameras[currentCameraIndex].GetVirtualCamera().gameObject.SetActive(true);
 
-            workstationUI.Where(entry => entry.Equals(Bouquet.Instance.Workstation()) && GetCurrentCameraWorkstation() == Bouquet.Instance.Workstation()).ToList()
+            workstationUI.Where(entry =>
+                    entry.Equals(Bouquet.Instance.Workstation()) &&
+                    GetCurrentCameraWorkstation() == Bouquet.Instance.Workstation()).ToList()
                 .ForEach(entry => entry.EnableUI());
             workstationUI.Where(entry => !entry.Equals(Bouquet.Instance.Workstation())).ToList()
-                            .ForEach(entry => entry.DisableUI());
+                .ForEach(entry => entry.DisableUI());
         }
     }
 
     private void DisableCurrentCamera()
     {
-        if (virtualCameras.Count > 0)
+        if (cameras.Count > 0)
         {
-            virtualCameras[currentCameraIndex].gameObject.SetActive(false);
+            cameras[currentCameraIndex].GetVirtualCamera().gameObject.SetActive(false);
             workstationUI.ForEach(entry => entry.DisableUI());
         }
     }
 
     public bool SwitchToSpecificCamera(int id)
     {
-        if (id >= virtualCameras.Count)
+        if (id >= cameras.Count)
         {
-            Debug.LogWarning("Specific camera not found, switching to next camera");
+            //Debug.LogWarning("Specific camera not found, switching to next camera");
             SwitchToNextCamera();
             return false;
         }
@@ -168,12 +169,49 @@ public class CameraController : MonoBehaviour
         }
         else
         {
-            Debug.LogError("HUUHHHHH?????????");
+            //Debug.LogError("HUUHHHHH?????????");
             return false;
+        }
+    }
+
+    public bool SwitchToSpecificCamera(Bouquet.Workstations workstation)
+    {
+        if (cameras.Count == 0)
+        {
+            Debug.LogWarning("No cameras available");
+            return false;
+        }
+
+        var cameraEntry = cameras.FirstOrDefault(entry => entry.Equals(workstation));
+        if (cameraEntry != null)
+        {
+            int index = cameras.IndexOf(cameraEntry);
+            SwitchToSpecificCamera(index);
+            return false; 
+        }
+        else
+        {
+            Debug.LogWarning("Camera not found for the specified workstation");
+            return false;
+        }
+    }
+
+    public int GetIDofWorkstation(Bouquet.Workstations workstation)
+    {
+        var cameraEntry = cameras.FirstOrDefault(entry => entry.Equals(workstation));
+        if (cameraEntry != null)
+        {
+            return cameras.IndexOf(cameraEntry);
+        }
+        else
+        {
+            Debug.LogWarning("Camera not found for the specified workstation");
+            return -1;
         }
     }
     private Bouquet.Workstations GetCurrentCameraWorkstation()
     {
-        return cameras.First(entry => entry.GetVirtualCamera() == virtualCameras[currentCameraIndex]).GetWorkstation();
+        return cameras.First(entry => entry.GetVirtualCamera() == cameras[currentCameraIndex].GetVirtualCamera()).GetWorkstation();
     }
+
 }
