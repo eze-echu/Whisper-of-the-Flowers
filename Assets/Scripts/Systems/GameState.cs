@@ -29,6 +29,8 @@ namespace Systems
 
         public TMP_Text timeText;
         public TMP_Text requestText;
+        
+        public Family family;
 
         // Start is called before the first frame update
         public event Action OnDayChanged;
@@ -54,6 +56,8 @@ namespace Systems
             {
                 currentDay = day;
             }
+            family = new Family();
+            family.LoadFamily();
             _isGamePaused = false;
         }
 
