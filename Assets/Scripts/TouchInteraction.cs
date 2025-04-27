@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Systems;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 
 public class TouchInteraction : MonoBehaviour
@@ -10,6 +12,8 @@ public class TouchInteraction : MonoBehaviour
     [SerializeField] public GameObject _target;
 
     public AudioSource EffectSound;
+
+    [SerializeField] private bool stopsTime = false;
 
 
     private void OnMouseDown()
@@ -40,6 +44,14 @@ public class TouchInteraction : MonoBehaviour
             if (EffectSound != null) EffectSound.Play();
   
             _target.SetActive(!_target.activeSelf);
+            if (stopsTime && _target.activeSelf)
+            {
+                GameState.PauseGame();
+            }
+            else
+            {
+                GameState.ResumeGame();
+            }
         }
 
     }
