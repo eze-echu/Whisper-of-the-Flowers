@@ -17,6 +17,7 @@ namespace Systems
             "Tuviste MUCHA suerte +500 monedas",
             "Tenias antojo de algo dulce -200 monedas",
         };
+
         public static GameState Instance;
         private static bool _isGamePaused;
         public float secondsPerGameDay;
@@ -29,12 +30,14 @@ namespace Systems
 
         public TMP_Text timeText;
         public TMP_Text requestText;
-        
+
         public Family family;
 
         // Start is called before the first frame update
         public event Action OnDayChanged;
-        [FormerlySerializedAs("_nextDayButton")] [SerializeField] private Button nextDayButton;
+
+        [FormerlySerializedAs("_nextDayButton")] [SerializeField]
+        private Button nextDayButton;
 
         void Awake()
         {
@@ -56,6 +59,7 @@ namespace Systems
             {
                 currentDay = day;
             }
+
             family = new Family();
             family.LoadFamily();
             _isGamePaused = false;
@@ -91,10 +95,26 @@ namespace Systems
                         // endOfDayMessage += "\n\n" +
                         //                    EndOfDayMessage[UnityEngine.Random.Range(0, EndOfDayMessage.Length)];
                         (endOfDayMessage, coinsAccumulated) = RandomEndOfDayEvent(endOfDayMessage, coinsAccumulated);
-                        coinsAccumulated -= 200;
+                        coinsAccumulated -= 100;
+                        foreach (var variable in family.GetFamilyMembers())
+                        {
+                            var cost = variable.Value switch
+                            {
+                                Family.States.Dead => 0,
+                                Family.States.Healthy => 100,
+                                Family.States.Sick => 200,
+                                Family.States.Hungry => 150,
+                                _ => 0
+                            };
+
+                            coinsAccumulated -= cost;
+                            endOfDayMessage += "\n" + variable.Key + ": " + variable.Value + " (-" + cost + ")";
+                        }
+
                         endOfDayMessage += "\n\n" +
                                            "-100 coins to pay the bills\n" +
                                            "Coins after tax: " + coinsAccumulated;
+
 
                         if (coinsAccumulated == 0)
                         {
@@ -166,6 +186,7 @@ namespace Systems
                     money = money;
                     break;
             }
+
             return (text, money);
         }
 
