@@ -25,6 +25,7 @@ namespace Systems
         public int currentDay = 1;
         private float _timeLeft;
         public float coinMultiplier = 1.00f;
+        public float timeMultiplier = 1.00f;
 
         public OrderSystem OrderSystem;
 
@@ -43,6 +44,7 @@ namespace Systems
         {
             if (Instance == null) Instance = this;
             else Destroy(gameObject);
+            secondsPerGameDay = secondsPerGameDay * timeMultiplier;
             _timeLeft = secondsPerGameDay;
         }
 
@@ -86,7 +88,7 @@ namespace Systems
                     }
                     else
                     {
-                        _timeLeft = secondsPerGameDay;
+                        _timeLeft = secondsPerGameDay * timeMultiplier;
                         // StartCoroutine(
                         //     GameManager.instance.Fc.FadeInAndOutCoroutine(
                         //         $"Fue un buen dia, pero ya es hora de cerrar la tienda\nMoney: {coinsAccumulated}"));}

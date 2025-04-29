@@ -11,5 +11,6 @@ public class StoreItem
     public int price;
     public bool isVisible;
     public GameObject itemPrefab; // Prefab del objeto en la tienda
+    public Sprite itemImage;
     public StoreEffect effect; // Referencia al efecto que tiene este ítem
 }

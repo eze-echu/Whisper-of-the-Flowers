@@ -8,7 +8,7 @@ using TMPro;
 /// </summary>
 public class StoreItemUI : MonoBehaviour
 {
-      public List<StoreItem> flowers = new List<StoreItem>();
+    public List<StoreItem> flowers = new List<StoreItem>();
     public List<StoreItem> vases = new List<StoreItem>();
     public List<StoreItem> others = new List<StoreItem>(); 
 
@@ -39,6 +39,12 @@ public class StoreItemUI : MonoBehaviour
 
                 GameObject newItem = Instantiate(storeItemPrefab, targetPanel);
                 Button itemButton = newItem.GetComponent<Button>();
+
+                Image itemImageUI = newItem.GetComponentInChildren<Image>();
+                if (itemImageUI != null && item.itemImage != null)
+                {
+                    itemImageUI.sprite = item.itemImage;
+                }
 
                 if (itemButton == null)
                 {
