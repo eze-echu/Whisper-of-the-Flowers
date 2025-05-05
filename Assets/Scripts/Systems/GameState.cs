@@ -19,6 +19,8 @@ namespace Systems
             "Tenias antojo de algo dulce -200 monedas",
         };
 
+        public string currentEODMessage;
+
         public static GameState Instance;
         private static bool _isGamePaused;
         public float secondsPerGameDay;
@@ -90,57 +92,16 @@ namespace Systems
                     else
                     {
                         _timeLeft = secondsPerGameDay * timeMultiplier;
+
+                        string events = "";
+                        (currentEODMessage, coinsAccumulated) = RandomEndOfDayEvent(coinsAccumulated);
+                        coinsAccumulated -= 100;
+                        family.SickenFamilyMembersRandomly();
+                        StartCoroutine(GameManager.instance.EODFS.StartFadeIn(UpdateEODText(currentEODMessage)));
+                        Bouquet.Instance.ResetToOriginalState();
                         // StartCoroutine(
                         //     GameManager.instance.Fc.FadeInAndOutCoroutine(
                         //         $"Fue un buen dia, pero ya es hora de cerrar la tienda\nMoney: {coinsAccumulated}"));}
-                        var endOfDayMessage = "Fue un buen dia, pero ya es hora de cerrar la tienda\nMoney: " +
-                                              coinsAccumulated;
-                        // endOfDayMessage += "\n\n" +
-                        //                    EndOfDayMessage[UnityEngine.Random.Range(0, EndOfDayMessage.Length)];
-                        (endOfDayMessage, coinsAccumulated) = RandomEndOfDayEvent(endOfDayMessage, coinsAccumulated);
-                        coinsAccumulated -= 100;
-                        foreach (var variable in family.GetFamilyMembers())
-                        {
-                            var chance = Random.Range(0, 10);
-                            // turn this into a function that runs before the foreach
-                            // if (chance == 0)
-                            // {
-                            //     family.UpdateFamilyMemberState(variable.Key, Family.States.Sick);
-                            //     endOfDayMessage += "\n" + variable.Key + " Se enfermo";
-                            // }
-                            
-                            
-
-
-                            // TODO: Remove this and replace with a check box
-                            // var cost = variable.Value switch
-                            // {
-                            //     Family.States.Dead => 0,
-                            //     Family.States.Healthy => 100,
-                            //     Family.States.Sick => 200,
-                            //     Family.States.Hungry => 150,
-                            //     Family.States.Cold => 150,
-                            //     _ => 0
-                            // };
-
-                            // TODO: add check box logic on feeding family and giving them medicine
-                            // TODO: add hunger on not feeding them
-                            // coinsAccumulated -= cost;
-                            // endOfDayMessage += "\n" + variable.Key + ": " + variable.Value + " (-" + cost + ")";
-                        }
-
-                        endOfDayMessage += "\n\n" +
-                                           "-100 coins to pay the bills\n" +
-                                           "Coins after tax: " + coinsAccumulated;
-
-
-                        if (coinsAccumulated == 0)
-                        {
-                            // TODO: Add failure check
-                        }
-
-                        StartCoroutine(GameManager.instance.EODFS.StartFadeIn(endOfDayMessage));
-                        Bouquet.Instance.ResetToOriginalState();
                     }
                     // TODO: Implement end of day logic (1st calculate earnings, save it, then reset the day, if 7th and below required, fail the game)
                 }
@@ -161,6 +122,7 @@ namespace Systems
         public void ChangeDay(int day)
         {
             //TODO: Add logic for earning calculation and saving
+            coinsAccumulated -= EOD.Instance.GetTotalExpenses();
             NewRequest();
             Save.SaveData(
                 new Dictionary<string, object> { { "coins", coinsAccumulated }, { "daysPlayed", currentDay } });
@@ -184,10 +146,51 @@ namespace Systems
                 $"{OrderSystem.get_order_message(0)}\n{OrderSystem.get_order_message(1)}\n{OrderSystem.get_order_message(2)}\n\n{OrderSystem.GetOrderVase()}";
         }
 
-        private (string, int) RandomEndOfDayEvent(string text, int money)
+        public string UpdateEODText(string event_text)
+        {
+            var endOfDayMessage = "Fue un buen dia, pero ya es hora de cerrar la tienda\nMoney: " +
+                                  coinsAccumulated;
+            // endOfDayMessage += "\n\n" +
+            //                    EndOfDayMessage[UnityEngine.Random.Range(0, EndOfDayMessage.Length)];
+            endOfDayMessage += event_text;
+            foreach (var variable in family.GetFamilyMembers())
+            {
+                // TODO: Remove this and replace with a check box
+                // var cost = variable.Value switch
+                // {
+                //     Family.States.Dead => 0,
+                //     Family.States.Healthy => 100,
+                //     Family.States.Sick => 200,
+                //     Family.States.Hungry => 150,
+                //     Family.States.Cold => 150,
+                //     _ => 0
+                // };
+
+                // TODO: add check box logic on feeding family and giving them medicine
+                // TODO: add hunger on not feeding them
+                // coinsAccumulated -= cost;
+                // endOfDayMessage += "\n" + variable.Key + ": " + variable.Value + " (-" + cost + ")";
+            }
+
+            var a = coinsAccumulated - EOD.Instance.GetTotalExpenses();
+            endOfDayMessage += "\n\n" +
+                               "-100 coins to pay the bills\n" +
+                               "Family Expenses: " + EOD.Instance.GetTotalExpenses() + "\n" +
+                               "Coins after tax: " + a;
+
+
+            if (coinsAccumulated == 0)
+            {
+                // TODO: Add failure check
+            }
+            GameManager.instance.EODFS.ChangeEODText(endOfDayMessage);
+            return endOfDayMessage;
+        }
+
+        private (string, int) RandomEndOfDayEvent(int money)
         {
             var i = UnityEngine.Random.Range(0, EndOfDayMessage.Length);
-            text += "\n\n" + EndOfDayMessage[i];
+            var text = "\n\n" + EndOfDayMessage[i];
             switch (i)
             {
                 case 0:
@@ -212,7 +215,7 @@ namespace Systems
         {
             coinsAccumulated += (int)(OrderSystem.GetOrderReward() * grade * coinMultiplier);
         }
-        
+
         public static int GetFamilyStateCost(Family.States state)
         {
             return state switch
@@ -224,6 +227,12 @@ namespace Systems
                 _ => 0
             };
         }
+
+        public void UpdateFamilyExpenses()
+        {
+            
+        }
+
         public Family.States GetFamilyMemberState(Family.Relationships member)
         {
             return family.GetFamilyMemberState(member);

@@ -81,7 +81,8 @@ namespace Systems
 
         public IEnumerator StartFadeIn(string message)
         {
-            texto.text = message;
+            //texto.text = message;
+            ChangeEODText(message);
             animator.Play(animator.GetCurrentAnimatorStateInfo(0).fullPathHash, layer: -1, normalizedTime: 0f);
             animator.Update(Time.deltaTime);
             GameState.PauseGame();
@@ -90,6 +91,11 @@ namespace Systems
 
 
             yield return new WaitForSeconds(1);
+        }
+        
+        public void ChangeEODText(string message)
+        {
+            texto.text = message;
         }
 
         public IEnumerator StartFadeOut()
@@ -175,6 +181,7 @@ namespace Systems
                 }
                 VARIABLE.amounTextMeshProUGUI.text = cost.ToString();
             }
+            GameState.Instance.UpdateEODText(GameState.Instance.currentEODMessage);
         }
     }
 }

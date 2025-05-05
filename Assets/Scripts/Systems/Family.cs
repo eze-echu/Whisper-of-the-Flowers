@@ -56,6 +56,17 @@ public class Family
         Debug.LogError("Family member not found");
         return States.Healthy; // Default state
     }
+    public void SickenFamilyMembersRandomly()
+    {
+        var random = new System.Random();
+        foreach (var member in _familyMembers.Keys.ToList())
+        {
+            if (_familyMembers[member] == States.Healthy && random.NextDouble() < 0.1)
+            {
+                _familyMembers[member] = States.Sick;
+            }
+        }
+    }
 
     public Dictionary<Relationships, States> GetFamilyMembers()
     {
