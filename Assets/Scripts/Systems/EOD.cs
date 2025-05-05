@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Systems;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 namespace Systems
 {
@@ -14,7 +16,26 @@ namespace Systems
         public Animator animator;
         private string _sceneName;
         public TextMeshProUGUI texto;
+        [SerializeField] private GameObject familyMemberDisplay;
 
+        [Serializable]
+        public class FamilyMemberOptions
+        {
+            [SerializeField] internal Family.Relationships relationship;
+            [SerializeField] internal Toggle medsSelected;
+            [SerializeField] internal Toggle foodSelected;
+            [SerializeField] internal TextMeshProUGUI amounTextMeshProUGUI;
+        }
+
+        [SerializeField] private List<FamilyMemberOptions> FamilyCheckBoxes;
+
+        public static EOD Instance;
+        
+        private void Awake()
+        {
+            if (Instance == null) Instance = this;
+            else Destroy(gameObject);
+        }
 
         public void Start()
         {
@@ -80,6 +101,80 @@ namespace Systems
             animator.SetBool(FadeIn, false);
 
             GameState.ResumeGame();
+        }
+
+        /// <summary>
+        /// Parse the checkboxes and return a dictionary with the relationships and their selected states.
+        /// </summary>
+        /// <returns>
+        /// Dictionary with Family.Relationships as keys and an array of booleans as representing food and meds selected.
+        /// </returns>
+        public Dictionary<Family.Relationships, bool[]> ParseCheckBoxes()
+        {
+            var selectedOptions = new Dictionary<Family.Relationships, bool[]>();
+
+            foreach (var familyMember in FamilyCheckBoxes)
+            {
+                var relationship = familyMember.relationship;
+                var medsSelected = familyMember.medsSelected.isOn;
+                var foodSelected = familyMember.foodSelected.isOn;
+                selectedOptions[relationship] = new[] { foodSelected, medsSelected };
+            }
+
+            return selectedOptions;
+        }
+        
+        public int GetTotalExpenses()
+        {
+            int total = 0;
+            foreach (var VARIABLE in FamilyCheckBoxes)
+            {
+                var medsSelected = VARIABLE.medsSelected.isOn;
+                var foodSelected = VARIABLE.foodSelected.isOn;
+
+                if (medsSelected)
+                {
+                    total += 150;
+                }
+
+                if (foodSelected)
+                {
+                    total += 100;
+                }
+            }
+
+            return total;
+        }
+
+        public void RefreshExpensesInUI()
+        {
+            foreach (var VARIABLE in FamilyCheckBoxes)
+            {
+                var relationship = VARIABLE.relationship;
+                var medsSelected = VARIABLE.medsSelected.isOn;
+                var foodSelected = VARIABLE.foodSelected.isOn;
+                int cost = 0;
+                var state = GameState.Instance.GetFamilyMemberState(relationship);
+
+                VARIABLE.medsSelected.gameObject.SetActive(
+                    state == Family.States.Sick);
+                if (GameState.Instance.GetFamilyMemberState(relationship) == Family.States.Dead)
+                {
+                    VARIABLE.medsSelected.gameObject.SetActive(false);
+                    VARIABLE.foodSelected.gameObject.SetActive(false);
+                }
+
+                if (medsSelected)
+                {
+                    cost += 150;
+                }
+
+                if (foodSelected)
+                {
+                    cost += 100;
+                }
+                VARIABLE.amounTextMeshProUGUI.text = cost.ToString();
+            }
         }
     }
 }

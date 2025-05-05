@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class Family
 {
+    [Serializable]
     public enum States
     {
         Healthy,
@@ -16,6 +17,7 @@ public class Family
         Dead
     }
 
+    [Serializable]
     public enum Relationships
     {
         Dad,
@@ -40,7 +42,7 @@ public class Family
         }
         else
         {
-            Debug.LogError("Family member not found");
+            // Debug.LogError("Family member not found");
         }
     }
 
@@ -62,7 +64,7 @@ public class Family
 
     public Relationships[] GetMembersAlive =>
         (from member in _familyMembers where member.Value != States.Dead select member.Key).ToArray();
-    
+
     public void SaveFamily()
     {
         var data = new Dictionary<string, object>();
@@ -75,6 +77,7 @@ public class Family
 
         Save.SaveData(a);
     }
+
     public void LoadFamily()
     {
         var data = Save.LoadDirectly();
@@ -84,11 +87,10 @@ public class Family
             SaveFamily();
             return;
         }
+
         var familyData = JsonConvert.DeserializeObject<Dictionary<string, object>>(value.ToString());
-        foreach (var member in familyData)
+        foreach (var member in familyData.Where(member => member.Value != null).Where(member => member.Key != null))
         {
-            if (member.Value == null) continue;
-            if (member.Key == null) continue;
             if (Enum.TryParse(member.Key, out Relationships relationship) &&
                 Enum.TryParse(member.Value.ToString(), out States state))
             {

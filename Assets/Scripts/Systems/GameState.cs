@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 namespace Systems
 {
@@ -100,17 +101,32 @@ namespace Systems
                         coinsAccumulated -= 100;
                         foreach (var variable in family.GetFamilyMembers())
                         {
-                            var cost = variable.Value switch
-                            {
-                                Family.States.Dead => 0,
-                                Family.States.Healthy => 100,
-                                Family.States.Sick => 200,
-                                Family.States.Hungry => 150,
-                                _ => 0
-                            };
+                            var chance = Random.Range(0, 10);
+                            // turn this into a function that runs before the foreach
+                            // if (chance == 0)
+                            // {
+                            //     family.UpdateFamilyMemberState(variable.Key, Family.States.Sick);
+                            //     endOfDayMessage += "\n" + variable.Key + " Se enfermo";
+                            // }
+                            
+                            
 
-                            coinsAccumulated -= cost;
-                            endOfDayMessage += "\n" + variable.Key + ": " + variable.Value + " (-" + cost + ")";
+
+                            // TODO: Remove this and replace with a check box
+                            // var cost = variable.Value switch
+                            // {
+                            //     Family.States.Dead => 0,
+                            //     Family.States.Healthy => 100,
+                            //     Family.States.Sick => 200,
+                            //     Family.States.Hungry => 150,
+                            //     Family.States.Cold => 150,
+                            //     _ => 0
+                            // };
+
+                            // TODO: add check box logic on feeding family and giving them medicine
+                            // TODO: add hunger on not feeding them
+                            // coinsAccumulated -= cost;
+                            // endOfDayMessage += "\n" + variable.Key + ": " + variable.Value + " (-" + cost + ")";
                         }
 
                         endOfDayMessage += "\n\n" +
@@ -195,6 +211,22 @@ namespace Systems
         public void AddRequestReward(float grade)
         {
             coinsAccumulated += (int)(OrderSystem.GetOrderReward() * grade * coinMultiplier);
+        }
+        
+        public static int GetFamilyStateCost(Family.States state)
+        {
+            return state switch
+            {
+                Family.States.Healthy => 100,
+                Family.States.Sick => 200,
+                Family.States.Hungry => 150,
+                Family.States.Cold => 150,
+                _ => 0
+            };
+        }
+        public Family.States GetFamilyMemberState(Family.Relationships member)
+        {
+            return family.GetFamilyMemberState(member);
         }
     }
 }
