@@ -123,11 +123,13 @@ namespace Systems
         {
             //TODO: Add logic for earning calculation and saving
             coinsAccumulated -= EOD.Instance.GetTotalExpenses();
+            EOD.Instance.ChangeFamilyStates();
             NewRequest();
             Save.SaveData(
                 new Dictionary<string, object> { { "coins", coinsAccumulated }, { "daysPlayed", currentDay } });
             currentDay = day;
             OnDayChanged?.Invoke();
+            family.SaveFamily();
             StartCoroutine(GameManager.instance.EODFS.StartFadeOut());
             CameraController.instance.SwitchToSpecificCamera(Bouquet.Workstations.VaseStation);
         }
@@ -236,6 +238,11 @@ namespace Systems
         public Family.States GetFamilyMemberState(Family.Relationships member)
         {
             return family.GetFamilyMemberState(member);
+        }
+
+        public void SetFamilyMemberState(Family.Relationships relationship, Family.States dead)
+        {
+            family.UpdateFamilyMemberState(relationship, dead);
         }
     }
 }

@@ -88,6 +88,7 @@ namespace Systems
             GameState.PauseGame();
 
             animator.SetBool(FadeOut, true);
+            RefreshExpensesInUI();
 
 
             yield return new WaitForSeconds(1);
@@ -128,6 +129,46 @@ namespace Systems
             }
 
             return selectedOptions;
+        }
+
+        public void ChangeFamilyStates()
+        {
+            foreach (var familyMember in FamilyCheckBoxes)
+            {
+                var relationship = familyMember.relationship;
+                var medsSelected = familyMember.medsSelected.isOn;
+                var foodSelected = familyMember.foodSelected.isOn;
+
+                if (GameState.Instance.GetFamilyMemberState(relationship) == Family.States.Sick)
+                {
+                    if (!medsSelected)
+                    {
+                        GameState.Instance.SetFamilyMemberState(relationship, Family.States.Dead);
+                    }
+                    else
+                    {
+                        GameState.Instance.SetFamilyMemberState(relationship, Family.States.Healthy);
+                    }
+                }
+                else if (GameState.Instance.GetFamilyMemberState(relationship) == Family.States.Hungry)
+                {
+                    if (foodSelected)
+                    {
+                        GameState.Instance.SetFamilyMemberState(relationship, Family.States.Healthy);
+                    }
+                    else
+                    {
+                        GameState.Instance.SetFamilyMemberState(relationship, Family.States.Dead);
+                    }
+                }
+                else if (GameState.Instance.GetFamilyMemberState(relationship) == Family.States.Healthy)
+                {
+                    if (!foodSelected)
+                    {
+                        GameState.Instance.SetFamilyMemberState(relationship, Family.States.Hungry);
+                    }
+                }
+            }
         }
         
         public int GetTotalExpenses()
