@@ -45,6 +45,16 @@ public class StoreItemUI : MonoBehaviour
                 {
                     itemImageUI.sprite = item.itemImage;
                 }
+                
+                  TextMeshProUGUI priceText = newItem.GetComponentInChildren<TextMeshProUGUI>();
+                if (priceText != null)
+                {
+                    priceText.text = $"${item.price}";
+                }
+                else
+                {
+                    Debug.LogWarning("No se encontró TextMeshProUGUI en el prefab.");
+                }
 
                 if (itemButton == null)
                 {
