@@ -30,7 +30,7 @@ namespace Systems
         [SerializeField] private List<FamilyMemberOptions> FamilyCheckBoxes;
 
         public static EOD Instance;
-        
+
         private void Awake()
         {
             if (Instance == null) Instance = this;
@@ -86,6 +86,7 @@ namespace Systems
             animator.Play(animator.GetCurrentAnimatorStateInfo(0).fullPathHash, layer: -1, normalizedTime: 0f);
             animator.Update(Time.deltaTime);
             GameState.PauseGame();
+            ResetTogglesToFalse();
 
             animator.SetBool(FadeOut, true);
             RefreshExpensesInUI();
@@ -93,7 +94,7 @@ namespace Systems
 
             yield return new WaitForSeconds(1);
         }
-        
+
         public void ChangeEODText(string message)
         {
             texto.text = message;
@@ -170,7 +171,7 @@ namespace Systems
                 }
             }
         }
-        
+
         public int GetTotalExpenses()
         {
             int total = 0;
@@ -220,9 +221,23 @@ namespace Systems
                 {
                     cost += 100;
                 }
+
                 VARIABLE.amounTextMeshProUGUI.text = cost.ToString();
             }
+
             GameState.Instance.UpdateEODText(GameState.Instance.currentEODMessage);
+        }
+
+        /// <summary>
+        /// Resets all the toggles to off to avoid impossible states, to be used on loading the EOD screen
+        /// </summary>
+        private void ResetTogglesToFalse()
+        {
+            foreach (var member in FamilyCheckBoxes)
+            {
+                member.foodSelected.isOn = false;
+                member.medsSelected.isOn = false;
+            }
         }
     }
 }

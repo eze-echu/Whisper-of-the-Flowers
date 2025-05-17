@@ -25,6 +25,7 @@ namespace Systems
         private static bool _isGamePaused;
         public float secondsPerGameDay;
         public int coinsAccumulated;
+        public TMP_Text coinsAccumulatedText;
         public int currentDay = 1;
         private float _timeLeft;
         public float coinMultiplier = 1.00f;
@@ -57,7 +58,11 @@ namespace Systems
             var saveData = Save.LoadDirectly();
             if (saveData.ContainsKey("coins") && int.TryParse(saveData["coins"].ToString(), out var coins))
             {
-                coinsAccumulated = coins;
+                SetCoinsAccumulated(coins);
+            }
+            else
+            {
+                SetCoinsAccumulated(0);
             }
 
             if (saveData.ContainsKey("daysPlayed") && int.TryParse(saveData["daysPlayed"].ToString(), out var day))
@@ -95,7 +100,7 @@ namespace Systems
 
                         string events = "";
                         (currentEODMessage, coinsAccumulated) = RandomEndOfDayEvent(coinsAccumulated);
-                        coinsAccumulated -= 100;
+                        AddToCoinsAccumulated(-100);
                         family.SickenFamilyMembersRandomly();
                         StartCoroutine(GameManager.instance.EODFS.StartFadeIn(UpdateEODText(currentEODMessage)));
                         Bouquet.Instance.ResetToOriginalState();
@@ -122,7 +127,7 @@ namespace Systems
         public void ChangeDay(int day)
         {
             //TODO: Add logic for earning calculation and saving
-            coinsAccumulated -= EOD.Instance.GetTotalExpenses();
+            AddToCoinsAccumulated(-EOD.Instance.GetTotalExpenses());
             EOD.Instance.ChangeFamilyStates();
             NewRequest();
             Save.SaveData(
@@ -215,7 +220,24 @@ namespace Systems
 
         public void AddRequestReward(float grade)
         {
-            coinsAccumulated += (int)(OrderSystem.GetOrderReward() * grade * coinMultiplier);
+            AddToCoinsAccumulated((int)(OrderSystem.GetOrderReward() * grade * coinMultiplier));
+        }
+
+        public void AddToCoinsAccumulated(int coins)
+        {
+            coinsAccumulated += coins;
+            update_coin_counter();
+        }
+
+        public void SetCoinsAccumulated(int coins)
+        {
+            coinsAccumulated = coins;
+            update_coin_counter();
+        }
+
+        private void update_coin_counter()
+        {
+            coinsAccumulatedText.text = "Coins Accumulated: " + coinsAccumulated.ToString();
         }
 
         public static int GetFamilyStateCost(Family.States state)
