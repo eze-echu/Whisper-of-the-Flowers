@@ -982,7 +982,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 50984168}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.91, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1163,6 +1163,10 @@ PrefabInstance:
     - target: {fileID: 2789185944591551174, guid: 36e7acfee21b5214d97c139d6501d148, type: 3}
       propertyPath: m_Name
       value: Switch Cameras (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2789185944591551174, guid: 36e7acfee21b5214d97c139d6501d148, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7123927458841730130, guid: 36e7acfee21b5214d97c139d6501d148, type: 3}
       propertyPath: m_RootOrder
@@ -35073,6 +35077,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Switch Cameras (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2789185944591551174, guid: 36e7acfee21b5214d97c139d6501d148, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7123927458841730130, guid: 36e7acfee21b5214d97c139d6501d148, type: 3}
       propertyPath: m_RootOrder
       value: 21
@@ -49444,6 +49452,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Switch Cameras (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 2789185944591551174, guid: 36e7acfee21b5214d97c139d6501d148, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7123927458841730130, guid: 36e7acfee21b5214d97c139d6501d148, type: 3}
       propertyPath: m_RootOrder
       value: 25
@@ -53672,6 +53684,10 @@ PrefabInstance:
     - target: {fileID: 2789185944591551174, guid: 36e7acfee21b5214d97c139d6501d148, type: 3}
       propertyPath: m_Name
       value: Switch Cameras
+      objectReference: {fileID: 0}
+    - target: {fileID: 2789185944591551174, guid: 36e7acfee21b5214d97c139d6501d148, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7123927458841730130, guid: 36e7acfee21b5214d97c139d6501d148, type: 3}
       propertyPath: m_RootOrder

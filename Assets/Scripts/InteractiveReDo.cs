@@ -37,6 +37,7 @@ public class InteractiveReDo : TouchInteraction
         {
             Bouquet.Instance.ResetToOriginalState();
             FlowerHandler.instance.ResetWorkspace();
+            CameraController.instance.SwitchToSpecificCamera(workstation: Bouquet.Workstations.VaseStation);
         }
     }
 }

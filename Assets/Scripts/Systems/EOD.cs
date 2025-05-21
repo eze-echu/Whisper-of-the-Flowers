@@ -212,6 +212,28 @@ namespace Systems
                     VARIABLE.foodSelected.gameObject.SetActive(false);
                 }
 
+                foreach (var a in FamilyCheckBoxes)
+                {
+                    if (!a.foodSelected.isOn && (GameState.Instance.coinsAccumulated - GetTotalExpenses()) < 100)
+                    {
+                        a.foodSelected.interactable = false;
+                    }
+                    else
+                    {
+                        a.foodSelected.interactable = true;
+                    }
+
+                    if (!a.medsSelected.isOn && (GameState.Instance.coinsAccumulated - GetTotalExpenses()) < 150)
+                    {
+                        a.medsSelected.interactable = false;
+                    }
+
+                    else
+                    {
+                        a.medsSelected.interactable = true;
+                    }
+                }
+
                 if (medsSelected)
                 {
                     cost += 150;

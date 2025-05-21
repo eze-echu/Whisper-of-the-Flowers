@@ -178,7 +178,7 @@ public class CameraController : MonoBehaviour
     {
         if (cameras.Count == 0)
         {
-            Debug.LogWarning("No cameras available");
+            //Debug.LogWarning("No cameras available");
             return false;
         }
 
@@ -191,7 +191,7 @@ public class CameraController : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Camera not found for the specified workstation");
+            //Debug.LogWarning("Camera not found for the specified workstation");
             return false;
         }
     }
