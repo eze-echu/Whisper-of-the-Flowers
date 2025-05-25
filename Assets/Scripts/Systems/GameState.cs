@@ -186,9 +186,11 @@ namespace Systems
                                "Coins after tax: " + a;
 
 
-            if (coinsAccumulated == 0)
+            if (coinsAccumulated <= 0 && !DefeatConditions.Instance.AlreadyLoose && currentDay == 3)
             {
-                // TODO: Add failure check
+                DefeatConditions.Instance.BoolDefeat(true);
+                DefeatConditions.Instance.CheckDefeat("Te has quedado sin monedas para continuar.");
+                _isGamePaused = true;
             }
             GameManager.instance.EODFS.ChangeEODText(endOfDayMessage);
             return endOfDayMessage;
