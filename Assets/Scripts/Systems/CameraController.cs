@@ -209,6 +209,11 @@ public class CameraController : MonoBehaviour
             return -1;
         }
     }
+
+    public void DisableUIs()
+    {
+        workstationUI.ForEach(entry => entry.DisableUI());
+    }
     private Bouquet.Workstations GetCurrentCameraWorkstation()
     {
         return cameras.First(entry => entry.GetVirtualCamera() == cameras[currentCameraIndex].GetVirtualCamera()).GetWorkstation();

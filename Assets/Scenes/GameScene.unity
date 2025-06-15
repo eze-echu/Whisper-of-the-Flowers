@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18371555, g: 0.22812967, b: 0.29895526, a: 1}
+  m_IndirectSpecularColor: {r: 0.18372393, g: 0.2281392, b: 0.29896313, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -32040,7 +32040,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentEODMessage: 
-  secondsPerGameDay: 30
+  secondsPerGameDay: 60
   coinsAccumulated: 0
   coinsAccumulatedText: {fileID: 107543106}
   currentDay: 1

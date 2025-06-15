@@ -147,6 +147,7 @@ namespace Racimo
 
         public void ProceedToNextStation()
         {
+            CameraController.instance.DisableUIs();
             switch (_currentWorkstations)
             {
                 case Workstations.DeliveryStation:
