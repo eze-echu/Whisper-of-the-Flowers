@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using Flowers;
 using Racimo;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Color = UnityEngine.Color;
 using Random = UnityEngine.Random;
 
 namespace Systems
@@ -149,8 +151,14 @@ namespace Systems
             OrderSystem = new OrderSystem();
             OrderSystem.GenerateRandomOrder();
             // Values are added in the FlowerHandler.cs
+            Color c0 = FlowerHandler.instance.GetFlowerByMessage(OrderSystem.get_order_message(0)).flowerColor;
+            Color c1 = FlowerHandler.instance.GetFlowerByMessage(OrderSystem.get_order_message(1)).flowerColor;
+            Color c2 = FlowerHandler.instance.GetFlowerByMessage(OrderSystem.get_order_message(2)).flowerColor;
             requestText.text =
-                $"{OrderSystem.get_order_message(0)}\n{OrderSystem.get_order_message(1)}\n{OrderSystem.get_order_message(2)}\n\n{OrderSystem.GetOrderVase()}";
+                $"<color=#{ColorUtility.ToHtmlStringRGB(c0)}>{OrderSystem.get_order_message(0)}</color>\n" +
+                $"<color=#{ColorUtility.ToHtmlStringRGB(c1)}>{OrderSystem.get_order_message(1)}</color>\n" +
+                $"<color=#{ColorUtility.ToHtmlStringRGB(c2)}>{OrderSystem.get_order_message(2)}</color>" +
+                $"\n\n{OrderSystem.GetOrderVase()}";
         }
 
         public string UpdateEODText(string event_text)

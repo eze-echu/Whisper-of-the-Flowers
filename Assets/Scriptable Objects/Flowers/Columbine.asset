@@ -22,3 +22,4 @@ MonoBehaviour:
   flowerModel:
     flowerMesh: {fileID: 8084719823961158371, guid: 188cce6dbda15f3469d98a48a734e5e8, type: 3}
     flowerMaterial: {fileID: 7618624885421077013, guid: 188cce6dbda15f3469d98a48a734e5e8, type: 3}
+  flowerColor: {r: 1, g: 0.79607844, b: 1, a: 1}

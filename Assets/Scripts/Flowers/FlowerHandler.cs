@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -147,6 +148,27 @@ namespace Flowers
         {
             return (from f in flowers where f.available select f.flowerValues.message).ToArray();
             return System.Enum.GetValues(typeof(FlowerMessageType)).Cast<FlowerMessageType>().ToArray();
+        }
+
+        public Flower GetFlowerByMessage(FlowerMessageType message)
+        {
+            try
+            {
+                return flowers.Single(f => f.flowerValues.message == message && f.available);
+
+            }
+            catch (Exception e)
+            {
+                if (e is InvalidOperationException)
+                {
+                    Console.WriteLine("No flower matches the message or multiple flowers match the message.");
+                }
+                else
+                {
+                    Console.WriteLine("An unexpected error occurred: " + e.Message);
+                }
+                throw;
+            }
         }
     }
 }

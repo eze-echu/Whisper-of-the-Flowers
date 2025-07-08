@@ -20,6 +20,7 @@ public class Flower : ScriptableObject
 
         flowerValues.Validate();
     }
+    public Color flowerColor;
 }
 [System.Serializable]
 public struct FlowerModel {
