@@ -62,15 +62,22 @@ public class StoreItemUI : MonoBehaviour
                     continue;
                 }
 
+                if (newItem.GetComponent<BoxCollider2D>() == null)
+                {
+                    newItem.AddComponent<BoxCollider2D>();
+                }
+
                 // Asigna el StoreItem completo al StoreItemClickHandler
                 StoreItemClickHandler clickHandler = newItem.AddComponent<StoreItemClickHandler>();
                 clickHandler.Setup(itemButton, item, alreadyBought);  // Pasamos el StoreItem completo
+                HoverInfo hoverinfo = newItem.AddComponent<HoverInfo>();
+                hoverinfo.storeItem = item;
 
                 // Aquí también podrías añadir cualquier otra configuración si lo necesitas
             }
         }
     }
-
+    //minionss
     bool LoadPurchaseStatus(string itemName)
     {
         //var savedData = Save.LoadDirectly();
