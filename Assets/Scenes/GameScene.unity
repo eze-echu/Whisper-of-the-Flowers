@@ -55257,7 +55257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6615785468734329884, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
       propertyPath: flowers.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6615785468734329884, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
       propertyPath: others.Array.data[1].price
@@ -55296,12 +55296,16 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6615785468734329884, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
+      propertyPath: flowers.Array.data[0].price
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6615785468734329884, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
       propertyPath: flowers.Array.data[1].price
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6615785468734329884, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
       propertyPath: flowers.Array.data[2].price
-      value: 50
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 6615785468734329884, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
       propertyPath: flowers.Array.data[3].price
@@ -55368,6 +55372,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 0113b754cd8728e41981c783619e72c6, type: 2}
     - target: {fileID: 6615785468734329884, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
+      propertyPath: flowers.Array.data[0].effect
+      value: 
+      objectReference: {fileID: 11400000, guid: 9f1362a8758cb3348b56088538dd938e, type: 2}
+    - target: {fileID: 6615785468734329884, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
+      propertyPath: flowers.Array.data[1].effect
+      value: 
+      objectReference: {fileID: 11400000, guid: 242c0828fef5a18479944e08b6845835, type: 2}
+    - target: {fileID: 6615785468734329884, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
+      propertyPath: flowers.Array.data[2].effect
+      value: 
+      objectReference: {fileID: 11400000, guid: 3969f554339cd224da77a977327b4294, type: 2}
+    - target: {fileID: 6615785468734329884, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
       propertyPath: others.Array.data[0].infoItem
       value: Mutliple all the coins collected at the end of the day x3
       objectReference: {fileID: 0}
@@ -55421,19 +55437,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6615785468734329884, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
       propertyPath: flowers.Array.data[0].infoItem
-      value: If i can see this... this shit work
+      value: Unlock Black Eye Susan Flower
+      objectReference: {fileID: 0}
+    - target: {fileID: 6615785468734329884, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
+      propertyPath: flowers.Array.data[0].itemName
+      value: Black Eye Susan
       objectReference: {fileID: 0}
     - target: {fileID: 6615785468734329884, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
       propertyPath: flowers.Array.data[1].infoItem
-      value: If i see this then this shit actuallyy fucking work........................................................................................................................................................
+      value: Unlock Columbine Flower
       objectReference: {fileID: 0}
     - target: {fileID: 6615785468734329884, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
       propertyPath: flowers.Array.data[1].itemName
-      value: Base
+      value: Columbine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6615785468734329884, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
+      propertyPath: flowers.Array.data[2].infoItem
+      value: Unlock Iris Flower
       objectReference: {fileID: 0}
     - target: {fileID: 6615785468734329884, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
       propertyPath: flowers.Array.data[2].itemName
-      value: Base
+      value: Iris
       objectReference: {fileID: 0}
     - target: {fileID: 6615785468734329884, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
       propertyPath: flowers.Array.data[3].itemName
@@ -55540,13 +55564,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: affeade9874cf2347abb155e8d0db4d8, type: 3}
     - target: {fileID: 6615785468734329884, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
+      propertyPath: flowers.Array.data[0].itemImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 7bbbf54673a2883428f9bed511b6dce5, type: 3}
+    - target: {fileID: 6615785468734329884, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
       propertyPath: flowers.Array.data[1].isVisible
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6615785468734329884, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
+      propertyPath: flowers.Array.data[1].itemImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 8e634c157f9358f40974558dbe7badc9, type: 3}
+    - target: {fileID: 6615785468734329884, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
       propertyPath: flowers.Array.data[2].isVisible
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6615785468734329884, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
+      propertyPath: flowers.Array.data[2].itemImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 1a817d3a29b35a741949ced95e4a0855, type: 3}
     - target: {fileID: 6615785468734329884, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
       propertyPath: flowers.Array.data[3].isVisible
       value: 1
