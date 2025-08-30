@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using Flowers;
+using PopUps;
 using Racimo;
 using TMPro;
 using UnityEngine;
@@ -32,6 +33,9 @@ namespace Systems
         private float _timeLeft;
         public float coinMultiplier = 1.00f;
         public float timeMultiplier = 1.00f;
+
+        [SerializeField]
+        private PopUp pauseMenu;
 
         public OrderSystem OrderSystem;
 
@@ -80,6 +84,20 @@ namespace Systems
         // Update is called once per frame
         void Update()
         {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (!_isGamePaused)
+                {
+                    pauseMenu.OpenUp();
+                    PauseGame();
+                }
+                else
+                {
+                    pauseMenu.ForceClose();
+                    ResumeGame();
+                }
+
+            }
             if (!_isGamePaused)
             {
                 if (_timeLeft > 0) _timeLeft -= Time.deltaTime;

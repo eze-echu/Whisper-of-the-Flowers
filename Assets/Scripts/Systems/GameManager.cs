@@ -48,6 +48,11 @@ public class GameManager : MonoBehaviour
             _events[eventType]();
     }
 
+    public static void GoToMainMenu()
+    {
+        GameManager.instance.Fc.FadeToLevel("MainMenu");
+    }
+
     public static void Quit()
     {
         print("Quitted");
