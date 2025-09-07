@@ -12,11 +12,8 @@ namespace PopUps
     [Serializable]
     public class PopUp: MonoBehaviour
     {
-        [SerializeField]
-        public GameObject popUpBox;
         // This variable is either an instance of this popup generated on creation
         // Or is a reference to self inside the instanced object
-        private GameObject _popUpBoxInstance;
         public TMP_Text popUpText;
         private List<PopUp> _parentPopUps;
         private bool _popUpActive;
@@ -24,7 +21,6 @@ namespace PopUps
 
         internal PopUp(PopUpBuilder builder)
         {
-            popUpBox = builder.popUpBox;
             popUpText = builder.PopUpText;
             _parentPopUps = builder.parents;
         }
@@ -44,24 +40,18 @@ namespace PopUps
             return _popUpActive;
         }
 
-        public void PopChild(PopUp child)
+        public void PopChild(GameObject child)
         {
             var parents = new List<PopUp>();
-            if (child.popUpText == null)
-            {
-                child.popUpText = popUpBox.AddComponent<TextMeshPro>();
-            }
 
             if (parents.Count > 0)
             {
                 parents.AddRange(_parentPopUps);
             }
             parents.Add(this);
-            _childPopUp = Builder()
-                .Parents(parents)
-                .Text(child.popUpText)
-                .PopUpBox(child.popUpBox)
-                .Build().OpenUp();
+            _childPopUp = Instantiate(child).GetComponent<PopUp>();
+            _childPopUp._parentPopUps = parents;
+            _childPopUp.OpenUp();
             _popUpActive = false;
         }
 
@@ -76,11 +66,8 @@ namespace PopUps
 
         public PopUp OpenUp()
         {
-            _popUpBoxInstance = Instantiate(popUpBox);
             _popUpActive = true;
-            _popUpBoxInstance.SetActive(true);
-            _popUpBoxInstance.GetComponent<PopUp>().CopyFrom(this);
-            _popUpBoxInstance.GetComponent<PopUp>().SetInstanceToSelf();
+            SetActive(true);
             return this;
         }
 
@@ -88,11 +75,6 @@ namespace PopUps
         {
             _popUpActive =  other.IsActive();
             _parentPopUps = other.Parents();
-        }
-
-        internal void SetInstanceToSelf()
-        {
-            _popUpBoxInstance = gameObject;
         }
 
         internal List<PopUp> Parents()
@@ -107,19 +89,14 @@ namespace PopUps
                 Debug.LogError("This PopUp doesn't appear to be active");
                 return;
             }
-            if (_parentPopUps.Count > 0)
+            if (_parentPopUps is { Count: > 0 }) // This way, avoids crashing if var is null
             {
                 _parentPopUps.Last().SetActive(true);
                 _popUpActive = false;
-                _popUpBoxInstance.SetActive(false);
-            }
-            else
-            {
-                _popUpBoxInstance.SetActive(false);
-                GameState.ResumeGame();
+                SetActive(false);
             }
 
-            Destroy(_popUpBoxInstance);
+            Destroy(gameObject);
         }
     }
 

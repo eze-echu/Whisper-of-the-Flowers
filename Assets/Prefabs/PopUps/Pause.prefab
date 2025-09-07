@@ -490,6 +490,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6699463246115892764}
   - component: {fileID: 2805607410201163839}
+  - component: {fileID: 6809528443991984371}
   - component: {fileID: 2547328145975057031}
   - component: {fileID: 8334277475456351124}
   - component: {fileID: 4379263637847797022}
@@ -535,8 +536,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1586699e74d2435c8b6433db1980ea55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popUpBox: {fileID: 5751286801487103152}
   popUpText: {fileID: 0}
+--- !u!114 &6809528443991984371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5751286801487103152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b198bd8876d84df4bc30ec8b9caafc40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popUpPrefab: {fileID: 184796603115467174, guid: 8140b992b52a341af86a1ff84605cbc4, type: 3}
 --- !u!223 &2547328145975057031
 Canvas:
   m_ObjectHideFlags: 0
@@ -725,8 +738,8 @@ MonoBehaviour:
         m_MethodName: PopChild
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 7366511726438014824, guid: 8140b992b52a341af86a1ff84605cbc4, type: 3}
-          m_ObjectArgumentAssemblyTypeName: PopUps.PopUp, Assembly-CSharp
+          m_ObjectArgument: {fileID: 184796603115467174, guid: 8140b992b52a341af86a1ff84605cbc4, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

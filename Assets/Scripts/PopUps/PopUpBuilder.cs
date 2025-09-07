@@ -8,7 +8,6 @@ namespace PopUps
     internal class PopUpBuilder
     {
         internal TMP_Text PopUpText;
-        internal GameObject popUpBox;
         internal List<PopUp> parents;
         internal static PopUpBuilder NewBuilder()
         {
@@ -23,12 +22,6 @@ namespace PopUps
         public PopUpBuilder Text(TMP_Text text)
         {
             PopUpText = text;
-            return this;
-        }
-
-        public PopUpBuilder PopUpBox(GameObject popUpBoxParam)
-        {
-            this.popUpBox = popUpBoxParam;
             return this;
         }
 

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18371555, g: 0.22812968, b: 0.29895526, a: 1}
+  m_IndirectSpecularColor: {r: 0.18372393, g: 0.2281392, b: 0.29896313, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -32273,6 +32273,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1240502522}
   - component: {fileID: 1240502524}
+  - component: {fileID: 1240502525}
   m_Layer: 0
   m_Name: GameStateManager
   m_TagString: Untagged
@@ -32314,10 +32315,23 @@ MonoBehaviour:
   currentDay: 1
   coinMultiplier: 1
   timeMultiplier: 1
-  pauseMenu: {fileID: 2805607410201163839, guid: 2a5de6f76600ed749a8647fbef4a831b, type: 3}
+  pauseMenu: {fileID: 1240502525}
   timeText: {fileID: 1679712746}
   requestText: {fileID: 636181632}
   nextDayButton: {fileID: 1261359705}
+--- !u!114 &1240502525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1240502520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b198bd8876d84df4bc30ec8b9caafc40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popUpPrefab: {fileID: 5751286801487103152, guid: 2a5de6f76600ed749a8647fbef4a831b, type: 3}
 --- !u!1 &1246778280
 GameObject:
   m_ObjectHideFlags: 0

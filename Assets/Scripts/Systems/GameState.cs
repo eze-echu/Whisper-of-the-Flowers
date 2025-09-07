@@ -35,7 +35,9 @@ namespace Systems
         public float timeMultiplier = 1.00f;
 
         [SerializeField]
-        private PopUp pauseMenu;
+        private PopUpSpawner pauseMenu;
+
+        private PopUp _pauseMenuInstance;
 
         public OrderSystem OrderSystem;
 
@@ -88,12 +90,13 @@ namespace Systems
             {
                 if (!_isGamePaused)
                 {
-                    pauseMenu.OpenUp();
+                    _pauseMenuInstance = pauseMenu.Spawn();
                     PauseGame();
                 }
                 else
                 {
-                    pauseMenu.ForceClose();
+                    _pauseMenuInstance.ForceClose();
+                    _pauseMenuInstance = null;
                     ResumeGame();
                 }
 
