@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace PopUps
 {
@@ -12,6 +13,14 @@ namespace PopUps
             var popUpObj =  popUp.GetComponent<PopUp>();
             popUpObj.OpenUp();
             return popUpObj;
+
+        }
+
+        public void SpawnButton()
+        {
+            var popUp = Instantiate(popUpPrefab, transform, true);
+            var popUpObj = popUp.GetComponent<PopUp>();
+            popUpObj.OpenUp();
         }
     }
 }

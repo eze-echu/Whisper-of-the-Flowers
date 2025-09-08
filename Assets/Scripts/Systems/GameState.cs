@@ -38,6 +38,7 @@ namespace Systems
         private PopUpSpawner pauseMenu;
 
         private PopUp _pauseMenuInstance;
+        private GameObject _pauseMenuGameObject;
 
         public OrderSystem OrderSystem;
 
@@ -88,16 +89,13 @@ namespace Systems
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                if (!_isGamePaused)
+                if (!_isGamePaused && !_pauseMenuGameObject)
                 {
-                    _pauseMenuInstance = pauseMenu.Spawn();
-                    PauseGame();
+                    PauseMenuOpen();
                 }
                 else
                 {
-                    _pauseMenuInstance.ForceClose();
-                    _pauseMenuInstance = null;
-                    ResumeGame();
+                    UnpauseMenuClose();
                 }
 
             }
@@ -264,6 +262,21 @@ namespace Systems
         {
             coinsAccumulated = coins;
             update_coin_counter();
+        }
+
+        public void UnpauseMenuClose()
+        {
+            _pauseMenuInstance.ForceClose();
+            _pauseMenuInstance = null;
+            _pauseMenuGameObject = null;
+            ResumeGame();
+        }
+
+        public void PauseMenuOpen()
+        {
+            _pauseMenuInstance = pauseMenu.Spawn();
+            _pauseMenuGameObject = _pauseMenuInstance.gameObject;
+            PauseGame();
         }
 
         private void update_coin_counter()

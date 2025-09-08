@@ -6,6 +6,7 @@ using Systems;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Button = UnityEngine.UI.Button;
 
 namespace PopUps
 {
@@ -33,6 +34,15 @@ namespace PopUps
         public void SetActive(bool active)
         {
             _popUpActive = active;
+            foreach (var button in GetComponents<Button>())
+            {
+                button.interactable = active;
+            }
+
+            foreach (var slider in GetComponents<Slider>())
+            {
+                slider.SetEnabled(active);
+            }
         }
 
         public bool IsActive()
