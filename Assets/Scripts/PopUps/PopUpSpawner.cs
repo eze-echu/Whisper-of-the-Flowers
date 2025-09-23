@@ -6,21 +6,32 @@ namespace PopUps
     public class PopUpSpawner : MonoBehaviour
     {
         public GameObject popUpPrefab;
+        private GameObject popUpInstance;
 
         public PopUp Spawn()
         {
-            var popUp = Instantiate(popUpPrefab, transform, true);
-            var popUpObj =  popUp.GetComponent<PopUp>();
-            popUpObj.OpenUp();
-            return popUpObj;
+            if (popUpInstance == null)
+            {
+                var popUp = Instantiate(popUpPrefab, transform, true);
+                popUpInstance = popUp;
+                var popUpObj = popUp.GetComponent<PopUp>();
+                popUpObj.OpenUp();
+                return popUpObj;
+            }
 
+            return null;
         }
 
         public void SpawnButton()
         {
-            var popUp = Instantiate(popUpPrefab, transform, true);
-            var popUpObj = popUp.GetComponent<PopUp>();
-            popUpObj.OpenUp();
+            if (popUpInstance == null)
+            {
+                var popUp = Instantiate(popUpPrefab, transform, true);
+                popUpInstance = popUp;
+                var popUpObj = popUp.GetComponent<PopUp>();
+                popUpObj.OpenUp();
+            }
+
         }
     }
 }

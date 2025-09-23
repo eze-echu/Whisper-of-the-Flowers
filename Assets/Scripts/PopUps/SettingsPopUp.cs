@@ -33,6 +33,7 @@ namespace PopUps
             else
             {
                 ChangeVolume(1.0f);
+                Slider.value = 1.0f;
             }
         }
 

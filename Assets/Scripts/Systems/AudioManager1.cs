@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using UnityEngine;
 
 public class AudioManager1 : MonoBehaviour
@@ -15,6 +16,10 @@ public class AudioManager1 : MonoBehaviour
         if (GameManager.instance.AM == null) GameManager.instance.AM = this;
         else Destroy(gameObject);
 
+        if (Save.LoadDirectly().TryGetValue("volume", out var volume))
+        {
+            AudioListener.volume = JsonConvert.DeserializeObject<float>(volume.ToString());
+        }
         //InitializeAudioSources();
     }
 

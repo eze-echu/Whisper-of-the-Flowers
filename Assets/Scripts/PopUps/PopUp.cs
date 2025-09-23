@@ -7,7 +7,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Button = UnityEngine.UI.Button;
-
+using Slider = UnityEngine.UI.Slider;
 namespace PopUps
 {
     [Serializable]
@@ -41,7 +41,9 @@ namespace PopUps
 
             foreach (var slider in GetComponents<Slider>())
             {
-                slider.SetEnabled(active);
+                slider.enabled = active;
+                slider.interactable = active;
+                //slider.SetEnabled(active);
             }
         }
 
