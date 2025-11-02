@@ -45,8 +45,6 @@ namespace Systems
         public TMP_Text timeText;
         public TMP_Text requestText;
 
-        public Family family;
-
         // Start is called before the first frame update
         public event Action OnDayChanged;
 
@@ -79,8 +77,6 @@ namespace Systems
                 currentDay = day;
             }
 
-            family = new Family();
-            family.LoadFamily();
             _isGamePaused = false;
         }
 
@@ -121,8 +117,6 @@ namespace Systems
 
                         string events = "";
                         (currentEODMessage, coinsAccumulated) = RandomEndOfDayEvent(coinsAccumulated);
-                        AddToCoinsAccumulated(-100);
-                        family.SickenFamilyMembersRandomly();
                         StartCoroutine(GameManager.instance.EODFS.StartFadeIn(UpdateEODText(currentEODMessage)));
                         Bouquet.Instance.ResetToOriginalState();
                         // StartCoroutine(
@@ -148,14 +142,11 @@ namespace Systems
         public void ChangeDay(int day)
         {
             //TODO: Add logic for earning calculation and saving
-            AddToCoinsAccumulated(-EOD.Instance.GetTotalExpenses());
-            EOD.Instance.ChangeFamilyStates();
             NewRequest();
             Save.SaveData(
                 new Dictionary<string, object> { { "coins", coinsAccumulated }, { "daysPlayed", currentDay } });
             currentDay = day;
             OnDayChanged?.Invoke();
-            family.SaveFamily();
             StartCoroutine(GameManager.instance.EODFS.StartFadeOut());
             CameraController.instance.SwitchToSpecificCamera(Bouquet.Workstations.VaseStation);
         }
@@ -187,29 +178,11 @@ namespace Systems
             // endOfDayMessage += "\n\n" +
             //                    EndOfDayMessage[UnityEngine.Random.Range(0, EndOfDayMessage.Length)];
             endOfDayMessage += event_text;
-            foreach (var variable in family.GetFamilyMembers())
-            {
-                // TODO: Remove this and replace with a check box
-                // var cost = variable.Value switch
-                // {
-                //     Family.States.Dead => 0,
-                //     Family.States.Healthy => 100,
-                //     Family.States.Sick => 200,
-                //     Family.States.Hungry => 150,
-                //     Family.States.Cold => 150,
-                //     _ => 0
-                // };
 
-                // TODO: add check box logic on feeding family and giving them medicine
-                // TODO: add hunger on not feeding them
-                // coinsAccumulated -= cost;
-                // endOfDayMessage += "\n" + variable.Key + ": " + variable.Value + " (-" + cost + ")";
-            }
 
-            var a = coinsAccumulated - EOD.Instance.GetTotalExpenses();
+            var a = coinsAccumulated - 100;
             endOfDayMessage += "\n\n" +
                                "-100 coins to pay the bills\n" +
-                               "Family Expenses: " + EOD.Instance.GetTotalExpenses() + "\n" +
                                "Coins after tax: " + a;
 
 
@@ -284,31 +257,5 @@ namespace Systems
             coinsAccumulatedText.text = "Coins Accumulated: " + coinsAccumulated.ToString();
         }
 
-        public static int GetFamilyStateCost(Family.States state)
-        {
-            return state switch
-            {
-                Family.States.Healthy => 100,
-                Family.States.Sick => 200,
-                Family.States.Hungry => 150,
-                Family.States.Cold => 150,
-                _ => 0
-            };
-        }
-
-        public void UpdateFamilyExpenses()
-        {
-            
-        }
-
-        public Family.States GetFamilyMemberState(Family.Relationships member)
-        {
-            return family.GetFamilyMemberState(member);
-        }
-
-        public void SetFamilyMemberState(Family.Relationships relationship, Family.States dead)
-        {
-            family.UpdateFamilyMemberState(relationship, dead);
-        }
     }
 }
