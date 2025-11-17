@@ -174,10 +174,10 @@ namespace Systems
             Color c1 = FlowerHandler.instance.GetFlowerByMessage(OrderSystem.get_order_message(1)).flowerColor;
             Color c2 = FlowerHandler.instance.GetFlowerByMessage(OrderSystem.get_order_message(2)).flowerColor;
             requestText.text =
+                $"{OrderSystem.GetOrderVase()}\n" +
                 $"<color=#{ColorUtility.ToHtmlStringRGB(c0)}>{OrderSystem.get_order_message(0)}</color>\n" +
                 $"<color=#{ColorUtility.ToHtmlStringRGB(c1)}>{OrderSystem.get_order_message(1)}</color>\n" +
-                $"<color=#{ColorUtility.ToHtmlStringRGB(c2)}>{OrderSystem.get_order_message(2)}</color>" +
-                $"\n\n{OrderSystem.GetOrderVase()}";
+                $"<color=#{ColorUtility.ToHtmlStringRGB(c2)}>{OrderSystem.get_order_message(2)}</color>";
         }
 
         public string UpdateEODText(string event_text)
