@@ -32229,7 +32229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentEODMessage: 
-  secondsPerGameDay: 1
+  secondsPerGameDay: 5
   coinsAccumulated: 0
   coinsAccumulatedText: {fileID: 107543106}
   currentDay: 1
@@ -55326,9 +55326,17 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 246.99997
       objectReference: {fileID: 0}
+    - target: {fileID: 3951125823064288276, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3951125824395480419, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3951125824395480428, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4026052884574208063, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
       propertyPath: m_IsActive
@@ -55908,7 +55916,7 @@ PrefabInstance:
       objectReference: {fileID: -6649723589260100137, guid: e9f205709dcbce646a6b0783b8cbeb63, type: 2}
     - target: {fileID: 7385908133949960533, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 16777215
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 7385908134303974980, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
       propertyPath: m_IsActive
@@ -55964,7 +55972,7 @@ PrefabInstance:
       objectReference: {fileID: -6649723589260100137, guid: e9f205709dcbce646a6b0783b8cbeb63, type: 2}
     - target: {fileID: 7385908134564729369, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 3289650
+      value: 4281479730
       objectReference: {fileID: 0}
     - target: {fileID: 7385908134564729369, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
       propertyPath: m_hasFontAssetChanged
@@ -55980,7 +55988,7 @@ PrefabInstance:
       objectReference: {fileID: -6649723589260100137, guid: e9f205709dcbce646a6b0783b8cbeb63, type: 2}
     - target: {fileID: 7385908134599709672, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 3289650
+      value: 4281479730
       objectReference: {fileID: 0}
     - target: {fileID: 7385908134599709672, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
       propertyPath: m_hasFontAssetChanged
