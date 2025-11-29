@@ -20,11 +20,12 @@ public class FadeController : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    public void FadeToLevel(string scene)
+    public async void FadeToLevel(string scene)
     {
         texto.text = "";
         _sceneName = scene;
         animator.SetTrigger(FadeOut);
+        await System.Threading.Tasks.Task.Delay(3000);
         SceneLoader.Instance().AsyncLoadScene(_sceneName);
     }
 
