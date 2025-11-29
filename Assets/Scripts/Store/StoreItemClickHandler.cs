@@ -41,6 +41,7 @@ public class StoreItemClickHandler : MonoBehaviour
 
         if (Time.time - lastClickTime < doubleClickThreshold)
         {
+            if(GameState.Instance.coinsAccumulated >= itemData.price)
             Buying();
         }
         lastClickTime = Time.time;
@@ -51,7 +52,7 @@ public class StoreItemClickHandler : MonoBehaviour
         Debug.Log($"Compraste: {itemName}");
 
         // Realiza la compra (restar monedas, etc.)
-        GameState.Instance.coinsAccumulated -= 10;
+        GameState.Instance.coinsAccumulated -= itemData.price;
         alreadyBought = true;
         itemButton.interactable = false;
         
@@ -59,16 +60,13 @@ public class StoreItemClickHandler : MonoBehaviour
 
         if (textComponent != null)
         {
-            // Cambiamos el texto
             textComponent.text = "Sold Out"; 
             
-            // Centramos el texto (Horizontal y Verticalmente)
             textComponent.alignment = TextAlignmentOptions.Center; 
             
-            // Le damos color rojo (opcional, queda bien para "Sold Out")
             // textComponent.color = Color.red; 
+            textComponent.transform.localPosition += new Vector3(1.5f, 1.5f, 0f);
 
-            // Aplicamos la rotación de 30 grados en el eje Z
             // Quaternion.Euler(x, y, z)
             textComponent.transform.localRotation = Quaternion.Euler(0, 0, 30);
             
