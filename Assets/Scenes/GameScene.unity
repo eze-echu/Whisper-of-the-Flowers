@@ -29773,7 +29773,7 @@ PrefabInstance:
     - target: {fileID: 5271508609459476098, guid: 5e9d21db207fd4c41a864913444ffbd0, type: 3}
       propertyPath: workstationUI.Array.data[1].ui
       value: 
-      objectReference: {fileID: 416786140}
+      objectReference: {fileID: 1619222862}
     - target: {fileID: 5271508609459476098, guid: 5e9d21db207fd4c41a864913444ffbd0, type: 3}
       propertyPath: workstationUI.Array.data[2].ui
       value: 
@@ -32229,8 +32229,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentEODMessage: 
-  secondsPerGameDay: 20
-  coinsAccumulated: 0
+  secondsPerGameDay: 60
+  coinsAccumulated: 1700
   coinsAccumulatedText: {fileID: 107543106}
   currentDay: 1
   coinMultiplier: 1
