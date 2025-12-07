@@ -46,4 +46,12 @@ public class AnimationStore : MonoBehaviour
         storeObject.transform.position = endPos;
         storeObject.transform.rotation = endRot;
     }
+
+    public void CloseStore()
+    {
+        if (isOpen)
+        {
+            ToggleStore();
+        }
+    }
 }

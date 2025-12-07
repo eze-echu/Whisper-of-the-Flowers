@@ -32229,7 +32229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentEODMessage: 
-  secondsPerGameDay: 60
+  secondsPerGameDay: 2
   coinsAccumulated: 1700
   coinsAccumulatedText: {fileID: 107543106}
   currentDay: 1
@@ -55934,6 +55934,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1240502524}
+    - target: {fileID: 7385908134303974986, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: CloseStore
+      objectReference: {fileID: 0}
     - target: {fileID: 7385908134521487640, guid: c4d6dc0330a5cf74bad3e1504aab40cd, type: 3}
       propertyPath: m_Enabled
       value: 0
