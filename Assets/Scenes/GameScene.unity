@@ -32229,7 +32229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentEODMessage: 
-  secondsPerGameDay: 2
+  secondsPerGameDay: 20
   coinsAccumulated: 1700
   coinsAccumulatedText: {fileID: 107543106}
   currentDay: 1

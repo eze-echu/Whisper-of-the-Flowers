@@ -164,6 +164,10 @@ namespace Racimo
                         SwitchWorkstation(Workstations.DeliveryStation);
                         _currentWorkstations = Workstations.DeliveryStation;
                     }
+                    else
+                    {
+                        CameraController.instance.EnableCurrentCamera();
+                    }
 
                     break;
                 default:

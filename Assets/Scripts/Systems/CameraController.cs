@@ -187,7 +187,7 @@ public class CameraController : MonoBehaviour
         {
             int index = cameras.IndexOf(cameraEntry);
             SwitchToSpecificCamera(index);
-            return false; 
+            return false;
         }
         else
         {
@@ -214,7 +214,7 @@ public class CameraController : MonoBehaviour
     {
         workstationUI.ForEach(entry => entry.DisableUI());
     }
-    private Bouquet.Workstations GetCurrentCameraWorkstation()
+private Bouquet.Workstations GetCurrentCameraWorkstation()
     {
         return cameras.First(entry => entry.GetVirtualCamera() == cameras[currentCameraIndex].GetVirtualCamera()).GetWorkstation();
     }

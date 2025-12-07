@@ -33,6 +33,6 @@ namespace Racimo.Vase
         Ceramic,
         Glass,
         Metal,
-        Paper
+        Plastic
     }
 }
