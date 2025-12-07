@@ -17,6 +17,7 @@ public class StoreItemUI : MonoBehaviour
     public Transform othersPanel;  
 
     public GameObject storeItemPrefab; // Prefab del botón/item de la tienda
+    public AudioClip buySound, errorSound;
     private int itemIndex = 1;
 
     void Start()
@@ -69,6 +70,8 @@ public class StoreItemUI : MonoBehaviour
 
                 // Asigna el StoreItem completo al StoreItemClickHandler
                 StoreItemClickHandler clickHandler = newItem.AddComponent<StoreItemClickHandler>();
+                clickHandler.buySound = buySound;
+                clickHandler.errorSound = errorSound;
                 clickHandler.Setup(itemButton, item, alreadyBought);  // Pasamos el StoreItem completo
                 HoverInfo hoverinfo = newItem.AddComponent<HoverInfo>();
                 hoverinfo.storeItem = item;

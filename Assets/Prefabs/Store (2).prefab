@@ -2338,6 +2338,8 @@ MonoBehaviour:
   vasesPanel: {fileID: 6323954995395089703}
   othersPanel: {fileID: 6323954996955739686}
   storeItemPrefab: {fileID: 4023771259835775733, guid: db248c8b8f8b5e64b968f31a1a5270aa, type: 3}
+  buySound: {fileID: 8300000, guid: 04b5abb6f264bde449cbe1b85098a734, type: 3}
+  errorSound: {fileID: 8300000, guid: 07de4dbefce4f2b4b89425253f5e66c0, type: 3}
 --- !u!222 &4618008769101053862
 CanvasRenderer:
   m_ObjectHideFlags: 0

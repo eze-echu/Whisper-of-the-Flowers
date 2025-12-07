@@ -16,14 +16,23 @@ public class StoreItemClickHandler : MonoBehaviour
     private const float doubleClickThreshold = 0.3f;
     private StoreItem itemData;  
     private bool alreadyBought = false;
+    public AudioClip buySound; 
+    public AudioClip errorSound;
+    public AudioSource audioSource;
 
+    public void Start()
+    {
 
+    }
    public void Setup(Button button, StoreItem item, bool alreadyBought)
     {
         this.itemButton = button;
         this.itemData = item;  // Guardamos el StoreItem completo
         this.itemName = item.itemName;
         this.alreadyBought = alreadyBought;
+
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();
+        if (audioSource == null) audioSource = gameObject.AddComponent<AudioSource>();
 
         if (alreadyBought)
         {
@@ -41,8 +50,14 @@ public class StoreItemClickHandler : MonoBehaviour
 
         if (Time.time - lastClickTime < doubleClickThreshold)
         {
-            if(GameState.Instance.coinsAccumulated >= itemData.price)
-            Buying();
+           if(GameState.Instance.coinsAccumulated >= itemData.price)
+            {
+                Buying();
+            }
+            else
+            {
+                if (audioSource && errorSound) audioSource.PlayOneShot(errorSound);
+            }
         }
         lastClickTime = Time.time;
     }
@@ -50,6 +65,7 @@ public class StoreItemClickHandler : MonoBehaviour
     void Buying()
     {
         Debug.Log($"Compraste: {itemName}");
+        if (audioSource && buySound) audioSource.PlayOneShot(buySound);
 
         // Realiza la compra (restar monedas, etc.)
         GameState.Instance.coinsAccumulated -= itemData.price;
