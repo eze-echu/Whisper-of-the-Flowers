@@ -111,6 +111,13 @@ namespace Systems
                         var endOfDayMessage = "Fue una buena semana, esperamos que la hayas disfrutado";
                         nextDayButton.GetComponentInChildren<TextMeshProUGUI>().text = "Main Menu";
                         nextDayButton.onClick.RemoveAllListeners();
+                        nextDayButton.onClick.AddListener(() => 
+                        {
+                            if(Flowers.FlowerHandler.instance != null)
+                            {
+                                Flowers.FlowerHandler.instance.ResetAllFlowersToDefault();
+                            }
+                        });
                         nextDayButton.onClick.AddListener(() => SceneLoader.Instance().AsyncLoadScene("MainMenu"));
                         nextDayButton.onClick.AddListener(Save.DeleteData);
                         StartCoroutine(GameManager.instance.EODFS.StartFadeIn(endOfDayMessage));
@@ -158,6 +165,16 @@ namespace Systems
             family.SaveFamily();
             StartCoroutine(GameManager.instance.EODFS.StartFadeOut());
             CameraController.instance.SwitchToSpecificCamera(Bouquet.Workstations.VaseStation);
+        }
+
+        public void AddTime(float secondsToAdd)
+        {
+            _timeLeft += secondsToAdd;
+            secondsPerGameDay += (secondsToAdd / timeMultiplier);
+            
+            timeText.text = $"Day {currentDay} - {(int)Mathf.Floor(_timeLeft / 60)}:{(int)Mathf.Floor(_timeLeft % 60):D2}";
+            
+            Debug.Log($"Se agregaron {secondsToAdd} segundos. Nuevo tiempo restante: {_timeLeft}");
         }
 
         public void NextDay()
@@ -311,4 +328,6 @@ namespace Systems
             family.UpdateFamilyMemberState(relationship, dead);
         }
     }
+
+    
 }

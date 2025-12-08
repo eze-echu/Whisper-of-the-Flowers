@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: TimeMultipler
   m_EditorClassIdentifier: 
   type: 1
-  amount: 1.5
+  amount: 30

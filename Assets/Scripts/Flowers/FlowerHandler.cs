@@ -142,6 +142,9 @@ namespace Flowers
             if (flowers.Contains(flowerToEnable))
             {
                 flowers.Where(x => x == flowerToEnable).First().available = true;
+
+                RefreshFlowers();
+                ResetWorkspace();
             }
         }
         public FlowerMessageType[] GetFlowerMessages()
@@ -169,6 +172,26 @@ namespace Flowers
                 }
                 throw;
             }
+        }
+
+        public void ResetAllFlowersToDefault()
+        {
+            List<string> flowersToLock = new List<string>() 
+            { 
+                "Black_Eyed_Susan", 
+                "Iris", 
+                "Columbine" 
+            };
+
+            foreach (var flower in flowers)
+            {
+                if (flowersToLock.Contains(flower.name))
+                {
+                    flower.available = false;
+                }
+            }
+            
+            Debug.Log("Se han reseteado solo las flores comprables (BlackeyedSusan, Iris, Columbia).");
         }
     }
 }

@@ -9,7 +9,7 @@ using Systems;
 /// </summary>
 public class Store : MonoBehaviour
 {
-    /*
+    
     public TMP_Text itemNameText;
     public TMP_Text priceText;
     public Button buyButton;
@@ -53,5 +53,5 @@ public class Store : MonoBehaviour
         };
         Save.SaveData(data);
     }
-    */
+    
 }

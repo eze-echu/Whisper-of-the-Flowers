@@ -29,7 +29,7 @@ using UnityEngine;
                     break;
 
                 case TypeMultiplier.Time:
-                    GameState.Instance.timeMultiplier += amount;
+                    GameState.Instance.AddTime(amount);
                     Debug.Log("Se aplicó multiplicador de tiempo");
                     break;
 
