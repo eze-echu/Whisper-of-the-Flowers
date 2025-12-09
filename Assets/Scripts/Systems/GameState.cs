@@ -191,6 +191,7 @@ namespace Systems
             Color c1 = FlowerHandler.instance.GetFlowerByMessage(OrderSystem.get_order_message(1)).flowerColor;
             Color c2 = FlowerHandler.instance.GetFlowerByMessage(OrderSystem.get_order_message(2)).flowerColor;
             requestText.text =
+                "<size=16>Order: </size>\n" +
                 $"{OrderSystem.GetOrderVase()}\n" +
                 $"<color=#{ColorUtility.ToHtmlStringRGB(c0)}>{OrderSystem.get_order_message(0)}</color>\n" +
                 $"<color=#{ColorUtility.ToHtmlStringRGB(c1)}>{OrderSystem.get_order_message(1)}</color>\n" +
